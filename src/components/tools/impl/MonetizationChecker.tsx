@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { formatNumber } from '@/lib/utils';
-import { parseApiJson } from '@/lib/api-client';
+import { fetchYouTubeChannel, parseApiJson } from '@/lib/api-client';
 import {
   Sparkles,
   Search,
@@ -140,7 +140,7 @@ export function MonetizationChecker() {
     setResult(null);
 
     try {
-      const res = await fetch(`/api/youtube/channel?q=${encodeURIComponent(query.trim())}`);
+      const res = await fetchYouTubeChannel(query);
       const parsed = await parseApiJson<ChannelApiData>(res);
 
       if (!parsed.ok) {

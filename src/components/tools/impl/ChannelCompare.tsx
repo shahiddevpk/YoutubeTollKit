@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Loader2, AlertCircle } from 'lucide-react';
 import { formatNumber } from '@/lib/utils';
-import { parseApiJson } from '@/lib/api-client';
+import { fetchYouTubeChannel, parseApiJson } from '@/lib/api-client';
 
 interface ChannelStats {
   handle: string;
@@ -31,8 +31,8 @@ export function ChannelCompare() {
 
     try {
       const [res1, res2] = await Promise.all([
-        fetch(`/api/youtube/channel?q=${encodeURIComponent(q1.trim())}`),
-        fetch(`/api/youtube/channel?q=${encodeURIComponent(q2.trim())}`),
+        fetchYouTubeChannel(q1),
+        fetchYouTubeChannel(q2),
       ]);
 
       const [parsed1, parsed2] = await Promise.all([

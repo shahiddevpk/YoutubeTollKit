@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Search, Fingerprint, Copy, Check, Rss, Loader2, AlertCircle } from 'lucide-react';
-import { parseApiJson } from '@/lib/api-client';
+import { fetchYouTubeChannel, parseApiJson } from '@/lib/api-client';
 
 const PRESET_CHANNELS = [
   { label: '@MrBeast', handle: '@MrBeast' },
@@ -32,7 +32,7 @@ export function ChannelIdFinder() {
     setData(null);
 
     try {
-      const res = await fetch(`/api/youtube/channel?q=${encodeURIComponent(query.trim())}`);
+      const res = await fetchYouTubeChannel(query);
       const parsed = await parseApiJson<{
         channelId: string;
         handle: string;

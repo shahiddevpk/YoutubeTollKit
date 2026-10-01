@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Users, Search, Eye, Video, Maximize2, Loader2, AlertCircle } from 'lucide-react';
 import { formatNumber } from '@/lib/utils';
-import { parseApiJson } from '@/lib/api-client';
+import { fetchYouTubeChannel, parseApiJson } from '@/lib/api-client';
 
 const PRESET_CHANNELS = [
   { label: '@MrBeast', handle: '@MrBeast' },
@@ -29,7 +29,7 @@ export function LiveSubscriberCounter() {
     setError(null);
 
     try {
-      const res = await fetch(`/api/youtube/channel?q=${encodeURIComponent(query.trim())}`);
+      const res = await fetchYouTubeChannel(query);
       const parsed = await parseApiJson<{
         title: string;
         avatarUrl?: string;

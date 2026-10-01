@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Tag, Search, Copy, Check, Hash, Loader2, AlertCircle } from 'lucide-react';
-import { parseApiJson } from '@/lib/api-client';
+import { fetchYouTubeVideo, parseApiJson } from '@/lib/api-client';
 
 const PRESET_VIDEOS = [
   { label: 'YouTube Monetization Blueprint', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
@@ -28,7 +28,7 @@ export function TagExtractor() {
     setVideoTitle(null);
 
     try {
-      const res = await fetch(`/api/youtube/video?q=${encodeURIComponent(query.trim())}`);
+      const res = await fetchYouTubeVideo(query);
       const parsed = await parseApiJson<{
         title: string;
         tags: string[];
