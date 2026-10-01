@@ -1,5 +1,56 @@
 import React from 'react';
-import * as Icons from 'lucide-react';
+import {
+  DollarSign,
+  Search,
+  Sparkles,
+  TrendingUp,
+  Wrench,
+  BadgeCheck,
+  Fingerprint,
+  Tag,
+  Calculator,
+  Gauge,
+  Users,
+  Image,
+  FileText,
+  Hash,
+  Smartphone,
+  ListOrdered,
+  Percent,
+  CheckSquare,
+  Layers,
+  HelpCircle,
+  Info,
+  ShieldCheck,
+  Activity,
+  LucideIcon,
+} from 'lucide-react';
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  DollarSign,
+  Search,
+  Sparkles,
+  TrendingUp,
+  Wrench,
+  BadgeCheck,
+  Fingerprint,
+  Tag,
+  Calculator,
+  Gauge,
+  Users,
+  Image,
+  FileText,
+  Hash,
+  Smartphone,
+  ListOrdered,
+  Percent,
+  CheckSquare,
+  Layers,
+  HelpCircle,
+  Info,
+  ShieldCheck,
+  Activity,
+};
 
 interface DynamicIconProps {
   name: string;
@@ -7,7 +58,6 @@ interface DynamicIconProps {
 }
 
 export function DynamicIcon({ name, className = 'h-5 w-5' }: DynamicIconProps) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const IconComponent = (Icons as any)[name] || Icons.Wrench;
+  const IconComponent = ICON_MAP[name] || Wrench;
   return <IconComponent className={className} />;
 }

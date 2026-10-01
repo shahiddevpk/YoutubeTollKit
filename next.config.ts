@@ -8,10 +8,16 @@ const securityHeaders = [
   { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
 ];
 
-/** CDN cache for pre-rendered SEO pages (ISR revalidate=3600 on those routes). */
+/** Enhanced CDN / Edge cache for pre-rendered SEO pages */
 const htmlCacheHeader = {
   key: 'Cache-Control',
-  value: 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400',
+  value: 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800',
+};
+
+/** Static public assets cache (SVGs, icons, manifests) */
+const staticAssetCacheHeader = {
+  key: 'Cache-Control',
+  value: 'public, max-age=31536000, immutable',
 };
 
 const seoPageSources = [
@@ -29,8 +35,24 @@ const seoPageSources = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  compress: true,
+  reactStrictMode: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'clsx', 'tailwind-merge'],
+  },
   async headers() {
     return [
+      {
+        source: '/:path*.svg',
+        headers: [staticAssetCacheHeader],
+      },
+      {
+        source: '/manifest.json',
+        headers: [staticAssetCacheHeader],
+      },
       ...seoPageSources.map((source) => ({
         source,
         headers: [...securityHeaders, htmlCacheHeader],

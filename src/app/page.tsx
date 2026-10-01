@@ -140,7 +140,7 @@ export default function HomePage() {
       </section>
 
       {/* Categorized Tools Hub */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24 content-auto">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Explore by Category
@@ -184,7 +184,7 @@ export default function HomePage() {
       </section>
 
       {/* Competitor Comparison / Why YouTubeFreeToolkit */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-24">
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-24 content-auto">
         <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 sm:p-10 shadow-2xl">
           <div className="text-center max-w-2xl mx-auto mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
@@ -232,7 +232,7 @@ export default function HomePage() {
       </section>
 
       {/* Global FAQs */}
-      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-24">
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-24 content-auto">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-300 mb-3">
             <HelpCircle className="h-3.5 w-3.5 text-red-400" />
@@ -277,7 +277,7 @@ export default function HomePage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-24">
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-24 content-auto">
         <div className="rounded-3xl border border-red-500/30 bg-gradient-to-tr from-red-950/40 via-slate-900 to-slate-950 p-8 sm:p-12 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 h-48 w-48 bg-red-600/10 blur-[80px] pointer-events-none rounded-full" />
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">

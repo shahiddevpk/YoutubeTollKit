@@ -6,14 +6,25 @@
     --foreground: #f8fafc;
   }
 
+  html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: #030712;
     color: #f8fafc;
     min-height: 100vh;
     overflow-x: hidden;
-    selection-background-color: #ef4444;
-    selection-color: #ffffff;
   }
+}
+
+/* CSS-only content-visibility for offscreen sections: speeds up initial render without lazy loading JS */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
 }
 
 /* Custom subtle scrollbar */

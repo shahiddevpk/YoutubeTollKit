@@ -176,6 +176,7 @@ export function Header() {
               <input
                 type="text"
                 autoFocus
+                aria-label="Search tools"
                 placeholder="Search tools (e.g. monetization, tags, channel id, earnings)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -187,6 +188,7 @@ export function Header() {
                   setSearchQuery('');
                 }}
                 className="rounded-lg p-1 text-slate-400 hover:bg-slate-800 hover:text-white"
+                aria-label="Close search"
               >
                 <X className="h-5 w-5" />
               </button>
