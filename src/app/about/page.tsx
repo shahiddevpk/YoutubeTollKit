@@ -26,7 +26,7 @@ export default function AboutPage() {
             Built for Creators, 100% Free Forever
           </h1>
           <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            We believe every YouTube creator deserves access to high-grade analytics, SEO tools, and monetization verification without paywalls or subscriptions.
+            We believe every YouTube creator deserves access to high-grade analytics, SEO tools, and monetization eligibility research without paywalls or subscriptions.
           </p>
         </div>
 

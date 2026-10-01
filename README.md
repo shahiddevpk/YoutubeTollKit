@@ -34,3 +34,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Channel-owner monetization verification
+
+The flagship monetization checker supports two modes:
+
+- **Public check:** public YouTube Data API statistics and YPP eligibility signals for any supported channel URL/handle/video.
+- **Owner verification:** optional Google OAuth flow that verifies the connected channel and checks official YouTube Analytics monetary-metric access.
+
+Copy `.env.example` to `.env.local` and configure the YouTube Data API key plus Google OAuth web-client credentials. The production redirect URI is:
+
+`https://youtubefreetoolkit.com/api/youtube/monetization/callback`
+
+Enable both YouTube Data API v3 and YouTube Analytics API in Google Cloud before testing the owner-verification flow.

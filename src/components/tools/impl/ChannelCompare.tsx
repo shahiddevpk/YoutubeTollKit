@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Sparkles, Loader2, AlertCircle } from 'lucide-react';
-import { formatNumber, formatCurrency } from '@/lib/utils';
+import { formatNumber } from '@/lib/utils';
 import { parseApiJson } from '@/lib/api-client';
 
 interface ChannelStats {
@@ -12,8 +12,7 @@ interface ChannelStats {
   subscribers: number;
   totalViews: number;
   videoCount: number;
-  avgViewsPerVideo: number;
-  estMonthlyRevenue: number;
+  channelId: string;
 }
 
 export function ChannelCompare() {
@@ -44,6 +43,7 @@ export function ChannelCompare() {
           subscriberCount: number;
           viewCount: number;
           videoCount: number;
+          channelId: string;
         }>(res1),
         parseApiJson<{
           handle: string;
@@ -52,6 +52,7 @@ export function ChannelCompare() {
           subscriberCount: number;
           viewCount: number;
           videoCount: number;
+          channelId: string;
         }>(res2),
       ]);
 
@@ -59,8 +60,6 @@ export function ChannelCompare() {
         const d1 = parsed1.data;
         const d2 = parsed2.data;
 
-        const vids1 = Math.max(1, d1.videoCount);
-        const vids2 = Math.max(1, d2.videoCount);
 
         setCh1({
           handle: d1.handle,
@@ -69,8 +68,7 @@ export function ChannelCompare() {
           subscribers: d1.subscriberCount,
           totalViews: d1.viewCount,
           videoCount: d1.videoCount,
-          avgViewsPerVideo: Math.round(d1.viewCount / vids1),
-          estMonthlyRevenue: (d1.viewCount / 1000 / 36) * 4.5,
+          channelId: d1.channelId,
         });
 
         setCh2({
@@ -80,8 +78,7 @@ export function ChannelCompare() {
           subscribers: d2.subscriberCount,
           totalViews: d2.viewCount,
           videoCount: d2.videoCount,
-          avgViewsPerVideo: Math.round(d2.viewCount / vids2),
-          estMonthlyRevenue: (d2.viewCount / 1000 / 36) * 5.2,
+          channelId: d2.channelId,
         });
       } else {
         const errMsg = !parsed1.ok
@@ -193,13 +190,9 @@ export function ChannelCompare() {
                   <span className="text-slate-400">Total Uploads</span>
                   <span className="font-bold text-white font-mono">{ch1.videoCount}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-800/60 pb-2">
-                  <span className="text-slate-400">Avg Views / Video</span>
-                  <span className="font-bold text-blue-400 font-mono">{formatNumber(ch1.avgViewsPerVideo)}</span>
-                </div>
-                <div className="flex justify-between pt-1">
-                  <span className="text-slate-400">Est. Monthly Ad Revenue</span>
-                  <span className="font-bold text-emerald-400 font-mono">{formatCurrency(ch1.estMonthlyRevenue)}</span>
+                <div className="flex justify-between pt-1 gap-4">
+                  <span className="text-slate-400">Channel ID</span>
+                  <span className="font-bold text-blue-400 font-mono text-right break-all">{ch1.channelId}</span>
                 </div>
               </div>
             </div>
@@ -238,13 +231,9 @@ export function ChannelCompare() {
                   <span className="text-slate-400">Total Uploads</span>
                   <span className="font-bold text-white font-mono">{ch2.videoCount}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-800/60 pb-2">
-                  <span className="text-slate-400">Avg Views / Video</span>
-                  <span className="font-bold text-blue-400 font-mono">{formatNumber(ch2.avgViewsPerVideo)}</span>
-                </div>
-                <div className="flex justify-between pt-1">
-                  <span className="text-slate-400">Est. Monthly Ad Revenue</span>
-                  <span className="font-bold text-emerald-400 font-mono">{formatCurrency(ch2.estMonthlyRevenue)}</span>
+                <div className="flex justify-between pt-1 gap-4">
+                  <span className="text-slate-400">Channel ID</span>
+                  <span className="font-bold text-blue-400 font-mono text-right break-all">{ch2.channelId}</span>
                 </div>
               </div>
             </div>

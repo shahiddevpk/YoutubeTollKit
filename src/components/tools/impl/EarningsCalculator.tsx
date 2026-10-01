@@ -54,7 +54,7 @@ export function EarningsCalculator() {
 
           <div>
             <label className="block text-sm font-bold text-white mb-2">
-              Select Creator Niche (Pre-set 2026 RPM Benchmarks)
+              Choose an Illustrative RPM Assumption
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {NICHES.map((niche) => {
@@ -101,10 +101,10 @@ export function EarningsCalculator() {
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-emerald-400" />
-                Projected Creator Net Earnings
+                Revenue Scenario
               </h3>
               <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-bold text-emerald-400 border border-emerald-500/20">
-                After 45% YT Split
+                Uses your RPM input
               </span>
             </div>
 
@@ -145,7 +145,7 @@ export function EarningsCalculator() {
           </div>
 
           <p className="text-[11px] text-slate-500 text-center">
-            *Actual earnings vary by seasonal CPM swings (Q4 surges), audience location (US/UK vs Tier-3), and ad-blocker rates.
+            *Planning scenario only. RPM varies by channel, audience, content, geography, season, ad demand, and monetized playbacks. Use your own YouTube Studio RPM for the most relevant estimate.
           </p>
         </div>
       </div>

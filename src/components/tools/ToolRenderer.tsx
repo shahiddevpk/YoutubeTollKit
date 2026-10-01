@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { MonetizationChecker } from './impl/MonetizationChecker';
 import { ChannelIdFinder } from './impl/ChannelIdFinder';
 import { TagExtractor } from './impl/TagExtractor';
@@ -16,14 +16,28 @@ import { RpmCalculator } from './impl/RpmCalculator';
 import { ChannelCompare } from './impl/ChannelCompare';
 import { UploadChecklist } from './impl/UploadChecklist';
 
+const monetizationFallback = (
+  <div className="min-h-40 rounded-2xl border border-slate-800 bg-slate-950/60 p-8 text-center text-sm text-slate-400">
+    Loading monetization checker…
+  </div>
+);
+
 interface ToolRendererProps {
   slug: string;
 }
 
+/**
+ * Static imports (no route-level lazy loading) so each tool page’s HTML from SSG/ISR
+ * includes the full interactive shell on first response — better for crawlers and LCP.
+ */
 export function ToolRenderer({ slug }: ToolRendererProps) {
   switch (slug) {
     case 'monetization-checker':
-      return <MonetizationChecker />;
+      return (
+        <Suspense fallback={monetizationFallback}>
+          <MonetizationChecker />
+        </Suspense>
+      );
     case 'channel-id-finder':
       return <ChannelIdFinder />;
     case 'tag-extractor':
@@ -51,6 +65,10 @@ export function ToolRenderer({ slug }: ToolRendererProps) {
     case 'upload-checklist':
       return <UploadChecklist />;
     default:
-      return <MonetizationChecker />;
+      return (
+        <Suspense fallback={monetizationFallback}>
+          <MonetizationChecker />
+        </Suspense>
+      );
   }
 }

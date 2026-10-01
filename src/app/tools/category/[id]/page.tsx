@@ -12,6 +12,7 @@ import {
 import { ToolCard } from '@/components/tools/ToolCard';
 import type { ToolCategory } from '@/types/tools';
 import { ChevronRight, Sparkles } from 'lucide-react';
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ id: string }>;

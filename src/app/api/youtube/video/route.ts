@@ -24,11 +24,11 @@ export async function GET(req: NextRequest) {
 
     const apiKey = process.env.YOUTUBE_API_KEY;
     if (!apiKey) {
+      console.error('YouTube video lookup unavailable: YOUTUBE_API_KEY is not configured.');
       return NextResponse.json(
         {
           success: false,
-          error:
-            'Live YouTube data is temporarily unavailable. Configure YOUTUBE_API_KEY on the server to load video metadata and tags.',
+          error: 'Live YouTube data is temporarily unavailable. Please try again later.',
           code: 'YOUTUBE_API_UNAVAILABLE',
         },
         { status: 503 }

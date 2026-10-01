@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';
-import { generateFAQSchema, generateBreadcrumbSchema } from '@/lib/seo';
+import { generateBreadcrumbSchema } from '@/lib/seo';
 import {
   ChevronRight,
   Clock,
@@ -14,6 +14,7 @@ import {
   HelpCircle,
   BookOpen,
 } from 'lucide-react';
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -97,7 +98,6 @@ export default async function BlogPostPage({ params }: PageProps) {
     mainEntityOfPage: `${SITE_CONFIG.url}/blog/${post.slug}`,
   };
 
-  const faqSchema = generateFAQSchema(post.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
     { name: 'Blog', url: `${SITE_CONFIG.url}/blog` },
@@ -115,12 +115,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

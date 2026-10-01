@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   domain: 'youtubefreetoolkit.com',
   url: 'https://youtubefreetoolkit.com',
   description:
-    '100% Free, policy-compliant YouTube creator suite. Check monetization status, extract tags, find channel IDs, audit SEO, and calculate revenue with zero limits.',
+    'Free YouTube creator toolkit with a monetization checker, owner-verified YPP status, public channel research, metadata utilities, SEO planning, and revenue scenarios.',
   ogImage: 'https://youtubefreetoolkit.com/api/og?title=YouTubeFreeToolkit&desc=Free+YouTube+Creator+Tools',
   creator: '@shahiddevpk',
   author: 'YouTubeFreeToolkit Creator Team',
@@ -16,7 +16,7 @@ export const CATEGORIES: CategoryDefinition[] = [
   {
     id: 'monetization',
     name: 'Monetization & Revenue',
-    description: 'Check channel monetization status, calculate estimated ad earnings, and evaluate RPM/CPM.',
+    description: 'Check public YPP eligibility signals, owner-verify monetization access, and model creator-owned revenue scenarios with transparent assumptions.',
     iconName: 'DollarSign',
     gradient: 'from-emerald-500 to-teal-700',
   },
@@ -55,9 +55,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'monetization-checker',
     name: 'YouTube Monetization Checker',
     shortTitle: 'Monetization Checker',
-    headline: 'Check If Any YouTube Channel or Video Is Monetized Instantly',
+    headline: 'YouTube Monetization Checker: Check & Verify YPP Status',
     description:
-      'Free YouTube monetization checker to verify if a YouTube channel or video is actively monetized via the YouTube Partner Program (YPP) without logging in.',
+      'Check any public YouTube channel for YPP eligibility signals, then verify actual YPP monetary access for your own channel with read-only Google OAuth and the official YouTube Analytics API.',
     category: 'monetization',
     badge: 'Flagship',
     priority: 'P0',
@@ -71,9 +71,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'is channel monetized',
       'youtube partner program checker',
     ],
-    metaTitle: 'YouTube Monetization Checker — Free YPP Eligibility Tool',
+    metaTitle: 'YouTube Monetization Checker - Verify YPP Status',
     metaDescription:
-      'Free YouTube monetization checker using public Data API stats. See 1K subscriber YPP threshold status, channel metrics, and honest monetization disclaimers.',
+      'Check YouTube monetization and YPP eligibility signals for any public channel. Channel owners can connect YouTube to verify YPP monetary access via the official Analytics API.',
     howItWorks: [
       {
         step: 1,
@@ -87,32 +87,33 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
       {
         step: 3,
-        title: 'Review YPP Threshold Signals & Disclaimers',
-        description: 'See whether the 1,000-subscriber YPP threshold is met, plus clear notes on what YouTube does not publish via API.',
+        title: 'Verify Owner Monetization Status (Optional)',
+        description: 'If you own the channel, connect YouTube with read-only OAuth to verify whether official YouTube Analytics grants YPP monetary-metric access.',
       },
     ],
     features: [
       'Public channel stats via YouTube Data API v3',
-      '1,000-subscriber YPP threshold indicator (one of several YPP requirements)',
-      'Works with channel URLs, @handles, UC IDs, or video links',
-      'No login, no OAuth, no credential storage',
-      'Typical RPM range estimates for planning (not income guarantees)',
+      '500- and 1,000-subscriber YPP threshold signals (subscriber count is only one eligibility factor)',
+      'Optional owner-only monetization verification via read-only Google OAuth',
+      'Official YouTube Analytics monetary-access check for the authenticated channel owner',
+      'Works with channel URLs, @handles, UC IDs, or public video links',
+      'No Google password collection and no persistent storage of OAuth access tokens in the app database',
     ],
     limitations: [
-      'YouTube does not expose active YPP or AdSense enrollment through the Data API.',
-      'Subscriber count alone does not prove monetization; confirm in YouTube Studio.',
-      'Watch hours, Shorts views, and policy strikes are not available in this tool.',
+      'YouTube does not expose another random channel’s active YPP or AdSense enrollment through the public Data API.',
+      'Exact verification requires the channel owner to authorize read-only YouTube account and monetary Analytics access.',
+      'Public watch hours, qualified Shorts views, policy review status, and AdSense linkage are not inferred for third-party channels.',
     ],
     faqs: [
       {
         question: 'How do you check if a YouTube channel is monetized?',
         answer:
-          'The official YouTube Data API provides public statistics (subscribers, views, uploads) but not YPP enrollment. Our tool shows those stats plus whether the channel meets the well-known 1,000-subscriber application threshold. For definitive status, open YouTube Studio → Earn → Monetization or review ads on recent public videos.',
+          'For any public channel, the official YouTube Data API can show public statistics and eligibility signals but not private YPP enrollment. If you own the channel, this checker can verify the connected owner account and test official YouTube Analytics monetary-metric access. YouTube documents monetary channel reports as available to YPP members and a 403 response for non-monetized channels.',
       },
       {
-        question: 'What are the 2026 YouTube monetization requirements?',
+        question: 'What are the YouTube monetization requirements in 2026?',
         answer:
-          'To join the YouTube Partner Program (YPP), creators typically need either 1,000 subscribers with 4,000 valid public watch hours in the past 12 months, or 1,000 subscribers with 10 million valid public Shorts views in the last 90 days, plus 2-step verification and no active Community Guidelines strikes.',
+          'Through January 31, 2027, full YPP ad-revenue eligibility generally requires 1,000 subscribers plus either 4,000 qualified public watch hours in the previous 12 months or 10 million qualified Shorts views in 90 days, along with YouTube’s other policy and account requirements. YouTube has announced higher watch-hour and Shorts-view thresholds for new applicants starting February 1, 2027.',
       },
       {
         question: 'Can I check monetization for private or unlisted videos?',
@@ -122,16 +123,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Is this YouTube monetization checker completely free?',
         answer:
-          'Yes! YouTubeFreeToolkit is 100% free with no subscriptions, API keys, or registration required.',
+          'Yes. Public channel checks are free and require no account. Owner verification is also free but requires the channel owner to grant read-only Google/YouTube permissions for the verification request.',
       },
       {
         question: 'Why does a channel show ads if it is not monetized?',
         answer:
-          'Under YouTube Terms of Service, YouTube may place ads on videos from channels not enrolled in YPP (with 100% of ad revenue going to YouTube). Our checker distinguishes between channel-owner YPP monetization and YouTube-placed platform ads.',
+          'Seeing an ad is not proof that the channel owner receives ad revenue. YouTube can serve ads in situations where public viewers cannot determine the creator’s YPP enrollment, so our checker does not use ad presence as a definitive status signal.',
       },
     ],
     relatedToolSlugs: ['earnings-calculator', 'channel-id-finder', 'seo-score-checker', 'rpm-calculator'],
-    updatedAt: '2026-09-30',
+    updatedAt: '2026-10-01',
   },
   {
     slug: 'channel-id-finder',
@@ -139,7 +140,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     shortTitle: 'Channel ID Finder',
     headline: 'Find YouTube Channel ID, User ID & UC Identifier in Seconds',
     description:
-      'Extract the 24-character YouTube Channel ID (UC...), User ID, Channel Handle, and canonical RSS feed URL from any custom URL or handle.',
+      'Extract the 24-character YouTube Channel ID (UC...), Channel Handle, and canonical RSS feed URL from a modern @handle, channel URL, or public video link.',
     category: 'research',
     badge: 'Popular',
     priority: 'P0',
@@ -155,12 +156,12 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     metaTitle: 'YouTube Channel ID Finder — Get UC Identifier & RSS Feed Free',
     metaDescription:
-      'Find the exact 24-character YouTube Channel ID (UC...) from any YouTube handle, custom URL, or video link. Free lookup tool with RSS feed generator.',
+      'Find the exact 24-character YouTube Channel ID (UC...) from a YouTube @handle, channel URL, UC ID, or public video link. Free lookup tool with RSS feed generator.',
     howItWorks: [
       {
         step: 1,
         title: 'Input Channel Link or Handle',
-        description: 'Paste any YouTube handle (e.g., @mkbhd), custom URL (/c/name), or video URL.',
+        description: 'Paste a YouTube @handle (e.g., @mkbhd), /channel/UC... URL, UC ID, or public video URL.',
       },
       {
         step: 2,
@@ -174,7 +175,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     features: [
-      'Converts any @handle, custom URL, or legacy /user/ link to canonical UC ID',
+      'Converts modern @handles, channel URLs, UC IDs, and public video links to the canonical UC ID',
       'Generates direct YouTube RSS XML Feed URL for readers and Discord bots',
       'Displays channel join date, country, and total video count',
       'One-click clipboard copy with clean formatting',
@@ -821,7 +822,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     shortTitle: 'Channel Compare',
     headline: 'Compare Two YouTube Channels Side-by-Side (Public Stats)',
     description:
-      'Compare subscriber counts, lifetime views, estimated monthly revenue, and upload velocity between any two public YouTube channels.',
+      'Compare public subscriber counts, lifetime views, upload counts, and channel identifiers between two public YouTube channels.',
     category: 'research',
     badge: 'Trending',
     priority: 'P2',
@@ -836,7 +837,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     metaTitle: 'YouTube Channel Comparison Tool — Compare Competitors Free',
     metaDescription:
-      'Compare any two YouTube channels side-by-side. Analyze subscribers, total views, estimated revenue, and upload counts with 100% free metrics.',
+      'Compare any two YouTube channels side-by-side. Analyze public subscribers, lifetime views, upload counts, and channel IDs with 100% free metrics.',
     howItWorks: [
       {
         step: 1,
@@ -851,23 +852,23 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         step: 3,
         title: 'Compare Metrics Side-by-Side',
-        description: 'View direct comparison of subscribers, views per video, and projected earnings.',
+        description: 'View a direct side-by-side comparison of subscribers, lifetime views, uploads, and channel IDs.',
       },
     ],
     features: [
       'Side-by-side subscriber and view comparison',
-      'Calculates average views per upload for each channel',
-      'Estimated monthly AdSense earnings bracket comparison',
-      '100% public data — no API keys or login required',
+      'Lifetime views and total upload counts for each channel',
+      'Official channel IDs and handles in one view',
+      '100% public data — no creator login required',
     ],
     limitations: [
-      'Comparisons use publicly available YouTube statistics and estimated industry RPMs.',
+      'Comparisons use publicly available YouTube statistics only. Revenue or monetization status is not estimated for either channel.',
     ],
     faqs: [
       {
         question: 'How can I compare my YouTube channel to a competitor?',
         answer:
-          'Simply enter both channel handles into our free Channel Compare tool. We fetch public subscribers, total views, and video counts to display a side-by-side growth and revenue breakdown.',
+          'Enter both channel handles or URLs. We fetch public subscribers, total views, video counts, and channel IDs to display a side-by-side public stats comparison.',
       },
     ],
     relatedToolSlugs: ['channel-id-finder', 'live-subscriber-count', 'earnings-calculator'],

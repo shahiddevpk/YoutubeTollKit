@@ -50,7 +50,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${SITE_CONFIG.name} — Free YouTube Creator & SEO Tools Suite`,
     description: SITE_CONFIG.description,
-    creator: SITE_CONFIG.twitterHandle,
     images: [`${SITE_CONFIG.url}/api/og?title=YouTubeFreeToolkit&desc=Free+YouTube+Creator+Suite`],
   },
   robots: {
@@ -75,7 +74,7 @@ export default function RootLayout({
   const websiteSchema = generateWebSiteSchema();
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -86,7 +85,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="min-h-screen bg-slate-950 text-slate-100 antialiased flex flex-col justify-between">
+      <body
+        className="min-h-screen bg-slate-950 text-slate-100 antialiased flex flex-col justify-between"
+        suppressHydrationWarning
+      >
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

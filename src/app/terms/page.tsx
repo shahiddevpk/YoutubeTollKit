@@ -39,7 +39,14 @@ export default function TermsPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white">3. Third-Party Trademarks & Disclaimer</h2>
+            <h2 className="text-lg font-bold text-white">3. Optional Channel-Owner Verification</h2>
+            <p>
+              The owner verification feature is only for users authorized to access the connected YouTube channel. By starting verification, you authorize the service to use the read-only YouTube permissions shown on Google’s consent screen solely to identify the connected channel and test YouTube Analytics monetary-report access. Do not attempt to authenticate as or access a channel you do not own or manage.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-bold text-white">4. Third-Party Trademarks & Disclaimer</h2>
             <p>
               YouTube™ is a trademark of Google LLC. {SITE_CONFIG.name} is an independent utility and is not affiliated,
               associated, authorized, endorsed by, or in any way officially connected with YouTube, Google LLC, or any of
@@ -48,7 +55,7 @@ export default function TermsPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white">4. No Warranties</h2>
+            <h2 className="text-lg font-bold text-white">5. No Warranties</h2>
             <p>
               All tools, analytics, estimates (including RPM and earnings projections), and data are provided &quot;as is&quot;
               without warranty of any kind. Actual YouTube earnings and algorithm behaviors may vary.

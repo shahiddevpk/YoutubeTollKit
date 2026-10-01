@@ -5,6 +5,7 @@ import { getToolBySlug, getAllToolSlugs } from '@/lib/tools-registry';
 import { constructToolMetadata } from '@/lib/seo';
 import { ToolLayout } from '@/components/tools/ToolLayout';
 import { ToolRenderer } from '@/components/tools/ToolRenderer';
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ slug: string }>;

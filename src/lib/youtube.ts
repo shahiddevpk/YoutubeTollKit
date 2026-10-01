@@ -118,15 +118,11 @@ export function parseYouTubeUrl(input: string): ParsedYouTubeInput {
       };
     }
 
-    // youtube.com/c/custom_name or /user/username
+    // Legacy /c/ and /user/ URLs do not map reliably to the forHandle API field.
+    // Ask users for the modern @handle, channel ID, or a public video URL instead of
+    // falling back to the expensive YouTube Search API.
     if (url.pathname.startsWith('/c/') || url.pathname.startsWith('/user/')) {
-      const name = url.pathname.split('/')[2];
-      return {
-        type: 'handle',
-        id: name,
-        originalInput: input,
-        normalizedUrl: url.toString(),
-      };
+      return { type: 'unknown', originalInput: input };
     }
 
     return { type: 'unknown', originalInput: input };

@@ -25,7 +25,7 @@ export default function CompliancePage() {
             Policy & Quality Standards
           </h1>
           <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            YouTubeFreeToolkit is engineered strictly according to Google Search Essentials, Google AdSense Publisher Policies, and YouTube API Services Developer Policies.
+            YouTubeFreeToolkit is designed with Google Search Essentials, Google Publisher Policies, and YouTube API Services Developer Policies in mind. Because policies and implementations can change, this page describes our current safeguards rather than guaranteeing approval or compliance outcomes.
           </p>
         </div>
 
@@ -54,10 +54,10 @@ export default function CompliancePage() {
           <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3">
             <div className="flex items-center gap-2 text-emerald-400 font-bold text-base">
               <Lock className="h-5 w-5" />
-              <span>User Privacy & Zero PII Storage</span>
+              <span>User Privacy & Minimal Data</span>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              We do not collect personal identifying information (PII), require logins, or store Google credentials. Queries are processed client-side or securely via server-side cached API requests.
+              Public tools do not require Google login. Optional channel-owner monetization verification uses Google OAuth only after explicit user action, requests read-only YouTube scopes, uses the access token transiently for the verification request, and relies on short-lived HTTP-only cookies rather than persistent token storage in the application database.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ export default function CompliancePage() {
               <span>Accurate Disclaimers & E-E-A-T</span>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              All monetization checks and RPM estimates are clearly labeled as public heuristic indicators and industry benchmarks, not guaranteed financial returns or official YouTube legal declarations.
+              The monetization checker never estimates another channel’s private monetization status. Public checks report YouTube Data API eligibility signals; exact status verification is limited to an owner-authorized channel and uses official YouTube Analytics monetary access. Revenue calculators remain separate, user-controlled planning scenarios.
             </p>
           </div>
         </div>

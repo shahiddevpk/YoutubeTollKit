@@ -3,24 +3,25 @@ import { Metadata } from 'next';
 import { TOOLS_REGISTRY, CATEGORIES, SITE_CONFIG } from '@/lib/tools-registry';
 import { ToolsExplorerClient } from './ToolsExplorerClient';
 import { Sparkles, ShieldCheck, Zap } from 'lucide-react';
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Free YouTube Creator Tools Directory (14 Tools) | YouTubeFreeToolkit',
+    absolute: `Free YouTube Creator Tools Directory (${TOOLS_REGISTRY.length} Tools) | YouTubeFreeToolkit`,
   },
   description:
-    'Explore 14 free YouTube tools: monetization checker, tag extractor, channel ID finder, SEO audit, RPM calculator, and more. No signup.',
+    `Explore ${TOOLS_REGISTRY.length} free YouTube tools for monetization checks, channel research, tags, SEO, RPM planning, and more. Public tools require no login; owner verification is optional.`,
   alternates: {
     canonical: `${SITE_CONFIG.url}/tools`,
   },
   openGraph: {
     title: 'Free YouTube Creator Tools Directory | YouTubeFreeToolkit',
     description:
-      'Explore our complete suite of 100% free YouTube tools. No login or API keys needed.',
+      'Explore free YouTube monetization, SEO, and creator utilities. Public checks need no login; channel owners can optionally verify YPP access with YouTube Analytics.',
     url: `${SITE_CONFIG.url}/tools`,
     images: [
       {
-        url: `${SITE_CONFIG.url}/api/og?title=Free+YouTube+Tools+Directory&desc=12%2B+Free+Creator+Utilities`,
+        url: `${SITE_CONFIG.url}/api/og?title=Free+YouTube+Tools+Directory&desc=${TOOLS_REGISTRY.length}%2B+Free+Creator+Utilities`,
         width: 1200,
         height: 630,
         alt: 'YouTube Tools Directory',
@@ -54,7 +55,7 @@ export default function ToolsIndexPage() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="h-4 w-4 text-emerald-400" />
-              <span>Google & ToS Compliant</span>
+              <span>Policy-aware design</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Zap className="h-4 w-4 text-amber-400" />

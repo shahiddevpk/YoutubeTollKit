@@ -108,7 +108,7 @@ export async function GET(req: NextRequest) {
             }}
           >
             <div style={{ display: 'flex', gap: '32px' }}>
-              <span>✓ No Login Required</span>
+              <span>✓ Public Tools Need No Login</span>
               <span>✓ 100% Free & Unlimited</span>
               <span>✓ Policy & ToS Compliant</span>
             </div>

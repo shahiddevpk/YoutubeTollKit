@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ToolDefinition, CategoryDefinition, ToolCategory } from '@/types/tools';
 import { ToolCard } from '@/components/tools/ToolCard';
@@ -15,14 +15,9 @@ interface ToolsExplorerClientProps {
 export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) {
   const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<ToolCategory | 'all'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  useEffect(() => {
-    const q = searchParams.get('q');
-    if (q?.trim()) {
-      setSearchQuery(q.trim());
-    }
-  }, [searchParams]);
+  const [draftSearchQuery, setDraftSearchQuery] = useState('');
+  const urlSearchQuery = searchParams.get('q')?.trim() ?? '';
+  const searchQuery = urlSearchQuery || draftSearchQuery;
 
   const filteredTools = useMemo(() => {
     return initialTools.filter((tool) => {
@@ -37,6 +32,10 @@ export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) 
       return matchesCategory && matchesSearch;
     });
   }, [initialTools, selectedCategory, searchQuery]);
+
+  const clearSearch = () => {
+    setDraftSearchQuery('');
+  };
 
   return (
     <div className="space-y-8">
@@ -53,7 +52,7 @@ export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) 
           <input
             type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => setDraftSearchQuery(e.target.value)}
             placeholder="Filter tools by keyword..."
             className="w-full rounded-xl border border-slate-800 bg-slate-900/90 pl-10 pr-4 py-2 text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
           />
@@ -70,7 +69,7 @@ export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) 
         </span>
         {searchQuery && (
           <button
-            onClick={() => setSearchQuery('')}
+            onClick={clearSearch}
             className="text-red-400 hover:text-red-300 underline"
           >
             Clear search
@@ -94,7 +93,7 @@ export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) 
           <button
             onClick={() => {
               setSelectedCategory('all');
-              setSearchQuery('');
+              clearSearch();
             }}
             className="mt-4 rounded-lg bg-red-600 px-4 py-2 text-xs font-semibold text-white hover:bg-red-500"
           >

@@ -1,20 +1,22 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { TOOLS_REGISTRY, CATEGORIES, getFeaturedTools, SITE_CONFIG } from '@/lib/tools-registry';
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
     absolute: 'Free YouTube Monetization Checker & Creator Tools | YouTubeFreeToolkit',
   },
   description:
-    'Free YouTube tools: monetization & YPP eligibility checker, channel ID finder, tag extractor, SEO audit, earnings & RPM calculators. No signup required.',
+    'Free YouTube monetization checker and creator tools. Check public YPP eligibility signals, verify your own channel monetization with official YouTube Analytics, plus SEO and channel utilities.',
   alternates: {
     canonical: SITE_CONFIG.url,
   },
   openGraph: {
     title: 'Free YouTube Monetization Checker & Creator Tools',
     description:
-      '14+ free YouTube creator tools powered by public Data API stats. Policy-compliant, no login required.',
+      'Free YouTube monetization, SEO, and creator tools. Public checks need no login; channel owners can optionally verify YPP monetary access with YouTube Analytics.',
     url: SITE_CONFIG.url,
     images: [
       {
@@ -57,7 +59,7 @@ export default function HomePage() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Run a YouTube monetization check, extract video tags, find channel IDs, audit SEO, and estimate RPM — 14+ free tools with honest public-data disclaimers and zero sign-up.
+            Check YouTube monetization signals, verify your own channel’s YPP monetary access, extract video tags, find channel IDs, audit SEO, and use {TOOLS_REGISTRY.length}+ free creator tools.
           </p>
 
           {/* Embedded Flagship Tool Card on Hero */}
@@ -77,7 +79,15 @@ export default function HomePage() {
               </span>
             </div>
 
-            <MonetizationChecker />
+            <Suspense
+              fallback={
+                <div className="min-h-40 rounded-2xl border border-slate-800 bg-slate-950/60 p-8 text-center text-sm text-slate-400">
+                  Loading monetization checker…
+                </div>
+              }
+            >
+              <MonetizationChecker />
+            </Suspense>
           </div>
 
           {/* Quick Stats Highlights */}
@@ -196,9 +206,9 @@ export default function HomePage() {
               </thead>
               <tbody className="divide-y divide-slate-800/60 text-slate-300">
                 <tr>
-                  <td className="py-3 font-medium">100% Policy-Safe & ToS Compliant</td>
-                  <td className="py-3 text-emerald-400 font-bold">✓ Full Compliance</td>
-                  <td className="py-3 text-rose-400">✗ Risk of DMCA / Broken Tools</td>
+                  <td className="py-3 font-medium">Policy-Aware Implementation</td>
+                  <td className="py-3 text-emerald-400 font-bold">✓ Transparent API limitations</td>
+                  <td className="py-3 text-rose-400">Policies and implementations vary</td>
                 </tr>
                 <tr>
                   <td className="py-3 font-medium">Zero Sign-Up or Login Paywalls</td>
@@ -207,13 +217,13 @@ export default function HomePage() {
                 </tr>
                 <tr>
                   <td className="py-3 font-medium">Mobile & Core Web Vitals Speed</td>
-                  <td className="py-3 text-emerald-400 font-bold">✓ Ultra Fast (&lt;1s)</td>
-                  <td className="py-3 text-slate-400">Heavy Ads & Lag</td>
+                  <td className="py-3 text-emerald-400 font-bold">✓ Lightweight Next.js UI</td>
+                  <td className="py-3 text-slate-400">Varies by site</td>
                 </tr>
                 <tr>
                   <td className="py-3 font-medium">Shorts Safe-Zone Overlay & Timestamp Tools</td>
                   <td className="py-3 text-emerald-400 font-bold">✓ Included Free</td>
-                  <td className="py-3 text-slate-500">Not Available</td>
+                  <td className="py-3 text-slate-500">Varies by site</td>
                 </tr>
               </tbody>
             </table>
@@ -250,7 +260,7 @@ export default function HomePage() {
               <span className="ml-4 text-slate-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
-              Never. We only analyze publicly accessible video metadata, channel handles, and public algorithm markers. We will never ask for your Google or YouTube account credentials.
+              No login is required for public tools. They use public YouTube metadata only. The Monetization Checker also offers an optional owner-only step: if you verify a channel you own, you can connect Google with read-only permissions to check official YouTube Analytics monetary access. We never ask for your Google password.
             </p>
           </details>
 
@@ -260,7 +270,7 @@ export default function HomePage() {
               <span className="ml-4 text-slate-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
-              Subscriber, view, and upload counts come from the official YouTube Data API. YouTube does not publish active YPP enrollment via API, so we show threshold signals and clear disclaimers instead of guessing monetization status.
+              Public subscriber, view, and upload counts come from the official YouTube Data API. For channel owners, optional read-only OAuth can verify the connected channel and test official YouTube Analytics monetary access; third-party channels still receive public eligibility signals only.
             </p>
           </details>
         </div>
@@ -274,7 +284,7 @@ export default function HomePage() {
             Ready to Optimize Your YouTube Presence?
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-300 max-w-xl mx-auto">
-            Access our full suite of 12+ free creator tools and start analyzing your content today.
+            Access our full suite of {TOOLS_REGISTRY.length}+ free creator tools and start analyzing your content today.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <Link

@@ -4,55 +4,55 @@ import { BLOG_POSTS } from '@/lib/blog-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
-  const now = new Date();
+  const siteUpdated = new Date('2026-10-01T00:00:00.000Z');
 
   // Core static routes
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: now,
-      changeFrequency: 'daily',
+      lastModified: siteUpdated,
+      changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/tools`,
-      lastModified: now,
-      changeFrequency: 'daily',
+      lastModified: siteUpdated,
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: now,
-      changeFrequency: 'daily',
+      lastModified: siteUpdated,
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: now,
+      lastModified: siteUpdated,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: now,
+      lastModified: siteUpdated,
       changeFrequency: 'monthly',
       priority: 0.4,
     },
     {
       url: `${baseUrl}/compliance`,
-      lastModified: now,
+      lastModified: siteUpdated,
       changeFrequency: 'monthly',
       priority: 0.4,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: now,
+      lastModified: siteUpdated,
       changeFrequency: 'monthly',
       priority: 0.4,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: now,
+      lastModified: siteUpdated,
       changeFrequency: 'monthly',
       priority: 0.4,
     },
@@ -60,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const categoryRoutes: MetadataRoute.Sitemap = getAllCategoryIds().map((id) => ({
     url: `${baseUrl}/tools/category/${id}`,
-    lastModified: now,
+    lastModified: siteUpdated,
     changeFrequency: 'weekly',
     priority: 0.85,
   }));

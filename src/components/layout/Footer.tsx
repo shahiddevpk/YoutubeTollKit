@@ -17,9 +17,9 @@ export function Footer() {
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white">100% Policy Compliant & Safe</h4>
+                <h4 className="text-sm font-semibold text-white">Policy-Aware & Transparent</h4>
                 <p className="text-xs text-slate-400">
-                  Built strictly according to Google Search Central & YouTube API Services Guidelines.
+                  Designed with Google Search Central and YouTube API Services guidance in mind.
                 </p>
               </div>
             </div>
@@ -57,10 +57,10 @@ export function Footer() {
             </Link>
             <p className="mt-4 text-xs text-slate-400 leading-relaxed max-w-sm">
               The fastest, free, and privacy-respecting YouTube creator toolkit. Check monetization, extract tags, audit
-              channel SEO, inspect thumbnails, and calculate revenue with zero limitations.
+              channel SEO, inspect thumbnails, and run transparent revenue scenarios. Public tools work without creating an account; owner verification is optional.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
-              <span className="rounded bg-slate-900 px-2 py-0.5 border border-slate-800">No Login Required</span>
+              <span className="rounded bg-slate-900 px-2 py-0.5 border border-slate-800">Public Tools: No Login</span>
               <span className="rounded bg-slate-900 px-2 py-0.5 border border-slate-800">100% Free Forever</span>
               <span className="rounded bg-slate-900 px-2 py-0.5 border border-slate-800">Mobile Optimized</span>
             </div>

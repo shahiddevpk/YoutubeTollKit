@@ -4,7 +4,6 @@ import { ToolDefinition } from '@/types/tools';
 import { SITE_CONFIG, getToolBySlug } from '@/lib/tools-registry';
 import {
   generateWebApplicationSchema,
-  generateFAQSchema,
   generateBreadcrumbSchema,
 } from '@/lib/seo';
 import { ToolCard } from '@/components/tools/ToolCard';
@@ -25,7 +24,6 @@ interface ToolLayoutProps {
 
 export function ToolLayout({ tool, children }: ToolLayoutProps) {
   const webAppSchema = generateWebApplicationSchema(tool);
-  const faqSchema = generateFAQSchema(tool.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
     { name: 'Tools', url: `${SITE_CONFIG.url}/tools` },
@@ -43,12 +41,6 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

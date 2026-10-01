@@ -1,4 +1,4 @@
-import { ToolDefinition, FAQItem } from '@/types/tools';
+import { ToolDefinition } from '@/types/tools';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { Metadata } from 'next';
 
@@ -34,7 +34,6 @@ export function constructToolMetadata(tool: ToolDefinition): Metadata {
       card: 'summary_large_image',
       title: tool.metaTitle,
       description: tool.metaDescription,
-      creator: SITE_CONFIG.twitterHandle,
       images: [
         `${SITE_CONFIG.url}/api/og?title=${encodeURIComponent(tool.name)}&desc=${encodeURIComponent(tool.headline)}`,
       ],
@@ -49,9 +48,12 @@ export function generateWebApplicationSchema(tool: ToolDefinition) {
     name: tool.name,
     url: `${SITE_CONFIG.url}/tools/${tool.slug}`,
     description: tool.description,
-    applicationCategory: 'MultimediaApplication',
-    operatingSystem: 'All',
-    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires a modern web browser with JavaScript enabled.',
+    isAccessibleForFree: true,
+    featureList: tool.features,
+    dateModified: tool.updatedAt,
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -62,23 +64,6 @@ export function generateWebApplicationSchema(tool: ToolDefinition) {
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
     },
-  };
-}
-
-export function generateFAQSchema(faqs: FAQItem[]) {
-  if (!faqs || faqs.length === 0) return null;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
   };
 }
 
@@ -102,7 +87,6 @@ export function generateOrganizationSchema() {
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/brand-icon.svg`,
-    sameAs: ['https://twitter.com/ytfreetoolkit', 'https://github.com/shahiddevpk'],
   };
 }
 
@@ -111,14 +95,7 @@ export function generateWebSiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE_CONFIG.name,
+    alternateName: 'YouTube Free Toolkit',
     url: SITE_CONFIG.url,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE_CONFIG.url}/tools?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   };
 }

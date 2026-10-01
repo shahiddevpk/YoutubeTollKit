@@ -1,7 +1,22 @@
 import { ParsedYouTubeInput } from '@/lib/youtube';
 
 /** YouTube Data API does not expose YPP / AdSense enrollment. We only surface public stats + threshold hints. */
-export const YPP_SUBSCRIBER_THRESHOLD = 1000;
+export const EXPANDED_YPP_SUBSCRIBER_THRESHOLD = 500;
+export const FULL_YPP_SUBSCRIBER_THRESHOLD = 1000;
+
+
+async function fetchYouTubeJson(endpoint: string) {
+  const res = await fetch(endpoint, {
+    next: { revalidate: 3600 },
+    signal: AbortSignal.timeout(8000),
+  });
+
+  if (!res.ok) {
+    throw new Error(`YouTube API request failed (${res.status})`);
+  }
+
+  return res.json();
+}
 
 export interface ChannelPublicData {
   channelId: string;
@@ -13,17 +28,21 @@ export interface ChannelPublicData {
   subscriberCount: number;
   viewCount: number;
   videoCount: number;
-  yppSubscriberThresholdMet: boolean;
+  expandedYppSubscriberThresholdMet: boolean;
+  fullYppSubscriberThresholdMet: boolean;
   isLiveApi: true;
   dataSource: 'youtube_data_api_v3';
   monetizationDisclaimer: string;
 }
 
-export function buildMonetizationDisclaimer(yppSubscriberThresholdMet: boolean): string {
-  if (yppSubscriberThresholdMet) {
-    return 'This channel meets the public 1,000-subscriber threshold used for YouTube Partner Program applications. YouTube does not publish active monetization or YPP enrollment via the Data API—confirm status in YouTube Studio or by reviewing ads on recent public uploads.';
+export function buildMonetizationDisclaimer(fullThresholdMet: boolean, expandedThresholdMet: boolean): string {
+  if (fullThresholdMet) {
+    return 'Public signal: this channel meets the 1,000-subscriber threshold used for full YPP ad-revenue eligibility. YouTube does not publish watch-hour/Shorts-view qualification, policy review results, or active YPP/AdSense enrollment through the public Data API.';
   }
-  return 'This channel is below the 1,000-subscriber threshold commonly required for YouTube Partner Program applications. Subscriber count alone does not confirm monetization status.';
+  if (expandedThresholdMet) {
+    return 'Public signal: this channel meets the 500-subscriber threshold used for the expanded YPP tier in eligible regions, but not the 1,000-subscriber threshold for full ad-revenue eligibility. Other requirements are not available through the public Data API.';
+  }
+  return 'Public signal: this channel is below the 500- and 1,000-subscriber YPP thresholds. Subscriber count is only one eligibility factor and does not reveal actual YPP or AdSense enrollment.';
 }
 
 export function mapChannelItem(item: {
@@ -42,7 +61,8 @@ export function mapChannelItem(item: {
   };
 }): ChannelPublicData {
   const subscriberCount = Number(item.statistics.subscriberCount || 0);
-  const yppSubscriberThresholdMet = subscriberCount >= YPP_SUBSCRIBER_THRESHOLD;
+  const expandedYppSubscriberThresholdMet = subscriberCount >= EXPANDED_YPP_SUBSCRIBER_THRESHOLD;
+  const fullYppSubscriberThresholdMet = subscriberCount >= FULL_YPP_SUBSCRIBER_THRESHOLD;
   const handle =
     item.snippet.customUrl?.startsWith('@')
       ? item.snippet.customUrl
@@ -60,17 +80,17 @@ export function mapChannelItem(item: {
     subscriberCount,
     viewCount: Number(item.statistics.viewCount || 0),
     videoCount: Number(item.statistics.videoCount || 0),
-    yppSubscriberThresholdMet,
+    expandedYppSubscriberThresholdMet,
+    fullYppSubscriberThresholdMet,
     isLiveApi: true,
     dataSource: 'youtube_data_api_v3',
-    monetizationDisclaimer: buildMonetizationDisclaimer(yppSubscriberThresholdMet),
+    monetizationDisclaimer: buildMonetizationDisclaimer(fullYppSubscriberThresholdMet, expandedYppSubscriberThresholdMet),
   };
 }
 
 export async function fetchChannelById(channelId: string, apiKey: string) {
   const endpoint = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${encodeURIComponent(channelId)}&key=${apiKey}`;
-  const res = await fetch(endpoint, { next: { revalidate: 3600 } });
-  const json = await res.json();
+  const json = await fetchYouTubeJson(endpoint);
   if (!json.items?.length) return null;
   return mapChannelItem(json.items[0]);
 }
@@ -78,27 +98,16 @@ export async function fetchChannelById(channelId: string, apiKey: string) {
 export async function fetchChannelByHandle(handle: string, apiKey: string) {
   const clean = handle.replace(/^@+/, '');
   const endpoint = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&forHandle=${encodeURIComponent(clean)}&key=${apiKey}`;
-  const res = await fetch(endpoint, { next: { revalidate: 3600 } });
-  const json = await res.json();
+  const json = await fetchYouTubeJson(endpoint);
   if (!json.items?.length) return null;
   return mapChannelItem(json.items[0]);
 }
 
 export async function fetchChannelIdFromVideo(videoId: string, apiKey: string): Promise<string | null> {
   const endpoint = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${encodeURIComponent(videoId)}&key=${apiKey}`;
-  const res = await fetch(endpoint, { next: { revalidate: 3600 } });
-  const json = await res.json();
+  const json = await fetchYouTubeJson(endpoint);
   const channelId = json.items?.[0]?.snippet?.channelId;
   return channelId ?? null;
-}
-
-export async function searchChannelByLegacyName(query: string, apiKey: string) {
-  const endpoint = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${encodeURIComponent(query)}&maxResults=1&key=${apiKey}`;
-  const res = await fetch(endpoint, { next: { revalidate: 3600 } });
-  const json = await res.json();
-  const channelId = json.items?.[0]?.id?.channelId;
-  if (!channelId) return null;
-  return fetchChannelById(channelId, apiKey);
 }
 
 export async function resolveChannelFromInput(
@@ -109,9 +118,7 @@ export async function resolveChannelFromInput(
     return fetchChannelById(parsed.id, apiKey);
   }
   if (parsed.type === 'handle' && parsed.id) {
-    const byHandle = await fetchChannelByHandle(parsed.id, apiKey);
-    if (byHandle) return byHandle;
-    return searchChannelByLegacyName(parsed.id, apiKey);
+    return fetchChannelByHandle(parsed.id, apiKey);
   }
   if (parsed.type === 'video' && parsed.id) {
     const channelId = await fetchChannelIdFromVideo(parsed.id, apiKey);
