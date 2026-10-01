@@ -3,7 +3,7 @@
 import React from 'react';
 import { CATEGORIES } from '@/lib/tools-registry';
 import { ToolCategory } from '@/types/tools';
-import { Sparkles, Layers } from 'lucide-react';
+import { Layers } from 'lucide-react';
 
 interface CategoryNavProps {
   activeCategory: ToolCategory | 'all';

@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { ToolDefinition, CategoryDefinition, ToolCategory } from '@/types/tools';
 import { ToolCard } from '@/components/tools/ToolCard';
 import { CategoryNav } from '@/components/tools/CategoryNav';
-import { Search, SlidersHorizontal } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 interface ToolsExplorerClientProps {
   initialTools: ToolDefinition[];
@@ -12,8 +13,16 @@ interface ToolsExplorerClientProps {
 }
 
 export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) {
+  const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<ToolCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q?.trim()) {
+      setSearchQuery(q.trim());
+    }
+  }, [searchParams]);
 
   const filteredTools = useMemo(() => {
     return initialTools.filter((tool) => {

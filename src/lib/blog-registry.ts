@@ -431,6 +431,373 @@ Verify chapter formatting using our free [Chapter Validator](/tools/timestamp-va
       'how-to-check-if-youtube-channel-is-monetized',
     ],
   },
+  {
+    slug: 'how-to-extract-youtube-video-tags',
+    title: 'How to Extract YouTube Video Tags (Public Metadata Guide)',
+    excerpt:
+      'Learn when YouTube tags help discovery, how to copy competitor tags ethically, and how to use a tag extractor without violating YouTube policies.',
+    category: 'YouTube SEO',
+    author: {
+      name: 'Shahid Developer',
+      role: 'YouTube SEO & Growth Specialist',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    },
+    publishedAt: '2026-09-30',
+    updatedAt: '2026-10-01',
+    readTime: '5 min read',
+    primaryKeyword: 'youtube tag extractor',
+    secondaryKeywords: ['copy youtube tags', 'youtube video tags list', 'competitor tag research'],
+    metaTitle: 'How to Extract YouTube Video Tags Free (2026 Guide)',
+    metaDescription:
+      'Step-by-step guide to extracting public YouTube video tags for SEO research using ethical, policy-safe methods and free tools.',
+    toolCta: {
+      slug: 'tag-extractor',
+      title: 'Extract Tags From Any Public Video',
+      description: 'Paste a video URL to list tags the creator made public in metadata.',
+      buttonText: 'Open Tag Extractor',
+    },
+    tableOfContents: [
+      { id: 'what-are-tags', title: '1. What YouTube Tags Still Do in 2026' },
+      { id: 'ethical-research', title: '2. Ethical Competitor Tag Research' },
+      { id: 'extract-steps', title: '3. How to Extract Tags in 3 Steps' },
+      { id: 'faqs', title: '4. FAQs' },
+    ],
+    content: `
+## 1. What YouTube Tags Still Do in 2026
+
+Tags are a minor metadata signal compared to titles, thumbnails, and retention. They still help with misspellings, alternate phrasing, and reinforcing topic context.
+
+## 2. Ethical Competitor Tag Research
+
+Only use **public** videos. Do not scrape private data, bypass rate limits, or republish entire tag lists without adding original commentary and your own keyword strategy.
+
+## 3. How to Extract Tags in 3 Steps
+
+1. Copy a public video or Shorts URL.
+2. Run it through our [YouTube Tag Extractor](/tools/tag-extractor).
+3. Copy comma-separated tags into YouTube Studio and remove irrelevant entries.
+
+Pair tags with our [SEO Score Checker](/tools/seo-score-checker) for a full metadata audit.
+    `,
+    faqs: [
+      {
+        question: 'Can I see tags on every YouTube video?',
+        answer:
+          'Only tags the uploader included in public video metadata are visible through legitimate tools. If a creator left tags empty, there is nothing to extract.',
+      },
+    ],
+    relatedBlogSlugs: ['youtube-seo-checklist-for-creators'],
+  },
+  {
+    slug: 'youtube-earnings-calculator-explained',
+    title: 'YouTube Earnings Calculator: How to Estimate Ad Revenue Realistically',
+    excerpt:
+      'Understand CPM, RPM, the 55/45 split, and how to project YouTube income without misleading guarantees.',
+    category: 'Monetization',
+    author: {
+      name: 'Shahid Developer',
+      role: 'YouTube SEO & Growth Specialist',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    },
+    publishedAt: '2026-09-29',
+    updatedAt: '2026-10-01',
+    readTime: '6 min read',
+    primaryKeyword: 'youtube earnings calculator',
+    secondaryKeywords: ['youtube money calculator', 'youtube ad revenue estimate', 'views to dollars youtube'],
+    metaTitle: 'YouTube Earnings Calculator Explained (RPM & CPM Basics)',
+    metaDescription:
+      'Learn how YouTube earnings calculators work, what RPM really means, and how to forecast channel revenue responsibly in 2026.',
+    toolCta: {
+      slug: 'earnings-calculator',
+      title: 'Estimate Views to USD Income',
+      description: 'Model daily and monthly revenue using niche RPM ranges.',
+      buttonText: 'Open Earnings Calculator',
+    },
+    tableOfContents: [
+      { id: 'rpm-vs-cpm', title: '1. RPM vs CPM' },
+      { id: 'variables', title: '2. Variables That Change Payouts' },
+      { id: 'use-calculator', title: '3. Using the Calculator' },
+    ],
+    content: `
+## 1. RPM vs CPM
+
+**CPM** is what advertisers pay per thousand impressions; **RPM** is what creators earn per thousand views after YouTube's share and non-monetized views.
+
+## 2. Variables That Change Payouts
+
+Geography, seasonality, video length, ad inventory, niche (finance vs gaming), and Shorts vs long-form all shift RPM.
+
+## 3. Using the Calculator
+
+Use our [YouTube Earnings Calculator](/tools/earnings-calculator) for scenarios, then validate with YouTube Studio Analytics once you are monetized.
+    `,
+    faqs: [
+      {
+        question: 'Are calculator results guaranteed income?',
+        answer: 'No. Calculators provide educational estimates. Actual AdSense payouts depend on monetization status and real-time ad performance.',
+      },
+    ],
+    relatedBlogSlugs: ['youtube-partner-program-requirements-2026'],
+  },
+  {
+    slug: 'what-is-youtube-rpm',
+    title: 'What Is YouTube RPM and How Do You Calculate It?',
+    excerpt:
+      'A plain-language guide to revenue per mille (RPM), with formulas and benchmarking tips for creators.',
+    category: 'Monetization',
+    author: {
+      name: 'Shahid Developer',
+      role: 'YouTube SEO & Growth Specialist',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    },
+    publishedAt: '2026-09-27',
+    updatedAt: '2026-10-01',
+    readTime: '4 min read',
+    primaryKeyword: 'youtube rpm calculator',
+    secondaryKeywords: ['calculate youtube rpm', 'rpm vs cpm', 'revenue per 1000 views'],
+    metaTitle: 'What Is YouTube RPM? Free Calculator & Formula',
+    metaDescription:
+      'Define YouTube RPM, compare it to CPM, and calculate revenue per 1,000 views with our free RPM calculator.',
+    toolCta: {
+      slug: 'rpm-calculator',
+      title: 'Calculate RPM From Earnings',
+      description: 'Enter total revenue and views to get RPM instantly.',
+      buttonText: 'Open RPM Calculator',
+    },
+    tableOfContents: [
+      { id: 'definition', title: '1. RPM Definition' },
+      { id: 'formula', title: '2. RPM Formula' },
+      { id: 'tool', title: '3. Free RPM Tool' },
+    ],
+    content: `
+## 1. RPM Definition
+
+RPM = (Estimated revenue ÷ Total views) × 1,000. YouTube Studio shows RPM in the monetization reports.
+
+## 2. RPM Formula
+
+Example: $420 revenue on 280,000 views → RPM ≈ $1.50.
+
+## 3. Free RPM Tool
+
+Use the [YouTube RPM Calculator](/tools/rpm-calculator) to benchmark niches and plan sponsorship + ad blends.
+    `,
+    faqs: [
+      {
+        question: 'Why is my RPM different from another creator in the same niche?',
+        answer: 'Audience geography, upload consistency, ad types, and percentage of monetized views all change RPM.',
+      },
+    ],
+    relatedBlogSlugs: ['youtube-earnings-calculator-explained'],
+  },
+  {
+    slug: 'live-youtube-subscriber-count-guide',
+    title: 'Live YouTube Subscriber Count: How Public Stats Work',
+    excerpt:
+      'See how subscriber counters use public API data, rounding rules, and refresh best practices for milestone streams.',
+    category: 'Channel Growth',
+    author: {
+      name: 'Shahid Developer',
+      role: 'YouTube SEO & Growth Specialist',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    },
+    publishedAt: '2026-09-26',
+    updatedAt: '2026-10-01',
+    readTime: '4 min read',
+    primaryKeyword: 'live youtube subscriber count',
+    secondaryKeywords: ['youtube sub counter', 'real time subscriber count', 'subscriber milestone tracker'],
+    metaTitle: 'Live YouTube Subscriber Count Tool — How It Works',
+    metaDescription:
+      'Learn how live YouTube subscriber counters fetch public stats, why numbers round, and how to track milestones ethically.',
+    toolCta: {
+      slug: 'live-subscriber-counter',
+      title: 'Track Public Subscriber Stats',
+      description: 'Load subscriber, view, and upload counts for any public channel.',
+      buttonText: 'Open Sub Counter',
+    },
+    tableOfContents: [
+      { id: 'data-source', title: '1. Where the Numbers Come From' },
+      { id: 'rounding', title: '2. Rounding & Delays' },
+      { id: 'milestones', title: '3. Milestone Streams' },
+    ],
+    content: `
+## 1. Where the Numbers Come From
+
+Our [Live Subscriber Counter](/tools/live-subscriber-counter) reads public channel statistics via the YouTube Data API.
+
+## 2. Rounding & Delays
+
+YouTube may round subscriber counts on very large channels. API cache windows can add short delays—refresh before celebrating milestones on stream.
+
+## 3. Milestone Streams
+
+Use fullscreen mode for OBS overlays, but always disclose that counts are based on public data, not private Studio dashboards.
+    `,
+    faqs: [
+      {
+        question: 'Is this the same number as YouTube Studio?',
+        answer: 'It should be close for public totals, but Studio may update slightly earlier. Treat API stats as display-grade, not accounting-grade.',
+      },
+    ],
+    relatedBlogSlugs: ['youtube-channel-id-vs-handle-guide'],
+  },
+  {
+    slug: 'youtube-title-length-best-practices',
+    title: 'YouTube Title Length & Mobile Truncation (2026 Checklist)',
+    excerpt:
+      'Keep primary keywords visible on mobile, avoid clickbait traps, and test titles before you publish.',
+    category: 'YouTube SEO',
+    author: {
+      name: 'Shahid Developer',
+      role: 'YouTube SEO & Growth Specialist',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    },
+    publishedAt: '2026-09-25',
+    updatedAt: '2026-10-01',
+    readTime: '5 min read',
+    primaryKeyword: 'youtube title checker',
+    secondaryKeywords: ['youtube title character limit', 'youtube title length', 'mobile title truncation'],
+    metaTitle: 'YouTube Title Length Guide + Free Title Checker',
+    metaDescription:
+      'Optimal YouTube title length for SEO and CTR, with a free character counter and mobile truncation preview.',
+    toolCta: {
+      slug: 'title-description-analyzer',
+      title: 'Analyze Title & Description',
+      description: 'Check character counts, truncation, and readability before upload.',
+      buttonText: 'Open Title Checker',
+    },
+    tableOfContents: [
+      { id: 'length', title: '1. Recommended Length' },
+      { id: 'mobile', title: '2. Mobile Truncation' },
+      { id: 'checker', title: '3. Use the Free Checker' },
+    ],
+    content: `
+## 1. Recommended Length
+
+Aim for **50–70 characters** with the primary keyword in the first 40 characters.
+
+## 2. Mobile Truncation
+
+Feeds cut long titles. Front-load the promise; move branding to the end.
+
+## 3. Use the Free Checker
+
+Paste drafts into the [Title & Description Analyzer](/tools/title-description-analyzer) before scheduling uploads.
+    `,
+    faqs: [
+      {
+        question: 'Do emojis hurt YouTube SEO?',
+        answer: 'They do not directly hurt rankings, but excessive emojis can reduce clarity and CTR. Use one purposeful emoji at most.',
+      },
+    ],
+    relatedBlogSlugs: ['youtube-seo-checklist-for-creators'],
+  },
+  {
+    slug: 'youtube-shorts-safe-zone-dimensions',
+    title: 'YouTube Shorts Safe Zone & 9:16 Dimensions Explained',
+    excerpt:
+      'Place text and faces inside Shorts safe areas so UI chrome does not cover your hook.',
+    category: 'Channel Growth',
+    author: {
+      name: 'Shahid Developer',
+      role: 'YouTube SEO & Growth Specialist',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    },
+    publishedAt: '2026-09-24',
+    updatedAt: '2026-10-01',
+    readTime: '4 min read',
+    primaryKeyword: 'youtube shorts dimensions',
+    secondaryKeywords: ['youtube shorts safe zone', '9:16 short video size', 'shorts overlay guide'],
+    metaTitle: 'YouTube Shorts Safe Zone & 9:16 Size Guide (2026)',
+    metaDescription:
+      'Official-friendly Shorts dimension tips, safe-zone overlays, and a free on-screen guide for creators.',
+    toolCta: {
+      slug: 'shorts-safe-zone',
+      title: 'Preview Shorts Safe Zones',
+      description: 'Overlay UI safe areas on your 9:16 canvas before export.',
+      buttonText: 'Open Safe Zone Tool',
+    },
+    tableOfContents: [
+      { id: 'dimensions', title: '1. Canvas Size' },
+      { id: 'safe-zone', title: '2. Safe Zones' },
+      { id: 'tool', title: '3. Free Overlay Tool' },
+    ],
+    content: `
+## 1. Canvas Size
+
+Export Shorts at **1080×1920 (9:16)** for crisp mobile playback.
+
+## 2. Safe Zones
+
+Keep headlines and faces away from bottom-right icons and bottom caption areas.
+
+## 3. Free Overlay Tool
+
+Upload a frame to the [Shorts Safe Zone Checker](/tools/shorts-safe-zone) to validate layout before posting.
+    `,
+    faqs: [
+      {
+        question: 'Do safe zones change when YouTube updates the app?',
+        answer: 'UI padding can shift slightly. Re-check important campaigns after major YouTube app redesigns.',
+      },
+    ],
+    relatedBlogSlugs: ['youtube-title-length-best-practices'],
+  },
+  {
+    slug: 'youtube-competitor-analysis-without-violating-tos',
+    title: 'YouTube Competitor Analysis Without Violating Terms of Service',
+    excerpt:
+      'Compare channels using public stats, tags, and metadata—without scrapers, downloaders, or private data.',
+    category: 'Channel Growth',
+    author: {
+      name: 'Shahid Developer',
+      role: 'YouTube SEO & Growth Specialist',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    },
+    publishedAt: '2026-09-23',
+    updatedAt: '2026-10-01',
+    readTime: '6 min read',
+    primaryKeyword: 'youtube competitor analysis',
+    secondaryKeywords: ['compare youtube channels', 'competitor channel research', 'youtube benchmarking'],
+    metaTitle: 'YouTube Competitor Analysis (Policy-Safe Methods)',
+    metaDescription:
+      'Compare two YouTube channels using public API data, tags, and SEO tools—no scraping or ToS violations.',
+    toolCta: {
+      slug: 'channel-compare',
+      title: 'Compare Two Channels Side by Side',
+      description: 'Benchmark subscribers, views, and upload volume.',
+      buttonText: 'Open Channel Compare',
+    },
+    tableOfContents: [
+      { id: 'allowed', title: '1. What Research Is Allowed' },
+      { id: 'workflow', title: '2. A Simple Competitor Workflow' },
+      { id: 'tools', title: '3. Free Tools to Use' },
+    ],
+    content: `
+## 1. What Research Is Allowed
+
+Stick to **public** videos/channels, official APIs, and your own analytics. Avoid downloaders, comment spam, or impersonation.
+
+## 2. A Simple Competitor Workflow
+
+1. Pick 3 peer channels.
+2. Compare stats in [Channel Compare](/tools/channel-compare).
+3. Extract tags from top performers with [Tag Extractor](/tools/tag-extractor).
+4. Audit your metadata with [SEO Score Checker](/tools/seo-score-checker).
+
+## 3. Free Tools to Use
+
+Combine research tools with our [Upload Checklist](/tools/upload-checklist) before you publish responses to trending topics.
+    `,
+    faqs: [
+      {
+        question: 'Can I automate competitor scraping?',
+        answer:
+          'Bulk scraping that violates YouTube Terms or API quotas is risky. Use rate-limited API access and store only what policies allow.',
+      },
+    ],
+    relatedBlogSlugs: ['how-to-extract-youtube-video-tags', 'youtube-seo-checklist-for-creators'],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {

@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Smartphone, Heart, MessageCircle, Share2, Music, Upload, Eye } from 'lucide-react';
+import { Smartphone, Heart, MessageCircle, Share2, Music, Upload } from 'lucide-react';
 
 export function ShortsSafeZone() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [showGrid, setShowGrid] = useState(true);
+  const showGrid = true;
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

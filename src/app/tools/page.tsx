@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Metadata } from 'next';
 import { TOOLS_REGISTRY, CATEGORIES, SITE_CONFIG } from '@/lib/tools-registry';
 import { ToolsExplorerClient } from './ToolsExplorerClient';
 import { Sparkles, ShieldCheck, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Free YouTube Creator Tools Directory — 12+ Optimization Utilities',
+  title: {
+    absolute: 'Free YouTube Creator Tools Directory (14 Tools) | YouTubeFreeToolkit',
+  },
   description:
-    'Explore our complete suite of 100% free YouTube tools. Check monetization, extract tags, find channel IDs, analyze video SEO, and calculate revenue.',
+    'Explore 14 free YouTube tools: monetization checker, tag extractor, channel ID finder, SEO audit, RPM calculator, and more. No signup.',
   alternates: {
     canonical: `${SITE_CONFIG.url}/tools`,
   },
@@ -64,7 +66,9 @@ export default function ToolsIndexPage() {
 
       {/* Main Interactive Directory Client */}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10">
-        <ToolsExplorerClient initialTools={TOOLS_REGISTRY} categories={CATEGORIES} />
+        <Suspense fallback={<p className="text-sm text-slate-400">Loading tools directory...</p>}>
+          <ToolsExplorerClient initialTools={TOOLS_REGISTRY} categories={CATEGORIES} />
+        </Suspense>
       </main>
     </div>
   );

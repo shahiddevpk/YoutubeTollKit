@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   url: 'https://youtubefreetoolkit.com',
   description:
     '100% Free, policy-compliant YouTube creator suite. Check monetization status, extract tags, find channel IDs, audit SEO, and calculate revenue with zero limits.',
-  ogImage: 'https://youtubefreetoolkit.com/og-default.png',
+  ogImage: 'https://youtubefreetoolkit.com/api/og?title=YouTubeFreeToolkit&desc=Free+YouTube+Creator+Tools',
   creator: '@shahiddevpk',
   author: 'YouTubeFreeToolkit Creator Team',
   twitterHandle: '@ytfreetoolkit',
@@ -71,9 +71,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'is channel monetized',
       'youtube partner program checker',
     ],
-    metaTitle: 'YouTube Monetization Checker (100% Free & Instant) | 2026',
+    metaTitle: 'YouTube Monetization Checker — Free YPP Eligibility Tool',
     metaDescription:
-      'Check if any YouTube channel or video is monetized in seconds. Free, accurate YouTube Partner Program (YPP) verification tool with zero login required.',
+      'Free YouTube monetization checker using public Data API stats. See 1K subscriber YPP threshold status, channel metrics, and honest monetization disclaimers.',
     howItWorks: [
       {
         step: 1,
@@ -82,32 +82,32 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
       {
         step: 2,
-        title: 'Analyze Public Metadata & Ad Signatures',
-        description: 'Our engine safely verifies public monetization markers, ad tags, and YouTube Partner Program indicators.',
+        title: 'Load Public Channel Statistics',
+        description: 'We fetch subscriber, view, and video counts from the official YouTube Data API.',
       },
       {
         step: 3,
-        title: 'View Monetization Status & Insights',
-        description: 'Get an instant breakdown of monetization eligibility, ad presence, and estimated channel RPM brackets.',
+        title: 'Review YPP Threshold Signals & Disclaimers',
+        description: 'See whether the 1,000-subscriber YPP threshold is met, plus clear notes on what YouTube does not publish via API.',
       },
     ],
     features: [
-      'Checks both Channel-level and Video-level monetization signals',
-      'Detects YouTube Partner Program (YPP) membership tags',
-      'Identifies Super Thanks, Channel Memberships, and AdSense readiness',
-      '100% Google and YouTube ToS compliant — no unauthorized scraping',
-      'Calculates estimated revenue tier based on niche and views',
+      'Public channel stats via YouTube Data API v3',
+      '1,000-subscriber YPP threshold indicator (one of several YPP requirements)',
+      'Works with channel URLs, @handles, UC IDs, or video links',
+      'No login, no OAuth, no credential storage',
+      'Typical RPM range estimates for planning (not income guarantees)',
     ],
     limitations: [
-      'Only analyzes publicly available metadata and public ad tags.',
-      'Channels undergoing recent demonetization appeals may show brief propagation delays.',
-      'Demonetized individual videos on otherwise monetized channels are flagged per-video.',
+      'YouTube does not expose active YPP or AdSense enrollment through the Data API.',
+      'Subscriber count alone does not prove monetization; confirm in YouTube Studio.',
+      'Watch hours, Shorts views, and policy strikes are not available in this tool.',
     ],
     faqs: [
       {
         question: 'How do you check if a YouTube channel is monetized?',
         answer:
-          'YouTube embeds specific public code markers (such as monetization_status and yt_ad flags) within public video and channel headers when a channel is accepted into the YouTube Partner Program. Our tool parses these public indicators in real-time.',
+          'The official YouTube Data API provides public statistics (subscribers, views, uploads) but not YPP enrollment. Our tool shows those stats plus whether the channel meets the well-known 1,000-subscriber application threshold. For definitive status, open YouTube Studio → Earn → Monetization or review ads on recent public videos.',
       },
       {
         question: 'What are the 2026 YouTube monetization requirements?',
@@ -282,7 +282,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'Estimate your potential YouTube revenue based on daily video views, CPM/RPM brackets, creator niche, and geographic audience tier.',
     category: 'monetization',
     badge: 'Popular',
-    priority: 'P1',
+    priority: 'P0',
     featured: true,
     iconName: 'Calculator',
     primaryKeyword: 'youtube earnings calculator',
@@ -346,7 +346,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'Comprehensive YouTube SEO audit tool. Score your video optimization across title character counts, description keyword density, tag relevance, and metadata checklist.',
     category: 'seo',
     badge: 'Creator Pick',
-    priority: 'P1',
+    priority: 'P0',
     featured: true,
     iconName: 'Gauge',
     primaryKeyword: 'youtube channel seo checker',
@@ -410,7 +410,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'Track live YouTube subscriber milestones, total video view counts, and channel growth rates with clean, distraction-free live counter.',
     category: 'analytics',
     badge: 'Popular',
-    priority: 'P2',
+    priority: 'P0',
     featured: true,
     iconName: 'Users',
     primaryKeyword: 'live youtube subscriber count',
@@ -768,7 +768,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'Calculate your exact RPM (Revenue Per 1,000 views) from total earnings and views, and benchmark against 2026 creator industry standards.',
     category: 'monetization',
     badge: 'New',
-    priority: 'P1',
+    priority: 'P0',
     featured: false,
     iconName: 'Percent',
     primaryKeyword: 'youtube rpm calculator',
@@ -939,6 +939,14 @@ export function getToolBySlug(slug: string): ToolDefinition | undefined {
 
 export function getToolsByCategory(category: ToolCategory): ToolDefinition[] {
   return TOOLS_REGISTRY.filter((tool) => tool.category === category);
+}
+
+export function getCategoryById(id: ToolCategory): CategoryDefinition | undefined {
+  return CATEGORIES.find((category) => category.id === id);
+}
+
+export function getAllCategoryIds(): ToolCategory[] {
+  return CATEGORIES.map((category) => category.id);
 }
 
 export function getFeaturedTools(): ToolDefinition[] {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { CATEGORIES, TOOLS_REGISTRY, SITE_CONFIG } from '@/lib/tools-registry';
-import { ShieldCheck, Heart, Sparkles } from 'lucide-react';
+import { TOOLS_REGISTRY, SITE_CONFIG } from '@/lib/tools-registry';
+import { ShieldCheck, Sparkles } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();

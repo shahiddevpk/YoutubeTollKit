@@ -6,7 +6,9 @@ export function constructToolMetadata(tool: ToolDefinition): Metadata {
   const canonicalUrl = `${SITE_CONFIG.url}/tools/${tool.slug}`;
 
   return {
-    title: tool.metaTitle,
+    title: {
+      absolute: tool.metaTitle,
+    },
     description: tool.metaDescription,
     keywords: [tool.primaryKeyword, ...tool.secondaryKeywords, 'youtube creator tools', 'free youtube toolkit'],
     alternates: {
@@ -99,7 +101,7 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
-    logo: `${SITE_CONFIG.url}/icon.svg`,
+    logo: `${SITE_CONFIG.url}/brand-icon.svg`,
     sameAs: ['https://twitter.com/ytfreetoolkit', 'https://github.com/shahiddevpk'],
   };
 }

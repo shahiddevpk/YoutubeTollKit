@@ -1,20 +1,36 @@
-import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { TOOLS_REGISTRY, CATEGORIES, getFeaturedTools, SITE_CONFIG } from '@/lib/tools-registry';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Free YouTube Monetization Checker & Creator Tools | YouTubeFreeToolkit',
+  },
+  description:
+    'Free YouTube tools: monetization & YPP eligibility checker, channel ID finder, tag extractor, SEO audit, earnings & RPM calculators. No signup required.',
+  alternates: {
+    canonical: SITE_CONFIG.url,
+  },
+  openGraph: {
+    title: 'Free YouTube Monetization Checker & Creator Tools',
+    description:
+      '14+ free YouTube creator tools powered by public Data API stats. Policy-compliant, no login required.',
+    url: SITE_CONFIG.url,
+    images: [
+      {
+        url: `${SITE_CONFIG.url}/api/og?title=Free+YouTube+Tools&desc=Monetization+Checker+%7C+SEO+%7C+Tags`,
+        width: 1200,
+        height: 630,
+        alt: 'YouTubeFreeToolkit',
+      },
+    ],
+  },
+};
 import { ToolCard } from '@/components/tools/ToolCard';
 import { MonetizationChecker } from '@/components/tools/impl/MonetizationChecker';
 import {
   Sparkles,
-  ShieldCheck,
-  Zap,
-  CheckCircle2,
-  Lock,
   ArrowRight,
-  TrendingUp,
-  DollarSign,
-  Tag,
-  Fingerprint,
-  Gauge,
   HelpCircle,
 } from 'lucide-react';
 
@@ -34,14 +50,14 @@ export default function HomePage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight">
-            Supercharge Your YouTube Channel <br className="hidden sm:inline" />
+            Free YouTube Monetization Checker <br className="hidden sm:inline" />
             <span className="bg-gradient-to-r from-red-500 via-rose-500 to-amber-400 bg-clip-text text-transparent">
-              With Free Creator Tools
+              &amp; Creator Toolkit
             </span>
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Check monetization eligibility in seconds, extract competitor tags, find channel IDs, audit SEO scores, and estimate revenue — without sign-ups or subscription paywalls.
+            Run a YouTube monetization check, extract video tags, find channel IDs, audit SEO, and estimate RPM — 14+ free tools with honest public-data disclaimers and zero sign-up.
           </p>
 
           {/* Embedded Flagship Tool Card on Hero */}
@@ -244,7 +260,7 @@ export default function HomePage() {
               <span className="ml-4 text-slate-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
-              Our checker inspects official YouTube Partner Program (YPP) code signatures, Google AdSense verification flags, and channel-level monetized ad playback markers, achieving 98%+ verification accuracy.
+              Subscriber, view, and upload counts come from the official YouTube Data API. YouTube does not publish active YPP enrollment via API, so we show threshold signals and clear disclaimers instead of guessing monetization status.
             </p>
           </details>
         </div>

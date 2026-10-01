@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { SITE_CONFIG, TOOLS_REGISTRY } from '@/lib/tools-registry';
 import Link from 'next/link';
-import { Sparkles, ShieldCheck, Heart, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us | YouTubeFreeToolkit',

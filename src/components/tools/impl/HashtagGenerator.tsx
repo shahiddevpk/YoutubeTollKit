@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Hash, Sparkles, Copy, Check } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 
 const HASHTAG_POOLS: Record<string, string[]> = {
   general: ['#youtube', '#youtubeshorts', '#viral', '#creator', '#trending', '#video', '#explore'],

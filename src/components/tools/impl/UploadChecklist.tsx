@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { CheckSquare, Square, Copy, Check, Sparkles, RefreshCw } from 'lucide-react';
+import { CheckSquare, Square, Copy, Check } from 'lucide-react';
 
 interface ChecklistItem {
   id: string;

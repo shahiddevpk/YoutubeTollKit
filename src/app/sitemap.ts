@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { TOOLS_REGISTRY, SITE_CONFIG } from '@/lib/tools-registry';
+import { TOOLS_REGISTRY, SITE_CONFIG, getAllCategoryIds } from '@/lib/tools-registry';
 import { BLOG_POSTS } from '@/lib/blog-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -58,6 +58,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const categoryRoutes: MetadataRoute.Sitemap = getAllCategoryIds().map((id) => ({
+    url: `${baseUrl}/tools/category/${id}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  }));
+
   // Dynamic tool routes from tools registry
   const toolRoutes: MetadataRoute.Sitemap = TOOLS_REGISTRY.map((tool) => ({
     url: `${baseUrl}/tools/${tool.slug}`,
@@ -74,5 +81,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...toolRoutes, ...blogRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...toolRoutes, ...blogRoutes];
 }

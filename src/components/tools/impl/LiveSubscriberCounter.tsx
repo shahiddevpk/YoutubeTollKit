@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Users, Search, Play, Eye, Video, RefreshCw, Maximize2, Loader2, AlertCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Users, Search, Eye, Video, Maximize2, Loader2, AlertCircle } from 'lucide-react';
 import { formatNumber } from '@/lib/utils';
+import { parseApiJson } from '@/lib/api-client';
 
 const PRESET_CHANNELS = [
   { label: '@MrBeast', handle: '@MrBeast' },
@@ -11,12 +12,12 @@ const PRESET_CHANNELS = [
 ];
 
 export function LiveSubscriberCounter() {
-  const [handle, setHandle] = useState('@MrBeast');
-  const [channelTitle, setChannelTitle] = useState('MrBeast');
+  const [handle, setHandle] = useState('');
+  const [channelTitle, setChannelTitle] = useState<string | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
-  const [subscribers, setSubscribers] = useState<number>(318000000);
-  const [totalViews, setTotalViews] = useState<number>(61500000000);
-  const [videoCount, setVideoCount] = useState<number>(820);
+  const [subscribers, setSubscribers] = useState<number | null>(null);
+  const [totalViews, setTotalViews] = useState<number | null>(null);
+  const [videoCount, setVideoCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -29,17 +30,24 @@ export function LiveSubscriberCounter() {
 
     try {
       const res = await fetch(`/api/youtube/channel?q=${encodeURIComponent(query.trim())}`);
-      const json = await res.json();
+      const parsed = await parseApiJson<{
+        title: string;
+        avatarUrl?: string;
+        subscriberCount: number;
+        viewCount: number;
+        videoCount: number;
+      }>(res);
 
-      if (json.success && json.data) {
-        const d = json.data;
+      if (parsed.ok) {
+        const d = parsed.data;
         setChannelTitle(d.title);
-        setAvatarUrl(d.avatarUrl);
+        setAvatarUrl(d.avatarUrl ?? null);
         setSubscribers(d.subscriberCount);
         setTotalViews(d.viewCount);
         setVideoCount(d.videoCount);
       } else {
-        throw new Error(json.error || 'Failed to fetch live stats');
+        setError(parsed.error);
+        return;
       }
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Error fetching channel statistics';
@@ -129,21 +137,22 @@ export function LiveSubscriberCounter() {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={avatarUrl}
-            alt={channelTitle}
+            alt={channelTitle ?? 'Channel avatar'}
             className="h-16 w-16 rounded-full mx-auto mb-3 border-2 border-slate-700 object-cover shadow-lg"
           />
         )}
 
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-white">{channelTitle}</h3>
-        <p className="text-xs sm:text-sm text-slate-400 font-mono mt-0.5">{handle}</p>
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+          {channelTitle ?? 'Enter a channel to load stats'}
+        </h3>
+        {handle && <p className="text-xs sm:text-sm text-slate-400 font-mono mt-0.5">{handle}</p>}
 
-        {/* Large Counter Numbers */}
         <div className="my-8">
           <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
             Subscribers
           </span>
           <div className="text-5xl sm:text-7xl font-black text-white font-mono tracking-tight my-2">
-            {subscribers.toLocaleString()}
+            {subscribers !== null ? subscribers.toLocaleString() : '—'}
           </div>
         </div>
 
@@ -154,7 +163,7 @@ export function LiveSubscriberCounter() {
               <Eye className="h-3.5 w-3.5 text-blue-400" /> Total Views
             </span>
             <p className="text-base sm:text-lg font-bold text-white font-mono mt-1">
-              {formatNumber(totalViews)}
+              {totalViews !== null ? formatNumber(totalViews) : '—'}
             </p>
           </div>
           <div className="rounded-xl bg-slate-900/60 p-3 border border-slate-800/80">
@@ -162,7 +171,7 @@ export function LiveSubscriberCounter() {
               <Video className="h-3.5 w-3.5 text-emerald-400" /> Total Uploads
             </span>
             <p className="text-base sm:text-lg font-bold text-white font-mono mt-1">
-              {videoCount.toLocaleString()}
+              {videoCount !== null ? videoCount.toLocaleString() : '—'}
             </p>
           </div>
         </div>

@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Percent, DollarSign, ArrowRight, BarChart3 } from 'lucide-react';
-import { formatCurrency, formatNumber } from '@/lib/utils';
+import { DollarSign } from 'lucide-react';
+import { formatCurrency } from '@/lib/utils';
 
 export function RpmCalculator() {
   const [earnings, setEarnings] = useState<number>(450);

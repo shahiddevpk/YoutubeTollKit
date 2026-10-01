@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { BLOG_POSTS, getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog-registry';
+import { getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { generateFAQSchema, generateBreadcrumbSchema } from '@/lib/seo';
 import {
@@ -13,7 +13,6 @@ import {
   ArrowRight,
   HelpCircle,
   BookOpen,
-  Share2,
 } from 'lucide-react';
 
 interface PageProps {
@@ -39,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = `${SITE_CONFIG.url}/blog/${post.slug}`;
 
   return {
-    title: post.metaTitle,
+    title: { absolute: post.metaTitle },
     description: post.metaDescription,
     keywords: [post.primaryKeyword, ...post.secondaryKeywords],
     alternates: {

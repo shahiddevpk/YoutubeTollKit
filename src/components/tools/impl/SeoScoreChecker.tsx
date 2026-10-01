@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Gauge, CheckCircle, AlertTriangle, XCircle, Sparkles, Search, Loader2 } from 'lucide-react';
+import { Gauge, Sparkles, Loader2 } from 'lucide-react';
 
 interface SeoAuditResult {
   score: number;

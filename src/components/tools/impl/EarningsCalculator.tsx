@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { formatCurrency, formatNumber } from '@/lib/utils';
-import { Calculator, DollarSign, TrendingUp, Sparkles } from 'lucide-react';
+import { DollarSign } from 'lucide-react';
 
 const NICHES = [
   { name: 'Finance, Investing & Crypto', rpm: 14.5 },

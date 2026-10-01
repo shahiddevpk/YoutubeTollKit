@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import { parseYouTubeUrl, getThumbnailUrls } from '@/lib/youtube';
-import { Image as ImageIcon, Search, Download, Smartphone, Monitor, Clock } from 'lucide-react';
+import { Image as ImageIcon, Smartphone, Monitor, Clock } from 'lucide-react';
 
 export function ThumbnailPreview() {
   const [videoUrl, setVideoUrl] = useState('');
   const [previewUrl, setPreviewUrl] = useState<string | null>('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1280&q=80');
   const [videoTitle, setVideoTitle] = useState('How To Build High-Income YouTube Channels in 2026');
-  const [channelName, setChannelName] = useState('Creator Pro Academy');
+  const channelName = 'Creator Pro Academy';
   const [deviceMode, setDeviceMode] = useState<'desktop' | 'mobile'>('desktop');
 
   const handleFetch = (e: React.FormEvent) => {

@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { CATEGORIES, TOOLS_REGISTRY } from '@/lib/tools-registry';
-import { Search, Sparkles, Menu, X, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { TOOLS_REGISTRY } from '@/lib/tools-registry';
+import { Search, Sparkles, Menu, X } from 'lucide-react';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

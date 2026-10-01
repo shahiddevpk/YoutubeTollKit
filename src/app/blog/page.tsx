@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { BLOG_POSTS } from '@/lib/blog-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';
-import { BookOpen, Clock, ArrowRight, Sparkles, User, Calendar } from 'lucide-react';
+import { BookOpen, Clock, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'YouTube Creator Guides & SEO Blog | YouTubeFreeToolkit',

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ListOrdered, CheckCircle2, AlertCircle, Copy, Check, Sparkles } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Copy, Check } from 'lucide-react';
 
 export function TimestampValidator() {
   const [text, setText] = useState(

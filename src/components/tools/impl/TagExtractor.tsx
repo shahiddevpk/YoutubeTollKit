@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { parseYouTubeUrl } from '@/lib/youtube';
-import { Tag, Search, Copy, Check, Hash, Sparkles, Loader2, AlertCircle } from 'lucide-react';
+import { Tag, Search, Copy, Check, Hash, Loader2, AlertCircle } from 'lucide-react';
+import { parseApiJson } from '@/lib/api-client';
 
 const PRESET_VIDEOS = [
   { label: 'YouTube Monetization Blueprint', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
@@ -29,15 +29,20 @@ export function TagExtractor() {
 
     try {
       const res = await fetch(`/api/youtube/video?q=${encodeURIComponent(query.trim())}`);
-      const json = await res.json();
+      const parsed = await parseApiJson<{
+        title: string;
+        tags: string[];
+        thumbnails?: { high?: { url: string }; default?: { url: string } };
+      }>(res);
 
-      if (json.success && json.data) {
-        const d = json.data;
+      if (parsed.ok) {
+        const d = parsed.data;
         setTags(d.tags || []);
         setVideoTitle(d.title);
-        setThumbnailUrl(d.thumbnails?.high?.url || d.thumbnails?.default?.url);
+        setThumbnailUrl(d.thumbnails?.high?.url || d.thumbnails?.default?.url || null);
       } else {
-        throw new Error(json.error || 'Failed to extract tags');
+        setError(parsed.error);
+        return;
       }
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Error extracting tags';

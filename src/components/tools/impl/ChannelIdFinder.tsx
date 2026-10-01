@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { parseYouTubeUrl } from '@/lib/youtube';
-import { Search, Fingerprint, Copy, Check, ExternalLink, Rss, Loader2, AlertCircle } from 'lucide-react';
+import { Search, Fingerprint, Copy, Check, Rss, Loader2, AlertCircle } from 'lucide-react';
+import { parseApiJson } from '@/lib/api-client';
 
 const PRESET_CHANNELS = [
   { label: '@MrBeast', handle: '@MrBeast' },
@@ -33,10 +33,15 @@ export function ChannelIdFinder() {
 
     try {
       const res = await fetch(`/api/youtube/channel?q=${encodeURIComponent(query.trim())}`);
-      const json = await res.json();
+      const parsed = await parseApiJson<{
+        channelId: string;
+        handle: string;
+        title: string;
+        avatarUrl?: string;
+      }>(res);
 
-      if (json.success && json.data) {
-        const d = json.data;
+      if (parsed.ok) {
+        const d = parsed.data;
         setData({
           channelId: d.channelId,
           handle: d.handle,
@@ -46,7 +51,8 @@ export function ChannelIdFinder() {
           canonicalUrl: `https://www.youtube.com/channel/${d.channelId}`,
         });
       } else {
-        throw new Error(json.error || 'Failed to resolve channel');
+        setError(parsed.error);
+        return;
       }
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Error finding channel ID';

@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Users, Search, ArrowRight, TrendingUp, DollarSign, Video, Eye, Sparkles, Loader2, AlertCircle } from 'lucide-react';
+import { Sparkles, Loader2, AlertCircle } from 'lucide-react';
 import { formatNumber, formatCurrency } from '@/lib/utils';
+import { parseApiJson } from '@/lib/api-client';
 
 interface ChannelStats {
   handle: string;
@@ -35,11 +36,28 @@ export function ChannelCompare() {
         fetch(`/api/youtube/channel?q=${encodeURIComponent(q2.trim())}`),
       ]);
 
-      const [json1, json2] = await Promise.all([res1.json(), res2.json()]);
+      const [parsed1, parsed2] = await Promise.all([
+        parseApiJson<{
+          handle: string;
+          title: string;
+          avatarUrl?: string;
+          subscriberCount: number;
+          viewCount: number;
+          videoCount: number;
+        }>(res1),
+        parseApiJson<{
+          handle: string;
+          title: string;
+          avatarUrl?: string;
+          subscriberCount: number;
+          viewCount: number;
+          videoCount: number;
+        }>(res2),
+      ]);
 
-      if (json1.success && json2.success && json1.data && json2.data) {
-        const d1 = json1.data;
-        const d2 = json2.data;
+      if (parsed1.ok && parsed2.ok) {
+        const d1 = parsed1.data;
+        const d2 = parsed2.data;
 
         const vids1 = Math.max(1, d1.videoCount);
         const vids2 = Math.max(1, d2.videoCount);
@@ -66,7 +84,13 @@ export function ChannelCompare() {
           estMonthlyRevenue: (d2.viewCount / 1000 / 36) * 5.2,
         });
       } else {
-        throw new Error('Failed to fetch one or both channels for comparison');
+        const errMsg = !parsed1.ok
+          ? parsed1.error
+          : !parsed2.ok
+            ? parsed2.error
+            : 'Failed to fetch one or both channels for comparison';
+        setError(errMsg);
+        return;
       }
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Error comparing channels';

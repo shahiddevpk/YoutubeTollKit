@@ -2,7 +2,6 @@ import React from 'react';
 import { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { ShieldCheck, CheckCircle2, Lock, FileCheck, ExternalLink } from 'lucide-react';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Google AdSense & YouTube API Policy Compliance | YouTubeFreeToolkit',

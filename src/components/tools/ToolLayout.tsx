@@ -8,7 +8,6 @@ import {
   generateBreadcrumbSchema,
 } from '@/lib/seo';
 import { ToolCard } from '@/components/tools/ToolCard';
-import { DynamicIcon } from '@/components/tools/DynamicIcon';
 import {
   ChevronRight,
   ShieldCheck,
@@ -17,7 +16,6 @@ import {
   HelpCircle,
   Sparkles,
   ArrowRight,
-  BookOpen,
 } from 'lucide-react';
 
 interface ToolLayoutProps {

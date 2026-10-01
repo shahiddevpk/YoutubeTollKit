@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { TOOLS_REGISTRY, getToolBySlug, getAllToolSlugs } from '@/lib/tools-registry';
+import { getToolBySlug, getAllToolSlugs } from '@/lib/tools-registry';
 import { constructToolMetadata } from '@/lib/seo';
 import { ToolLayout } from '@/components/tools/ToolLayout';
 import { ToolRenderer } from '@/components/tools/ToolRenderer';

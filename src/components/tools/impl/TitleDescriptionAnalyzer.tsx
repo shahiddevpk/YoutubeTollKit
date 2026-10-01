@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FileText, Eye, AlertCircle, CheckCircle2, Sparkles } from 'lucide-react';
+import { Eye, AlertCircle, CheckCircle2 } from 'lucide-react';
 
 export function TitleDescriptionAnalyzer() {
   const [title, setTitle] = useState('How I Built a $10,000/Month YouTube Channel from Scratch 🚀');
