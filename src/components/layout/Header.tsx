@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { TOOLS_REGISTRY } from '@/lib/tools-registry';
+import { NAV_TOOLS, TOTAL_TOOLS_COUNT } from '@/lib/nav-tools';
 import { Search, Sparkles, Menu, X } from 'lucide-react';
 
 export function Header() {
@@ -11,7 +11,7 @@ export function Header() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredTools = searchQuery.trim()
-    ? TOOLS_REGISTRY.filter(
+    ? NAV_TOOLS.filter(
         (t) =>
           t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           t.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -21,11 +21,11 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/85 backdrop-blur-md">
+      <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/95">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-red-600 to-rose-500 text-white shadow-lg shadow-red-500/20 group-hover:scale-105 transition-transform">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-600 text-white shadow-md shadow-red-500/20 group-hover:scale-105 transition-transform">
               <span className="font-black text-lg">▶</span>
             </div>
             <div className="flex flex-col">
@@ -46,7 +46,7 @@ export function Header() {
             >
               All Tools
               <span className="rounded-full bg-red-500/10 px-2 py-0.5 text-xs font-semibold text-red-400 border border-red-500/20">
-                {TOOLS_REGISTRY.length}
+                {TOTAL_TOOLS_COUNT}
               </span>
             </Link>
 
@@ -123,7 +123,7 @@ export function Header() {
               >
                 <span>All Tools Directory</span>
                 <span className="rounded bg-red-500/20 px-2 py-0.5 text-xs text-red-400 font-bold">
-                  {TOOLS_REGISTRY.length}
+                  {TOTAL_TOOLS_COUNT}
                 </span>
               </Link>
               <Link
@@ -169,7 +169,7 @@ export function Header() {
 
       {/* Global Quick Search Modal */}
       {searchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 p-4 pt-20 backdrop-blur-sm animate-in fade-in duration-150">
+        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 p-4 pt-20">
           <div className="w-full max-w-2xl rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl overflow-hidden">
             <div className="flex items-center border-b border-slate-800 px-4 py-3">
               <Search className="h-5 w-5 text-red-500 mr-3 shrink-0" />
@@ -201,7 +201,7 @@ export function Header() {
                     Popular Free Tools
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {TOOLS_REGISTRY.slice(0, 6).map((tool) => (
+                    {NAV_TOOLS.slice(0, 6).map((tool) => (
                       <Link
                         key={tool.slug}
                         href={`/tools/${tool.slug}`}
@@ -247,7 +247,7 @@ export function Header() {
                     onClick={() => setSearchOpen(false)}
                     className="mt-2 inline-block text-xs text-red-400 underline"
                   >
-                    View all {TOOLS_REGISTRY.length} tools in index
+                    View all {TOTAL_TOOLS_COUNT} tools in index
                   </Link>
                 </div>
               )}

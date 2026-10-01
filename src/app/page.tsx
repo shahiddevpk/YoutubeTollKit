@@ -42,9 +42,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 pb-20">
       {/* Hero Section with Embedded Flagship Monetization Checker */}
-      <section className="relative overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-slate-900/90 via-slate-950 to-slate-950 pt-12 sm:pt-16 pb-16">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-96 w-full max-w-5xl bg-red-600/15 blur-[140px] pointer-events-none rounded-full" />
-
+      <section className="relative border-b border-slate-800/80 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 pt-12 sm:pt-16 pb-16">
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-red-500/10 px-4 py-1.5 text-xs font-bold text-red-400 border border-red-500/20 mb-6">
             <Sparkles className="h-4 w-4" />
@@ -63,7 +61,7 @@ export default function HomePage() {
           </p>
 
           {/* Embedded Flagship Tool Card on Hero */}
-          <div className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/90 p-6 sm:p-8 text-left shadow-2xl backdrop-blur-xl">
+          <div className="mt-10 rounded-3xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-left shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
               <div className="flex items-center gap-2.5">
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-600 text-white font-bold text-xs">
@@ -81,7 +79,7 @@ export default function HomePage() {
 
             <Suspense
               fallback={
-                <div className="min-h-40 rounded-2xl border border-slate-800 bg-slate-950/60 p-8 text-center text-sm text-slate-400">
+                <div className="min-h-40 rounded-2xl border border-slate-800 bg-slate-950 p-8 text-center text-sm text-slate-400">
                   Loading monetization checker…
                 </div>
               }
@@ -92,19 +90,19 @@ export default function HomePage() {
 
           {/* Quick Stats Highlights */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
-            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/40 p-4">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4">
               <span className="text-2xl font-black text-white font-mono">{TOOLS_REGISTRY.length}+</span>
               <p className="text-xs text-slate-400 mt-0.5">Free Creator Tools</p>
             </div>
-            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/40 p-4">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4">
               <span className="text-2xl font-black text-emerald-400 font-mono">100%</span>
               <p className="text-xs text-slate-400 mt-0.5">Policy & ToS Safe</p>
             </div>
-            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/40 p-4">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4">
               <span className="text-2xl font-black text-blue-400 font-mono">0 sec</span>
               <p className="text-xs text-slate-400 mt-0.5">Zero Registration</p>
             </div>
-            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/40 p-4">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4">
               <span className="text-2xl font-black text-amber-400 font-mono">Free</span>
               <p className="text-xs text-slate-400 mt-0.5">Forever Free Tier</p>
             </div>
@@ -140,7 +138,7 @@ export default function HomePage() {
       </section>
 
       {/* Categorized Tools Hub */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24 content-auto">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Explore by Category
@@ -184,7 +182,7 @@ export default function HomePage() {
       </section>
 
       {/* Competitor Comparison / Why YouTubeFreeToolkit */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-24 content-auto">
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-24">
         <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 sm:p-10 shadow-2xl">
           <div className="text-center max-w-2xl mx-auto mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
@@ -232,7 +230,7 @@ export default function HomePage() {
       </section>
 
       {/* Global FAQs */}
-      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-24 content-auto">
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-24">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-300 mb-3">
             <HelpCircle className="h-3.5 w-3.5 text-red-400" />
@@ -277,9 +275,8 @@ export default function HomePage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-24 content-auto">
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-24">
         <div className="rounded-3xl border border-red-500/30 bg-gradient-to-tr from-red-950/40 via-slate-900 to-slate-950 p-8 sm:p-12 text-center relative overflow-hidden">
-          <div className="absolute top-0 right-0 h-48 w-48 bg-red-600/10 blur-[80px] pointer-events-none rounded-full" />
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
             Ready to Optimize Your YouTube Presence?
           </h2>

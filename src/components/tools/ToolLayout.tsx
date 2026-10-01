@@ -55,10 +55,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
       />
 
       {/* Top Header / Hero Section */}
-      <section className="relative overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-slate-900/80 via-slate-950 to-slate-950 pt-8 pb-12">
-        {/* Glow backdrop */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-64 w-full max-w-4xl bg-red-600/10 blur-[100px] pointer-events-none rounded-full" />
-
+      <section className="relative border-b border-slate-800/80 bg-gradient-to-b from-slate-900/80 via-slate-950 to-slate-950 pt-8 pb-12">
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6" aria-label="Breadcrumb">
@@ -101,7 +98,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
 
       {/* Main Interactive Tool Container */}
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 -mt-4">
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/90 p-5 sm:p-8 shadow-2xl backdrop-blur-xl">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900 p-5 sm:p-8 shadow-2xl">
           {children}
         </div>
       </section>
