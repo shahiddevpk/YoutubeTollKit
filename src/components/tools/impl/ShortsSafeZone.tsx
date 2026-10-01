@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Smartphone, Heart, MessageCircle, Share2, Music, Upload } from 'lucide-react';
+import { Smartphone, Heart, MessageCircle, Share2, Music, Upload, Download } from 'lucide-react';
 
 export function ShortsSafeZone() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -14,6 +14,54 @@ export function ShortsSafeZone() {
     }
   };
 
+  const downloadPngOverlay = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1080;
+    canvas.height = 1920;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Background transparent
+    ctx.clearRect(0, 0, 1080, 1920);
+
+    // Draw safe zone box
+    ctx.strokeStyle = '#10b981';
+    ctx.lineWidth = 6;
+    ctx.setLineDash([20, 15]);
+    ctx.strokeRect(80, 240, 920, 1380);
+
+    // Draw text banner
+    ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+    ctx.fillRect(80, 240, 920, 1380);
+
+    // Red Danger / Button Overlay Zones
+    // Right sidebar actions danger zone
+    ctx.fillStyle = 'rgba(239, 68, 68, 0.3)';
+    ctx.fillRect(880, 900, 180, 950);
+
+    // Bottom info area danger zone
+    ctx.fillStyle = 'rgba(239, 68, 68, 0.3)';
+    ctx.fillRect(40, 1550, 840, 320);
+
+    // Text labels
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 36px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('100% SAFE TEXT ZONE (1080x1920)', 540, 960);
+    ctx.font = '24px sans-serif';
+    ctx.fillText('youtubefreetoolkit.com', 540, 1010);
+
+    ctx.font = 'bold 24px sans-serif';
+    ctx.fillText('Action Buttons Zone', 970, 1400);
+    ctx.fillText('Title & Sound Zone', 460, 1720);
+
+    const link = document.createElement('a');
+    link.download = 'youtube-shorts-safe-zone-1080x1920.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -24,11 +72,22 @@ export function ShortsSafeZone() {
           </p>
         </div>
 
-        <label className="inline-flex items-center gap-2 rounded-xl bg-slate-800 px-4 py-2 text-xs font-semibold text-white hover:bg-slate-700 transition-all cursor-pointer">
-          <Upload className="h-4 w-4 text-red-500" />
-          <span>Upload Test Frame</span>
-          <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
-        </label>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={downloadPngOverlay}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 px-3.5 py-2 text-xs font-bold text-white hover:bg-red-500 transition-all cursor-pointer"
+          >
+            <Download className="h-3.5 w-3.5" />
+            <span>Download 1080x1920 PNG</span>
+          </button>
+
+          <label className="inline-flex items-center gap-1.5 rounded-xl bg-slate-800 px-3.5 py-2 text-xs font-semibold text-white hover:bg-slate-700 transition-all cursor-pointer">
+            <Upload className="h-3.5 w-3.5 text-red-400" />
+            <span>Upload Frame</span>
+            <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
+          </label>
+        </div>
       </div>
 
       {/* Simulator Frame */}
@@ -40,7 +99,7 @@ export function ShortsSafeZone() {
           ) : (
             <div className="flex h-full flex-col items-center justify-center p-6 text-center text-slate-500">
               <Smartphone className="h-16 w-16 mb-2 text-slate-600" />
-              <p className="text-xs font-medium">Upload a frame or use default guide below</p>
+              <p className="text-xs font-medium">Upload a frame or download transparent PNG overlay guide</p>
             </div>
           )}
 

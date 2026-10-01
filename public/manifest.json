@@ -1,0 +1,16 @@
+{
+  "name": "YouTubeFreeToolkit",
+  "short_name": "YTFreeToolkit",
+  "description": "100% Free YouTube creator tools, monetization checker, tag extractor, and SEO analyzer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#ef4444",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

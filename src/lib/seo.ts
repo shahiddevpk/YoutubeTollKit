@@ -1,4 +1,4 @@
-import { ToolDefinition } from '@/types/tools';
+import { ToolDefinition, FAQItem } from '@/types/tools';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { Metadata } from 'next';
 
@@ -64,6 +64,23 @@ export function generateWebApplicationSchema(tool: ToolDefinition) {
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
     },
+  };
+}
+
+export function generateFAQSchema(faqs: FAQItem[]) {
+  if (!faqs || faqs.length === 0) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   };
 }
 

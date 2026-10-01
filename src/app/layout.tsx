@@ -27,9 +27,10 @@ export const metadata: Metadata = {
     canonical: SITE_CONFIG.url,
   },
   icons: {
-    icon: [{ url: '/brand-icon.svg', type: 'image/svg+xml' }],
-    apple: [{ url: '/brand-icon.svg', type: 'image/svg+xml' }],
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    apple: [{ url: '/icon.svg', type: 'image/svg+xml' }],
   },
+  manifest: '/manifest.json',
   openGraph: {
     type: 'website',
     locale: 'en_US',
