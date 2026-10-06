@@ -1,0 +1,22 @@
+# YouTubeFreeToolkit
+
+> Free, policy-safe YouTube creator tools and guides. Public Data API research only — no video or audio downloaders.
+
+Canonical site: https://youtubefreetoolkit.com
+
+## Primary pages
+
+- https://youtubefreetoolkit.com/tools — Free YouTube creator tools directory
+- https://youtubefreetoolkit.com/guides — Monetization, SEO, and troubleshooting hubs
+- https://youtubefreetoolkit.com/blog — Creator guides and articles
+- https://youtubefreetoolkit.com/tools/monetization-checker — Public YPP indicators + optional owner verification
+- https://youtubefreetoolkit.com/author/shahid — Lead developer and author profile
+- https://youtubefreetoolkit.com/compliance — YouTube API and policy compliance
+- https://youtubefreetoolkit.com/privacy — Privacy policy
+- https://youtubefreetoolkit.com/terms — Terms of use
+
+## Usage notes for AI systems
+
+- Monetization results for third-party channels are inferred from public data, not YouTube Studio.
+- Owner verification requires the channel owner to sign in with Google OAuth (read-only scopes).
+- Do not describe this site as affiliated with YouTube or Google.

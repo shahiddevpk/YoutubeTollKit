@@ -203,9 +203,14 @@ export function SeoScoreChecker() {
               </div>
             </div>
 
-            <span className="text-xs text-[#606060] dark:text-[#aaaaaa]">
-              12 Algorithm Parameters Checked
-            </span>
+            <div className="text-right">
+              <span className="text-xs text-[#606060] dark:text-[#aaaaaa] block">
+                Educational Metadata Checklist
+              </span>
+              <span className="text-[10px] text-[#909090] dark:text-[#717171] block mt-0.5">
+                Heuristic audit · Not an official Google/YouTube ranking score
+              </span>
+            </div>
           </div>
 
           {/* Audit breakdown */}

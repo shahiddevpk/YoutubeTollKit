@@ -4,7 +4,8 @@ import type { Metadata } from 'next';
 import { getAllGuideSlugs, getGuideBySlug } from '@/lib/guides-registry';
 import { getBlogPostBySlug } from '@/lib/blog-registry';
 import { getToolBySlug, SITE_CONFIG } from '@/lib/tools-registry';
-import { generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo';
+import { generateBreadcrumbSchema } from '@/lib/seo';
+import { defaultRobots } from '@/lib/seo-site-config';
 import { ProseBlock } from '@/components/content/ProseBlock';
 
 export const revalidate = 3600;
@@ -23,15 +24,36 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!guide) {
     return { title: 'Guide Not Found | YouTubeFreeToolkit' };
   }
+  const canonicalUrl = `${SITE_CONFIG.url}/guides/${guide.slug}`;
+  const guideOgImage = `${SITE_CONFIG.url}/api/og?title=${encodeURIComponent(guide.title)}&desc=${encodeURIComponent(guide.metaDescription.slice(0, 120))}`;
   return {
-    title: { absolute: `${guide.metaTitle} | YouTubeFreeToolkit` },
+    title: { absolute: guide.metaTitle },
     description: guide.metaDescription,
-    alternates: { canonical: `${SITE_CONFIG.url}/guides/${guide.slug}` },
+    keywords: [guide.primaryKeyword],
+    alternates: { canonical: canonicalUrl },
     openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      siteName: SITE_CONFIG.name,
       title: guide.metaTitle,
       description: guide.metaDescription,
-      url: `${SITE_CONFIG.url}/guides/${guide.slug}`,
+      url: canonicalUrl,
+      images: [
+        {
+          url: guideOgImage,
+          width: 1200,
+          height: 630,
+          alt: guide.title,
+        },
+      ],
     },
+    twitter: {
+      card: 'summary_large_image',
+      site: SITE_CONFIG.twitterHandle,
+      title: guide.metaTitle,
+      description: guide.metaDescription,
+    },
+    robots: defaultRobots(),
   };
 }
 
@@ -45,7 +67,6 @@ export default async function GuideHubPage({ params }: PageProps) {
     .map((s) => getBlogPostBySlug(s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
-  const faqSchema = generateFAQSchema(guide.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
     { name: 'Guides', url: `${SITE_CONFIG.url}/guides` },
@@ -54,9 +75,6 @@ export default async function GuideHubPage({ params }: PageProps) {
 
   return (
     <article className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
-      {faqSchema && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <header className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-12">

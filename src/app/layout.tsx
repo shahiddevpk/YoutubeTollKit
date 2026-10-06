@@ -7,7 +7,10 @@ import { ToastProvider } from '@/components/ui/Toast';
 import { ThemeScript } from '@/components/theme/ThemeScript';
 
 export const viewport: Viewport = {
-  themeColor: '#0c0d12',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0c0d12' },
+  ],
   width: 'device-width',
   initialScale: 1,
 };

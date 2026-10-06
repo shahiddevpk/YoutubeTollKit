@@ -5,7 +5,7 @@ import { GUIDE_HUBS } from '@/lib/guides-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
-  const siteUpdated = new Date('2026-10-01T00:00:00.000Z');
+  const siteUpdated = new Date('2026-10-06T00:00:00.000Z');
 
   // Core static routes
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -37,7 +37,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/about`,
       lastModified: siteUpdated,
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/author/shahid`,
+      lastModified: siteUpdated,
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/privacy`,
@@ -65,12 +71,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const categoryRoutes: MetadataRoute.Sitemap = getAllCategoryIds().map((id) => ({
-    url: `${baseUrl}/tools/category/${id}`,
-    lastModified: siteUpdated,
-    changeFrequency: 'weekly',
-    priority: 0.85,
-  }));
+  // Exclude single-tool noindex categories (e.g. analytics) to avoid conflicting signals
+  const categoryRoutes: MetadataRoute.Sitemap = getAllCategoryIds()
+    .filter((id) => id !== 'analytics')
+    .map((id) => ({
+      url: `${baseUrl}/tools/category/${id}`,
+      lastModified: siteUpdated,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    }));
 
   // Dynamic tool routes from tools registry
   const toolRoutes: MetadataRoute.Sitemap = TOOLS_REGISTRY.map((tool) => ({
@@ -85,7 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt),
     changeFrequency: 'weekly',
-    priority: 0.8,
+    priority: 0.75,
   }));
 
   const guideRoutes: MetadataRoute.Sitemap = GUIDE_HUBS.map((guide) => ({

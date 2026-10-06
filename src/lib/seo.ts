@@ -1,4 +1,4 @@
-import { ToolDefinition, FAQItem } from '@/types/tools';
+import { ToolDefinition } from '@/types/tools';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { defaultRobots, siteVerificationMetadata, SEO_SITE } from '@/lib/seo-site-config';
 import { Metadata } from 'next';
@@ -8,7 +8,7 @@ export function buildRootMetadata(): Metadata {
   return {
     metadataBase: new URL(SITE_CONFIG.url),
     title: {
-      default: `${SITE_CONFIG.name} ${SEO_SITE.titleSeparator} Free Monetization & Channel Tools`,
+      default: `Free YouTube Creator Tools ${SEO_SITE.titleSeparator} Monetization & SEO Suite | ${SITE_CONFIG.name}`,
       template: `%s | ${SITE_CONFIG.name}`,
     },
     description: SITE_CONFIG.description,
@@ -35,7 +35,7 @@ export function buildRootMetadata(): Metadata {
       type: 'website',
       locale: 'en_US',
       url: SITE_CONFIG.url,
-      title: `${SITE_CONFIG.name} ${SEO_SITE.titleSeparator} Free Monetization & Channel Tools`,
+      title: `Free YouTube Creator Tools ${SEO_SITE.titleSeparator} Monetization & SEO Suite | ${SITE_CONFIG.name}`,
       description: SITE_CONFIG.description,
       siteName: SITE_CONFIG.name,
       images: [
@@ -49,7 +49,8 @@ export function buildRootMetadata(): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${SITE_CONFIG.name} ${SEO_SITE.titleSeparator} Free Monetization & Channel Tools`,
+      site: SITE_CONFIG.twitterHandle,
+      title: `Free YouTube Creator Tools ${SEO_SITE.titleSeparator} Monetization & SEO Suite | ${SITE_CONFIG.name}`,
       description: SITE_CONFIG.description,
       images: [`${SITE_CONFIG.url}/api/og?title=YouTubeFreeToolkit&desc=Free+YouTube+Creator+Suite`],
     },
@@ -95,12 +96,14 @@ export function constructToolMetadata(tool: ToolDefinition): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
+      site: SITE_CONFIG.twitterHandle,
       title: metaTitle,
       description: tool.metaDescription,
       images: [
         `${SITE_CONFIG.url}/api/og?title=${encodeURIComponent(tool.name)}&desc=${encodeURIComponent(tool.description.slice(0, 120))}`,
       ],
     },
+    robots: defaultRobots(),
   };
 }
 
@@ -111,6 +114,8 @@ export function generateWebApplicationSchema(tool: ToolDefinition) {
     name: tool.name,
     url: `${SITE_CONFIG.url}/tools/${tool.slug}`,
     description: tool.description,
+    image: `${SITE_CONFIG.url}/api/og?title=${encodeURIComponent(tool.name)}&desc=${encodeURIComponent(tool.description.slice(0, 120))}`,
+    keywords: [tool.primaryKeyword, ...tool.secondaryKeywords].join(', '),
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Any',
     browserRequirements: 'Requires a modern web browser with JavaScript enabled.',
@@ -143,23 +148,6 @@ export function generateHowToSchema(tool: ToolDefinition) {
       position: step.step,
       name: step.title,
       text: step.description,
-    })),
-  };
-}
-
-export function generateFAQSchema(faqs: FAQItem[]) {
-  if (!faqs || faqs.length === 0) return null;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
     })),
   };
 }

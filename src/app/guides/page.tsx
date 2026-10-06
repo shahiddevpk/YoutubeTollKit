@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { GUIDE_HUBS } from '@/lib/guides-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';
+import { defaultRobots } from '@/lib/seo-site-config';
 
 export const revalidate = 3600;
 
@@ -10,6 +11,18 @@ export const metadata: Metadata = {
   description:
     'Pillar hubs for YouTube monetization, SEO metadata, and policy-safe troubleshooting — with links to free tools and in-depth articles.',
   alternates: { canonical: `${SITE_CONFIG.url}/guides` },
+  robots: defaultRobots(),
+  openGraph: {
+    title: 'YouTube Creator Guide Hubs | YouTubeFreeToolkit',
+    description:
+      'Pillar hubs for YouTube monetization, SEO metadata, and policy-safe troubleshooting — with links to free tools and in-depth articles.',
+    url: `${SITE_CONFIG.url}/guides`,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'YouTube Creator Guide Hubs | YouTubeFreeToolkit',
+    description: 'Monetization, SEO, and troubleshooting hubs with free creator tools.',
+  },
 };
 
 export default function GuidesIndexPage() {

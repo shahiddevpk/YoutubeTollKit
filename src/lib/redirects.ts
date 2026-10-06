@@ -17,6 +17,7 @@ export const REDIRECT_RULES: Record<string, RedirectRule> = {
   '/tag-extractor': { destination: '/tools/tag-extractor' },
   '/tools-directory': { destination: '/tools' },
   '/creator-tools': { destination: '/tools' },
+  '/tools/live-subscriber-counter': { destination: '/tools/live-subscriber-count' },
   '/guides/monetization': { destination: '/guides/youtube-monetization' },
   '/guides/seo': { destination: '/guides/youtube-seo' },
 

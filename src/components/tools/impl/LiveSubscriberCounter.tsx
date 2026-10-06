@@ -128,7 +128,7 @@ export function LiveSubscriberCounter() {
 
         <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000]/15 px-3 py-0.5 text-xs font-bold text-[#ff0000] border border-[#ff0000]/30 mb-4">
           <span className="h-2 w-2 rounded-full bg-[#ff0000] animate-ping" />
-          Live YouTube Tracker
+          Live Public Subscriber Tracker
         </span>
 
         {avatarUrl && (

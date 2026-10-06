@@ -74,7 +74,7 @@ export const GUIDE_HUBS: GuideHub[] = [
         heading: 'Official sources and record keeping',
         paragraphs: [
           'Bookmark YouTube Help articles for Partner Program thresholds, AdSense linking, and copyright strikes. Screenshot your Studio Earn tab when you apply or when policy messages change so you have timestamps if support asks for context.',
-          'Keep music licenses, contract releases, and project files organized before you scale upload volume. Reused-content reviews often ask whether you own or licensed the footage you publish, and third-party monetization tools cannot see that paperwork for you.',
+          'Keep music licenses, contract releases, and project files organized before you scale upload volume. Reused-content reviews often ask whether you own or have licensed the footage you publish, and third-party monetization tools cannot see that paperwork for you.',
           'When you discuss earnings publicly, separate illustrative calculator output from verified AdSense deposits. Transparency protects your reputation with sponsors and viewers alike.',
         ],
       },
@@ -138,7 +138,7 @@ export const GUIDE_HUBS: GuideHub[] = [
         id: 'chapters-thumbnails',
         heading: 'Chapters, thumbnails, and CTR',
         paragraphs: [
-          'Chapters that start at 00:00 with at least three segments can qualify for key moments in search when YouTube supports them for your video. Validate formatting before publish.',
+          'Chapters that start at 00:00 with at least three segments can qualify for key moments in search when YouTube supports them for your video. Validate formatting before publishing.',
           'Thumbnails should stay readable on small screens. Keep text away from the bottom-right duration badge and preview layouts in light and dark themes when possible.',
         ],
       },
@@ -180,7 +180,7 @@ export const GUIDE_HUBS: GuideHub[] = [
         heading: 'Voice search and conversational SEO',
         paragraphs: [
           'With the expansion of smart TVs, mobile voice search, and AI-assisted search summaries, an increasing proportion of YouTube queries are conversational rather than fragmented keyword strings.',
-          'Incorporate natural phrasing into descriptions and timestamps (e.g., "how do I fix audio latency in OBS" rather than merely "OBS audio fix"). Natural sentence structure helps YouTube semantic matching engines connect your solutions with intent-driven searches.',
+          'Incorporate natural phrasing into descriptions and timestamps (e.g., "how do I fix audio latency in OBS" rather than merely "OBS audio fix"). Natural sentence structure helps YouTube\'s semantic matching engines connect your solutions with intent-driven searches.',
         ],
       },
       {
@@ -242,7 +242,7 @@ export const GUIDE_HUBS: GuideHub[] = [
         id: 'identifiers',
         heading: 'Handles, URLs, and channel IDs',
         paragraphs: [
-          '@Handles and custom URLs are for humans; the 24-character UC channel ID is for APIs, RSS, and automations. Handles can change, which breaks hard-coded bots if you skip the UC ID.',
+          'Handles and custom URLs are for humans; the 24-character UC channel ID is for APIs, RSS, and automations. Handles can change, which breaks hard-coded bots if you skip the UC ID.',
           'Use the channel ID finder when integrating Discord bots, analytics pipelines, or feed readers. Always test with a fresh public video URL if a handle redirect fails.',
         ],
       },
@@ -305,7 +305,7 @@ export const GUIDE_HUBS: GuideHub[] = [
         ],
       },
     ],
-    toolSlugs: ['channel-id-finder', 'live-subscriber-counter', 'channel-compare', 'monetization-checker'],
+    toolSlugs: ['channel-id-finder', 'live-subscriber-count', 'channel-compare', 'monetization-checker'],
     blogSlugs: [
       'youtube-channel-id-vs-handle-guide',
       'live-youtube-subscriber-count-guide',

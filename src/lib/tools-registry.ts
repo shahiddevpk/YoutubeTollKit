@@ -256,13 +256,18 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Simply paste the @handle into our search bar. Our tool automatically inspects the channel\'s canonical tag and returns the official 24-character UC ID instantly.',
       },
+      {
+        question: 'Does changing my YouTube handle or channel name change my Channel ID?',
+        answer:
+          'No. Your YouTube Channel ID (starting with UC) is permanent and immutable. Even if you rebrand, change your display name, or claim a new @handle, your UC ID never changes, ensuring all API connections and external links remain intact.',
+      },
     ],
     relatedToolSlugs: ['monetization-checker', 'live-subscriber-count', 'tag-extractor'],
     updatedAt: '2026-09-30',
   },
   {
     slug: 'tag-extractor',
-    name: 'YouTube Tag Extractor & Inspector',
+    name: 'YouTube Tag Extractor',
     shortTitle: 'Tag Extractor',
     headline: 'View and copy public tags and keywords from any YouTube video or Short.',
     description:
@@ -326,15 +331,20 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Open YouTube Studio → Content → Edit Video → Scroll down and click "Show More" → Paste the copied tags into the "Tags" box → Click Save.',
       },
+      {
+        question: 'Can copying tags from viral videos get my channel penalized?',
+        answer:
+          'Copying tags verbatim without relevance to your own video violates YouTube’s misleading metadata policies. Instead, extract tags from top-ranking videos to identify keyword themes, search synonyms, and spelling variations, then select only the tags that accurately describe your content.',
+      },
     ],
     relatedToolSlugs: ['seo-score-checker', 'title-description-analyzer', 'hashtag-generator'],
     updatedAt: '2026-09-30',
   },
   {
     slug: 'earnings-calculator',
-    name: 'YouTube Earnings & Views Calculator',
+    name: 'YouTube Earnings Calculator',
     shortTitle: 'Earnings Calculator',
-    headline: 'Calculate Estimated YouTube AdSense Income from Views',
+    headline: 'Calculate YouTube AdSense Income from Views',
     description:
       'Estimate your potential YouTube revenue based on daily video views, CPM/RPM brackets, creator niche, and geographic audience tier.',
     category: 'monetization',
@@ -406,7 +416,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
   },
   {
     slug: 'seo-score-checker',
-    name: 'YouTube SEO Score Checker & Optimizer',
+    name: 'YouTube SEO Score Checker',
     shortTitle: 'SEO Score Checker',
     headline: 'Audit YouTube Video SEO, Title Length, Tags & Descriptions',
     description:
@@ -445,7 +455,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     features: [
-      '12-point automated algorithm inspection checklist',
+      '12-point automated SEO inspection checklist',
       'Real-time Title length meter (optimal 50-70 characters)',
       'Description above-the-fold snippet preview for mobile and desktop',
       'Actionable recommendations to boost CTR and search rank',
@@ -482,9 +492,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'live-subscriber-count',
     name: 'YouTube Live Subscriber Counter',
     shortTitle: 'Subscriber Count',
-    headline: 'Real-Time YouTube Subscriber Counter & Channel Statistics',
+    headline: 'Live Public YouTube Subscriber Counter & Channel Statistics',
     description:
-      'Track live YouTube subscriber milestones, total video view counts, and channel growth rates with a clean, distraction-free live counter.',
+      'Track live public YouTube subscriber milestones, total video view counts, and channel growth rates with a clean, distraction-free tracker.',
     category: 'analytics',
     badge: 'Popular',
     priority: 'P0',
@@ -493,13 +503,13 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     primaryKeyword: 'live youtube subscriber count',
     secondaryKeywords: [
       'youtube sub count live',
-      'real time youtube subscriber counter',
+      'public youtube subscriber counter',
       'youtube subscriber tracker',
       'check youtube subscriber count',
     ],
-    metaTitle: 'Live YouTube Subscriber Count — Real-Time Counter',
+    metaTitle: 'Live YouTube Subscriber Count — Public Growth Tracker',
     metaDescription:
-      'Track real-time YouTube subscriber count and milestone statistics. Accurate, fast, full-screen live sub counter for any YouTube channel.',
+      'Track public YouTube subscriber statistics and milestone counts. Fast, full-screen live public sub tracker for any YouTube channel.',
     howItWorks: [
       {
         step: 1,
@@ -508,7 +518,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
       {
         step: 2,
-        title: 'Connect Live Data Stream',
+        title: 'Fetch Latest Public Statistics',
         description: 'View the latest verified subscriber tier, view count, and uploads.',
       },
       {
@@ -541,13 +551,18 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'The counter refreshes according to official YouTube Data API v3 poll cycles. Because YouTube rounds public counts to 3 significant figures for channels over 1,000 subscribers, the display updates whenever YouTube\'s servers publish the next milestone increment.',
       },
+      {
+        question: 'Can I view the exact unrounded subscriber count of another creator?',
+        answer:
+          'No. Since September 2019, YouTube has enforced public subscriber rounding across all third-party tools and the public Data API. Only the authenticated channel owner can view their exact, unrounded subscriber count in real time inside YouTube Studio Analytics.',
+      },
     ],
     relatedToolSlugs: ['channel-id-finder', 'monetization-checker', 'earnings-calculator'],
     updatedAt: '2026-09-30',
   },
   {
     slug: 'thumbnail-preview',
-    name: 'YouTube Thumbnail Preview & HD Viewer',
+    name: 'YouTube Thumbnail Preview',
     shortTitle: 'Thumbnail Preview',
     headline: 'Inspect HD Thumbnails & Test CTR Against Dark/Light Feeds',
     description:
@@ -565,7 +580,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube thumbnail hd preview',
       'test thumbnail on youtube homepage',
     ],
-    metaTitle: 'YouTube Thumbnail Preview & Tester — Test CTR on Mobile/Desktop',
+    metaTitle: 'YouTube Thumbnail Preview — Test CTR on Mobile & Desktop',
     metaDescription:
       'Test your video thumbnail inside a realistic YouTube desktop & mobile mockup. View high-res HD/4K maxresdefault thumbnail images for free.',
     howItWorks: [
@@ -683,13 +698,18 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Descriptions matter significantly more than tags. YouTube\'s recommendation engine indexes your description\'s first 3 lines and naturally spoken keywords to categorize content and match search queries. Tags are primarily used by YouTube to catch common spelling errors.',
       },
+      {
+        question: 'How many links can I include in a YouTube video description?',
+        answer:
+          'YouTube does not enforce a strict link count limit, but best practice is 3 to 5 clear outbound links placed below the introductory hook. Channels with advanced features unlocked can use clickable external hyperlinks; new channels must complete phone verification or build channel history to enable active links.',
+      },
     ],
     relatedToolSlugs: ['seo-score-checker', 'tag-extractor', 'hashtag-generator'],
     updatedAt: '2026-09-30',
   },
   {
     slug: 'hashtag-generator',
-    name: 'YouTube Hashtag Generator & Explorer',
+    name: 'YouTube Hashtag Generator',
     shortTitle: 'Hashtag Generator',
     headline: 'Generate Trending & Relevant Hashtags for YouTube Videos & Shorts',
     description:
@@ -751,13 +771,18 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'If you add more than 60 hashtags to a single video, YouTube\'s algorithm ignores all hashtags on that video entirely. Excessive hashtag usage can also trigger YouTube\'s spam and misleading metadata filters, which can reduce video impressions.',
       },
+      {
+        question: 'Are hashtags necessary for YouTube Shorts?',
+        answer:
+          'While not mandatory, adding 2 to 3 targeted hashtags (such as #Shorts and one niche-specific tag) helps the YouTube algorithm categorize your content faster during early testing, and connects your Short to dedicated hashtag topic feeds.',
+      },
     ],
     relatedToolSlugs: ['tag-extractor', 'shorts-safe-zone', 'seo-score-checker'],
     updatedAt: '2026-09-30',
   },
   {
     slug: 'shorts-safe-zone',
-    name: 'YouTube Shorts Safe Zone & Overlay Checker',
+    name: 'YouTube Shorts Safe Zone Checker',
     shortTitle: 'Shorts Safe Zone',
     headline: 'Ensure Critical Text & Faces Are Not Blocked by Shorts UI',
     description:
@@ -767,9 +792,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     priority: 'P3',
     featured: true,
     iconName: 'Smartphone',
-    primaryKeyword: 'youtube shorts dimensions',
+    primaryKeyword: 'youtube shorts safe zone',
     secondaryKeywords: [
-      'youtube shorts safe zone',
+      'youtube shorts dimensions',
       'youtube shorts overlay checker',
       'shorts aspect ratio preview',
       'shorts ui overlay template',
@@ -807,7 +832,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'What are the dimensions for YouTube Shorts in 2026?',
         answer:
-          'The official resolution is 1080x1920 pixels with a 9:16 aspect ratio. Videos must be vertical and 60 seconds or shorter.',
+          'The official resolution is 1080x1920 pixels with a 9:16 aspect ratio. Videos must be vertical and 3 minutes (180 seconds) or shorter — YouTube extended the Shorts limit from 60 seconds to 3 minutes in October 2024.',
       },
       {
         question: 'What is the YouTube Shorts safe zone?',
@@ -892,13 +917,18 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Valid timestamps allow Google Search to generate "Key Moments" rich snippets directly in Google SERPs. Searchers can jump directly to the specific answer in your video, which dramatically increases external search traffic and click-through rates from Google Search.',
       },
+      {
+        question: 'Can I use timestamps in YouTube Shorts descriptions?',
+        answer:
+          'YouTube Shorts do not generate scrub-bar chapter markers because Shorts are designed for quick continuous viewing under 60 seconds. However, clickable timestamps still work in comments or descriptions on the desktop watch page.',
+      },
     ],
     relatedToolSlugs: ['title-description-analyzer', 'seo-score-checker'],
     updatedAt: '2026-09-30',
   },
   {
     slug: 'rpm-calculator',
-    name: 'YouTube RPM & Ad Revenue Calculator',
+    name: 'YouTube RPM Calculator',
     shortTitle: 'RPM Calculator',
     headline: 'Calculate Revenue Per Mille (RPM) and Monetization Yield',
     description:
@@ -951,12 +981,17 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Why is my YouTube RPM lower than my CPM?',
         answer:
-          'CPM is what advertisers pay for 1,000 ad impressions before YouTube takes its 45% revenue cut. RPM is what you actually earn per 1,000 total video views after YouTube\'s cut, factoring in non-monetized views, ad-blockers, and viewer demographics. Hence, RPM is typically 50-60% of CPM.',
+          'CPM is what advertisers pay for 1,000 ad impressions before YouTube takes its 45% revenue cut. RPM is what you actually earn per 1,000 total video views after YouTube\'s cut, factoring in non-monetized views, ad-blockers, and viewer demographics. As a result, RPM is typically 50–60% of CPM.',
       },
       {
         question: 'Which YouTube niches have the highest RPM in 2026?',
         answer:
           'Personal Finance, SaaS / Software tutorials, Real Estate, B2B Marketing, and Legal topics consistently command the highest RPMs ($12 - $35+), while broad entertainment, reaction videos, and gaming walkthroughs typically range from $1.50 to $5.00 RPM.',
+      },
+      {
+        question: 'How can a creator increase their YouTube RPM?',
+        answer:
+          'Creators can boost RPM by producing content over 8 minutes to enable mid-roll ads, targeting high-intent topics with strong commercial buyer interest, attracting audiences in Tier 1 countries (US, UK, Canada, Australia), and supplementing ad revenue with Channel Memberships and Super Thanks.',
       },
     ],
     relatedToolSlugs: ['earnings-calculator', 'monetization-checker'],
@@ -964,20 +999,20 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
   },
   {
     slug: 'channel-compare',
-    name: 'YouTube Competitor Channel Comparison',
+    name: 'YouTube Channel Comparison Tool',
     shortTitle: 'Channel Compare',
     headline: 'Compare Two YouTube Channels Side-by-Side (Public Stats)',
     description:
-      'Compare public subscriber counts, lifetime views, upload counts, and channel identifiers between two public YouTube channels.',
+      'Compare subscriber counts, lifetime views, upload counts, and channel identifiers between any two public YouTube channels.',
     category: 'research',
     badge: 'Trending',
     priority: 'P2',
     featured: true,
     iconName: 'Users',
-    primaryKeyword: 'youtube competitor analysis',
+    primaryKeyword: 'youtube channel comparison tool',
     secondaryKeywords: [
+      'youtube competitor analysis',
       'compare youtube channels',
-      'youtube channel comparison tool',
       'youtube subscriber compare',
       'compare views youtube channels',
     ],
@@ -1026,13 +1061,18 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'No. Private YouTube Studio metrics (such as exact revenue, audience retention graphs, and click-through rate) are only accessible to verified channel owners. This tool analyzes verified public channel data to benchmark competitive performance ethically.',
       },
+      {
+        question: 'Is it policy-compliant and safe to compare competitor channels?',
+        answer:
+          'Yes. Our tool only queries public statistics exposed through official YouTube Data API v3 endpoints (subscriber milestones, public view counts, upload tallies). We do not scrape private data, store credentials, or violate YouTube\'s Terms of Service.',
+      },
     ],
     relatedToolSlugs: ['channel-id-finder', 'live-subscriber-count', 'earnings-calculator'],
     updatedAt: '2026-10-01',
   },
   {
     slug: 'upload-checklist',
-    name: 'YouTube Pre-Upload SEO Checklist',
+    name: 'YouTube Upload Checklist',
     shortTitle: 'Upload Checklist',
     headline: 'Interactive 15-Point Pre-Upload Checklist for Maximum Views',
     description:
@@ -1093,6 +1133,11 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         question: 'Should I publish my video as Unlisted before making it Public?',
         answer:
           'Yes. Setting your upload to Unlisted for 1 to 2 hours before publishing allows YouTube to complete high-definition (1080p/4K) and VP9/AV1 video processing, finish automatic copyright checks (Content ID), and generate auto-captions so early viewers get the highest quality experience.',
+      },
+      {
+        question: 'What is the best time of day to publish a YouTube video?',
+        answer:
+          'The optimal publishing window is typically 2 to 3 hours before your audience’s peak viewing hours (often 2:00 PM – 4:00 PM on weekdays in your primary audience timezone). This allows YouTube time to process HD formats, index keywords, and deliver early notifications as viewers log on.',
       },
     ],
     relatedToolSlugs: ['seo-score-checker', 'thumbnail-preview', 'timestamp-validator'],

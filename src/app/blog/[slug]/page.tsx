@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { generateBreadcrumbSchema } from '@/lib/seo';
+import { defaultRobots } from '@/lib/seo-site-config';
 import { markdownToHtml } from '@/lib/markdown-to-html';
 import {
   ChevronRight,
@@ -50,6 +51,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       type: 'article',
+      locale: 'en_US',
+      siteName: SITE_CONFIG.name,
       url: canonicalUrl,
       title: post.metaTitle,
       description: post.metaDescription,
@@ -67,9 +70,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
+      site: SITE_CONFIG.twitterHandle,
       title: post.metaTitle,
       description: post.metaDescription,
     },
+    robots: defaultRobots(),
   };
 }
 
@@ -81,24 +86,31 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const ogImageUrl = `${SITE_CONFIG.url}/api/og?title=${encodeURIComponent(post.title)}&desc=${encodeURIComponent(post.excerpt)}`;
+
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
+    image: ogImageUrl,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     author: {
       '@type': 'Person',
       name: post.author.name,
       jobTitle: post.author.role,
+      url: `${SITE_CONFIG.url}/author/shahid`,
     },
     publisher: {
       '@type': 'Organization',
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
     },
-    mainEntityOfPage: `${SITE_CONFIG.url}/blog/${post.slug}`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_CONFIG.url}/blog/${post.slug}`,
+    },
   };
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -122,7 +134,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-
       {/* Header / Hero */}
       <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-12">
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -163,13 +174,17 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Author Card */}
           <div className="mt-6 flex items-center gap-3 border-t border-[#e5e5e5] dark:border-[#272727] pt-4">
-            <div className="h-10 w-10 rounded-full bg-[#ff0000] text-white font-bold flex items-center justify-center text-sm shadow-sm">
-              SD
-            </div>
-            <div>
-              <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{post.author.name}</p>
-              <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">{post.author.role}</p>
-            </div>
+            <Link href="/author/shahid" className="flex items-center gap-3 group">
+              <div className="h-10 w-10 rounded-full bg-[#ff0000] text-white font-bold flex items-center justify-center text-sm shadow-sm group-hover:scale-105 transition-transform">
+                SD
+              </div>
+              <div>
+                <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors">
+                  {post.author.name}
+                </p>
+                <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">{post.author.role}</p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -219,7 +234,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Article Body Content */}
         <div className="prose max-w-none space-y-6 text-sm sm:text-base leading-relaxed text-[#0f0f0f] dark:text-[#f1f1f1]">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }} />
+          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content, post.tableOfContents) }} />
         </div>
 
         {/* Article FAQs */}

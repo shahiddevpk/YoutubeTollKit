@@ -242,7 +242,7 @@ const GUIDES: Record<string, ToolGuide> = {
       {
         heading: 'Balancing CTR with audience retention',
         paragraphs: [
-          'A high SEO score ensures search crawlers understand your video topic, but click-through rate (CTR) and average view duration (AVD) dictate whether YouTube recommends the video on home feeds and suggested bars.',
+          'A high score indicates that your metadata follows the educational checklist used by this tool, but click-through rate (CTR) and average view duration (AVD) dictate whether YouTube recommends the video on home feeds and suggested bars. This is a YouTubeFreeToolkit heuristic checklist score, not an official Google or YouTube ranking score.',
           'Never use sensationalized titles that score well for length but mislead viewers. When viewers bounce within the first 15 seconds, algorithmic impressions drop sharply regardless of keyword density.',
         ],
       },
@@ -305,6 +305,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Streamers building milestone overlays, community managers tracking public growth between weekly reports, and creators celebrating goals with transparent on-screen disclaimers.',
           'Refresh immediately before a subathon segment and keep Studio open if a sponsor requires accounting-grade totals.',
+        ],
+      },
+      {
+        heading: 'Milestone stream disclaimer',
+        paragraphs: [
+          'On-screen counters show public API totals that may round or lag Studio by minutes during viral spikes. Mention that viewers see abbreviated counts on large channels so chat expectations stay realistic.',
+          'If a brand sponsorship references subscriber targets, contract language should cite YouTube Studio analytics exports rather than a third-party overlay snapshot.',
         ],
       },
       DEFAULT_TRUST,
@@ -587,6 +594,13 @@ const GUIDES: Record<string, ToolGuide> = {
           'Screenshot results with the date in your notes so viral weeks do not become permanent expectations.',
         ],
       },
+      {
+        heading: 'When not to rely on compare alone',
+        paragraphs: [
+          'Public totals cannot show Shorts versus long-form mix, returning viewer rates, or revenue. Use compare to shortlist channels worth deeper qualitative review, then watch recent uploads to judge packaging and retention.',
+          'For monetization questions, follow with the Monetization Checker on public signals only — never treat subscriber gaps as proof of AdSense status for another creator.',
+        ],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -625,6 +639,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Solo creators who publish without a producer, small teams handing videos between editor and host, and agencies standardizing client deliverables before Studio upload.',
           'Copy the completed summary into your project management ticket so reviewers know which SEO and technical steps were verified on this upload.',
+        ],
+      },
+      {
+        heading: 'Scheduling versus instant publish',
+        paragraphs: [
+          'Complete the checklist before scheduling so premiere chat, end screens, and chapter timestamps are locked in. Scheduled videos can still be edited, but teams often forget to revisit metadata after upload to a private scheduled slot.',
+          'For multi-language channels, add a final pass for localized titles and disclosure text before the checklist summary is copied to your producer.',
         ],
       },
       DEFAULT_TRUST,

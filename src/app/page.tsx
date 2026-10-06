@@ -9,7 +9,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Free YouTube Monetization Checker & Creator Tools | YouTubeFreeToolkit',
+    absolute: 'Free YouTube Creator Tools — Monetization & SEO Suite | YouTubeFreeToolkit',
   },
   description:
     'Free YouTube creator tools for monetization indicators, SEO metadata, and channel research. Public-data checks only — no video downloads. Optional owner verification via YouTube Analytics.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: SITE_CONFIG.url,
   },
   openGraph: {
-    title: 'Free YouTube Monetization Checker & Creator Tools',
+    title: 'Free YouTube Creator Tools — Monetization & SEO Suite',
     description:
       'Free YouTube monetization, SEO, and creator tools. Public checks need no login; channel owners can optionally verify YPP monetary access with YouTube Analytics.',
     url: SITE_CONFIG.url,
@@ -49,7 +49,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-4 text-base sm:text-lg text-[#606060] dark:text-[#aaaaaa] leading-relaxed">
               Check any channel for inferred monetization likelihood and illustrative revenue from public stats — clearly
-              labeled non-official. Plus tags, SEO audits, and research tools. No downloaders. Free public checks; owners
+              labeled as non-official. Plus tags, SEO audits, and research tools. No downloaders. Free public checks; owners
               can verify with YouTube Analytics.
             </p>
           </div>
@@ -113,8 +113,8 @@ export default function HomePage() {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex items-baseline justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Popular creator tools</h2>
-            <p className="text-xs sm:text-sm text-[#909090] dark:text-[#717171] mt-1">Frequently used by YouTube creators worldwide</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Featured creator tools</h2>
+            <p className="text-xs sm:text-sm text-[#909090] dark:text-[#717171] mt-1">Practical utilities to audit metadata, research channels, and model scenarios</p>
           </div>
           <Link href="/tools" className="text-xs sm:text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline">
             See all {TOOLS_REGISTRY.length} →

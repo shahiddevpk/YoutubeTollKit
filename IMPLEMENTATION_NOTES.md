@@ -15,7 +15,7 @@ This code package includes the applied changes from the October 2026 audit.
 - Added basic security response headers and removed the `X-Powered-By` header.
 - Replaced absolute policy-compliance and performance claims with verifiable, transparent wording.
 - Corrected privacy wording around hosting/server logs.
-- Removed FAQPage JSON-LD injection because Google retired FAQ rich results in 2026; visible FAQs remain on-page.
+- FAQPage JSON-LD is not emitted (Google retired FAQ rich results in 2026); visible FAQs remain on-page for users and E-E-A-T.
 - Updated misleading blog copy that claimed YPP/AdSense enrollment could be detected from undocumented page-source markers.
 
 ## Deployment
@@ -52,7 +52,9 @@ This code package includes the applied changes from the October 2026 audit.
 ### SEO changes
 - Strengthened the monetization-checker title, description, H1, explanatory copy, and FAQs while keeping claims accurate.
 - Canonical URLs continue to use `https://youtubefreetoolkit.com`.
-- Removed obsolete WebSite `SearchAction` markup (Google retired the sitelinks search box).
+- WebSite JSON-LD does not include `SearchAction` (Google retired the sitelinks search box; `/tools?q=` is noindex).
+- Rank Math–style query noindex (`q`, `page≥2`, OAuth params), `public/llms.txt`, and external links open in new tabs in blog markdown.
+- Run `npm run audit:thin-content` before release to catch thin indexable URLs.
 - Improved WebApplication structured data with free-access, feature, and modified-date fields.
 - Changed sitemap modification dates so static URLs do not falsely claim to change every request/build.
 - Added the canonical host to robots metadata.

@@ -4,7 +4,6 @@ import { ToolDefinition } from '@/types/tools';
 import { SITE_CONFIG, getToolBySlug } from '@/lib/tools-registry';
 import {
   generateWebApplicationSchema,
-  generateFAQSchema,
   generateBreadcrumbSchema,
   generateHowToSchema,
 } from '@/lib/seo';
@@ -19,7 +18,6 @@ interface ToolLayoutProps {
 export function ToolLayout({ tool, children }: ToolLayoutProps) {
   const guide = getToolGuide(tool.slug);
   const webAppSchema = generateWebApplicationSchema(tool);
-  const faqSchema = generateFAQSchema(tool.faqs);
   const howToSchema = generateHowToSchema(tool);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
@@ -38,12 +36,6 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
       {howToSchema && (
         <script
           type="application/ld+json"
@@ -91,7 +83,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10 text-sm">
         <section aria-labelledby="how-to-heading">
           <h2 id="how-to-heading" className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-3">
-            How it works
+            How to Use the {tool.shortTitle}
           </h2>
           <ol className="list-decimal list-inside space-y-2 text-[#606060] dark:text-[#aaaaaa]">
             {tool.howItWorks.map((step) => (
@@ -114,7 +106,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
 
         <section className="grid gap-6 sm:grid-cols-2 border-t border-[#e5e5e5] dark:border-[#272727] pt-8">
           <div>
-            <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-2">Features</h2>
+            <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-2">{tool.shortTitle} Key Features</h2>
             <ul className="list-disc list-inside space-y-1.5 text-[#606060] dark:text-[#aaaaaa]">
               {tool.features.map((feature, i) => (
                 <li key={i}>{feature}</li>
@@ -122,7 +114,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
             </ul>
           </div>
           <div>
-            <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-2">Limitations</h2>
+            <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-2">Data Scope &amp; API Limitations</h2>
             <ul className="list-disc list-inside space-y-1.5 text-[#606060] dark:text-[#aaaaaa]">
               {tool.limitations.map((limitation, i) => (
                 <li key={i}>{limitation}</li>
@@ -134,7 +126,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
         {tool.faqs.length > 0 && (
           <section className="border-t border-[#e5e5e5] dark:border-[#272727] pt-8" aria-labelledby="faq-heading">
             <h2 id="faq-heading" className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-4">
-              Frequently asked questions
+              Frequently Asked Questions About {tool.shortTitle}
             </h2>
             <div className="space-y-3">
               {tool.faqs.map((faq, index) => (
@@ -157,7 +149,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
 
         {relatedTools.length > 0 && (
           <section className="border-t border-[#e5e5e5] dark:border-[#272727] pt-8">
-            <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-3">Related tools</h2>
+            <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-3">Related YouTube Creator Tools</h2>
             <ul className="space-y-2">
               {relatedTools.map((related) => (
                 <li key={related.slug}>
@@ -176,7 +168,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
             </ul>
             <p className="mt-4">
               <Link href="/tools" className="text-sm font-medium text-[#0f0f0f] dark:text-[#f1f1f1] hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
-                Browse all creator tools →
+                ← Browse all creator tools
               </Link>
             </p>
           </section>

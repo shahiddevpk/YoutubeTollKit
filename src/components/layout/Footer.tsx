@@ -142,6 +142,16 @@ export function Footer() {
                 </Link>
               </li>
               <li className="pt-2 border-t border-[#e5e5e5] dark:border-[#272727]">
+                <Link href="/about" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/author/shahid" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
+                  Author Profile
+                </Link>
+              </li>
+              <li>
                 <Link href="/guides" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
                   Creator Guide Hubs
                 </Link>
@@ -164,6 +174,11 @@ export function Footer() {
               <li>
                 <Link href="/terms" className="hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] transition-colors">
                   Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
+                  Contact Us
                 </Link>
               </li>
             </ul>
