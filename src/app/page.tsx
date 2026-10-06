@@ -38,7 +38,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
       {/* Hero Section */}
-      <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-14">
+      <section className="border-b border-theme py-10 sm:py-14">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-4">
@@ -55,7 +55,7 @@ export default function HomePage() {
           </div>
 
           {/* Flagship Monetization Checker Card */}
-          <div className="mt-10 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 sm:p-7 shadow-sm">
+          <div className="mt-10 rounded-2xl border border-theme bg-card p-5 sm:p-7 shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
               <div>
                 <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">YouTube Monetization Checker</h2>
@@ -81,7 +81,7 @@ export default function HomePage() {
       </section>
 
       {/* Value Proposition / Mission */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-b border-[#e5e5e5] dark:border-[#272727]">
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-b border-theme">
         <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">What you will find here</h2>
         <div className="mt-4 space-y-3 text-sm sm:text-base text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-4xl">
           <p>
@@ -128,7 +128,7 @@ export default function HomePage() {
       </section>
 
       {/* Browse by Category */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-t border-[#e5e5e5] dark:border-[#272727]">
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-t border-theme">
         <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-6">Browse by category</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {CATEGORIES.map((cat) => {
@@ -137,7 +137,7 @@ export default function HomePage() {
               <Link
                 key={cat.id}
                 href={`/tools/category/${cat.id}`}
-                className="group block rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md transition-all"
+                className="group block rounded-2xl border border-theme bg-card p-5 shadow-sm dark:shadow-none hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md transition-all"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors">
@@ -157,7 +157,7 @@ export default function HomePage() {
       </section>
 
       {/* Common Questions */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-t border-[#e5e5e5] dark:border-[#272727]">
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-t border-theme">
         <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-6">Frequently asked questions</h2>
         <div className="space-y-3.5 text-sm">
           {[
@@ -178,12 +178,12 @@ export default function HomePage() {
               a: 'Read our Privacy Policy, Terms, and Policy Compliance pages for API usage, limitations, and contact information.',
             },
           ].map(({ q, a }) => (
-            <details key={q} className="group rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-5 py-4 transition-all">
+            <details key={q} className="group rounded-xl border border-theme bg-card px-5 py-4 transition-all">
               <summary className="cursor-pointer font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 list-none flex items-center justify-between">
                 <span>{q}</span>
                 <span className="text-[#909090] dark:text-[#717171] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
               </summary>
-              <p className="mt-3 text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-[#e5e5e5] dark:border-[#272727] pt-3">
+              <p className="mt-3 text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-theme pt-3">
                 {a}
               </p>
             </details>

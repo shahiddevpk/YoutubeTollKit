@@ -4,43 +4,43 @@
 
 @layer base {
   :root {
-    --background: #f6f7f9;
+    --background: #f4f5f7;
     --foreground: #0f0f0f;
-    --theme-color: #f6f7f9;
-    --canvas-base: #f6f7f9;
-    --canvas-stripe-a: #f6f7f9;
-    --canvas-stripe-b: #eff2f6;
-    --canvas-dot: rgba(100, 92, 78, 0.11);
-    --canvas-dot-size: 22px;
-    --canvas-stripe-height: 52px;
+    --theme-color: #f4f5f7;
+    --canvas-base: #f4f5f7;
+    --canvas-stripe-a: #f4f5f7;
+    --canvas-stripe-b: #e8ebf0;
+    --canvas-stripe-height: 56px;
     --card: #ffffff;
     --card-foreground: #0f0f0f;
-    --surface: #f2f2f2;
-    --surface-hover: #e5e5e5;
-    --border: #e5e5e5;
+    --surface: #eceef2;
+    --surface-hover: #e0e4ea;
+    --border: #e3e6eb;
     --muted: #606060;
     --subtle: #909090;
     --yt-red: #ff0000;
     --yt-red-hover: #cc0000;
+    --chrome: #ffffff;
   }
 
   .dark {
-    --background: #12161d;
+    --background: #0f111a;
     --foreground: #f1f1f1;
-    --theme-color: #12161d;
-    --canvas-base: #12161d;
-    --canvas-stripe-a: #12161d;
-    --canvas-stripe-b: #171c26;
-    --canvas-dot: rgba(196, 168, 118, 0.085);
-    --card: #181818;
+    --theme-color: #0f111a;
+    --canvas-base: #0f111a;
+    --canvas-stripe-a: #0f111a;
+    --canvas-stripe-b: #161a24;
+    --canvas-stripe-height: 56px;
+    --card: #1c1e26;
     --card-foreground: #f1f1f1;
-    --surface: #272727;
-    --surface-hover: #383838;
-    --border: #272727;
+    --surface: #252932;
+    --surface-hover: #2f3440;
+    --border: #2a2e38;
     --muted: #aaaaaa;
     --subtle: #717171;
     --yt-red: #ff0000;
     --yt-red-hover: #cc0000;
+    --chrome: #0f111a;
   }
 
   html {
@@ -56,11 +56,26 @@
     overflow-x: hidden;
   }
 
-  /* Subtle striped + dot canvas (readable; inspired by dark tech grids, softened for light mode) */
+  /*
+   * Studio-style canvas: wide horizontal bands (like YouTube Studio / your reference).
+   * Light mode = stripes only. Dark mode = stripes + very faint neutral dot grid.
+   */
   .site-canvas {
     background-color: var(--canvas-base);
+    background-image: repeating-linear-gradient(
+      180deg,
+      var(--canvas-stripe-a) 0,
+      var(--canvas-stripe-a) var(--canvas-stripe-height),
+      var(--canvas-stripe-b) var(--canvas-stripe-height),
+      var(--canvas-stripe-b) calc(var(--canvas-stripe-height) * 2)
+    );
+    background-size: 100% calc(var(--canvas-stripe-height) * 2);
+    background-attachment: fixed;
+  }
+
+  .dark .site-canvas {
     background-image:
-      radial-gradient(circle, var(--canvas-dot) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.042) 0.55px, transparent 0.55px),
       repeating-linear-gradient(
         180deg,
         var(--canvas-stripe-a) 0,
@@ -69,9 +84,26 @@
         var(--canvas-stripe-b) calc(var(--canvas-stripe-height) * 2)
       );
     background-size:
-      var(--canvas-dot-size) var(--canvas-dot-size),
+      20px 20px,
       100% calc(var(--canvas-stripe-height) * 2);
-    background-attachment: fixed;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-canvas {
+      background-attachment: scroll;
+    }
+  }
+}
+
+@layer utilities {
+  .bg-card {
+    background-color: var(--card);
+  }
+  .border-theme {
+    border-color: var(--border);
+  }
+  .bg-chrome {
+    background-color: var(--chrome);
   }
 }
 
@@ -80,21 +112,21 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f2f2f2;
+  background: #eceef2;
 }
 .dark ::-webkit-scrollbar-track {
-  background: #12161d;
+  background: #0f111a;
 }
 ::-webkit-scrollbar-thumb {
   background: #cccccc;
   border-radius: 4px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #383838;
+  background: #3a3f4c;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #999999;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background: #4d5362;
 }

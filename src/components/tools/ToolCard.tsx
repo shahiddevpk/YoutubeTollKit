@@ -25,7 +25,7 @@ export function ToolCard({ tool, compact = false }: ToolCardProps) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="group flex flex-col justify-between rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 transition-all hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md hover:-translate-y-0.5"
+      className="group flex flex-col justify-between rounded-2xl border border-theme bg-card p-5 shadow-sm dark:shadow-none transition-all hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md hover:-translate-y-0.5"
     >
       <div>
         {/* Top bar with Badge & Arrow */}

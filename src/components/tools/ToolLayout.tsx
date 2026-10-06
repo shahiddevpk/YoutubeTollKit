@@ -82,7 +82,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
 
       {/* Primary Tool interactive surface */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
-        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 sm:p-7 shadow-sm">
+        <div className="rounded-2xl border border-theme bg-card p-5 sm:p-7 shadow-sm">
           {children}
         </div>
       </section>
@@ -140,7 +140,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
               {tool.faqs.map((faq, index) => (
                 <details
                   key={index}
-                  className="group rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3.5 transition-all"
+                  className="group rounded-xl border border-theme bg-card px-4 py-3.5 transition-all"
                 >
                   <summary className="cursor-pointer font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 list-none flex items-center justify-between">
                     <span>{faq.question}</span>
