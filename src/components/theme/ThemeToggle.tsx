@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import { Monitor, Moon, Sun } from 'lucide-react';
 import {
   applyThemeToDocument,
   readStoredTheme,
+  subscribeTheme,
   type ThemePreference,
 } from '@/lib/theme-storage';
 import { cn } from '@/lib/utils';
@@ -16,12 +17,12 @@ const OPTIONS: { value: ThemePreference; label: string; Icon: typeof Sun }[] = [
 ];
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const [preference, setPreference] = useState<ThemePreference>('light');
+  const preference = useSyncExternalStore(
+    subscribeTheme,
+    readStoredTheme,
+    () => 'dark' as ThemePreference
+  );
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setPreference(readStoredTheme());
-  }, []);
 
   useEffect(() => {
     if (preference !== 'system') return;
@@ -32,7 +33,6 @@ export function ThemeToggle({ className }: { className?: string }) {
   }, [preference]);
 
   const select = (value: ThemePreference) => {
-    setPreference(value);
     applyThemeToDocument(value);
     setOpen(false);
   };
