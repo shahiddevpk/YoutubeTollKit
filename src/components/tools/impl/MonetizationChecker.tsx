@@ -77,6 +77,97 @@ function oauthErrorMessage(code: string | null) {
   return messages[code] || 'Owner verification could not start. Please try again.';
 }
 
+function publicEligibilityLine(result: MonetizationResult) {
+  if (result.fullYppSubscriberThresholdMet) {
+    return {
+      text: 'Public count meets the 1,000-subscriber signal used for full YPP ad-revenue eligibility.',
+      tone: 'positive' as const,
+    };
+  }
+  if (result.expandedYppSubscriberThresholdMet) {
+    return {
+      text: 'Public count meets the 500-subscriber expanded YPP signal, but not the 1,000-subscriber full ad-revenue signal.',
+      tone: 'partial' as const,
+    };
+  }
+  return {
+    text: 'Public count is below the 500-subscriber YPP threshold signals.',
+    tone: 'low' as const,
+  };
+}
+
+function ownerStatusCardCopy(
+  verificationMatchesResult: boolean,
+  verification: OwnerVerificationResult | null
+) {
+  if (!verificationMatchesResult || !verification) {
+    return {
+      headline: 'Unknown without owner sign-in',
+      detail: 'Public YouTube data cannot show YPP or AdSense enrollment for this channel.',
+      tone: 'pending' as const,
+    };
+  }
+  switch (verification.status) {
+    case 'monetized':
+      return {
+        headline: 'Monetized — owner verified',
+        detail: 'Connected account owns this channel and YouTube Analytics returned monetary-metric access.',
+        tone: 'positive' as const,
+      };
+    case 'not_monetized':
+      return {
+        headline: 'Not monetized — owner verified',
+        detail: 'Owner account confirmed; YouTube Analytics monetary access is not available for this channel.',
+        tone: 'negative' as const,
+      };
+    case 'channel_mismatch':
+      return {
+        headline: 'Wrong Google account',
+        detail: 'The signed-in account does not own the channel you checked. Sign in with the channel owner account.',
+        tone: 'warning' as const,
+      };
+    default:
+      return {
+        headline: 'Verification incomplete',
+        detail: verification.message,
+        tone: 'warning' as const,
+      };
+  }
+}
+
+function monetizationAnswerLine(
+  verificationMatchesResult: boolean,
+  verification: OwnerVerificationResult | null
+) {
+  if (verificationMatchesResult && verification?.status === 'monetized') {
+    return {
+      question: 'Is this channel monetized (YPP monetary access)?',
+      answer: 'Yes — confirmed by the channel owner via YouTube Analytics.',
+      answerClass: 'text-emerald-400',
+    };
+  }
+  if (verificationMatchesResult && verification?.status === 'not_monetized') {
+    return {
+      question: 'Is this channel monetized (YPP monetary access)?',
+      answer: 'No — owner verification shows no monetary Analytics access (typical for non-YPP channels).',
+      answerClass: 'text-rose-300',
+    };
+  }
+  if (verificationMatchesResult && verification?.status === 'channel_mismatch') {
+    return {
+      question: 'Is this channel monetized (YPP monetary access)?',
+      answer: 'Not determined — connect the Google account that owns this channel.',
+      answerClass: 'text-amber-300',
+    };
+  }
+  return {
+    question: 'Is this channel monetized (YPP monetary access)?',
+    answer:
+      'Cannot tell from a public check alone. YouTube does not expose another channel’s Partner Program or AdSense status in the public Data API.',
+    answerClass: 'text-amber-200',
+  };
+}
+
 export function MonetizationChecker() {
   const searchParams = useSearchParams();
   const oauthErrorParam = searchParams.get('oauth_error');
@@ -212,6 +303,12 @@ Source: youtubefreetoolkit.com`
   const verificationMatchesResult = Boolean(
     verification && result && verification.channelId && verification.channelId === result.channelId
   );
+
+  const publicEligibility = result ? publicEligibilityLine(result) : null;
+  const ownerCard = ownerStatusCardCopy(verificationMatchesResult, verification);
+  const monetizationAnswer = result
+    ? monetizationAnswerLine(verificationMatchesResult, verification)
+    : null;
 
   return (
     <div className="space-y-6">
@@ -359,6 +456,44 @@ Source: youtubefreetoolkit.com`
             </button>
           </div>
 
+          {monetizationAnswer && publicEligibility && (
+            <div className="rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 p-5 space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Status summary</h4>
+              <div>
+                <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">{monetizationAnswer.question}</p>
+                <p className={`mt-1.5 text-sm font-bold leading-relaxed ${monetizationAnswer.answerClass}`}>
+                  {monetizationAnswer.answer}
+                </p>
+              </div>
+              <div className="border-t border-slate-200 dark:border-slate-800 pt-4">
+                <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Public eligibility signals (not enrollment)</p>
+                <p
+                  className={`mt-1.5 text-sm leading-relaxed ${
+                    publicEligibility.tone === 'positive'
+                      ? 'text-emerald-400 font-medium'
+                      : publicEligibility.tone === 'partial'
+                        ? 'text-amber-300 font-medium'
+                        : 'text-slate-600 dark:text-slate-400'
+                  }`}
+                >
+                  {publicEligibility.text}
+                </p>
+                <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                  Watch hours, Shorts views, policy review, and AdSense linkage are not visible on a public lookup. Confirm final status in{' '}
+                  <a
+                    href="https://studio.youtube.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-slate-700 dark:hover:text-slate-300"
+                  >
+                    YouTube Studio
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5">
               <span className="text-[11px] font-medium text-slate-400">Subscribers</span>
@@ -387,17 +522,34 @@ Source: youtubefreetoolkit.com`
                 {result.fullYppSubscriberThresholdMet ? '1,000 subscriber threshold met' : 'Below 1,000 subscribers'}
               </p>
             </div>
-            <div className="rounded-xl border border-blue-500/30 bg-blue-950/10 p-4">
-              <span className="text-[11px] uppercase tracking-wider text-blue-300/80 font-semibold">Owner-verified YPP status</span>
-              <p className="mt-2 text-sm font-bold text-blue-200">
-                {verificationMatchesResult
-                  ? verification?.status === 'monetized'
-                    ? 'Monetized - verified'
-                    : verification?.status === 'not_monetized'
-                      ? 'Not monetized - verified'
-                      : 'Verification needs attention'
-                  : 'Owner verification available'}
+            <div
+              className={`rounded-xl border p-4 ${
+                ownerCard.tone === 'positive'
+                  ? 'border-emerald-500/35 bg-emerald-950/15'
+                  : ownerCard.tone === 'negative'
+                    ? 'border-rose-500/35 bg-rose-950/15'
+                    : ownerCard.tone === 'warning'
+                      ? 'border-amber-500/35 bg-amber-950/15'
+                      : 'border-blue-500/30 bg-blue-950/10'
+              }`}
+            >
+              <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
+                Official YPP enrollment (owner check)
+              </span>
+              <p
+                className={`mt-2 text-sm font-bold ${
+                  ownerCard.tone === 'positive'
+                    ? 'text-emerald-400'
+                    : ownerCard.tone === 'negative'
+                      ? 'text-rose-300'
+                      : ownerCard.tone === 'warning'
+                        ? 'text-amber-300'
+                        : 'text-amber-200'
+                }`}
+              >
+                {ownerCard.headline}
               </p>
+              <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{ownerCard.detail}</p>
             </div>
           </div>
 
@@ -410,9 +562,13 @@ Source: youtubefreetoolkit.com`
                   <LockKeyhole className="h-5 w-5 text-emerald-400" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-bold text-slate-900 dark:text-white">Own this channel? Verify your channel&apos;s YPP monetary access</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-white">
+                    Own this channel? Get a yes/no monetization answer
+                  </h4>
                   <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Connect the channel-owner Google account. We request read-only YouTube account access plus read-only YouTube monetary analytics access, verify that the connected account owns this channel, then test official YouTube Analytics monetary-metric access.
+                    Public data cannot confirm monetization. If you manage this channel, sign in with that Google account
+                    once — we use read-only YouTube + monetary Analytics access to report whether official revenue metrics
+                    are available (the same signal YouTube uses for YPP monetary reporting).
                   </p>
                 </div>
               </div>
