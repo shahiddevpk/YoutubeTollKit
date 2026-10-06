@@ -17,7 +17,7 @@ import { ChannelCompare } from './impl/ChannelCompare';
 import { UploadChecklist } from './impl/UploadChecklist';
 
 const monetizationFallback = (
-  <div className="min-h-40 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 p-8 text-center text-sm text-slate-400">
+  <div className="min-h-40 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 text-center text-sm text-[#909090] dark:text-[#717171]">
     Loading monetization checker…
   </div>
 );

@@ -19,7 +19,7 @@ export default async function NotFound() {
   const popular = TOOLS_REGISTRY.filter((t) => t.featured).slice(0, 5);
 
   return (
-    <div className="min-h-[70vh] bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] py-16 transition-colors">
+    <div className="min-h-[70vh] text-[#0f0f0f] dark:text-[#f1f1f1] py-16 transition-colors">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">

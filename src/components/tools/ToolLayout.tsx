@@ -33,7 +33,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
     .slice(0, 4);
 
   return (
-    <article className="min-h-screen bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
+    <article className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}

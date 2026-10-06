@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-[#e5e5e5] dark:border-[#272727] bg-white/95 dark:bg-[#0f0f0f]/95 backdrop-blur-md transition-colors">
+      <header className="sticky top-0 z-40 w-full border-b border-[#e5e5e5] dark:border-[#272727] bg-white/92 dark:bg-[#12161d]/92 backdrop-blur-md transition-colors">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">

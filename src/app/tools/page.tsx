@@ -43,7 +43,7 @@ export async function generateMetadata({ searchParams }: ToolsPageProps): Promis
 
 export default function ToolsIndexPage() {
   return (
-    <div className="min-h-screen bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
+    <div className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
       <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">

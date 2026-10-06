@@ -7,7 +7,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#0f0f0f] text-[#606060] dark:text-[#aaaaaa] transition-colors">
+    <footer className="border-t border-[#e5e5e5] dark:border-[#272727] bg-white/85 dark:bg-[#141820]/90 backdrop-blur-md text-[#606060] dark:text-[#aaaaaa] transition-colors">
       {/* Top Banner Highlight */}
       <div className="border-b border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2]/70 dark:bg-[#141414] py-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

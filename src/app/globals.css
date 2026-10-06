@@ -4,9 +4,15 @@
 
 @layer base {
   :root {
-    --background: #f9f9f9;
+    --background: #f6f7f9;
     --foreground: #0f0f0f;
-    --theme-color: #f9f9f9;
+    --theme-color: #f6f7f9;
+    --canvas-base: #f6f7f9;
+    --canvas-stripe-a: #f6f7f9;
+    --canvas-stripe-b: #eff2f6;
+    --canvas-dot: rgba(100, 92, 78, 0.11);
+    --canvas-dot-size: 22px;
+    --canvas-stripe-height: 52px;
     --card: #ffffff;
     --card-foreground: #0f0f0f;
     --surface: #f2f2f2;
@@ -19,9 +25,13 @@
   }
 
   .dark {
-    --background: #0f0f0f;
+    --background: #12161d;
     --foreground: #f1f1f1;
-    --theme-color: #0f0f0f;
+    --theme-color: #12161d;
+    --canvas-base: #12161d;
+    --canvas-stripe-a: #12161d;
+    --canvas-stripe-b: #171c26;
+    --canvas-dot: rgba(196, 168, 118, 0.085);
     --card: #181818;
     --card-foreground: #f1f1f1;
     --surface: #272727;
@@ -41,10 +51,27 @@
   }
 
   body {
-    background-color: var(--background);
     color: var(--foreground);
     min-height: 100vh;
     overflow-x: hidden;
+  }
+
+  /* Subtle striped + dot canvas (readable; inspired by dark tech grids, softened for light mode) */
+  .site-canvas {
+    background-color: var(--canvas-base);
+    background-image:
+      radial-gradient(circle, var(--canvas-dot) 1px, transparent 1px),
+      repeating-linear-gradient(
+        180deg,
+        var(--canvas-stripe-a) 0,
+        var(--canvas-stripe-a) var(--canvas-stripe-height),
+        var(--canvas-stripe-b) var(--canvas-stripe-height),
+        var(--canvas-stripe-b) calc(var(--canvas-stripe-height) * 2)
+      );
+    background-size:
+      var(--canvas-dot-size) var(--canvas-dot-size),
+      100% calc(var(--canvas-stripe-height) * 2);
+    background-attachment: fixed;
   }
 }
 
@@ -56,7 +83,7 @@
   background: #f2f2f2;
 }
 .dark ::-webkit-scrollbar-track {
-  background: #0f0f0f;
+  background: #12161d;
 }
 ::-webkit-scrollbar-thumb {
   background: #cccccc;

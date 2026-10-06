@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     .filter((p): p is typeof post => Boolean(p));
 
   return (
-    <article className="min-h-screen bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] pb-20 transition-colors">
+    <article className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] pb-20 transition-colors">
       {/* Inject Structured Data */}
       <script
         type="application/ld+json"
