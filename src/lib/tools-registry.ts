@@ -390,6 +390,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'CPM (Cost Per Mille) is what advertisers pay for 1,000 ad impressions before YouTube takes its 45% cut. RPM (Revenue Per Mille) is the actual net earnings a creator receives per 1,000 total video views after the YouTube split.',
       },
+      {
+        question: 'How do sponsorships factor into total channel earnings?',
+        answer:
+          'Sponsorships operate independently of AdSense and are paid directly by brands. Typical dedicated sponsorship rates range from $20 to $45 per 1,000 anticipated views, often dwarfing ad revenue for niche channels.',
+      },
+      {
+        question: 'Why does my real YouTube payout differ from online calculators?',
+        answer:
+          'Calculators assume an even distribution of monetized playbacks. In reality, viewers using ad blockers, viewers in lower-CPM countries, and seasonality (Q4 holiday surge vs Q1 budget drop) significantly shift monthly income.',
+      },
     ],
     relatedToolSlugs: ['monetization-checker', 'rpm-calculator', 'seo-score-checker'],
     updatedAt: '2026-09-30',
@@ -454,6 +464,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Between 50 and 70 characters. Titles under 70 characters prevent truncation on mobile devices while providing enough room for primary and secondary keywords.',
       },
+      {
+        question: 'Can updating metadata revive older, flatlining videos?',
+        answer:
+          'Yes. Refreshing the title, thumbnail, and chapter markers on older evergreen tutorials frequently triggers renewed impressions in browse features and Google Search Key Moments.',
+      },
+      {
+        question: 'Can description keyword density trigger spam penalties?',
+        answer:
+          'Yes. Stuffing blocks of disconnected keywords or repeating words unnaturally violates YouTube misleading metadata policies. Write natural sentences that incorporate keywords contextually.',
+      },
     ],
     relatedToolSlugs: ['tag-extractor', 'title-description-analyzer', 'hashtag-generator'],
     updatedAt: '2026-09-30',
@@ -510,6 +530,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         question: 'Why does YouTube show abbreviated subscriber counts?',
         answer:
           'In 2019, YouTube standardized public subscriber counts to 3 significant figures (e.g., 100K, 1.25M) to reduce creator stress and maintain platform consistency.',
+      },
+      {
+        question: 'Can I use this subscriber counter as an OBS browser source overlay?',
+        answer:
+          'Yes. Copy the tool URL or open fullscreen mode and add it as a Browser Source inside OBS Studio, Streamlabs, or vMix. You can apply custom CSS or crop the window to show just the counter numbers with a transparent or dark background for live celebration streams.',
+      },
+      {
+        question: 'How frequently does the live subscriber count update?',
+        answer:
+          'The counter refreshes according to official YouTube Data API v3 poll cycles. Because YouTube rounds public counts to 3 significant figures for channels over 1,000 subscribers, the display updates whenever YouTube\'s servers publish the next milestone increment.',
       },
     ],
     relatedToolSlugs: ['channel-id-finder', 'monetization-checker', 'earnings-calculator'],
@@ -575,6 +605,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Avoid the bottom-right corner where YouTube places the video duration timestamp badge (e.g. 10:24), which blocks underlying text and graphics.',
       },
+      {
+        question: 'Why does my thumbnail look blurry on high-resolution displays?',
+        answer:
+          'If you upload an image smaller than 1280x720 pixels or heavily compressed JPEG, YouTube\'s responsive player will upscale it on 1080p and 4K displays, causing blurriness and pixelation. Always export your thumbnail at 1280x720 or 1920x1080 in sRGB color space.',
+      },
+      {
+        question: 'Should I design separate thumbnails for dark mode and light mode?',
+        answer:
+          'You should test your design against both backgrounds. Over 60% of active YouTube mobile and desktop users browse in Dark Theme. Thumbnails with pure black borders or dark edges can blend into the feed, losing visual definition. Use high-contrast borders or bright focal points to stand out in both modes.',
+      },
     ],
     relatedToolSlugs: ['shorts-safe-zone', 'title-description-analyzer', 'seo-score-checker'],
     updatedAt: '2026-09-30',
@@ -633,6 +673,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'On desktop, approximately the first 150-200 characters (2-3 lines) appear before the "Show More" fold. On mobile, usually only the first 100 characters are visible.',
       },
+      {
+        question: 'How long should my YouTube title be for best click-through rate (CTR)?',
+        answer:
+          'While YouTube allows up to 100 characters in titles, mobile feeds truncate titles at approximately 50 to 60 characters depending on screen width. Aim for 50-65 characters, front-loading your primary keyword and emotional hook within the first 45 characters.',
+      },
+      {
+        question: 'Do tags or descriptions matter more for YouTube algorithm recommendations?',
+        answer:
+          'Descriptions matter significantly more than tags. YouTube\'s recommendation engine indexes your description\'s first 3 lines and naturally spoken keywords to categorize content and match search queries. Tags are primarily used by YouTube to catch common spelling errors.',
+      },
     ],
     relatedToolSlugs: ['seo-score-checker', 'tag-extractor', 'hashtag-generator'],
     updatedAt: '2026-09-30',
@@ -690,6 +740,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         question: 'How many hashtags should I use on YouTube?',
         answer:
           'YouTube recommends using 3 to 5 relevant hashtags per video. The first 3 hashtags in your description will appear above your video title on desktop and mobile.',
+      },
+      {
+        question: 'Where should I place hashtags in my YouTube video upload?',
+        answer:
+          'You can place hashtags anywhere in your video description. The first three hashtags listed in your description automatically display above your video title on the watch page. Avoid stuffing hashtags into your video title itself, as it reduces title readability and CTR.',
+      },
+      {
+        question: 'What is the penalty for using too many hashtags on YouTube?',
+        answer:
+          'If you add more than 60 hashtags to a single video, YouTube\'s algorithm ignores all hashtags on that video entirely. Excessive hashtag usage can also trigger YouTube\'s spam and misleading metadata filters, which can reduce video impressions.',
       },
     ],
     relatedToolSlugs: ['tag-extractor', 'shorts-safe-zone', 'seo-score-checker'],
@@ -754,6 +814,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'The safe zone is the central vertical area of the screen (avoiding the bottom 25% where title/sound info sits and the right 15% where action buttons reside) where captions and graphics remain 100% visible.',
       },
+      {
+        question: 'Why are my auto-generated captions covered by the Shorts UI?',
+        answer:
+          'By default, many editing apps place subtitles near the bottom center of the video frame. On YouTube Shorts, this zone is heavily obstructed by the channel name, subscribe button, and audio title overlay. Keep your captions positioned in the middle third of the vertical frame (between 35% and 65% height).',
+      },
+      {
+        question: 'Does YouTube Shorts support 4K 2160x3840 resolution?',
+        answer:
+          'Yes, you can upload vertical videos in 4K (2160x3840), but YouTube renders Shorts at a maximum of 1080x1920 (1080p 60fps) on mobile screens. Uploading in 4K ensures superior sharpness due to higher bitrate encoding before YouTube compresses the file.',
+      },
     ],
     relatedToolSlugs: ['thumbnail-preview', 'hashtag-generator', 'title-description-analyzer'],
     updatedAt: '2026-09-30',
@@ -812,6 +882,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Common reasons include: not starting the first chapter at 00:00, having fewer than 3 timestamps, chapters shorter than 10 seconds, or formatting issues. Our tool automatically detects and repairs these issues.',
       },
+      {
+        question: 'What are the exact YouTube requirements for video chapters to activate?',
+        answer:
+          'To enable chapters: (1) The first timestamp must start at 00:00, (2) You must list at least 3 chapters in ascending chronological order, and (3) Each chapter must be at least 10 seconds long. If any of these conditions fail, YouTube will not split your video scrub bar.',
+      },
+      {
+        question: 'How do YouTube timestamps help search rankings on Google?',
+        answer:
+          'Valid timestamps allow Google Search to generate "Key Moments" rich snippets directly in Google SERPs. Searchers can jump directly to the specific answer in your video, which dramatically increases external search traffic and click-through rates from Google Search.',
+      },
     ],
     relatedToolSlugs: ['title-description-analyzer', 'seo-score-checker'],
     updatedAt: '2026-09-30',
@@ -867,6 +947,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'What is the formula for calculating YouTube RPM?',
         answer: 'RPM = (Total Estimated Earnings / Total Views) × 1,000.',
+      },
+      {
+        question: 'Why is my YouTube RPM lower than my CPM?',
+        answer:
+          'CPM is what advertisers pay for 1,000 ad impressions before YouTube takes its 45% revenue cut. RPM is what you actually earn per 1,000 total video views after YouTube\'s cut, factoring in non-monetized views, ad-blockers, and viewer demographics. Hence, RPM is typically 50-60% of CPM.',
+      },
+      {
+        question: 'Which YouTube niches have the highest RPM in 2026?',
+        answer:
+          'Personal Finance, SaaS / Software tutorials, Real Estate, B2B Marketing, and Legal topics consistently command the highest RPMs ($12 - $35+), while broad entertainment, reaction videos, and gaming walkthroughs typically range from $1.50 to $5.00 RPM.',
       },
     ],
     relatedToolSlugs: ['earnings-calculator', 'monetization-checker'],
@@ -926,6 +1016,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Enter both channel handles or URLs. We fetch public subscribers, total views, video counts, and channel IDs to display a side-by-side public stats comparison.',
       },
+      {
+        question: 'What key metrics should I compare between two YouTube channels?',
+        answer:
+          'Compare upload cadence, average views per video (calculated as lifetime views divided by total uploads), subscriber-to-view ratios, and channel age. A smaller channel with higher average views per upload often has stronger audience engagement than a large channel with stagnant viewership.',
+      },
+      {
+        question: 'Can I compare YouTube channel earnings or private analytics with this tool?',
+        answer:
+          'No. Private YouTube Studio metrics (such as exact revenue, audience retention graphs, and click-through rate) are only accessible to verified channel owners. This tool analyzes verified public channel data to benchmark competitive performance ethically.',
+      },
     ],
     relatedToolSlugs: ['channel-id-finder', 'live-subscriber-count', 'earnings-calculator'],
     updatedAt: '2026-10-01',
@@ -983,6 +1083,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         question: 'What is the most critical item on a YouTube pre-upload checklist?',
         answer:
           'Ensuring your thumbnail is legible on small mobile screens without text being obscured by the bottom-right timestamp badge, paired with a keyword-focused title under 70 characters.',
+      },
+      {
+        question: 'Why is audio loudness normalization (-14 LUFS) important before uploading?',
+        answer:
+          'YouTube applies automatic loudness normalization to all uploaded audio, targeting approximately -14 LUFS (Integrated Loudness). If your audio is louder than -14 LUFS, YouTube\'s compressor turns down your volume, which can cause clipping or muddiness. Mastering to -14 LUFS guarantees clean, consistent volume.',
+      },
+      {
+        question: 'Should I publish my video as Unlisted before making it Public?',
+        answer:
+          'Yes. Setting your upload to Unlisted for 1 to 2 hours before publishing allows YouTube to complete high-definition (1080p/4K) and VP9/AV1 video processing, finish automatic copyright checks (Content ID), and generate auto-captions so early viewers get the highest quality experience.',
       },
     ],
     relatedToolSlugs: ['seo-score-checker', 'thumbnail-preview', 'timestamp-validator'],

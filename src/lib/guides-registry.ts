@@ -175,6 +175,22 @@ export const GUIDE_HUBS: GuideHub[] = [
           'When you localize videos, adapt titles and descriptions for each language instead of machine-translating English metadata alone. Unique localized copy avoids duplicate-signal confusion and reads more naturally to regional audiences.',
         ],
       },
+      {
+        id: 'voice-search-conversational',
+        heading: 'Voice search and conversational SEO',
+        paragraphs: [
+          'With the expansion of smart TVs, mobile voice search, and AI-assisted search summaries, an increasing proportion of YouTube queries are conversational rather than fragmented keyword strings.',
+          'Incorporate natural phrasing into descriptions and timestamps (e.g., "how do I fix audio latency in OBS" rather than merely "OBS audio fix"). Natural sentence structure helps YouTube semantic matching engines connect your solutions with intent-driven searches.',
+        ],
+      },
+      {
+        id: 'evergreen-refresh',
+        heading: 'Evergreen keyword refresh strategies',
+        paragraphs: [
+          'Videos that once drove steady organic traffic often experience impressions decay after 12 to 18 months. Before assuming the video is dead, perform a metadata refresh pass.',
+          'Review search terms in YouTube Studio to see what queries currently bring impressions. If searchers are finding you through an unexpected angle, update the title to feature that keyword directly, refresh the year in the thumbnail, and clarify chapter headers.',
+        ],
+      },
     ],
     toolSlugs: [
       'seo-score-checker',
@@ -193,11 +209,21 @@ export const GUIDE_HUBS: GuideHub[] = [
       {
         question: 'What matters most for ranking in 2026?',
         answer:
-          'Click-through rate and viewer retention remain primary after initial impressions. Metadata helps YouTube test the right audience.',
+          'Click-through rate (CTR), average percentage viewed (retention), and end-session satisfaction remain primary after initial impressions. Metadata helps YouTube test the right audience.',
       },
       {
         question: 'How many tags should I use?',
-        answer: 'A focused set of relevant tags beats maxing the limit. Many creators use roughly 5–12 precise tags.',
+        answer: 'A focused set of relevant tags beats maxing the limit. Many creators use roughly 5–12 precise tags that cover common misspellings and specific model names.',
+      },
+      {
+        question: 'How long should I wait before changing an underperforming title or thumbnail?',
+        answer:
+          'Wait at least 24 to 72 hours and monitor impression click-through rate in YouTube Studio. If impressions are high but CTR is below your channel average (typically under 3%), test a refreshed thumbnail or shorter title.',
+      },
+      {
+        question: 'Do video tags impact suggested video recommendations?',
+        answer:
+          'Tags provide minor topical disambiguation, but suggested video placement is overwhelmingly driven by co-viewing patterns (what viewers watch next) and viewer retention.',
       },
     ],
   },
@@ -262,6 +288,22 @@ export const GUIDE_HUBS: GuideHub[] = [
           'Keep a short internal runbook that lists which tools on this site you use for IDs, counters, and comparisons so new team members do not improvise risky workflows under deadline pressure.',
         ],
       },
+      {
+        id: 'resolving-yellow-dollar-signs',
+        heading: 'Dealing with "Limited Ads" yellow dollar icons',
+        paragraphs: [
+          'When automated content classifiers flag a video with a yellow dollar sign ("Limited or no ads"), it usually stems from aggressive profanity in the opening 30 seconds, controversial sensitive themes, or misleading graphic thumbnails.',
+          'Review the advertiser-friendly guidelines in YouTube Studio. If your content complies, request a human review. Human reviews frequently overturn false-positive automated flags within 24 to 48 hours.',
+        ],
+      },
+      {
+        id: 'rss-feed-maintenance',
+        heading: 'Restoring stale or broken RSS feeds',
+        paragraphs: [
+          'If a Discord or Slack bot stops announcing new uploads, check whether the feed URL uses an obsolete username format. Replace vanity paths with the canonical `https://www.youtube.com/feeds/videos.xml?channel_id=UC...` endpoint.',
+          'Also verify that newly published videos are set to "Public" rather than "Unlisted" or "Members-only", as private and unlisted videos are intentionally excluded from public XML feeds.',
+        ],
+      },
     ],
     toolSlugs: ['channel-id-finder', 'live-subscriber-counter', 'channel-compare', 'monetization-checker'],
     blogSlugs: [
@@ -273,12 +315,22 @@ export const GUIDE_HUBS: GuideHub[] = [
       {
         question: 'Why does my subscriber count differ between tools and Studio?',
         answer:
-          'Public API values can lag slightly or display rounded figures. Use Studio for official reporting.',
+          'Public API values can lag slightly or display rounded figures. Use YouTube Studio for exact accounting.',
       },
       {
         question: 'Can I automate scraping competitor channels?',
         answer:
           'Aggressive scraping that ignores API quotas or Terms is risky. Use rate-limited official APIs and store only what policies allow.',
+      },
+      {
+        question: 'What causes YouTube API quota errors on third-party tools?',
+        answer:
+          'YouTube imposes a default 10,000-unit daily quota on API projects. Heavy operations like search consume 100 units per request. Quality tools implement caching to avoid exhausting quotas.',
+      },
+      {
+        question: 'Can a terminated YouTube channel ID be recovered or reused?',
+        answer:
+          'No. Terminated channels cannot be accessed via the Data API, and YouTube does not reassign unique UC identifiers to new channels.',
       },
     ],
   },

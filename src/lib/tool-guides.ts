@@ -120,10 +120,24 @@ const GUIDES: Record<string, ToolGuide> = {
         ],
       },
       {
+        heading: 'Channel ID vs Handle vs Custom URL',
+        paragraphs: [
+          'A YouTube @handle (e.g., @mkbhd) is a creator-chosen handle introduced for social tagging, mentions, and friendly sharing. Handles can be changed twice within a 14-day window.',
+          'A legacy custom URL (/c/name or /user/name) is a deprecated vanity routing format from older YouTube systems. In contrast, the canonical 24-character UC identifier (e.g., UCX6OQ3DkcsbYNE6H8uQQuVA) never changes, even if a creator undergoes complete rebrands, ownership transfers, or handle updates.',
+        ],
+      },
+      {
         heading: 'Supported inputs',
         paragraphs: [
           'Paste a modern @handle, a /channel/UC… URL, a bare UC ID, or a link to a public video uploaded by the channel. We resolve redirects and return the canonical ID plus helpful public profile fields when the API makes them available.',
           'Private, deleted, or terminated channels cannot be resolved. If a video is removed or restricted, lookup may fail until you supply another public URL.',
+        ],
+      },
+      {
+        heading: 'Integrating Channel IDs with Webhooks & Discord Bots',
+        paragraphs: [
+          'To receive real-time notifications when a channel uploads, Discord bots (like MEE6 or Carl-bot) and RSS listeners require the UC identifier formatted as: `https://www.youtube.com/feeds/videos.xml?channel_id=UC...`.',
+          'Using the UC ID ensures your notification pipeline will never break when the channel owner adjusts their display name or switches handles.',
         ],
       },
       {
@@ -143,6 +157,20 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Creators can add tags in YouTube Studio to clarify topics, capture alternate spellings, and support discovery. Tags are not the strongest ranking signal compared with titles, descriptions, and thumbnails, but they still help with relevance and competitor research.',
           'This tool reads tags that creators chose to attach to public videos. It does not reveal private studio drafts, hidden server fields, or metadata from videos you cannot access.',
+        ],
+      },
+      {
+        heading: 'How YouTube interprets video tags in 2026',
+        paragraphs: [
+          'According to YouTube official creator documentation, tags are primarily useful if the content of your video is commonly misspelled or searched with varied regional terminology (e.g., "grey" vs "gray", or technical product model codes).',
+          'Tags provide secondary disambiguation context. YouTube natural language processing engines read your video spoken transcript, title, and description first. Tags serve as reinforcing signals for ambiguous keywords.',
+        ],
+      },
+      {
+        heading: 'Tag clustering and gap analysis workflow',
+        paragraphs: [
+          'Rather than copying a competitor tag block verbatim, inspect tags across 3 to 5 top-ranking videos for your target search query.',
+          'Identify common thematic clusters (e.g., broad category, core mechanism, tool names, problem statements). Craft a unique tag block for your upload that covers keyword variations without stuffing unrelated terms.',
         ],
       },
       {
@@ -172,10 +200,24 @@ const GUIDES: Record<string, ToolGuide> = {
         ],
       },
       {
+        heading: 'Key variables that shift creator revenue',
+        paragraphs: [
+          'Audience geography is the single largest determinant of RPM. Viewers in Tier-1 countries (US, UK, Canada, Australia, Germany) command significantly higher advertiser bids than viewers in regions with developing digital ad markets.',
+          'Viewer age and purchase intent also dictate CPM. Topics revolving around B2B software, personal finance, real estate, and enterprise technology routinely achieve RPMs above $15–$30, whereas gaming and viral meme content average between $1.50 and $4.00.',
+        ],
+      },
+      {
         heading: 'Understanding RPM vs CPM',
         paragraphs: [
           'CPM usually refers to what advertisers pay per thousand ad impressions. RPM reflects what creators earn per thousand views after YouTube’s revenue share and non-ad sources are considered.',
           'Niche presets in the tool are illustrative benchmarks, not guarantees. Adjust sliders to match your own historical Analytics when possible.',
+        ],
+      },
+      {
+        heading: 'Seasonality and the Q1 vs Q4 earnings swing',
+        paragraphs: [
+          'Ad spend is cyclical. In Q4 (October through December), brands exhaust remaining annual budgets for holiday shopping and Black Friday, driving RPMs to yearly peaks.',
+          'In January (Q1), ad budgets reset, often causing creator earnings to drop by 30% to 50% overnight despite identical view counts. Prudent creators plan cash flow using conservative annual average RPMs.',
         ],
       },
       {
@@ -195,6 +237,20 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'A strong metadata checklist improves clarity for viewers and search systems, but watch time, click-through rate, and satisfaction still dominate distribution on YouTube.',
           'This audit scores title length, description structure, tags, and related checklist items so you can fix obvious issues before publishing or refreshing a video.',
+        ],
+      },
+      {
+        heading: 'Balancing CTR with audience retention',
+        paragraphs: [
+          'A high SEO score ensures search crawlers understand your video topic, but click-through rate (CTR) and average view duration (AVD) dictate whether YouTube recommends the video on home feeds and suggested bars.',
+          'Never use sensationalized titles that score well for length but mislead viewers. When viewers bounce within the first 15 seconds, algorithmic impressions drop sharply regardless of keyword density.',
+        ],
+      },
+      {
+        heading: 'Updating historical metadata on older videos',
+        paragraphs: [
+          'Refreshing titles, descriptions, and chapters on existing videos that have lost momentum is a proven optimization technique.',
+          'Audit your back catalog for outdated year references (e.g., updating 2024 to 2026), broken external links, or missing timestamps. A renewed title and clean chapters can revive impressions for evergreen tutorials.',
         ],
       },
       {
@@ -224,6 +280,20 @@ const GUIDES: Record<string, ToolGuide> = {
         ],
       },
       {
+        heading: 'Understanding YouTube abbreviated subscriber count policy',
+        paragraphs: [
+          'Since September 2019, YouTube standardizes public subscriber counts across all third-party platforms to prevent real-time metric tracking drama.',
+          'Channels with under 1,000 subscribers display exact counts. Channels between 1,000 and 9,999 update every 10 subscribers. Between 10,000 and 99,999 update every 100 subscribers, and channels above 1M update in 10,000 increments.',
+        ],
+      },
+      {
+        heading: 'Technical best practices for streaming overlays',
+        paragraphs: [
+          'When adding a live counter into OBS Studio, vMix, or Streamlabs via Browser Source, configure custom CSS with transparent backgrounds and high-contrast typography.',
+          'Set reasonable refresh rates (30–60 seconds). Polling too aggressively can burn out your local machine network buffers and trigger rate limits on public endpoints.',
+        ],
+      },
+      {
         heading: 'Overlay and presentation tips',
         paragraphs: [
           'When embedding counts in OBS or Streamlabs, choose high-contrast typography and avoid covering safe zones on mobile-oriented layouts.',
@@ -247,6 +317,20 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Thumbnails compete for attention in crowded feeds. Testing contrast, text size, and focal points against light and dark themes reduces surprises after upload.',
           'For published videos, we load standard YouTube thumbnail URLs. For drafts, upload an image to see approximate framing with duration badges and grid layouts.',
+        ],
+      },
+      {
+        heading: 'The 3-second thumbnail contrast test',
+        paragraphs: [
+          'Viewers scan YouTube feeds at high speed. A successful thumbnail passes the 3-second test: within three seconds, a viewer should discern the subject, emotional tone, and promise.',
+          'Test your draft image at small sizes (under 300px wide) in both light mode and dark mode. If primary text elements or focal points blend into surrounding feed borders, adjust brightness, outline strokes, or background separation.',
+        ],
+      },
+      {
+        heading: 'Mobile safe margins and duration badge collisions',
+        paragraphs: [
+          'YouTube overlays a black timestamp badge (e.g., 12:45) in the bottom-right corner of every thumbnail. Crucial text, faces, or branding placed in that corner will be completely obscured.',
+          'Maintain a minimum 15% margin along the bottom-right edge. Keep your main focal element centered or slightly left-aligned to guarantee visibility across mobile phones, tablets, and smart TVs.',
         ],
       },
       {
@@ -276,6 +360,20 @@ const GUIDES: Record<string, ToolGuide> = {
         ],
       },
       {
+        heading: 'Front-loading core promises for 50-character cutoffs',
+        paragraphs: [
+          'On mobile devices and sidebar recommended feeds, titles beyond 45–55 characters are routinely truncated with ellipsis (...).',
+          'If your title is "How to Build an App in 2026: A Full Beginner Guide", mobile viewers may only see "How to Build an App in 2026: A Full...". Front-load the action verb and subject so the core value proposition remains intact on all screen sizes.',
+        ],
+      },
+      {
+        heading: 'Structuring descriptions for search and retention',
+        paragraphs: [
+          'The first 2–3 lines of your description (about 120 characters) appear in Google search snippets and YouTube search result cards. Treat this space as an extension of your title promise.',
+          'Below the fold, organize content logically: detailed summary, video timestamps, resource links, affiliate disclosures, social handles, and gear credits. Avoid repetitive keyword dumping.',
+        ],
+      },
+      {
         heading: 'Writing for people first',
         paragraphs: [
           'Keyword stuffing hurts clarity. Write titles that promise a specific outcome, then support that promise in the opening description lines.',
@@ -299,6 +397,20 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'YouTube displays a small number of hashtags above titles when they appear in the description. Using a focused set of relevant hashtags is generally better than maxing out the limit.',
           'Hashtags help viewers browse topic pages; they do not replace strong titles, thumbnails, or audience retention.',
+        ],
+      },
+      {
+        heading: 'Hashtags vs tags vs keywords: algorithmic differences',
+        paragraphs: [
+          'Hashtags are clickable discovery links that lead directly to dedicated YouTube hashtag landing pages. They appear in blue above or below your title and inside video descriptions.',
+          'Video tags are hidden backend metadata primarily used for spelling disambiguation. Descriptive keywords live directly in your natural prose. Each serves a distinct technical purpose in the YouTube ecosystem.',
+        ],
+      },
+      {
+        heading: 'Avoiding over-tagging and spam flags',
+        paragraphs: [
+          'YouTube policies state that if a video includes more than 60 hashtags, the algorithm will ignore all hashtags on that upload. Overuse can also trigger automated spam flags.',
+          'Best practice is to include 3 to 5 highly relevant hashtags: one broad niche tag (#tech), one specific topic tag (#nextjs), and one format tag (#shorts or #tutorial).',
         ],
       },
       {
@@ -328,6 +440,20 @@ const GUIDES: Record<string, ToolGuide> = {
         ],
       },
       {
+        heading: 'Understanding Shorts dynamic UI layers',
+        paragraphs: [
+          'The bottom 20% to 25% of a Short is covered by the channel avatar, handle, subscribe button, video title, and audio track credit. The top 10% is occupied by search and camera icons.',
+          'The right edge features the like, dislike, comment, share, and sound remix buttons. Keep all critical text, speech captions, diagrams, and focal points strictly within the central 1080x1400 area.',
+        ],
+      },
+      {
+        heading: 'Technical export settings for 9:16 vertical video',
+        paragraphs: [
+          'Standard YouTube Shorts resolution is 1080x1920 pixels (9:16 aspect ratio). Videos should be exported at 30fps or 60fps using the H.264 or HEVC (H.265) video codec with AAC audio at 320 kbps.',
+          'Ensure your video duration does not exceed 60 seconds (or current YouTube Shorts limit). Videos longer by even a single frame will be uploaded as standard long-form videos without the vertical feed carousel.',
+        ],
+      },
+      {
         heading: 'Exporting the PNG guide',
         paragraphs: [
           'Saving the transparent overlay is a design aid for editors in CapCut, Premiere, or DaVinci. It is not a YouTube video download and does not access YouTube servers beyond what you upload locally.',
@@ -351,6 +477,20 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'YouTube chapters require the first timestamp to start at 00:00, at least three chapters, and minimum segment lengths. Correct formatting can unlock key moments in search when YouTube supports them for your video.',
           'This validator sorts timestamps, checks spacing, and highlights syntax mistakes before you paste chapters into a description.',
+        ],
+      },
+      {
+        heading: 'Unlocking Google search key moments',
+        paragraphs: [
+          'When video chapters meet formatting standards, Google Search can index individual segments directly on search results pages as clickable "Key Moments".',
+          'This allows searchers to jump straight to the exact second that answers their query (e.g., "Install Node.js" at 03:15), significantly expanding your video organic reach beyond YouTube search alone.',
+        ],
+      },
+      {
+        heading: 'Minimum duration and syntax rules',
+        paragraphs: [
+          'Each chapter segment must be at least 10 seconds long. Chapters shorter than 10 seconds will prevent the chapter scrubber from rendering on the video player.',
+          'Timestamps must be chronological and formatted as mm:ss or hh:mm:ss with at least one space between the timestamp and the chapter label (e.g., "00:00 Introduction").',
         ],
       },
       {
@@ -380,6 +520,20 @@ const GUIDES: Record<string, ToolGuide> = {
         ],
       },
       {
+        heading: 'The role of monetized playback percentage',
+        paragraphs: [
+          'A video with 100,000 views does not receive 100,000 ad impressions. The monetized playback percentage represents the fraction of views where at least one ad was successfully served.',
+          'Users on YouTube Premium, users with ad blockers, or impressions served when advertiser bids are low reduce monetized playbacks. If your monetized playback rate is only 40%, your real RPM will reflect that spread.',
+        ],
+      },
+      {
+        heading: 'Mid-roll ad placement on videos over 8 minutes',
+        paragraphs: [
+          'Videos longer than 8 minutes qualify for manual mid-roll ad placements in YouTube Studio. Strategic placement at natural narrative pauses can double or triple realized RPM without disrupting viewer retention.',
+          'Avoid inserting mid-rolls in the middle of sentences or cliffhangers, which spikes viewer drop-off.',
+        ],
+      },
+      {
         heading: 'Limits of benchmarks',
         paragraphs: [
           'Published RPM ranges aggregate many channels and change over time. Your RPM can swing between quarters without anything being “wrong” with your channel.',
@@ -406,6 +560,20 @@ const GUIDES: Record<string, ToolGuide> = {
         ],
       },
       {
+        heading: 'Evaluating average views per video',
+        paragraphs: [
+          'Dividing total lifetime views by public video count provides the average view baseline. A channel with 100 videos and 10M views averages 100,000 views per upload.',
+          'Comparing this ratio across peers highlights which creators produce evergreen library content versus creators reliant on high-frequency daily uploads with lower longevity.',
+        ],
+      },
+      {
+        heading: 'Tracking 30- and 90-day growth momentum',
+        paragraphs: [
+          'Raw subscriber numbers reflect historical accumulation, not current audience enthusiasm. A legacy channel with 1M subscribers may receive fewer weekly views than a rapidly ascending creator with 100K subscribers.',
+          'Pair public comparisons with recent video view velocity to understand authentic market share within your niche.',
+        ],
+      },
+      {
         heading: 'Fair comparisons',
         paragraphs: [
           'Channels in different niches and upload schedules are not directly comparable beyond surface totals. Pair this tool with qualitative review of content quality and audience fit.',
@@ -429,6 +597,20 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'A repeatable checklist reduces forgotten end screens, missing chapters, or thumbnails that fail on mobile. Work through metadata, visuals, audio, and compliance items before you click Publish.',
           'The progress bar is a personal workflow aid. You can copy a summary for producers or editors on your team.',
+        ],
+      },
+      {
+        heading: 'Sponsor disclosures and COPPA compliance',
+        paragraphs: [
+          'If your video includes a paid product placement, sponsorship, or brand endorsement, YouTube requires checking the "Paid promotion" box in Studio to display an on-screen disclosure.',
+          'Similarly, the Children’s Online Privacy Protection Act (COPPA) requires declaring whether content is "Made for Kids". Marking this incorrectly can lead to ad restrictions or regulatory penalties.',
+        ],
+      },
+      {
+        heading: 'Audio loudness and end-screen configuration',
+        paragraphs: [
+          'YouTube applies automated loudness normalization targeting roughly -14 LUFS. Mixes mastered substantially louder will be turned down by YouTube, often causing dynamic distortion.',
+          'Ensure end-screen cards (subscribes, next video, playlists) are positioned in the final 20 seconds without covering vital tutorial details.',
         ],
       },
       {

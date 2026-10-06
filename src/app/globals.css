@@ -8,9 +8,9 @@
     --foreground: #0f0f0f;
     --theme-color: #f7f8fa;
     --canvas-base: #f7f8fa;
-    /* Barely visible — texture, not decoration */
-    --canvas-dot: rgba(0, 0, 0, 0.02);
-    --canvas-dot-size: 32px;
+    /* Visible dot grid — reads on standard displays */
+    --canvas-dot: rgba(15, 23, 42, 0.075);
+    --canvas-dot-size: 24px;
     --canvas-glow: transparent;
     --card: #ffffff;
     --card-foreground: #0f0f0f;
@@ -31,8 +31,8 @@
     --foreground: #f1f1f1;
     --theme-color: #0c0d12;
     --canvas-base: #0c0d12;
-    --canvas-dot: rgba(255, 255, 255, 0.016);
-    --canvas-dot-size: 32px;
+    --canvas-dot: rgba(255, 255, 255, 0.065);
+    --canvas-dot-size: 24px;
     /* Soft top lift — draws focus to hero / tools without stripes */
     --canvas-glow: rgba(255, 255, 255, 0.045);
     --card: #16181f;
@@ -66,10 +66,13 @@
     background-color: var(--canvas-base);
     background-image:
       radial-gradient(ellipse 110% 65% at 50% -20%, var(--canvas-glow), transparent 58%),
-      radial-gradient(circle, var(--canvas-dot) 0.5px, transparent 0.5px);
+      radial-gradient(circle, var(--canvas-dot) 1px, transparent 1px);
     background-size:
       100% 100%,
       var(--canvas-dot-size) var(--canvas-dot-size);
+    background-position:
+      0 0,
+      0 0;
     background-repeat: no-repeat, repeat;
   }
 

@@ -13,6 +13,10 @@ function wc(text) {
 // Blog: use compiled approach - parse slugs and content between backticks
 const br = readFileSync('src/lib/blog-registry.ts', 'utf8');
 const be = readFileSync('src/lib/blog-expansions.ts', 'utf8');
+let bea = '';
+try {
+  bea = readFileSync('src/lib/blog-expansion-append.ts', 'utf8');
+} catch {}
 
 function extractExpansionContents(src) {
   const map = {};
@@ -25,6 +29,7 @@ function extractExpansionContents(src) {
 }
 
 const expansions = extractExpansionContents(be);
+const appends = extractExpansionContents(bea);
 
 const postRe = /slug:\s*'([^']+)'[\s\S]*?content:\s*`([\s\S]*?)`\s*,/g;
 const blog = [];
@@ -33,11 +38,11 @@ while ((pm = postRe.exec(br)) !== null) {
   const slug = pm[1];
   if (slug === 'monetization-checker') continue;
   const base = pm[2];
-  const merged = expansions[slug] ?? base;
+  const merged = (expansions[slug] ?? base) + '\n\n' + (appends[slug] ?? '');
   const postChunk = pm[0];
   const faqMatches = [...postChunk.matchAll(/question:\s*'([^']*)'[\s\S]*?answer:\s*'([^']*)'/g)];
   const faqWords = faqMatches.map((f) => wc(f[1] + ' ' + f[2])).reduce((a, b) => a + b, 0);
-  blog.push({ slug, words: wc(merged) + faqWords, expanded: Boolean(expansions[slug]) });
+  blog.push({ slug, words: wc(merged) + faqWords, expanded: Boolean(expansions[slug] || appends[slug]) });
 }
 
 // Tool guides
