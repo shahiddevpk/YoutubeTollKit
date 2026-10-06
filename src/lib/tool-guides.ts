@@ -19,24 +19,92 @@ const GUIDES: Record<string, ToolGuide> = {
   'monetization-checker': {
     sections: [
       {
-        heading: 'What this tool does',
+        heading: 'What this monetization checker does',
         paragraphs: [
-          'The YouTube Monetization Checker helps creators and researchers review public channel statistics that relate to YouTube Partner Program (YPP) eligibility, such as subscriber counts and video totals returned by the YouTube Data API.',
-          'For channels you own, you may optionally sign in with Google using read-only scopes so we can test whether YouTube Analytics exposes monetary metrics for that account. That owner check is closer to ground truth for your channel, but it still is not a replacement for reading official messages inside YouTube Studio.',
+          'YouTubeFreeToolkit’s monetization checker loads public channel statistics from the official YouTube Data API v3 — subscribers, lifetime views, video counts, and channel age — then builds an inferred monetization report with illustrative revenue ranges. Every inferred result is labeled “Inferred · Not official YPP status” because YouTube does not publish Partner Program enrollment for arbitrary channels.',
+          'If you own the channel, you can optionally connect Google with read-only YouTube and YouTube Analytics monetary scopes. That owner verification tests whether your account can access official monetary metrics for the channel you checked. It is the strongest check this site offers, but final status always appears in YouTube Studio and AdSense.',
         ],
       },
       {
-        heading: 'What it cannot tell you',
+        heading: 'Inferred results vs official status',
         paragraphs: [
-          'YouTube does not publish another creator’s private YPP enrollment through public APIs. Seeing advertisements on a video is not proof that the uploader receives revenue, so we do not infer monetization status from ad presence alone.',
-          'Watch hours, Shorts view thresholds, policy strikes, and AdSense linkage are not guessed for third-party channels. Treat every public result as an unofficial indicator and confirm monetization decisions inside your own YouTube Studio account.',
+          'Visitors researching someone else’s channel see public eligibility-style signals, an inferred likelihood tier, and a planning-only revenue matrix. Those outputs are educational models — not proof of AdSense or YPP enrollment.',
+          'Channel owners who complete verification see a yes/no style result based on YouTube Analytics monetary-metric access for the Google account they sign in with. Wrong account, cancelled OAuth, or channels still in review may return errors or mismatches — always confirm inside Studio.',
+          'YouTube Studio remains the only place with definitive messaging about your own monetization application, limited ads, and policy holds. No third-party checker replaces that.',
         ],
       },
       {
-        heading: 'Who should use this checker',
+        heading: 'How to check any public channel (four steps)',
         paragraphs: [
-          'Creators approaching YPP thresholds, managers vetting brand partnerships, and educators demonstrating the difference between public stats and private Studio status.',
-          'Researchers comparing eligibility-style signals across niches should still cite YouTube’s official help articles and avoid presenting unofficial output as proof of another channel’s AdSense enrollment.',
+          'Copy a public channel URL, @handle, UC channel ID, or a link to any public video on that channel.',
+          'Paste it into the search box at the top of this page and click Check Monetization.',
+          'Review the inferred report: status headline, revenue matrix assumptions, key insights, and subscriber-based YPP threshold signals. Read the disclaimer before sharing screenshots with clients or sponsors.',
+          'If you manage that channel, scroll to Channel owners only and use Verify Exact Monetization Status with the Google account linked to the channel. Skip verification if you are only researching another creator.',
+        ],
+      },
+      {
+        heading: 'What appears in your report',
+        paragraphs: [
+          'Channel profile: title, handle, avatar, and channel ID for your notes.',
+          'Core stats: subscribers, lifetime views, public video count, join date, channel age, and average views per video.',
+          'Inferred monetization block: likelihood tier (for example likely, possible, or below thresholds), plus low/mid/high RPM revenue scenarios calculated from estimated daily views (lifetime views divided by channel age in days).',
+          'YPP subscriber signals: whether public counts meet unofficial 500- and 1,000-subscriber thresholds used in many eligibility discussions — watch hours, Shorts views, and policy review are not available publicly.',
+          'Owner verification card: hidden or pending for visitors; shows official Analytics-based results only when the signed-in account owns the checked channel.',
+        ],
+      },
+      {
+        heading: 'Why seeing ads does not prove monetization',
+        paragraphs: [
+          'Viewers often assume pre-roll or banner ads mean the creator earns money. Under YouTube’s Right to Monetize policy, the platform may run ads on content when the uploader is not in the YouTube Partner Program — in those cases revenue may go to YouTube rather than the channel owner.',
+          'Our checker does not inspect ad slots on the watch page and does not treat “ads visible” as a monetization signal. Rely on inferred public stats for third-party research and on Studio or owner verification for your own channel.',
+        ],
+      },
+      {
+        heading: 'YouTube Partner Program thresholds (summary)',
+        paragraphs: [
+          'Full ad-revenue eligibility in eligible regions commonly discusses 1,000 subscribers plus qualifying public watch hours or Shorts views, along with policy compliance, AdSense linking, and human review. A separate expanded tier near 500 subscribers can unlock some fan-funding products without full ad sharing.',
+          'Public subscriber counts on this page are only one slice of that story. Watch hours, Shorts view totals, strikes, and reused-content reviews live in YouTube Studio — not in the public Data API. Read our Partner Program requirements article on the blog for a fuller 2026 checklist.',
+        ],
+      },
+      {
+        heading: 'Shorts vs long-form monetization',
+        paragraphs: [
+          'Shorts revenue uses pooled feed economics and different RPM patterns than long-form ad placements. A channel that looks “large” on subscribers may still earn differently on Shorts versus eight-minute videos with mid-rolls.',
+          'This checker does not split Shorts versus long-form revenue. Use YouTube Studio analytics after monetization for format-specific RPM, and treat any public revenue matrix here as a blended planning scenario only. For Shorts-specific YPP thresholds, read our blog guide on Shorts monetization requirements.',
+        ],
+      },
+      {
+        heading: 'Common YPP rejection reasons (public stats will not show these)',
+        paragraphs: [
+          'A channel can display 1,000+ subscribers and strong lifetime views while still failing Partner Program review. YouTube evaluates originality, reused content, misleading metadata, artificial engagement, and community guideline history — none of which appear in the public Data API.',
+          'Frequent rejection themes include: compilations or clips without meaningful commentary; repetitive templated uploads; copyright or reused-content flags; clickbait that does not match the video; purchased views or subscribers; and categories that are not suitable for all advertisers.',
+          'If you were rejected, fix the underlying content issues, wait out strike timers where applicable, and reapply from Studio — do not rely on a third-party “monetized” label as approval proof. Our inferred report is a planning aid before you apply, not a guarantee of acceptance.',
+        ],
+      },
+      {
+        heading: 'For brands, sponsors, and competitor research',
+        paragraphs: [
+          'Marketing teams often want a fast yes/no before signing a creator. Public checkers can screen for audience scale and rough eligibility-style signals, but they cannot replace contracts, disclosures, or analytics access when spend is significant.',
+          'Use this tool to compare subscriber counts, view velocity proxies, and inferred tiers across a short list of channels — then ask finalists for YouTube Studio or Analytics verification under NDA, media kits, and brand safety reviews.',
+          'Do not cite inferred monetization output as “confirmed AdSense revenue” in client decks. Pair screenshots with our disclaimer language and official YouTube Help references. For competitive SEO research, combine results with our tag extractor and channel compare tools on public metadata only.',
+        ],
+      },
+      {
+        heading: 'Owner verification: how it works and what you will see',
+        paragraphs: [
+          'Owner verification is optional and only for the Google account that manages the channel you entered. Click Verify Exact Monetization Status, approve read-only YouTube and YouTube Analytics monetary scopes on Google’s consent screen, and return to this page for the result.',
+          'We verify that the OAuth session owns the target channel, confirm routine Analytics access works, then request monetary metrics documented for Partner Program reporting. A successful monetary response is shown as owner-verified monetization access. If Analytics works but monetary metrics return the documented forbidden response, we surface that as not verified for monetary access — still confirm wording in Studio.',
+          'We do not receive your Google password. Access tokens are used only to complete the verification request and are not intentionally stored in our application database. Results are delivered through a short-lived signed cookie on your browser. If you signed into the wrong Google account, you will see a channel mismatch message — sign out and retry with the owner account.',
+          'Owner verification does not reveal another creator’s status to you. Visitors researching third-party channels should rely on the inferred public report only and read our Privacy Policy for how OAuth data is handled.',
+        ],
+      },
+      {
+        heading: 'Data sources and limitations',
+        paragraphs: [
+          'We use YouTube Data API v3 for public channel and video metadata only. We do not scrape watch pages, player ad tokens, or undocumented HTML markers to guess monetization.',
+          'Illustrative RPM bands ($2–$10 per 1,000 views in the default matrix) are not your channel’s real RPM. Geography, content category, seasonality, and the share of monetized playbacks change actual AdSense payouts. The blog article on estimating channel revenue from public views explains the lifetime-views ÷ channel-age formula used in the matrix.',
+          'We do not store your public search queries in a customer database for resale. Owner OAuth access tokens are used transiently during verification and are not intentionally persisted in our application database.',
+          'Rate limits apply to API usage on this deployment. Very large channels still follow the same inference rules — big subscriber counts alone do not equal an official “monetized” flag in our UI.',
         ],
       },
       DEFAULT_TRUST,

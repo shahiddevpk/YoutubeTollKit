@@ -29,6 +29,15 @@ export const GUIDE_HUBS: GuideHub[] = [
         ],
       },
       {
+        id: 'inferred-report',
+        heading: 'Understanding the inferred monetization report',
+        paragraphs: [
+          'After a public lookup, the monetization checker shows an inferred likelihood tier, illustrative daily/monthly/yearly revenue scenarios, and key insights such as channel age and average views per video. Each block is tagged as non-official because YouTube does not publish another creator’s YPP or AdSense enrollment through public APIs.',
+          'Revenue rows use simple math: estimated daily views from lifetime views divided by channel age, multiplied by example RPM values. Treat them as brainstorming numbers for sponsors or goals — then validate with YouTube Studio exports on channels you control.',
+          'Other monetization checkers may display a bold “Channel monetized” label from similar public proxies. We prefer explicit “inferred” wording so brands, educators, and creators do not mistake an estimate for Studio confirmation.',
+        ],
+      },
+      {
         id: 'rpm-planning',
         heading: 'RPM, CPM, and planning calculators',
         paragraphs: [
@@ -42,6 +51,14 @@ export const GUIDE_HUBS: GuideHub[] = [
         paragraphs: [
           'Reused content, misleading metadata, and copyright strikes can delay or remove YPP access even when public subscriber counts look healthy. Public tools cannot see strikes or reused-content reviews — only your Studio account can.',
           'Never promise viewers that a third-party “monetization checker” proves another channel’s AdSense status. Responsible research sticks to public eligibility-style signals and cites official YouTube help articles for thresholds.',
+        ],
+      },
+      {
+        id: 'brands-and-verify',
+        heading: 'Brands, rejections, and owner verification',
+        paragraphs: [
+          'Sponsors should treat inferred checker output as a first filter, then request Studio or Analytics proof from creators they intend to pay. The monetization checker tool page explains sponsor workflows and OAuth owner verification in detail.',
+          'Creators denied YPP despite strong public counts should fix policy and originality issues in Studio before reapplying — subscriber milestones alone do not pass review.',
         ],
       },
       {
@@ -66,6 +83,14 @@ export const GUIDE_HUBS: GuideHub[] = [
     blogSlugs: [
       'youtube-partner-program-requirements-2026',
       'how-to-check-if-youtube-channel-is-monetized',
+      'youtube-monetization-checker-inferred-vs-official',
+      'why-youtube-shows-ads-on-non-monetized-channels',
+      'youtube-shorts-monetization-requirements-2026',
+      'how-brands-verify-youtube-creator-monetization',
+      'youtube-monetization-rejection-reasons-and-fixes',
+      'estimated-youtube-channel-revenue-from-public-views',
+      'youtube-500-subscriber-monetization-tier',
+      'verify-youtube-monetization-with-google-oauth',
       'youtube-earnings-calculator-explained',
       'what-is-youtube-rpm',
     ],
@@ -73,7 +98,12 @@ export const GUIDE_HUBS: GuideHub[] = [
       {
         question: 'Can this site tell me if another channel is monetized?',
         answer:
-          'We show unofficial public eligibility signals only. YouTube does not publish another creator’s private YPP status through public APIs.',
+          'We show inferred likelihood and public eligibility signals, not official YPP enrollment. YouTube does not publish another creator’s private Partner Program status through public APIs.',
+      },
+      {
+        question: 'How is our checker different from other monetization tools?',
+        answer:
+          'We label every third-party result as inferred, publish our data sources (YouTube Data API v3 only), and offer optional owner verification through official YouTube Analytics monetary access for channels you manage.',
       },
       {
         question: 'Are earnings calculator results guaranteed?',

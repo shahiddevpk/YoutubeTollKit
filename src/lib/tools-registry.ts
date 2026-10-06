@@ -55,9 +55,10 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'monetization-checker',
     name: 'YouTube Monetization Checker',
     shortTitle: 'Monetization Checker',
-    headline: 'Unofficial public YPP eligibility signals, with optional owner verification through read-only YouTube Analytics.',
+    headline:
+      'Check any public channel for inferred monetization likelihood, revenue estimates, and YPP-style signals — with optional owner verification via YouTube Analytics.',
     description:
-      'This YouTube monetization checker uses public channel data to show unofficial monetization indicators. It is not an official YouTube Partner Program status tool. Channel owners can optionally connect Google with read-only permissions to test Analytics monetary-metric access.',
+      'Paste a channel URL, @handle, or video link to load public stats and an inferred monetization report (clearly labeled non-official). Channel owners can optionally verify monetary Analytics access with read-only Google OAuth. Not a replacement for YouTube Studio.',
     category: 'monetization',
     badge: 'Flagship',
     priority: 'P0',
@@ -71,7 +72,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'is channel monetized',
       'youtube partner program checker',
     ],
-    metaTitle: 'YouTube Monetization Checker — Unofficial Public Data Check',
+    metaTitle: 'YouTube Monetization Checker — Check Any Channel (Public Signals)',
     metaDescription:
       'Check inferred monetization likelihood, revenue estimates, and YPP-style public signals from any channel. Free, no signup. Clearly labeled non-official; owners can verify with YouTube Analytics.',
     howItWorks: [
@@ -82,13 +83,15 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
       {
         step: 2,
-        title: 'Load Public Channel Statistics',
-        description: 'We fetch subscriber, view, and video counts from the official YouTube Data API.',
+        title: 'Review Inferred Monetization Report',
+        description:
+          'See public stats, YPP subscriber signals, an inferred likelihood tier, illustrative revenue ranges, and key insights — all tagged as non-official estimates.',
       },
       {
         step: 3,
         title: 'Verify Owner Monetization Status (Optional)',
-        description: 'If you own the channel, connect YouTube with read-only OAuth to verify whether official YouTube Analytics grants YPP monetary-metric access.',
+        description:
+          'If you own the channel, connect Google with read-only OAuth to test whether YouTube Analytics grants monetary-metric access for your account.',
       },
     ],
     features: [
@@ -148,9 +151,44 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer:
           'Seeing an ad is not proof that the channel owner receives ad revenue. YouTube can serve ads in situations where public viewers cannot determine the creator’s YPP enrollment, so our checker does not use ad presence as a definitive status signal.',
       },
+      {
+        question: 'How accurate is the inferred monetization result?',
+        answer:
+          'We do not publish a fixed accuracy percentage. Inference uses public subscriber, view, and age statistics only. It can be wrong for channels in YPP review, limited ads, demonetized channels with large legacy audiences, or creators who earn mainly from sponsorships. Use owner verification or YouTube Studio for decisions that require certainty.',
+      },
+      {
+        question: 'What is the estimated revenue matrix?',
+        answer:
+          'It multiplies an estimated daily view count (lifetime channel views divided by channel age in days) by illustrative RPM values ($2, $5, and $10 per 1,000 views). It is a planning scenario, not AdSense data. For custom assumptions, use our YouTube Earnings Calculator.',
+      },
+      {
+        question: 'Can I check Shorts or individual video monetization here?',
+        answer:
+          'You can paste a public video or Shorts URL to resolve the parent channel and run the same public channel report. Per-video monetization status is not exposed by the public Data API; we do not claim video-level YPP enrollment.',
+      },
+      {
+        question: 'Does signing in with Google show another creator’s revenue?',
+        answer:
+          'No. Owner verification only reflects the Google account you authenticate. It confirms ownership of a channel and tests Analytics access for that account — never another person’s private earnings.',
+      },
+      {
+        question: 'How often is checker data updated?',
+        answer:
+          'Each search requests fresh public statistics from YouTube (with short server caching to protect API quota). Inferred tiers and revenue math recompute from that snapshot at lookup time.',
+      },
+      {
+        question: 'Can brands use this tool for sponsor due diligence?',
+        answer:
+          'Yes for initial screening on public stats and inferred tiers. It is not a substitute for contracts, brand-safety review, or creator-provided Analytics when deal size warrants official numbers.',
+      },
+      {
+        question: 'What Google permissions does owner verification request?',
+        answer:
+          'Read-only YouTube account access plus read-only YouTube Analytics monetary scope. We use them only to confirm channel ownership and test monetary-metric access during the verification request — not to change your channel or upload on your behalf.',
+      },
     ],
     relatedToolSlugs: ['earnings-calculator', 'channel-id-finder', 'seo-score-checker', 'rpm-calculator'],
-    updatedAt: '2026-10-01',
+    updatedAt: '2026-10-06',
   },
   {
     slug: 'channel-id-finder',

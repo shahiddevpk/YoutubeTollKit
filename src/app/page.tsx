@@ -48,8 +48,9 @@ export default function HomePage() {
               Free YouTube creator tools
             </h1>
             <p className="mt-4 text-base sm:text-lg text-[#606060] dark:text-[#aaaaaa] leading-relaxed">
-              Monetization indicators, channel research, tags, SEO checks, and revenue estimates using public metadata
-              only. No video or audio downloaders. 100% free and no login required for public checks.
+              Check any channel for inferred monetization likelihood and illustrative revenue from public stats — clearly
+              labeled non-official. Plus tags, SEO audits, and research tools. No downloaders. Free public checks; owners
+              can verify with YouTube Analytics.
             </p>
           </div>
 
@@ -59,7 +60,7 @@ export default function HomePage() {
               <div>
                 <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">YouTube Monetization Checker</h2>
                 <p className="text-xs text-[#909090] dark:text-[#717171] mt-0.5">
-                  Unofficial public indicators · optional owner verification via YouTube Analytics
+                  Inferred report + revenue matrix · optional owner verification via YouTube Analytics
                 </p>
               </div>
               <span className="self-start sm:self-auto rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
