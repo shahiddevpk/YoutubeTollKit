@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { ToolDefinition } from '@/types/tools';
-import { DynamicIcon } from '@/components/tools/DynamicIcon';
 import { ArrowUpRight } from 'lucide-react';
 
 interface ToolCardProps {
@@ -26,29 +25,20 @@ export function ToolCard({ tool, compact = false }: ToolCardProps) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="group relative flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 transition-all duration-200 hover:border-red-500/50 hover:bg-slate-900 hover:shadow-xl hover:shadow-red-500/5 hover:-translate-y-0.5"
+      className="group flex flex-col justify-between rounded-lg border border-slate-800 bg-slate-900/50 p-4 transition-colors hover:border-slate-600 hover:bg-slate-900"
     >
       <div>
         {/* Top bar with Icon and Badge */}
-        <div className="flex items-center justify-between gap-2 mb-4">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-800 text-red-400 group-hover:bg-red-600 group-hover:text-white transition-all shadow-inner">
-            <DynamicIcon name={tool.iconName} className="h-5 w-5" />
-          </div>
-
-          <div className="flex items-center gap-2">
-            {tool.badge && (
-              <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold border ${badgeClass}`}>
-                {tool.badge}
-              </span>
-            )}
-            <div className="flex h-7 w-7 items-center justify-center rounded-full text-slate-500 group-hover:text-red-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
-              <ArrowUpRight className="h-4 w-4" />
-            </div>
-          </div>
+        <div className="flex items-center justify-between gap-2 mb-2">
+          {tool.badge && (
+            <span className={`rounded px-2 py-0.5 text-[10px] font-semibold border ${badgeClass}`}>
+              {tool.badge}
+            </span>
+          )}
+          <ArrowUpRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-slate-400 ml-auto" aria-hidden />
         </div>
 
-        {/* Title */}
-        <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-red-400 transition-colors">
+        <h3 className="text-sm font-semibold text-white group-hover:text-red-400/90 transition-colors">
           {tool.name}
         </h3>
 

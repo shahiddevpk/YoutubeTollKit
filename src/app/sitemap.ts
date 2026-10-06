@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { TOOLS_REGISTRY, SITE_CONFIG, getAllCategoryIds } from '@/lib/tools-registry';
 import { BLOG_POSTS } from '@/lib/blog-registry';
+import { GUIDE_HUBS } from '@/lib/guides-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
@@ -25,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: siteUpdated,
       changeFrequency: 'weekly',
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/guides`,
+      lastModified: siteUpdated,
+      changeFrequency: 'weekly',
+      priority: 0.88,
     },
     {
       url: `${baseUrl}/about`,
@@ -81,5 +88,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...toolRoutes, ...blogRoutes];
+  const guideRoutes: MetadataRoute.Sitemap = GUIDE_HUBS.map((guide) => ({
+    url: `${baseUrl}/guides/${guide.slug}`,
+    lastModified: new Date(guide.updatedAt),
+    changeFrequency: 'weekly',
+    priority: 0.88,
+  }));
+
+  return [...staticRoutes, ...categoryRoutes, ...toolRoutes, ...blogRoutes, ...guideRoutes];
 }

@@ -247,7 +247,7 @@ Source: youtubefreetoolkit.com`
             ) : (
               <>
                 <Sparkles className="h-4 w-4" />
-                <span>Check Monetization Status</span>
+                <span>Check Public Indicators</span>
               </>
             )}
           </button>
@@ -272,7 +272,10 @@ Source: youtubefreetoolkit.com`
         <div className="flex items-start gap-2">
           <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
           <p>
-            <strong className="text-blue-200">Two-level monetization check:</strong> any public channel can be checked for public YPP eligibility signals. If you own the channel, you can then connect YouTube with read-only OAuth to verify whether YouTube Analytics grants YPP monetary-metric access.
+            <strong className="text-blue-200">Unofficial indicators only:</strong> public channels show YPP eligibility
+            signals from public data — not official Partner Program enrollment. If you own the channel, you can
+            optionally connect YouTube with read-only OAuth to test whether Analytics grants monetary-metric access.
+            Always confirm status in YouTube Studio.
           </p>
         </div>
       </div>
@@ -413,7 +416,7 @@ Source: youtubefreetoolkit.com`
                   <LockKeyhole className="h-5 w-5 text-emerald-400" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-bold text-white">Own this channel? Verify its actual YPP monetary access</h4>
+                  <h4 className="font-bold text-white">Own this channel? Verify your channel&apos;s YPP monetary access</h4>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                     Connect the channel-owner Google account. We request read-only YouTube account access plus read-only YouTube monetary analytics access, verify that the connected account owns this channel, then test official YouTube Analytics monetary-metric access.
                   </p>

@@ -1,4 +1,5 @@
 import { BlogPost } from '@/types/blog';
+import { BLOG_EXPANSIONS } from '@/lib/blog-expansions';
 
 export const BLOG_POSTS: BlogPost[] = [
   {
@@ -28,8 +29,9 @@ export const BLOG_POSTS: BlogPost[] = [
       'The definitive 2026 guide to YouTube monetization requirements. Learn exact subscriber rules, 4,000 watch hours vs 10M Shorts views, and application tips.',
     toolCta: {
       slug: 'monetization-checker',
-      title: 'Check Your Channel Monetization Status Instantly',
-      description: 'Use our free tool to review public YPP eligibility signals while understanding which monetization details YouTube keeps private.',
+      title: 'Check public YPP eligibility signals',
+      description:
+        'Use our free tool to review public Partner Program eligibility signals while understanding which monetization details YouTube keeps private.',
       buttonText: 'Open Monetization Checker',
     },
     tableOfContents: [
@@ -156,7 +158,8 @@ Understanding rejection triggers saves months of lost time:
     toolCta: {
       slug: 'monetization-checker',
       title: 'Free YouTube Monetization Checker',
-      description: 'Check public YPP signals for any channel, or owner-verify YPP monetary access for your own channel.',
+      description:
+        'Check public YPP signals for any channel, or use optional owner verification to test YouTube Analytics monetary access on your own channel.',
       buttonText: 'Check Channel Now',
     },
     tableOfContents: [
@@ -173,9 +176,9 @@ A practical way to review public monetization eligibility signals is using the *
 
 1. Copy the channel URL, video link, or handle (e.g. \`@mkbhd\`).
 2. Paste it into the [YouTube Monetization Checker](/tools/monetization-checker).
-3. Click **Check Monetization Status**.
+3. Click **Check Public Indicators**.
 4. The tool reports public channel statistics and subscriber-threshold signals for any public channel.
-5. If you own the channel, choose **Verify Exact Monetization Status** and authorize the read-only YouTube permissions shown by Google.
+5. If you own the channel, use optional owner verification and authorize the read-only YouTube permissions shown by Google.
 
 For third-party channels, public API data does not reveal private YPP enrollment. For a channel you own, YouTube Analytics now provides a stronger official path: monetary channel reports are available to YPP members, while YouTube documents a 403 response for non-monetized channels.
 
@@ -800,7 +803,16 @@ Combine research tools with our [Upload Checklist](/tools/upload-checklist) befo
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find((post) => post.slug === slug);
+  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  if (!post) return undefined;
+  const expansion = BLOG_EXPANSIONS[slug];
+  if (!expansion) return post;
+  return {
+    ...post,
+    ...expansion,
+    faqs: expansion.faqs ?? post.faqs,
+    tableOfContents: expansion.tableOfContents ?? post.tableOfContents,
+  };
 }
 
 export function getAllBlogSlugs(): string[] {

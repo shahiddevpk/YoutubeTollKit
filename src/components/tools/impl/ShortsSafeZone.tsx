@@ -79,7 +79,7 @@ export function ShortsSafeZone() {
             className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 px-3.5 py-2 text-xs font-bold text-white hover:bg-red-500 transition-all cursor-pointer"
           >
             <Download className="h-3.5 w-3.5" />
-            <span>Download 1080x1920 PNG</span>
+            <span>Save 1080×1920 PNG overlay</span>
           </button>
 
           <label className="inline-flex items-center gap-1.5 rounded-xl bg-slate-800 px-3.5 py-2 text-xs font-semibold text-white hover:bg-slate-700 transition-all cursor-pointer">
@@ -99,7 +99,7 @@ export function ShortsSafeZone() {
           ) : (
             <div className="flex h-full flex-col items-center justify-center p-6 text-center text-slate-500">
               <Smartphone className="h-16 w-16 mb-2 text-slate-600" />
-              <p className="text-xs font-medium">Upload a frame or download transparent PNG overlay guide</p>
+              <p className="text-xs font-medium">Upload a frame or save the transparent PNG overlay guide</p>
             </div>
           )}
 

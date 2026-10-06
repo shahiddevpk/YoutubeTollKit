@@ -15,11 +15,20 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-slate-950 py-16 text-slate-300">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="text-center space-y-3">
-          <h1 className="text-3xl sm:text-4xl font-black text-white">Contact & Feedback</h1>
-          <p className="text-sm text-slate-400">
-            Have a tool suggestion, feature request, or compliance question? We&apos;d love to hear from you.
+        <div className="space-y-3">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">Contact & feedback</h1>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Send tool ideas, bug reports, privacy questions, or copyright notices. We read every message and route
+            compliance issues to the same queue as general support.
           </p>
+          <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 text-xs text-slate-400 leading-relaxed space-y-2">
+            <p className="font-medium text-slate-300">Copyright (DMCA)</p>
+            <p>
+              If you believe material on this site infringes your copyright, include your contact information, a
+              description of the work, the URL in question, and a statement of good faith. We do not host user-uploaded
+              YouTube videos; most issues relate to written content or tool output descriptions.
+            </p>
+          </div>
         </div>
 
         {submitted ? (

@@ -11,7 +11,7 @@ export const NAV_TOOLS: NavToolItem[] = [
   {
     slug: 'monetization-checker',
     name: 'YouTube Monetization Checker',
-    description: 'Check public YPP eligibility signals and verify channel monetization status.',
+    description: 'Unofficial public YPP eligibility signals; optional owner verification via YouTube Analytics.',
     category: 'monetization',
     badge: 'Flagship',
     primaryKeyword: 'youtube monetization checker',

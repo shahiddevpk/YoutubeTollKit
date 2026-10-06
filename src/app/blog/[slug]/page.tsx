@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { generateBreadcrumbSchema } from '@/lib/seo';
+import { markdownToHtml } from '@/lib/markdown-to-html';
 import {
   ChevronRight,
   Clock,
@@ -216,17 +217,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Article Body Content */}
         <div className="prose prose-invert max-w-none space-y-6 text-sm sm:text-base leading-relaxed text-slate-300">
-          <div
-            dangerouslySetInnerHTML={{
-              __html: post.content
-                .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold text-white mt-8 mb-4 border-b border-slate-800 pb-2">$1</h2>')
-                .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold text-white mt-6 mb-3">$1</h3>')
-                .replace(/\*\*(.*?)\*\*/gim, '<strong class="text-white font-semibold">$1</strong>')
-                .replace(/\*(.*?)\*/gim, '<em class="text-slate-200">$1</em>')
-                .replace(/`([^`]+)`/gim, '<code class="rounded bg-slate-900 px-1.5 py-0.5 font-mono text-xs text-red-400 border border-slate-800">$1</code>')
-                .replace(/\n\n/gim, '</p><p class="my-3">'),
-            }}
-          />
+          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }} />
         </div>
 
         {/* Article FAQs */}

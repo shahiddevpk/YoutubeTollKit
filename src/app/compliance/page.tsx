@@ -47,7 +47,7 @@ export default function CompliancePage() {
               <span>Helpful, Original Content (No Spam)</span>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Every tool and guide page contains original, human-reviewed educational documentation, detailed FAQs, step-by-step instructions, and realistic calculation parameters.
+              Every tool and guide page includes original educational copy, detailed FAQs, step-by-step instructions, and realistic calculation parameters. URL changes are handled with permanent redirects; missing pages log to server logs for review.
             </p>
           </div>
 
@@ -70,6 +70,28 @@ export default function CompliancePage() {
               The monetization checker never estimates another channel’s private monetization status. Public checks report YouTube Data API eligibility signals; exact status verification is limited to an owner-authorized channel and uses official YouTube Analytics monetary access. Revenue calculators remain separate, user-controlled planning scenarios.
             </p>
           </div>
+        </div>
+
+        <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3 text-sm text-slate-400 leading-relaxed">
+          <h2 className="text-lg font-bold text-white">AdSense & site experience</h2>
+          <p>
+            If we display Google ads in the future, placement will follow the{' '}
+            <a
+              href="https://support.google.com/adsense/answer/48182"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-400 underline"
+            >
+              AdSense Program policies
+            </a>
+            : clear navigation, no deceptive buttons near ads, no pages created only to show ads, and no formatting
+            that confuses content with advertisements.
+          </p>
+          <p>
+            Tool pages pair interactive utilities with written guides, limitations, and FAQs so visitors understand
+            what each feature does before acting on results. We do not use pop-ups, forced downloads, or misleading
+            claims about streaming or ripping content.
+          </p>
         </div>
 
         {/* Official Policy Links */}

@@ -21,21 +21,16 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/95">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/95 backdrop-blur-sm">
+        <div className="mx-auto flex h-15 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-14">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-600 text-white shadow-md shadow-red-500/20 group-hover:scale-105 transition-transform">
-              <span className="font-black text-lg">▶</span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-600 text-white shadow-sm group-hover:bg-red-500 transition-colors">
+              <span className="font-black text-sm">▶</span>
             </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-white group-hover:text-red-400 transition-colors">
-                YouTube<span className="text-red-500">Free</span>Toolkit
-              </span>
-              <span className="text-[10px] uppercase font-semibold tracking-wider text-slate-400">
-                100% Free Creator Suite
-              </span>
-            </div>
+            <span className="text-base font-bold tracking-tight text-white group-hover:text-red-400 transition-colors">
+              YouTube<span className="text-red-500">Free</span>Toolkit
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

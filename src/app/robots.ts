@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      // API routes + OAuth callbacks (Rank Math: no thin/utility endpoints in index)
       disallow: ['/api/'],
     },
     sitemap: `${SITE_CONFIG.url}/sitemap.xml`,

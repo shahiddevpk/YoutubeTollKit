@@ -11,7 +11,7 @@ import {
 } from '@/lib/tools-registry';
 import { ToolCard } from '@/components/tools/ToolCard';
 import type { ToolCategory } from '@/types/tools';
-import { ChevronRight, Sparkles } from 'lucide-react';
+import { CATEGORY_GUIDES } from '@/lib/category-guides';
 export const revalidate = 3600;
 
 interface PageProps {
@@ -59,30 +59,31 @@ export default async function CategoryHubPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-slate-950 pb-20">
-      <section className="border-b border-slate-800/80 bg-gradient-to-b from-slate-900/90 to-slate-950 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-slate-200">Home</Link>
-            <ChevronRight className="h-3 w-3 text-slate-600" />
-            <Link href="/tools" className="hover:text-slate-200">Tools</Link>
-            <ChevronRight className="h-3 w-3 text-slate-600" />
-            <span className="text-slate-200">{category.name}</span>
+      <section className="border-b border-slate-800 py-10">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <nav className="text-xs text-slate-500 mb-4" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-slate-300">Home</Link>
+            <span className="mx-1.5">/</span>
+            <Link href="/tools" className="hover:text-slate-300">Tools</Link>
+            <span className="mx-1.5">/</span>
+            <span className="text-slate-300">{category.name}</span>
           </nav>
 
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-red-500/10 px-3.5 py-1 text-xs font-bold text-red-400 border border-red-500/20 mb-4">
-            <Sparkles className="h-3.5 w-3.5" />
-            Category hub
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            {category.name}
-          </h1>
-          <p className="mt-3 text-base text-slate-300 max-w-3xl leading-relaxed">{category.description}</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{category.name}</h1>
+          <p className="mt-2 text-sm text-slate-300">{category.description}</p>
+          {CATEGORY_GUIDES[category.id] && (
+            <div className="mt-6 space-y-3 text-sm text-slate-400 leading-relaxed">
+              <p className="text-slate-300">{CATEGORY_GUIDES[category.id].intro}</p>
+              {CATEGORY_GUIDES[category.id].paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {tools.map((tool) => (
             <ToolCard key={tool.slug} tool={tool} />
           ))}

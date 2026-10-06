@@ -26,6 +26,8 @@ const seoPageSources = [
   '/tools/:path*',
   '/blog',
   '/blog/:path*',
+  '/guides',
+  '/guides/:path*',
   '/about',
   '/privacy',
   '/terms',

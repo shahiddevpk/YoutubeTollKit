@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   domain: 'youtubefreetoolkit.com',
   url: 'https://youtubefreetoolkit.com',
   description:
-    'Free YouTube creator toolkit with a monetization checker, owner-verified YPP status, public channel research, metadata utilities, SEO planning, and revenue scenarios.',
+    'Free YouTube creator toolkit for monetization indicators, metadata, and channel research. Policy-safe public-data tools only — no video or audio downloads.',
   ogImage: 'https://youtubefreetoolkit.com/api/og?title=YouTubeFreeToolkit&desc=Free+YouTube+Creator+Tools',
   creator: '@shahiddevpk',
   author: 'YouTubeFreeToolkit Creator Team',
@@ -16,7 +16,7 @@ export const CATEGORIES: CategoryDefinition[] = [
   {
     id: 'monetization',
     name: 'Monetization & Revenue',
-    description: 'Check public YPP eligibility signals, owner-verify monetization access, and model creator-owned revenue scenarios with transparent assumptions.',
+    description: 'Unofficial public YPP eligibility indicators, optional owner verification via YouTube Analytics, and revenue estimates with transparent assumptions.',
     iconName: 'DollarSign',
     gradient: 'from-emerald-500 to-teal-700',
   },
@@ -30,7 +30,7 @@ export const CATEGORIES: CategoryDefinition[] = [
   {
     id: 'seo',
     name: 'SEO & Metadata',
-    description: 'Extract hidden tags, optimize video titles, audit keyword density, and inspect SEO scores.',
+    description: 'Extract public video tags, optimize titles, audit keyword density, and inspect SEO scores.',
     iconName: 'Sparkles',
     gradient: 'from-violet-500 to-purple-700',
   },
@@ -55,9 +55,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'monetization-checker',
     name: 'YouTube Monetization Checker',
     shortTitle: 'Monetization Checker',
-    headline: 'YouTube Monetization Checker: Check & Verify YPP Status',
+    headline: 'Unofficial public YPP eligibility signals, with optional owner verification through read-only YouTube Analytics.',
     description:
-      'Check any public YouTube channel for YPP eligibility signals, then verify actual YPP monetary access for your own channel with read-only Google OAuth and the official YouTube Analytics API.',
+      'This YouTube monetization checker uses public channel data to show unofficial monetization indicators. It is not an official YouTube Partner Program status tool. Channel owners can optionally connect Google with read-only permissions to test Analytics monetary-metric access.',
     category: 'monetization',
     badge: 'Flagship',
     priority: 'P0',
@@ -71,9 +71,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'is channel monetized',
       'youtube partner program checker',
     ],
-    metaTitle: 'YouTube Monetization Checker - Verify YPP Status',
+    metaTitle: 'YouTube Monetization Checker — Unofficial Public Data Check',
     metaDescription:
-      'Check YouTube monetization and YPP eligibility signals for any public channel. Channel owners can connect YouTube to verify YPP monetary access via the official Analytics API.',
+      'Check unofficial YouTube monetization indicators from public channel data. Free, no signup. Owners can optionally verify Analytics monetary access — not official YPP status.',
     howItWorks: [
       {
         step: 1,
@@ -138,7 +138,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'channel-id-finder',
     name: 'YouTube Channel ID Finder',
     shortTitle: 'Channel ID Finder',
-    headline: 'Find YouTube Channel ID, User ID & UC Identifier in Seconds',
+    headline: 'Resolve @handles, channel URLs, and public video links to the canonical UC identifier.',
     description:
       'Extract the 24-character YouTube Channel ID (UC...), Channel Handle, and canonical RSS feed URL from a modern @handle, channel URL, or public video link.',
     category: 'research',
@@ -154,7 +154,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'get channel id from handle',
       'youtube channel id lookup',
     ],
-    metaTitle: 'YouTube Channel ID Finder — Get UC Identifier & RSS Feed Free',
+    metaTitle: 'YouTube Channel ID Finder — Get ID From URL',
     metaDescription:
       'Find the exact 24-character YouTube Channel ID (UC...) from a YouTube @handle, channel URL, UC ID, or public video link. Free lookup tool with RSS feed generator.',
     howItWorks: [
@@ -198,7 +198,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'How do I find a channel ID from a YouTube handle (@username)?',
         answer:
-          'Simply paste the @handle into our search bar. Our tool automatically inspects the channel canonical tag and returns the official 24-character UC ID instantly.',
+          'Simply paste the @handle into our search bar. Our tool automatically inspects the channel\'s canonical tag and returns the official 24-character UC ID instantly.',
       },
     ],
     relatedToolSlugs: ['monetization-checker', 'live-subscriber-count', 'tag-extractor'],
@@ -208,7 +208,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'tag-extractor',
     name: 'YouTube Tag Extractor & Inspector',
     shortTitle: 'Tag Extractor',
-    headline: 'Extract Public Video Tags, Keywords & Hidden Metadata',
+    headline: 'View and copy public tags and keywords from any YouTube video or Short.',
     description:
       'Extract all public tags and keywords used on any YouTube video. Analyze competitor SEO strategy, copy tags with commas, and optimize your video rankings.',
     category: 'seo',
@@ -224,7 +224,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'copy tags from youtube video',
       'youtube keyword tags extractor',
     ],
-    metaTitle: 'YouTube Tag Extractor — View & Copy Public Video Tags Free',
+    metaTitle: 'YouTube Tag Extractor — View Public Video Tags',
     metaDescription:
       'Extract public SEO tags from any YouTube video in 1 click. View keyword rankings, tag count, and copy formatted tags for YouTube Studio.',
     howItWorks: [
@@ -241,7 +241,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         step: 3,
         title: 'Copy Formatted Tags',
-        description: 'Copy comma-separated tags directly into YouTube Studio tag box.',
+        description: 'Copy comma-separated tags directly into the YouTube Studio tags box.',
       },
     ],
     features: [
@@ -294,7 +294,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'how much does youtube pay for 1 million views',
       'youtube adsense calculator',
     ],
-    metaTitle: 'YouTube Earnings Calculator — Estimate Views to USD Income Free',
+    metaTitle: 'YouTube Earnings Calculator — Estimate Ad Revenue',
     metaDescription:
       'Free YouTube earnings calculator. Estimate your daily, monthly, and yearly income based on views, CPM/RPM, niche category, and audience location.',
     howItWorks: [
@@ -358,7 +358,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube metadata audit',
       'seo score youtube',
     ],
-    metaTitle: 'YouTube SEO Score Checker — Free Video & Channel SEO Audit',
+    metaTitle: 'YouTube SEO Score Checker — Video Metadata Audit',
     metaDescription:
       'Audit your YouTube video SEO score (0-100). Check title length, description formatting, tag count, chapters, and get actionable ranking recommendations.',
     howItWorks: [
@@ -408,7 +408,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     shortTitle: 'Subscriber Count',
     headline: 'Real-Time YouTube Subscriber Counter & Channel Statistics',
     description:
-      'Track live YouTube subscriber milestones, total video view counts, and channel growth rates with clean, distraction-free live counter.',
+      'Track live YouTube subscriber milestones, total video view counts, and channel growth rates with a clean, distraction-free live counter.',
     category: 'analytics',
     badge: 'Popular',
     priority: 'P0',
@@ -421,7 +421,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube subscriber tracker',
       'check youtube subscriber count',
     ],
-    metaTitle: 'Live YouTube Subscriber Count — Real-Time Sub Counter Free',
+    metaTitle: 'Live YouTube Subscriber Count — Real-Time Counter',
     metaDescription:
       'Track real-time YouTube subscriber count and milestone statistics. Accurate, fast, full-screen live sub counter for any YouTube channel.',
     howItWorks: [
@@ -476,7 +476,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube thumbnail test',
       'view youtube thumbnail hd',
       'youtube thumbnail checker',
-      'youtube thumbnail download hd',
+      'youtube thumbnail hd preview',
       'test thumbnail on youtube homepage',
     ],
     metaTitle: 'YouTube Thumbnail Preview & Tester — Test CTR on Mobile/Desktop',
@@ -602,7 +602,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     metaTitle: 'YouTube Hashtag Generator — Best Hashtags for Shorts & Videos',
     metaDescription:
-      'Generate high-ranking hashtags for YouTube Shorts and videos. 100% free tool to find trending topic tags and copy with 1 click.',
+      'Generate high-ranking hashtags for YouTube Shorts and videos. 100% free tool to find trending topic tags and copy them with one click.',
     howItWorks: [
       {
         step: 1,
@@ -645,7 +645,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     shortTitle: 'Shorts Safe Zone',
     headline: 'Ensure Critical Text & Faces Are Not Blocked by Shorts UI',
     description:
-      'Preview your vertical 9:16 Shorts video against YouTube native UI buttons (Like, Comment, Share, Sound Disc, Channel Title) to prevent text overlap.',
+      'Preview your vertical 9:16 Shorts video against YouTube\'s native UI buttons (Like, Comment, Share, Sound Disc, Channel Title) to prevent text overlap.',
     category: 'utilities',
     badge: 'Essential',
     priority: 'P3',
@@ -682,7 +682,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'Accurate 2026 YouTube Shorts mobile UI overlay mask',
       'Visual red/green zones highlighting button obstruction areas',
       'Supports 1080x1920 9:16 vertical resolution checks',
-      'Free downloadable PNG safe-zone overlay for Premiere / CapCut / DaVinci',
+      'Free PNG safe-zone overlay template for Premiere / CapCut / DaVinci',
     ],
     limitations: [
       'Device UI scaling may vary slightly between iOS and Android screen aspect ratios (19.5:9 vs 20:9).',
