@@ -67,6 +67,24 @@ const PRESET_CHANNELS = [
   { label: '@AliAbdaal', handle: '@AliAbdaal' },
 ];
 
+const VISITOR_FAQS = [
+  {
+    question: 'I’m not the channel owner — what can I learn?',
+    answer:
+      'Public stats and unofficial subscriber-based YPP signals only. You cannot confirm whether another creator is monetized or in YPP. Ads on their videos are not proof of creator revenue.',
+  },
+  {
+    question: 'Should I click “Verify” if I’m checking someone else’s channel?',
+    answer:
+      'No. Verification is only for the Google account that owns the channel you entered. It will not show you another creator’s monetization status.',
+  },
+  {
+    question: 'What can the channel owner see after verifying?',
+    answer:
+      'Owners who sign in with the correct Google account get a yes/no on official YouTube Analytics monetary-metric access for that channel. Everyone else should use YouTube Studio for their own channel.',
+  },
+];
+
 function oauthErrorMessage(code: string | null) {
   if (!code) return null;
   const messages: Record<string, string> = {
@@ -102,8 +120,9 @@ function ownerStatusCardCopy(
 ) {
   if (!verificationMatchesResult || !verification) {
     return {
-      headline: 'Unknown without owner sign-in',
-      detail: 'Public YouTube data cannot show YPP or AdSense enrollment for this channel.',
+      headline: 'Hidden from public viewers',
+      detail:
+        'YouTube does not publish another creator’s YPP or AdSense enrollment. Only the channel owner can run an official check (button below).',
       tone: 'pending' as const,
     };
   }
@@ -161,10 +180,11 @@ function monetizationAnswerLine(
     };
   }
   return {
-    question: 'Is this channel monetized (YPP monetary access)?',
+    question: 'Is this channel monetized (YPP / AdSense)?',
     answer:
-      'Cannot tell from a public check alone. YouTube does not expose another channel’s Partner Program or AdSense status in the public Data API.',
+      'No public answer for this lookup. Unless you are the channel owner and complete verification below, this tool cannot confirm monetization — only public eligibility signals (above).',
     answerClass: 'text-amber-200',
+    audience: 'visitor' as const,
   };
 }
 
@@ -363,13 +383,32 @@ Source: youtubefreetoolkit.com`
         <div className="flex items-start gap-2">
           <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
           <p>
-            <strong className="text-blue-200">Unofficial indicators only:</strong> public channels show YPP eligibility
-            signals from public data — not official Partner Program enrollment. If you own the channel, you can
-            optionally connect YouTube with read-only OAuth to test whether Analytics grants monetary-metric access.
-            Always confirm status in YouTube Studio.
+            <strong className="text-blue-200">Most visitors are not the channel owner.</strong> For any public channel you
+            can see subscriber counts and unofficial YPP threshold signals only — not whether they earn ad revenue.
+            The Google sign-in step is <strong className="text-blue-200">only for the person who owns that channel</strong>{' '}
+            and does not reveal another creator’s monetization status to you.
           </p>
         </div>
       </div>
+
+      <section className="space-y-2" aria-labelledby="visitor-faq-heading">
+        <h2 id="visitor-faq-heading" className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+          Not the owner? Read this first
+        </h2>
+        <div className="space-y-2">
+          {VISITOR_FAQS.map((faq) => (
+            <details
+              key={faq.question}
+              className="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 px-4 py-3"
+            >
+              <summary className="cursor-pointer text-sm font-medium text-slate-800 dark:text-slate-200 list-none">
+                {faq.question}
+              </summary>
+              <p className="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
 
       {verificationLoading && (
         <div className="rounded-xl border border-blue-500/30 bg-blue-950/20 p-4 text-sm text-blue-200 flex items-center gap-2">
@@ -479,18 +518,40 @@ Source: youtubefreetoolkit.com`
                   {publicEligibility.text}
                 </p>
                 <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-                  Watch hours, Shorts views, policy review, and AdSense linkage are not visible on a public lookup. Confirm final status in{' '}
-                  <a
-                    href="https://studio.youtube.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline hover:text-slate-700 dark:hover:text-slate-300"
-                  >
-                    YouTube Studio
-                  </a>
-                  .
+                  Watch hours, Shorts views, policy review, and AdSense linkage are not visible on a public lookup.
                 </p>
               </div>
+              {!verificationMatchesResult && (
+                <div className="border-t border-slate-200 dark:border-slate-800 pt-4 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Checking someone else&apos;s channel?</p>
+                    <ul className="mt-2 space-y-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed list-disc pl-4">
+                      <li>You get public stats and subscriber-based YPP <em>signals</em> only.</li>
+                      <li>You <strong className="text-slate-800 dark:text-slate-200">cannot</strong> see if they are monetized — YouTube keeps that private.</li>
+                      <li>Ads on their videos do not prove they are in YPP.</li>
+                      <li>Do not use “Verify” unless you manage this channel; signing in with your Google account will not show their revenue status.</li>
+                    </ul>
+                  </div>
+                  <div className="rounded-xl border border-emerald-500/25 bg-emerald-950/10 p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-emerald-300/90">Checking your own channel?</p>
+                    <ul className="mt-2 space-y-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed list-disc pl-4">
+                      <li>Use <strong className="text-slate-800 dark:text-slate-100">Verify Exact Monetization Status</strong> below with the Google account tied to this channel.</li>
+                      <li>That optional step returns a yes/no on official monetary Analytics access.</li>
+                      <li>Final decisions always appear in{' '}
+                        <a
+                          href="https://studio.youtube.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-emerald-200"
+                        >
+                          YouTube Studio
+                        </a>
+                        .
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -556,19 +617,20 @@ Source: youtubefreetoolkit.com`
           {verificationMatchesResult && verification ? (
             <OwnerVerificationBanner verification={verification} />
           ) : (
-            <div className="rounded-2xl border border-emerald-500/25 bg-emerald-950/10 p-5 sm:p-6 space-y-4">
+            <div className="rounded-2xl border border-dashed border-emerald-500/35 bg-emerald-950/10 p-5 sm:p-6 space-y-4">
               <div className="flex items-start gap-3">
                 <div className="rounded-xl bg-emerald-500/10 p-2.5 border border-emerald-500/20">
                   <LockKeyhole className="h-5 w-5 text-emerald-400" />
                 </div>
                 <div className="space-y-1">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Channel owners only</p>
                   <h4 className="font-bold text-slate-900 dark:text-white">
-                    Own this channel? Get a yes/no monetization answer
+                    Verify your monetization (not available for other creators)
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Public data cannot confirm monetization. If you manage this channel, sign in with that Google account
-                    once — we use read-only YouTube + monetary Analytics access to report whether official revenue metrics
-                    are available (the same signal YouTube uses for YPP monetary reporting).
+                    If you <strong>do not</strong> own {result.channelTitle}, skip this section — verification will not
+                    tell you whether they are monetized. Owners can sign in once with the Google account linked to this
+                    channel for a read-only yes/no on YouTube Analytics monetary access.
                   </p>
                 </div>
               </div>

@@ -43,8 +43,12 @@ function base64UrlDecode(value: string) {
   return Buffer.from(value, 'base64url').toString('utf8');
 }
 
+function trimEnv(value: string | undefined) {
+  return value?.trim() || '';
+}
+
 function getSigningSecret() {
-  const secret = process.env.YOUTUBE_OAUTH_STATE_SECRET;
+  const secret = trimEnv(process.env.YOUTUBE_OAUTH_STATE_SECRET);
   if (!secret || secret.length < 32) {
     throw new Error('YOUTUBE_OAUTH_STATE_SECRET must be configured with at least 32 characters.');
   }
@@ -121,15 +125,13 @@ export function getSiteUrl() {
 }
 
 export function getOAuthRedirectUri() {
-  return (
-    process.env.GOOGLE_OAUTH_REDIRECT_URI ||
-    `${getSiteUrl()}/api/youtube/monetization/callback`
-  );
+  const configured = trimEnv(process.env.GOOGLE_OAUTH_REDIRECT_URI);
+  return configured || `${getSiteUrl()}/api/youtube/monetization/callback`;
 }
 
 export function getOAuthConfig() {
-  const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID;
-  const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
+  const clientId = trimEnv(process.env.GOOGLE_OAUTH_CLIENT_ID);
+  const clientSecret = trimEnv(process.env.GOOGLE_OAUTH_CLIENT_SECRET);
   if (!clientId || !clientSecret) {
     throw new Error('Google OAuth client credentials are not configured.');
   }

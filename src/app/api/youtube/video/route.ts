@@ -27,7 +27,7 @@ async function lookupVideo(query: string, rateLimitInfo: RateLimitInfo) {
     );
   }
 
-  const apiKey = process.env.YOUTUBE_API_KEY;
+  const apiKey = process.env.YOUTUBE_API_KEY?.trim();
   if (!apiKey) {
     console.error('YouTube video lookup unavailable: YOUTUBE_API_KEY is not configured.');
     return NextResponse.json(

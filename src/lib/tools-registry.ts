@@ -106,6 +106,16 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
+        question: 'I’m not the channel owner — what can I learn here?',
+        answer:
+          'You can see public subscriber, view, and video counts plus unofficial 500- and 1,000-subscriber YPP threshold signals. You cannot see whether another creator is in the YouTube Partner Program or linked to AdSense — YouTube does not expose that through public APIs. Signing in with your own Google account does not reveal someone else’s monetization status. Use “Verify” only if you manage the channel you pasted.',
+      },
+      {
+        question: 'Will “Verify Exact Monetization Status” show me if another creator is monetized?',
+        answer:
+          'No. That button is for channel owners only. It checks whether the Google account you sign in with owns the channel you looked up and whether YouTube Analytics grants that account monetary-metric access. If you are researching another channel, rely on the public signals and disclaimers on this page — or ask the creator directly.',
+      },
+      {
         question: 'How do you check if a YouTube channel is monetized?',
         answer:
           'For any public channel, the official YouTube Data API can show public statistics and eligibility signals but not private YPP enrollment. If you own the channel, this checker can verify the connected owner account and test official YouTube Analytics monetary-metric access. YouTube documents monetary channel reports as available to YPP members and a 403 response for non-monetized channels.',
