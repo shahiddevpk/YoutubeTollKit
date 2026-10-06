@@ -4,9 +4,13 @@ import { generateOrganizationSchema, generateWebSiteSchema, buildRootMetadata } 
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ToastProvider } from '@/components/ui/Toast';
+import { ThemeScript } from '@/components/theme/ThemeScript';
 
 export const viewport: Viewport = {
-  themeColor: '#030712',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#030712' },
+  ],
   width: 'device-width',
   initialScale: 1,
 };
@@ -22,8 +26,9 @@ export default function RootLayout({
   const websiteSchema = generateWebSiteSchema();
 
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <ThemeScript />
         <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://i.ytimg.com" />
         <script
@@ -36,7 +41,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-slate-950 text-slate-100 antialiased flex flex-col justify-between"
+        className="min-h-screen bg-slate-50 text-slate-900 antialiased flex flex-col justify-between dark:bg-slate-950 dark:text-slate-100"
         suppressHydrationWarning
       >
         <ToastProvider>

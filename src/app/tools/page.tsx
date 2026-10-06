@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import Link from 'next/link';
 import { Metadata } from 'next';
 import { TOOLS_REGISTRY, CATEGORIES, SITE_CONFIG } from '@/lib/tools-registry';
 import { hasNoindexSearchParams, noindexFollowRobots, defaultRobots } from '@/lib/seo-site-config';
@@ -42,15 +43,30 @@ export async function generateMetadata({ searchParams }: ToolsPageProps): Promis
 
 export default function ToolsIndexPage() {
   return (
-    <div className="min-h-screen bg-slate-950 pb-16">
-      <section className="border-b border-slate-800 py-10">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-16">
+      <section className="border-b border-slate-200 dark:border-slate-800 py-10">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">All YouTube creator tools</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">All YouTube creator tools</h1>
           <p className="mt-3 text-sm text-slate-400 leading-relaxed">
             {TOOLS_REGISTRY.length} free utilities for monetization indicators, channel research, SEO metadata,
             analytics, and publishing helpers. Each tool includes instructions, limitations, and FAQs. We do not offer
             video or audio downloaders.
           </p>
+          <div className="mt-6 space-y-3 text-sm text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-6">
+            <p>
+              Every tool page includes a short how-it-works list, a longer guide section, and policy limitations so you
+              know what public APIs can and cannot prove. Use category hubs for overviews of monetization, research,
+              SEO, analytics, and utilities, or open our{' '}
+              <Link href="/guides" className="text-red-400/90 hover:text-red-400 underline">
+                pillar guides
+              </Link>{' '}
+              for monetization, SEO, and troubleshooting workflows.
+            </p>
+            <p>
+              The blog covers Partner Program requirements, ethical tag research, and RPM planning — each article links
+              to the matching free tool when one exists on this site.
+            </p>
+          </div>
         </div>
       </section>
 

@@ -10,11 +10,13 @@ import {
   ChevronRight,
   Clock,
   Calendar,
-  Sparkles,
   ArrowRight,
   HelpCircle,
   BookOpen,
+  Wrench,
 } from 'lucide-react';
+import { toolPrimaryButtonClass } from '@/lib/tool-ui';
+import { cn } from '@/lib/utils';
 export const revalidate = 3600;
 
 interface PageProps {
@@ -110,7 +112,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     .filter((p): p is typeof post => Boolean(p));
 
   return (
-    <article className="min-h-screen bg-slate-950 text-slate-100 pb-20">
+    <article className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 pb-20">
       {/* Inject Structured Data */}
       <script
         type="application/ld+json"
@@ -122,19 +124,19 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
 
       {/* Header / Hero */}
-      <section className="relative overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-slate-900/90 via-slate-950 to-slate-950 pt-8 pb-12">
+      <section className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 pt-8 pb-10">
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-2 text-xs text-slate-400 mb-6" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-slate-200 transition-colors">
+            <Link href="/" className="hover:text-slate-800 dark:text-slate-200 transition-colors">
               Home
             </Link>
             <ChevronRight className="h-3 w-3 text-slate-600" />
-            <Link href="/blog" className="hover:text-slate-200 transition-colors">
+            <Link href="/blog" className="hover:text-slate-800 dark:text-slate-200 transition-colors">
               Blog
             </Link>
             <ChevronRight className="h-3 w-3 text-slate-600" />
-            <span className="text-slate-200 font-medium truncate">{post.category}</span>
+            <span className="text-slate-800 dark:text-slate-200 font-medium truncate">{post.category}</span>
           </nav>
 
           <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -151,21 +153,21 @@ export default async function BlogPostPage({ params }: PageProps) {
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
             {post.title}
           </h1>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
             {post.excerpt}
           </p>
 
           {/* Author Card */}
-          <div className="mt-6 flex items-center gap-3 border-t border-slate-800 pt-4">
-            <div className="h-10 w-10 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-sm shadow-md">
+          <div className="mt-6 flex items-center gap-3 border-t border-slate-200 dark:border-slate-800 pt-4">
+            <div className="h-10 w-10 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-sm">
               SD
             </div>
             <div>
-              <p className="text-sm font-bold text-white">{post.author.name}</p>
+              <p className="text-sm font-bold text-slate-900 dark:text-white">{post.author.name}</p>
               <p className="text-xs text-slate-400">{post.author.role}</p>
             </div>
           </div>
@@ -176,7 +178,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-12 space-y-12">
         {/* Table of Contents */}
         {post.tableOfContents.length > 0 && (
-          <nav className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <nav className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-6">
             <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
               <BookOpen className="h-4 w-4 text-red-500" />
               Table of Contents
@@ -186,7 +188,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className="text-slate-300 hover:text-red-400 transition-colors"
+                    className="text-slate-700 dark:text-slate-300 hover:text-red-400 transition-colors"
                   >
                     {item.title}
                   </a>
@@ -197,18 +199,18 @@ export default async function BlogPostPage({ params }: PageProps) {
         )}
 
         {/* Embedded High-Converting Tool CTA Widget */}
-        <div className="rounded-3xl border border-red-500/30 bg-gradient-to-r from-red-950/40 via-slate-900 to-slate-950 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
             <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-red-400">
-              <Sparkles className="h-3 w-3" />
-              Recommended Free Tool
+              <Wrench className="h-3 w-3" aria-hidden />
+              Related free tool
             </span>
-            <h3 className="text-lg font-bold text-white">{post.toolCta.title}</h3>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">{post.toolCta.title}</h3>
             <p className="text-xs text-slate-400">{post.toolCta.description}</p>
           </div>
           <Link
             href={`/tools/${post.toolCta.slug}`}
-            className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 text-xs font-bold text-white shadow-lg shadow-red-600/30 hover:bg-red-500 transition-all shrink-0 cursor-pointer"
+            className={cn(toolPrimaryButtonClass, 'text-xs')}
           >
             <span>{post.toolCta.buttonText}</span>
             <ArrowRight className="h-4 w-4" />
@@ -216,31 +218,31 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
 
         {/* Article Body Content */}
-        <div className="prose prose-invert max-w-none space-y-6 text-sm sm:text-base leading-relaxed text-slate-300">
+        <div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
           <div dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }} />
         </div>
 
         {/* Article FAQs */}
         {post.faqs.length > 0 && (
-          <section className="mt-16 pt-8 border-t border-slate-800 space-y-6">
+          <section className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 space-y-6">
             <div className="flex items-center gap-2">
               <HelpCircle className="h-5 w-5 text-red-500" />
-              <h2 className="text-xl sm:text-2xl font-bold text-white">Frequently Asked Questions</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Frequently Asked Questions</h2>
             </div>
 
             <div className="space-y-4">
               {post.faqs.map((faq, index) => (
                 <details
                   key={index}
-                  className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 open:border-slate-700 transition-all"
+                  className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 p-5 open:border-slate-300 dark:border-slate-700 transition-all"
                 >
-                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-white text-base group-hover:text-red-400 transition-colors list-none">
+                  <summary className="flex cursor-pointer items-center justify-between font-semibold text-slate-900 dark:text-white text-base group-hover:text-red-400 transition-colors list-none">
                     <span>{faq.question}</span>
                     <span className="ml-4 text-slate-400 group-open:rotate-180 transition-transform">
                       ▼
                     </span>
                   </summary>
-                  <p className="mt-3 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
+                  <p className="mt-3 text-sm text-slate-700 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-800/80 pt-3">
                     {faq.answer}
                   </p>
                 </details>
@@ -251,19 +253,19 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <section className="mt-16 pt-8 border-t border-slate-800">
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">Related Creator Guides</h2>
+          <section className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6">Related Creator Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {relatedPosts.map((related) => (
                 <Link
                   key={related.slug}
                   href={`/blog/${related.slug}`}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-red-500/50 hover:bg-slate-900 transition-all group"
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-5 hover:border-red-500/50 hover:bg-slate-100 dark:bg-slate-900 transition-all group"
                 >
                   <span className="text-[10px] font-bold uppercase tracking-wider text-red-400">
                     {related.category}
                   </span>
-                  <h4 className="text-sm font-bold text-white group-hover:text-red-400 transition-colors mt-1">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-red-400 transition-colors mt-1">
                     {related.title}
                   </h4>
                   <p className="text-xs text-slate-400 mt-2 line-clamp-2">{related.excerpt}</p>

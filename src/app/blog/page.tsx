@@ -34,10 +34,10 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
 
 export default function BlogIndexPage() {
   return (
-    <div className="min-h-screen bg-slate-950 pb-16">
-      <section className="border-b border-slate-800 py-10">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-16">
+      <section className="border-b border-slate-200 dark:border-slate-800 py-10">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">YouTube creator guides</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">YouTube creator guides</h1>
           <div className="mt-4 space-y-3 text-sm text-slate-400 leading-relaxed">
             <p>
               These articles explain how YouTube monetization, metadata, and public channel research work in plain
@@ -65,13 +65,13 @@ export default function BlogIndexPage() {
         {BLOG_POSTS.map((post) => (
           <article
             key={post.slug}
-            className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 hover:border-slate-600 transition-colors"
+            className="rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/40 p-5 hover:border-slate-400 dark:hover:border-slate-600 transition-colors"
           >
             <p className="text-xs text-slate-500 mb-2">
               {post.category} · {post.readTime} · Updated {post.updatedAt}
             </p>
             <Link href={`/blog/${post.slug}`}>
-              <h2 className="text-lg font-semibold text-white hover:text-red-400/90">{post.title}</h2>
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-white hover:text-red-400/90">{post.title}</h2>
             </Link>
             <p className="mt-2 text-sm text-slate-400 leading-relaxed">{post.excerpt}</p>
             <Link

@@ -36,14 +36,14 @@ export function TimestampValidator() {
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
           Paste Timestamps and Chapter Titles
         </label>
         <textarea
           rows={6}
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 font-mono text-xs text-white focus:border-red-500 focus:outline-none"
+          className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-3 font-mono text-xs text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
         />
       </div>
 
@@ -58,7 +58,7 @@ export function TimestampValidator() {
         >
           {startsWithZero ? <CheckCircle2 className="h-5 w-5" /> : <AlertCircle className="h-5 w-5" />}
           <div>
-            <p className="text-xs font-bold text-white">Rule 1: Starts at 00:00</p>
+            <p className="text-xs font-bold text-slate-900 dark:text-white">Rule 1: Starts at 00:00</p>
             <p className="text-[11px] text-slate-400">First timestamp must begin at 00:00</p>
           </div>
         </div>
@@ -72,7 +72,7 @@ export function TimestampValidator() {
         >
           {hasMinChapters ? <CheckCircle2 className="h-5 w-5" /> : <AlertCircle className="h-5 w-5" />}
           <div>
-            <p className="text-xs font-bold text-white">Rule 2: Minimum 3 Chapters</p>
+            <p className="text-xs font-bold text-slate-900 dark:text-white">Rule 2: Minimum 3 Chapters</p>
             <p className="text-[11px] text-slate-400">
               Found {parsedChapters.filter((c) => c.valid).length} valid chapters
             </p>
@@ -81,7 +81,7 @@ export function TimestampValidator() {
       </div>
 
       {/* Action bar */}
-      <div className="flex items-center justify-between border-t border-slate-800 pt-4">
+      <div className="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
         <span className="text-xs text-slate-400">
           {allValid ? '✓ Ready for YouTube Studio & Google Key Moments' : '⚠ Fix highlighted errors above'}
         </span>

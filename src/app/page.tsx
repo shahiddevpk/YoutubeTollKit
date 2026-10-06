@@ -36,10 +36,10 @@ export default function HomePage() {
   const featuredTools = getFeaturedTools();
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 pb-16">
-      <section className="border-b border-slate-800 py-10 sm:py-12">
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 pb-16">
+      <section className="border-b border-slate-200 dark:border-slate-800 py-10 sm:py-12">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
             Free YouTube creator tools
           </h1>
           <p className="mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">
@@ -47,12 +47,12 @@ export default function HomePage() {
             only. No video or audio downloaders. Most tools work without an account.
           </p>
 
-          <div className="mt-8 rounded-xl border border-slate-800 bg-slate-900/80 p-4 sm:p-6">
-            <h2 className="text-base font-semibold text-white mb-1">YouTube Monetization Checker</h2>
+          <div className="mt-8 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-100 dark:bg-slate-900/80 p-4 sm:p-6">
+            <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">YouTube Monetization Checker</h2>
             <p className="text-xs text-slate-500 mb-4">Unofficial public indicators · optional owner verification</p>
             <Suspense
               fallback={
-                <div className="min-h-32 rounded-lg border border-slate-800 bg-slate-950 p-6 text-center text-sm text-slate-500">
+                <div className="min-h-32 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 text-center text-sm text-slate-500">
                   Loading…
                 </div>
               }
@@ -63,8 +63,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-b border-slate-800">
-        <h2 className="text-lg font-semibold text-white">What you will find here</h2>
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-b border-slate-200 dark:border-slate-800">
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-white">What you will find here</h2>
         <div className="mt-4 space-y-3 text-sm text-slate-400 leading-relaxed">
           <p>
             YouTubeFreeToolkit is a policy-aware suite for creators who need practical utilities without paywalls or
@@ -85,7 +85,7 @@ export default function HomePage() {
           <Link href="/tools" className="font-medium text-red-400 hover:text-red-300">
             View all tools →
           </Link>
-          <Link href="/guides" className="font-medium text-slate-400 hover:text-slate-200">
+          <Link href="/guides" className="font-medium text-slate-400 hover:text-slate-800 dark:text-slate-200">
             Pillar guide hubs →
           </Link>
         </p>
@@ -93,8 +93,8 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex items-baseline justify-between gap-4 mb-6">
-          <h2 className="text-lg font-semibold text-white">Popular tools</h2>
-          <Link href="/tools" className="text-xs text-slate-500 hover:text-slate-300">
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Popular tools</h2>
+          <Link href="/tools" className="text-xs text-slate-500 hover:text-slate-700 dark:text-slate-300">
             See all {TOOLS_REGISTRY.length}
           </Link>
         </div>
@@ -105,8 +105,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-800">
-        <h2 className="text-lg font-semibold text-white mb-4">Browse by category</h2>
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-200 dark:border-slate-800">
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Browse by category</h2>
         <ul className="space-y-3">
           {CATEGORIES.map((cat) => {
             const count = TOOLS_REGISTRY.filter((t) => t.category === cat.id).length;
@@ -114,9 +114,9 @@ export default function HomePage() {
               <li key={cat.id}>
                 <Link
                   href={`/tools/category/${cat.id}`}
-                  className="block rounded-lg border border-slate-800 px-4 py-3 hover:border-slate-600 transition-colors"
+                  className="block rounded-lg border border-slate-200 dark:border-slate-800 px-4 py-3 hover:border-slate-400 dark:hover:border-slate-600 transition-colors"
                 >
-                  <span className="font-medium text-slate-200">{cat.name}</span>
+                  <span className="font-medium text-slate-800 dark:text-slate-200">{cat.name}</span>
                   <span className="text-xs text-slate-500 ml-2">({count})</span>
                   <p className="text-xs text-slate-500 mt-1">{cat.description}</p>
                 </Link>
@@ -126,8 +126,8 @@ export default function HomePage() {
         </ul>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-800">
-        <h2 className="text-lg font-semibold text-white mb-4">Common questions</h2>
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-200 dark:border-slate-800">
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Common questions</h2>
         <div className="space-y-3 text-sm">
           {[
             {
@@ -147,8 +147,8 @@ export default function HomePage() {
               a: 'Read our Privacy Policy, Terms, and Policy Compliance pages for API usage, limitations, and contact information.',
             },
           ].map(({ q, a }) => (
-            <details key={q} className="rounded-lg border border-slate-800 px-4 py-3">
-              <summary className="cursor-pointer font-medium text-slate-200 list-none">{q}</summary>
+            <details key={q} className="rounded-lg border border-slate-200 dark:border-slate-800 px-4 py-3">
+              <summary className="cursor-pointer font-medium text-slate-800 dark:text-slate-200 list-none">{q}</summary>
               <p className="mt-2 text-slate-400 leading-relaxed">{a}</p>
             </details>
           ))}

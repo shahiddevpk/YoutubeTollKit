@@ -36,6 +36,31 @@ export const GUIDE_HUBS: GuideHub[] = [
           'Finance, tech, and education niches often show higher RPM ranges than broad entertainment, but geography, seasonality, and audience device mix matter more than generic benchmarks.',
         ],
       },
+      {
+        id: 'policy-traps',
+        heading: 'Common monetization mistakes to avoid',
+        paragraphs: [
+          'Reused content, misleading metadata, and copyright strikes can delay or remove YPP access even when public subscriber counts look healthy. Public tools cannot see strikes or reused-content reviews — only your Studio account can.',
+          'Never promise viewers that a third-party “monetization checker” proves another channel’s AdSense status. Responsible research sticks to public eligibility-style signals and cites official YouTube help articles for thresholds.',
+        ],
+      },
+      {
+        id: 'hub-workflow',
+        heading: 'Suggested workflow on this site',
+        paragraphs: [
+          'Start with the Partner Program requirements article, run public checks on your channel handle, optionally verify owner Analytics access, then model RPM scenarios with calculators using numbers from your own Studio exports.',
+          'Revisit the hub quarterly when YouTube updates thresholds or when you expand into Shorts-heavy publishing, because watch-hour and Shorts view paths use different eligibility mechanics.',
+        ],
+      },
+      {
+        id: 'official-sources',
+        heading: 'Official sources and record keeping',
+        paragraphs: [
+          'Bookmark YouTube Help articles for Partner Program thresholds, AdSense linking, and copyright strikes. Screenshot your Studio Earn tab when you apply or when policy messages change so you have timestamps if support asks for context.',
+          'Keep music licenses, contract releases, and project files organized before you scale upload volume. Reused-content reviews often ask whether you own or licensed the footage you publish, and third-party monetization tools cannot see that paperwork for you.',
+          'When you discuss earnings publicly, separate illustrative calculator output from verified AdSense deposits. Transparency protects your reputation with sponsors and viewers alike.',
+        ],
+      },
     ],
     toolSlugs: ['monetization-checker', 'earnings-calculator', 'rpm-calculator'],
     blogSlugs: [
@@ -69,7 +94,7 @@ export const GUIDE_HUBS: GuideHub[] = [
     primaryKeyword: 'youtube seo',
     updatedAt: '2026-10-06',
     intro:
-      'YouTube SEO starts with clarity: help viewers and systems understand what a video delivers. Titles and thumbnails drive clicks; retention drives distribution; metadata helps match the right audience. This hub links our free auditors and long-form guides without encouraging keyword stuffing or scraped tag lists.',
+      'YouTube SEO starts with clarity: help viewers and systems understand what a video delivers. Titles and thumbnails drive clicks; retention drives distribution; metadata helps match the right audience. This hub links our free auditors and long-form guides without encouraging keyword stuffing or scraped tag lists. Work through the checklist article, run audits on drafts before upload, and revisit metadata only after you have enough impressions in Studio to judge click-through rate. Shorts and long-form videos share principles but not identical packaging rules — adjust hooks and chapter depth accordingly.',
     sections: [
       {
         id: 'metadata-stack',
@@ -93,6 +118,31 @@ export const GUIDE_HUBS: GuideHub[] = [
         paragraphs: [
           'Research intent, draft title and description, run an SEO score check, validate chapters, preview the thumbnail, then walk through an upload checklist. Revisit metadata after you see click-through rate and retention data in Studio.',
           'SEO tools cannot fix weak storytelling. Use scores to remove friction, not to automate uploads.',
+        ],
+      },
+      {
+        id: 'shorts-vs-long',
+        heading: 'Shorts versus long-form metadata',
+        paragraphs: [
+          'Shorts discovery leans on hooks, pacing, and retention in the first seconds. Tags and descriptions still matter for context, but packaging and payoff dominate. Long-form videos benefit more from chapters, detailed descriptions, and sustained keyword clarity.',
+          'When you repurpose clips, write Shorts-specific titles instead of copying long-form headlines that truncate awkwardly in vertical feeds.',
+        ],
+      },
+      {
+        id: 'measurement',
+        heading: 'Measuring whether SEO changes worked',
+        paragraphs: [
+          'Wait at least one to two weeks after a meaningful metadata change before judging results, unless you are fixing a clear error such as a misleading title. Compare click-through rate, average view duration, and traffic sources in Studio.',
+          'If CTR improves but retention drops, the new packaging may be over-promising. Iterate on honesty and clarity before adding more keywords.',
+        ],
+      },
+      {
+        id: 'content-quality',
+        heading: 'Content quality beyond metadata',
+        paragraphs: [
+          'Metadata helps YouTube test the right audience, but retention and satisfaction decide whether distribution grows. Invest in clear audio, readable structure, and deliverables that match the title promise before you chase perfect tag character counts.',
+          'Build series and playlists so returning viewers recognize your format. Internal links in descriptions and end screens guide people to the next logical video, which lifts session watch time more than stuffing unrelated keywords.',
+          'When you localize videos, adapt titles and descriptions for each language instead of machine-translating English metadata alone. Unique localized copy avoids duplicate-signal confusion and reads more naturally to regional audiences.',
         ],
       },
     ],
@@ -130,7 +180,7 @@ export const GUIDE_HUBS: GuideHub[] = [
     primaryKeyword: 'youtube channel troubleshooting',
     updatedAt: '2026-10-06',
     intro:
-      'Creators often hit the same walls: wrong channel identifiers, rounded subscriber counts, confusing monetization signals, or competitor research that crosses YouTube’s lines. This hub explains what public tools can and cannot do, and points to policy-safe utilities on this site.',
+      'Creators often hit the same walls: wrong channel identifiers, rounded subscriber counts, confusing monetization signals, or competitor research that crosses YouTube’s lines. This hub explains what public tools can and cannot do, and points to policy-safe utilities on this site. When something fails, verify identifiers first, then API freshness, then whether the video or channel is still public. Escalate to official YouTube support for account-level issues — third-party tools cannot reset strikes or force monetization reviews.',
     sections: [
       {
         id: 'identifiers',
@@ -154,6 +204,32 @@ export const GUIDE_HUBS: GuideHub[] = [
         paragraphs: [
           'Benchmark peers with public APIs, tag extractors on public videos, and SEO audits on your own drafts. Avoid bulk scraping, downloaders, comment spam, or impersonation.',
           'If a tactic requires bypassing access controls, it is out of scope for this toolkit and likely violates YouTube Terms.',
+        ],
+      },
+      {
+        id: 'data-hygiene',
+        heading: 'Keeping research data accurate',
+        paragraphs: [
+          'Cache public stats with timestamps in your notes so you know when a comparison snapshot was taken. Viral videos can skew weekly benchmarks if you treat one outlier as the new normal.',
+          'When automations fail, resolve the channel UC ID again, confirm the handle still maps to the same channel, and test with a fresh public upload URL.',
+        ],
+      },
+      {
+        id: 'creator-communication',
+        heading: 'Communicating stats to your audience',
+        paragraphs: [
+          'On-stream milestone graphics should disclose that overlays use public counts, which may round or lag Studio. Transparency builds trust when numbers differ slightly from what viewers see on the channel page.',
+          'Do not use public research tools to shame other creators. Competitive analysis belongs in private strategy docs, not call-out videos.',
+        ],
+      },
+      {
+        id: 'escalation',
+        heading: 'When to escalate to YouTube Support',
+        paragraphs: [
+          'Use official support channels for account recovery, incorrect strikes, monetization appeals, and copyright disputes. Public lookup tools cannot reset passwords, remove penalties, or speed up human YPP reviews.',
+          'Before you file a ticket, collect channel ID, video URLs, screenshots from Studio, and timestamps of when the issue started. Clear reproduction steps reduce back-and-forth with support agents.',
+          'If an integration breaks after YouTube changes an API field, update your automations to use documented endpoints rather than undocumented page scraping that may violate Terms of Service.',
+          'Keep a short internal runbook that lists which tools on this site you use for IDs, counters, and comparisons so new team members do not improvise risky workflows under deadline pressure.',
         ],
       },
     ],

@@ -53,22 +53,22 @@ export default async function GuideHubPage({ params }: PageProps) {
   ]);
 
   return (
-    <article className="min-h-screen bg-slate-950 text-slate-100 pb-16">
+    <article className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 pb-16">
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <header className="border-b border-slate-800 py-10">
+      <header className="border-b border-slate-200 dark:border-slate-800 py-10">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <nav className="text-xs text-slate-500 mb-4" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-slate-300">Home</Link>
+            <Link href="/" className="hover:text-slate-700 dark:text-slate-300">Home</Link>
             <span className="mx-1.5">/</span>
-            <Link href="/guides" className="hover:text-slate-300">Guides</Link>
+            <Link href="/guides" className="hover:text-slate-700 dark:text-slate-300">Guides</Link>
             <span className="mx-1.5">/</span>
-            <span className="text-slate-300">{guide.title}</span>
+            <span className="text-slate-700 dark:text-slate-300">{guide.title}</span>
           </nav>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">{guide.title}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">{guide.title}</h1>
           <p className="mt-3 text-sm text-slate-400 leading-relaxed">{guide.intro}</p>
           <p className="mt-2 text-xs text-slate-500">Last updated {guide.updatedAt}</p>
         </div>
@@ -80,7 +80,7 @@ export default async function GuideHubPage({ params }: PageProps) {
         ))}
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Free tools in this hub</h2>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Free tools in this hub</h2>
           <ul className="space-y-2 text-sm">
             {tools.map((tool) =>
               tool ? (
@@ -96,11 +96,11 @@ export default async function GuideHubPage({ params }: PageProps) {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-white mb-3">Related articles</h2>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Related articles</h2>
           <ul className="space-y-3">
             {articles.map((post) => (
               <li key={post.slug} className="text-sm">
-                <Link href={`/blog/${post.slug}`} className="font-medium text-slate-200 hover:text-red-400">
+                <Link href={`/blog/${post.slug}`} className="font-medium text-slate-800 dark:text-slate-200 hover:text-red-400">
                   {post.title}
                 </Link>
                 <p className="text-slate-500 mt-0.5">{post.excerpt}</p>
@@ -111,11 +111,11 @@ export default async function GuideHubPage({ params }: PageProps) {
 
         {guide.faqs.length > 0 && (
           <section>
-            <h2 className="text-lg font-semibold text-white mb-3">Frequently asked questions</h2>
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Frequently asked questions</h2>
             <div className="space-y-3">
               {guide.faqs.map((faq, i) => (
-                <details key={i} className="rounded-lg border border-slate-800 px-4 py-3">
-                  <summary className="cursor-pointer font-medium text-slate-200 list-none">{faq.question}</summary>
+                <details key={i} className="rounded-lg border border-slate-200 dark:border-slate-800 px-4 py-3">
+                  <summary className="cursor-pointer font-medium text-slate-800 dark:text-slate-200 list-none">{faq.question}</summary>
                   <p className="mt-2 text-sm text-slate-400 leading-relaxed">{faq.answer}</p>
                 </details>
               ))}

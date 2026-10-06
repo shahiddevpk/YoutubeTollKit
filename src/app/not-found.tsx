@@ -19,11 +19,11 @@ export default async function NotFound() {
   const popular = TOOLS_REGISTRY.filter((t) => t.featured).slice(0, 5);
 
   return (
-    <div className="min-h-[60vh] bg-slate-950 text-slate-100 py-12">
+    <div className="min-h-[60vh] bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-12">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 space-y-8">
         <div>
           <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">Error 404</p>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-bold text-white">Page not found</h1>
+          <h1 className="mt-2 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Page not found</h1>
           <p className="mt-3 text-sm text-slate-400 leading-relaxed">
             The link may be outdated, mistyped, or removed. {SITE_CONFIG.name} only publishes creator tools,
             guides, and legal pages — we do not host video downloads or WordPress-style attachment URLs.
@@ -31,7 +31,7 @@ export default async function NotFound() {
         </div>
 
         <section className="space-y-3">
-          <h2 className="text-base font-semibold text-white">Try these instead</h2>
+          <h2 className="text-base font-semibold text-slate-900 dark:text-white">Try these instead</h2>
           <ul className="space-y-2 text-sm">
             <li>
               <Link href="/tools" className="text-red-400 hover:text-red-300 underline-offset-2 hover:underline">
@@ -60,12 +60,12 @@ export default async function NotFound() {
           </ul>
         </section>
 
-        <section className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
-          <h2 className="text-sm font-semibold text-white mb-2">Popular tools</h2>
+        <section className="rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/40 p-4">
+          <h2 className="text-sm font-semibold text-slate-900 dark:text-white mb-2">Popular tools</h2>
           <ul className="space-y-1.5 text-sm text-slate-400">
             {popular.map((tool) => (
               <li key={tool.slug}>
-                <Link href={`/tools/${tool.slug}`} className="hover:text-slate-200">
+                <Link href={`/tools/${tool.slug}`} className="hover:text-slate-800 dark:text-slate-200">
                   {tool.name}
                 </Link>
               </li>

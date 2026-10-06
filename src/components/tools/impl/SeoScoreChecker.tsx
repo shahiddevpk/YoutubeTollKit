@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Gauge, Sparkles, Loader2 } from 'lucide-react';
+import { Gauge, ListChecks } from 'lucide-react';
+import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
 
 interface SeoAuditResult {
   score: number;
@@ -119,7 +120,7 @@ export function SeoScoreChecker() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-bold text-white">Video Metadata SEO Auditor</h3>
+        <h3 className="text-base font-bold text-slate-900 dark:text-white">Video Metadata SEO Auditor</h3>
         <button
           type="button"
           onClick={loadDemo}
@@ -131,7 +132,7 @@ export function SeoScoreChecker() {
 
       <form onSubmit={runAudit} className="space-y-4">
         <div>
-          <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
             Video Title ({title.length} characters)
           </label>
           <input
@@ -139,13 +140,13 @@ export function SeoScoreChecker() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. How to Get Monetized on YouTube Fast (2026 Step-by-Step)"
-            className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
             required
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
             Video Description
           </label>
           <textarea
@@ -153,12 +154,12 @@ export function SeoScoreChecker() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Paste your video description text including links and timestamps..."
-            className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
             Tags (comma separated)
           </label>
           <input
@@ -166,24 +167,20 @@ export function SeoScoreChecker() {
             value={tagsInput}
             onChange={(e) => setTagsInput(e.target.value)}
             placeholder="e.g. youtube seo, channel growth, monetization 2026"
-            className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
           />
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/30 hover:bg-red-500 transition-all cursor-pointer"
-        >
-          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Gauge className="h-4 w-4" />}
-          <span>Calculate YouTube SEO Score</span>
-        </button>
+        <ToolPrimaryButton type="submit" loading={loading} loadingLabel="Auditing…" className="w-full sm:w-full">
+          <Gauge className="h-4 w-4" aria-hidden />
+          <span>Run SEO Audit</span>
+        </ToolPrimaryButton>
       </form>
 
       {audit && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 space-y-6 animate-in fade-in">
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-6 animate-in fade-in">
           {/* Score Circle Banner */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-800 pb-5">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
             <div className="flex items-center gap-4">
               <div
                 className={`flex h-16 w-16 items-center justify-center rounded-2xl font-black text-2xl border ${
@@ -200,7 +197,7 @@ export function SeoScoreChecker() {
                 <span className="text-xs uppercase tracking-wider text-slate-400 font-bold">
                   Overall SEO Score
                 </span>
-                <h4 className="text-xl font-bold text-white">
+                <h4 className="text-xl font-bold text-slate-900 dark:text-white">
                   Grade {audit.grade} Optimization
                 </h4>
               </div>
@@ -213,33 +210,33 @@ export function SeoScoreChecker() {
 
           {/* Audit breakdown */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5 space-y-1">
+            <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5 space-y-1">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-white">Title Optimization</span>
+                <span className="font-bold text-slate-900 dark:text-white">Title Optimization</span>
                 <span className="text-slate-400 font-mono">{audit.titleAudit.length} chars</span>
               </div>
               <p className="text-xs text-slate-400">{audit.titleAudit.message}</p>
             </div>
 
-            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5 space-y-1">
+            <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5 space-y-1">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-white">Description Context</span>
+                <span className="font-bold text-slate-900 dark:text-white">Description Context</span>
                 <span className="text-slate-400 font-mono">{audit.descriptionAudit.words} words</span>
               </div>
               <p className="text-xs text-slate-400">{audit.descriptionAudit.message}</p>
             </div>
 
-            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5 space-y-1">
+            <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5 space-y-1">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-white">Tags & Semantic Keywords</span>
+                <span className="font-bold text-slate-900 dark:text-white">Tags & Semantic Keywords</span>
                 <span className="text-slate-400 font-mono">{audit.tagsAudit.count} tags</span>
               </div>
               <p className="text-xs text-slate-400">{audit.tagsAudit.message}</p>
             </div>
 
-            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5 space-y-1">
+            <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5 space-y-1">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-white">Chapters / Timestamps</span>
+                <span className="font-bold text-slate-900 dark:text-white">Chapters / Timestamps</span>
                 <span className="text-emerald-400 font-mono">Google Rich Snippet</span>
               </div>
               <p className="text-xs text-slate-400">{audit.chaptersAudit.message}</p>
@@ -250,10 +247,10 @@ export function SeoScoreChecker() {
           {audit.recommendations.length > 0 && (
             <div className="rounded-xl border border-red-500/20 bg-red-950/20 p-4 space-y-2">
               <h5 className="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5" />
+                <ListChecks className="h-3.5 w-3.5" aria-hidden />
                 Action Items to Boost Score
               </h5>
-              <ul className="space-y-1.5 text-xs text-slate-300">
+              <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
                 {audit.recommendations.map((rec, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="text-red-400 font-bold mt-0.5">•</span>

@@ -19,13 +19,13 @@ export function ToolCard({ tool, compact = false }: ToolCardProps) {
   };
 
   const badgeClass = tool.badge
-    ? badgeColors[tool.badge] || 'bg-slate-800 text-slate-300 border-slate-700'
+    ? badgeColors[tool.badge] || 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700'
     : '';
 
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="group flex flex-col justify-between rounded-lg border border-slate-800 bg-slate-900/50 p-4 transition-colors hover:border-slate-600 hover:bg-slate-900"
+      className="group flex flex-col justify-between rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 p-4 transition-colors hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-100 dark:bg-slate-900"
     >
       <div>
         {/* Top bar with Icon and Badge */}
@@ -38,7 +38,7 @@ export function ToolCard({ tool, compact = false }: ToolCardProps) {
           <ArrowUpRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-slate-400 ml-auto" aria-hidden />
         </div>
 
-        <h3 className="text-sm font-semibold text-white group-hover:text-red-400/90 transition-colors">
+        <h3 className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-red-400/90 transition-colors">
           {tool.name}
         </h3>
 
@@ -50,7 +50,7 @@ export function ToolCard({ tool, compact = false }: ToolCardProps) {
 
       {/* Footer Category and Free Notice */}
       {!compact && (
-        <div className="mt-5 flex items-center justify-between border-t border-slate-800/80 pt-3 text-[11px] text-slate-500">
+        <div className="mt-5 flex items-center justify-between border-t border-slate-200 dark:border-slate-800/80 pt-3 text-[11px] text-slate-500">
           <span className="capitalize font-medium text-slate-400">{tool.category}</span>
           <span className="font-semibold text-emerald-400">100% Free</span>
         </div>

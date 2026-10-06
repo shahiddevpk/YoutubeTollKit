@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Tag, Search, Copy, Check, Hash, Loader2, AlertCircle } from 'lucide-react';
 import { fetchYouTubeVideo, parseApiJson } from '@/lib/api-client';
+import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
+import { toolFormRowClass } from '@/lib/tool-ui';
 
 const PRESET_VIDEOS = [
   { label: 'YouTube Monetization Blueprint', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
@@ -79,10 +81,10 @@ export function TagExtractor() {
   return (
     <div className="space-y-6">
       <form onSubmit={handleExtract} className="space-y-3">
-        <label className="block text-sm font-semibold text-slate-200">
+        <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200">
           Enter YouTube Video URL or Shorts Link
         </label>
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className={toolFormRowClass}>
           <div className="relative flex-1">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
             <input
@@ -90,29 +92,25 @@ export function TagExtractor() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-              className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 pl-11 text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-3 pl-11 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               required
             />
           </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/30 hover:bg-red-500 transition-all shrink-0 cursor-pointer"
-          >
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Tag className="h-4 w-4" />}
+          <ToolPrimaryButton type="submit" loading={loading} loadingLabel="Extracting…">
+            <Tag className="h-4 w-4" aria-hidden />
             <span>Extract Tags</span>
-          </button>
+          </ToolPrimaryButton>
         </div>
 
         {/* Preset Video Chips */}
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-slate-500">Try Example:</span>
+          <span className="text-xs text-slate-500">Quick test:</span>
           {PRESET_VIDEOS.map((preset) => (
             <button
               key={preset.label}
               type="button"
               onClick={() => selectPreset(preset.url)}
-              className="rounded-lg border border-slate-800 bg-slate-900/80 px-2.5 py-1 text-xs text-slate-300 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all cursor-pointer"
+              className="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-100 dark:bg-slate-900/80 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-red-500/50 hover:bg-slate-200 dark:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white transition-all cursor-pointer"
             >
               {preset.label}
             </button>
@@ -128,19 +126,19 @@ export function TagExtractor() {
       )}
 
       {tags.length > 0 && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 space-y-5 animate-in fade-in duration-150">
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-5 animate-in fade-in duration-150">
           {videoTitle && (
-            <div className="flex items-center gap-3 border-b border-slate-800 pb-3">
+            <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
               {thumbnailUrl && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={thumbnailUrl}
                   alt={videoTitle}
-                  className="h-12 w-20 rounded-lg object-cover border border-slate-700 shrink-0"
+                  className="h-12 w-20 rounded-lg object-cover border border-slate-300 dark:border-slate-700 shrink-0"
                 />
               )}
               <div className="min-w-0">
-                <h4 className="text-sm font-bold text-white truncate">{videoTitle}</h4>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">{videoTitle}</h4>
                 <p className="text-xs text-slate-400 mt-0.5">
                   Character count: <strong className="text-emerald-400">{totalCharacters}</strong> / 500 max
                 </p>
@@ -149,7 +147,7 @@ export function TagExtractor() {
           )}
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Tag className="h-4 w-4 text-red-500" />
               Extracted Tags ({tags.length})
             </h3>
@@ -159,7 +157,7 @@ export function TagExtractor() {
               className="inline-flex items-center gap-1.5 rounded-lg bg-red-600/20 px-4 py-2 text-xs font-bold text-red-400 border border-red-500/30 hover:bg-red-600/30 transition-all cursor-pointer"
             >
               {copiedAll ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
-              <span>{copiedAll ? 'Copied with Commas!' : 'Copy All for YouTube Studio'}</span>
+              <span>{copiedAll ? 'Copied' : 'Copy tags for Studio'}</span>
             </button>
           </div>
 
@@ -169,7 +167,7 @@ export function TagExtractor() {
               <button
                 key={tag}
                 onClick={() => copySingleTag(tag)}
-                className="group flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs text-slate-200 hover:border-red-500/50 hover:bg-slate-800 transition-all cursor-pointer"
+                className="group flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-100 dark:bg-slate-900/80 px-3 py-1.5 text-xs text-slate-800 dark:text-slate-200 hover:border-red-500/50 hover:bg-slate-200 dark:bg-slate-800 transition-all cursor-pointer"
                 title="Click to copy single tag"
               >
                 <Hash className="h-3 w-3 text-slate-500 group-hover:text-red-400" />

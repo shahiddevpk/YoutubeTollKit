@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Sparkles, Loader2, AlertCircle } from 'lucide-react';
+import { GitCompare, AlertCircle } from 'lucide-react';
+import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
 import { formatNumber } from '@/lib/utils';
 import { fetchYouTubeChannel, parseApiJson } from '@/lib/api-client';
 
@@ -107,7 +108,7 @@ export function ChannelCompare() {
       <form onSubmit={handleCompare} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
               Channel 1 (Handle or URL)
             </label>
             <input
@@ -115,13 +116,13 @@ export function ChannelCompare() {
               value={ch1Input}
               onChange={(e) => setCh1Input(e.target.value)}
               placeholder="e.g. @MrBeast"
-              className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white focus:border-red-500 focus:outline-none"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
               Channel 2 (Handle or URL)
             </label>
             <input
@@ -129,20 +130,16 @@ export function ChannelCompare() {
               value={ch2Input}
               onChange={(e) => setCh2Input(e.target.value)}
               placeholder="e.g. @mkbhd"
-              className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white focus:border-red-500 focus:outline-none"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
               required
             />
           </div>
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/30 hover:bg-red-500 transition-all cursor-pointer"
-        >
-          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-          <span>Compare Channels Side-by-Side</span>
-        </button>
+        <ToolPrimaryButton type="submit" loading={loading} loadingLabel="Comparing…" className="w-full sm:w-full">
+          <GitCompare className="h-4 w-4" aria-hidden />
+          <span>Compare Channels</span>
+        </ToolPrimaryButton>
       </form>
 
       {error && (
@@ -157,14 +154,14 @@ export function ChannelCompare() {
         <div className="space-y-6 animate-in fade-in">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Channel 1 Card */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 space-y-4">
-              <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-4">
+              <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
                 {ch1.avatarUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={ch1.avatarUrl}
                     alt={ch1.title}
-                    className="h-12 w-12 rounded-2xl border border-slate-700 object-cover"
+                    className="h-12 w-12 rounded-2xl border border-slate-300 dark:border-slate-700 object-cover"
                   />
                 ) : (
                   <div className="h-12 w-12 rounded-2xl bg-red-600/20 text-red-400 font-black text-xl flex items-center justify-center border border-red-500/30">
@@ -172,23 +169,23 @@ export function ChannelCompare() {
                   </div>
                 )}
                 <div>
-                  <h3 className="text-lg font-bold text-white">{ch1.title}</h3>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{ch1.title}</h3>
                   <span className="text-xs text-slate-400 font-mono">{ch1.handle}</span>
                 </div>
               </div>
 
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between border-b border-slate-800/60 pb-2">
+                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
                   <span className="text-slate-400">Subscribers</span>
-                  <span className="font-bold text-white font-mono">{formatNumber(ch1.subscribers)}</span>
+                  <span className="font-bold text-slate-900 dark:text-white font-mono">{formatNumber(ch1.subscribers)}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-800/60 pb-2">
+                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
                   <span className="text-slate-400">Lifetime Views</span>
-                  <span className="font-bold text-white font-mono">{formatNumber(ch1.totalViews)}</span>
+                  <span className="font-bold text-slate-900 dark:text-white font-mono">{formatNumber(ch1.totalViews)}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-800/60 pb-2">
+                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
                   <span className="text-slate-400">Total Uploads</span>
-                  <span className="font-bold text-white font-mono">{ch1.videoCount}</span>
+                  <span className="font-bold text-slate-900 dark:text-white font-mono">{ch1.videoCount}</span>
                 </div>
                 <div className="flex justify-between pt-1 gap-4">
                   <span className="text-slate-400">Channel ID</span>
@@ -198,14 +195,14 @@ export function ChannelCompare() {
             </div>
 
             {/* Channel 2 Card */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 space-y-4">
-              <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-4">
+              <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
                 {ch2.avatarUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={ch2.avatarUrl}
                     alt={ch2.title}
-                    className="h-12 w-12 rounded-2xl border border-slate-700 object-cover"
+                    className="h-12 w-12 rounded-2xl border border-slate-300 dark:border-slate-700 object-cover"
                   />
                 ) : (
                   <div className="h-12 w-12 rounded-2xl bg-blue-600/20 text-blue-400 font-black text-xl flex items-center justify-center border border-blue-500/30">
@@ -213,23 +210,23 @@ export function ChannelCompare() {
                   </div>
                 )}
                 <div>
-                  <h3 className="text-lg font-bold text-white">{ch2.title}</h3>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{ch2.title}</h3>
                   <span className="text-xs text-slate-400 font-mono">{ch2.handle}</span>
                 </div>
               </div>
 
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between border-b border-slate-800/60 pb-2">
+                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
                   <span className="text-slate-400">Subscribers</span>
-                  <span className="font-bold text-white font-mono">{formatNumber(ch2.subscribers)}</span>
+                  <span className="font-bold text-slate-900 dark:text-white font-mono">{formatNumber(ch2.subscribers)}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-800/60 pb-2">
+                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
                   <span className="text-slate-400">Lifetime Views</span>
-                  <span className="font-bold text-white font-mono">{formatNumber(ch2.totalViews)}</span>
+                  <span className="font-bold text-slate-900 dark:text-white font-mono">{formatNumber(ch2.totalViews)}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-800/60 pb-2">
+                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
                   <span className="text-slate-400">Total Uploads</span>
-                  <span className="font-bold text-white font-mono">{ch2.videoCount}</span>
+                  <span className="font-bold text-slate-900 dark:text-white font-mono">{ch2.videoCount}</span>
                 </div>
                 <div className="flex justify-between pt-1 gap-4">
                   <span className="text-slate-400">Channel ID</span>

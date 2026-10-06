@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 
 export default function CompliancePage() {
   return (
-    <div className="min-h-screen bg-slate-950 py-16 text-slate-300">
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 py-16 text-slate-700 dark:text-slate-300">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-bold text-emerald-400 border border-emerald-500/20">
             <ShieldCheck className="h-3.5 w-3.5" />
             Compliance & Transparency
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-white">
+          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white">
             Policy & Quality Standards
           </h1>
           <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
@@ -31,7 +31,7 @@ export default function CompliancePage() {
 
         {/* 4 Core Pillars of Compliance */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 p-6 space-y-3">
             <div className="flex items-center gap-2 text-emerald-400 font-bold text-base">
               <CheckCircle2 className="h-5 w-5" />
               <span>Zero Piracy & Stream-Ripping</span>
@@ -41,7 +41,7 @@ export default function CompliancePage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 p-6 space-y-3">
             <div className="flex items-center gap-2 text-emerald-400 font-bold text-base">
               <FileCheck className="h-5 w-5" />
               <span>Helpful, Original Content (No Spam)</span>
@@ -51,7 +51,7 @@ export default function CompliancePage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 p-6 space-y-3">
             <div className="flex items-center gap-2 text-emerald-400 font-bold text-base">
               <Lock className="h-5 w-5" />
               <span>User Privacy & Minimal Data</span>
@@ -61,7 +61,7 @@ export default function CompliancePage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 p-6 space-y-3">
             <div className="flex items-center gap-2 text-emerald-400 font-bold text-base">
               <ShieldCheck className="h-5 w-5" />
               <span>Accurate Disclaimers & E-E-A-T</span>
@@ -72,8 +72,8 @@ export default function CompliancePage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 space-y-3 text-sm text-slate-400 leading-relaxed">
-          <h2 className="text-lg font-bold text-white">AdSense & site experience</h2>
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 p-6 space-y-3 text-sm text-slate-400 leading-relaxed">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">AdSense & site experience</h2>
           <p>
             If we display Google ads in the future, placement will follow the{' '}
             <a
@@ -95,9 +95,9 @@ export default function CompliancePage() {
         </div>
 
         {/* Official Policy Links */}
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 space-y-4">
-          <h2 className="text-lg font-bold text-white">Official External Guidelines We Abide By:</h2>
-          <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300">
+        <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-8 space-y-4">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">Official External Guidelines We Abide By:</h2>
+          <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
             <li>
               <a
                 href="https://developers.google.com/search/docs/essentials"

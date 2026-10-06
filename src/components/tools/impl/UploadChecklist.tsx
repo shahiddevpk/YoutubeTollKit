@@ -63,16 +63,16 @@ export function UploadChecklist() {
   return (
     <div className="space-y-6">
       {/* Progress Bar Header */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5 space-y-3">
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-5 space-y-3">
         <div className="flex items-center justify-between">
           <div>
             <span className="text-xs uppercase font-bold text-slate-400">Pre-Upload Readiness</span>
-            <h3 className="text-xl font-black text-white">{progressPercent}% Ready to Publish</h3>
+            <h3 className="text-xl font-black text-slate-900 dark:text-white">{progressPercent}% Ready to Publish</h3>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={resetAll}
-              className="text-xs text-slate-400 hover:text-white px-2.5 py-1 rounded-lg border border-slate-800 hover:bg-slate-800 transition-colors"
+              className="text-xs text-slate-400 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:bg-slate-800 transition-colors"
             >
               Reset
             </button>
@@ -86,7 +86,7 @@ export function UploadChecklist() {
           </div>
         </div>
 
-        <div className="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+        <div className="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
           <div
             className={`h-full transition-all duration-300 ${
               progressPercent === 100
@@ -110,8 +110,8 @@ export function UploadChecklist() {
               onClick={() => toggleItem(item.id)}
               className={`flex items-start gap-3 p-3.5 rounded-xl border transition-all cursor-pointer select-none ${
                 isChecked
-                  ? 'border-emerald-500/30 bg-emerald-950/15 text-slate-100'
-                  : 'border-slate-800 bg-slate-900/50 text-slate-400 hover:border-slate-700'
+                  ? 'border-emerald-500/30 bg-emerald-950/15 text-slate-900 dark:text-slate-100'
+                  : 'border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 text-slate-400 hover:border-slate-300 dark:border-slate-700'
               }`}
             >
               <div className="mt-0.5 shrink-0">
@@ -123,10 +123,10 @@ export function UploadChecklist() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className={`text-sm font-semibold ${isChecked ? 'text-white' : 'text-slate-300'}`}>
+                  <span className={`text-sm font-semibold ${isChecked ? 'text-white' : 'text-slate-700 dark:text-slate-300'}`}>
                     {item.label}
                   </span>
-                  <span className="rounded bg-slate-800 px-2 py-0.2 text-[10px] text-slate-400">
+                  <span className="rounded bg-slate-200 dark:bg-slate-800 px-2 py-0.2 text-[10px] text-slate-400">
                     {item.category}
                   </span>
                 </div>

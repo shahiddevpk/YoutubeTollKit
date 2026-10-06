@@ -32,6 +32,13 @@ const GUIDES: Record<string, ToolGuide> = {
           'Watch hours, Shorts view thresholds, policy strikes, and AdSense linkage are not guessed for third-party channels. Treat every public result as an unofficial indicator and confirm monetization decisions inside your own YouTube Studio account.',
         ],
       },
+      {
+        heading: 'Who should use this checker',
+        paragraphs: [
+          'Creators approaching YPP thresholds, managers vetting brand partnerships, and educators demonstrating the difference between public stats and private Studio status.',
+          'Researchers comparing eligibility-style signals across niches should still cite YouTube’s official help articles and avoid presenting unofficial output as proof of another channel’s AdSense enrollment.',
+        ],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -49,6 +56,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Paste a modern @handle, a /channel/UC… URL, a bare UC ID, or a link to a public video uploaded by the channel. We resolve redirects and return the canonical ID plus helpful public profile fields when the API makes them available.',
           'Private, deleted, or terminated channels cannot be resolved. If a video is removed or restricted, lookup may fail until you supply another public URL.',
+        ],
+      },
+      {
+        heading: 'Who should use the channel ID finder',
+        paragraphs: [
+          'Developers wiring Discord bots, no-code automations, RSS readers, and internal dashboards that need a stable UC identifier instead of a vanity URL.',
+          'Marketers documenting partner channels should store the UC ID in CRM notes even when public-facing materials use @handles.',
         ],
       },
       DEFAULT_TRUST,
@@ -70,6 +84,13 @@ const GUIDES: Record<string, ToolGuide> = {
           'Respect copyright and community guidelines when publishing. Bulk copying tags across unrelated niches can hurt relevance more than it helps.',
         ],
       },
+      {
+        heading: 'Who should use the tag extractor',
+        paragraphs: [
+          'SEO specialists auditing competitor packaging, course creators building keyword briefs, and solo YouTubers validating whether their own tags match the topic they filmed.',
+          'Use extracted tags as research notes, then rewrite metadata that reflects your unique angle rather than pasting entire lists into Studio.',
+        ],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -87,6 +108,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'CPM usually refers to what advertisers pay per thousand ad impressions. RPM reflects what creators earn per thousand views after YouTube’s revenue share and non-ad sources are considered.',
           'Niche presets in the tool are illustrative benchmarks, not guarantees. Adjust sliders to match your own historical Analytics when possible.',
+        ],
+      },
+      {
+        heading: 'Who should use the earnings calculator',
+        paragraphs: [
+          'Creators planning sponsorship minimums, finance educators teaching RPM concepts, and small teams forecasting runway from ad revenue scenarios.',
+          'Replace preset RPM values with exports from YouTube Analytics whenever you are making hiring or equipment purchase decisions.',
         ],
       },
       DEFAULT_TRUST,
@@ -108,6 +136,13 @@ const GUIDES: Record<string, ToolGuide> = {
           'Re-run the audit after you edit copy in YouTube Studio. Small wording changes can move a video from “needs work” to “ready to publish” without changing the underlying footage.',
         ],
       },
+      {
+        heading: 'Who should use the SEO score checker',
+        paragraphs: [
+          'Editors doing final metadata passes, agencies reviewing client uploads before scheduling, and creators learning which title and description habits hurt mobile readability.',
+          'Run the audit on draft copy in a doc first, then again after you paste into Studio so formatting differences do not hide truncation issues.',
+        ],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -125,6 +160,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'When embedding counts in OBS or Streamlabs, choose high-contrast typography and avoid covering safe zones on mobile-oriented layouts.',
           'Do not present rounded public counts as precise accounting for contracts or sponsorships. Use YouTube Studio analytics for official reporting.',
+        ],
+      },
+      {
+        heading: 'Who should use the subscriber counter',
+        paragraphs: [
+          'Streamers building milestone overlays, community managers tracking public growth between weekly reports, and creators celebrating goals with transparent on-screen disclaimers.',
+          'Refresh immediately before a subathon segment and keep Studio open if a sponsor requires accounting-grade totals.',
         ],
       },
       DEFAULT_TRUST,
@@ -146,6 +188,13 @@ const GUIDES: Record<string, ToolGuide> = {
           'This is a layout helper, not a guarantee of click-through rate. Pair previews with honest titles and accurate descriptions.',
         ],
       },
+      {
+        heading: 'Who should use thumbnail preview',
+        paragraphs: [
+          'Thumbnail designers testing contrast on dark mode feeds, gaming channels checking badge overlap, and brands localizing text size for mobile-first audiences.',
+          'Upload the same PNG you plan to publish in Studio rather than a heavily compressed chat preview so results match production quality.',
+        ],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -163,6 +212,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Keyword stuffing hurts clarity. Write titles that promise a specific outcome, then support that promise in the opening description lines.',
           'Link to authoritative sources when you cite policies or statistics, and update descriptions when YouTube changes studio limits.',
+        ],
+      },
+      {
+        heading: 'Who should use the title and description analyzer',
+        paragraphs: [
+          'Tutorial channels optimizing how-to queries, news creators fitting breaking headlines into mobile limits, and translators checking whether localized titles still truncate cleanly.',
+          'Iterate titles and opening description lines together so the promise above the Show more fold matches what viewers see in search results.',
         ],
       },
       DEFAULT_TRUST,
@@ -184,6 +240,13 @@ const GUIDES: Record<string, ToolGuide> = {
           'Shorts and long-form videos can share strategies, but the hook and pacing still matter more than hashtag volume.',
         ],
       },
+      {
+        heading: 'Who should use the hashtag generator',
+        paragraphs: [
+          'Shorts creators brainstorming topic labels, brands launching campaign hashtags, and educators teaching how hashtags differ from hidden video tags.',
+          'Keep only hashtags that appear in the description or title where viewers can see them; remove trendy tags unrelated to the footage.',
+        ],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -201,6 +264,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Saving the transparent overlay is a design aid for editors in CapCut, Premiere, or DaVinci. It is not a YouTube video download and does not access YouTube servers beyond what you upload locally.',
           'Always review the final export on a physical phone because aspect ratios differ slightly between iOS and Android.',
+        ],
+      },
+      {
+        heading: 'Who should use the Shorts safe zone tool',
+        paragraphs: [
+          'Vertical editors in CapCut or Premiere, agencies delivering Shorts templates to clients, and educators teaching why UI chrome covers bottom captions.',
+          'Save the PNG overlay in your project template so every episode in a series keeps consistent margins without redrawing guides.',
         ],
       },
       DEFAULT_TRUST,
@@ -222,6 +292,13 @@ const GUIDES: Record<string, ToolGuide> = {
           'Chapters should describe real segments viewers can jump to; misleading jumps may reduce trust.',
         ],
       },
+      {
+        heading: 'Who should use the chapter validator',
+        paragraphs: [
+          'Long-form educators publishing multi-section tutorials, podcasters uploading chapterized interviews, and producers fixing timestamp typos before a scheduled premiere.',
+          'Paste chapters from your script doc, validate spacing, then copy the corrected block into Studio so Google key moments see consistent formatting.',
+        ],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -239,6 +316,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Published RPM ranges aggregate many channels and change over time. Your RPM can swing between quarters without anything being “wrong” with your channel.',
           'Memberships, Super Thanks, and YouTube Premium revenue can affect RPM even when ad impressions look flat.',
+        ],
+      },
+      {
+        heading: 'Who should use this calculator',
+        paragraphs: [
+          'New monetized creators comparing last month’s Studio export to a niche benchmark, finance channels modeling sponsorship minimums, and educators explaining RPM in workshops all benefit from quick what-if math.',
+          'Export your real views and revenue from YouTube Analytics for the same date range before you debate whether a generic benchmark applies to your audience.',
         ],
       },
       DEFAULT_TRUST,
@@ -260,6 +344,13 @@ const GUIDES: Record<string, ToolGuide> = {
           'Rounded subscriber displays can make tiny gaps look larger or smaller than they are in Studio.',
         ],
       },
+      {
+        heading: 'Who should use channel compare',
+        paragraphs: [
+          'Podcast networks benchmarking client channels, educators demonstrating growth trajectories, and solo creators choosing realistic peer channels for quarterly goals.',
+          'Screenshot results with the date in your notes so viral weeks do not become permanent expectations.',
+        ],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -277,6 +368,13 @@ const GUIDES: Record<string, ToolGuide> = {
         paragraphs: [
           'Checking every box does not guarantee performance. Retention and relevance still determine reach after upload.',
           'Update the checklist when YouTube ships new studio features so your process stays current.',
+        ],
+      },
+      {
+        heading: 'Who should use the upload checklist',
+        paragraphs: [
+          'Solo creators who publish without a producer, small teams handing videos between editor and host, and agencies standardizing client deliverables before Studio upload.',
+          'Copy the completed summary into your project management ticket so reviewers know which SEO and technical steps were verified on this upload.',
         ],
       },
       DEFAULT_TRUST,

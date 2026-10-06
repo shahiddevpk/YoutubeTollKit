@@ -1,5 +1,6 @@
 import { BlogPost } from '@/types/blog';
 import { BLOG_EXPANSIONS } from '@/lib/blog-expansions';
+import { BLOG_CONTENT_APPEND } from '@/lib/blog-expansion-append';
 
 export const BLOG_POSTS: BlogPost[] = [
   {
@@ -164,7 +165,7 @@ Understanding rejection triggers saves months of lost time:
     },
     tableOfContents: [
       { id: 'method-1-tool', title: 'Method 1: Use YouTubeFreeToolkit Monetization Checker' },
-      { id: 'method-2-source', title: 'Method 2: Owner-Verify with YouTube Analytics' },
+      { id: 'method-2-source', title: 'Method 2: Owner verification with YouTube Analytics' },
       { id: 'method-3-fan-funding', title: 'Method 3: Look for Super Thanks & Join Buttons' },
       { id: 'method-4-ads', title: 'Method 4: Why Watching Ads Isn’t Always Reliable' },
       { id: 'faqs', title: 'Frequently Asked Questions' },
@@ -176,7 +177,7 @@ A practical way to review public monetization eligibility signals is using the *
 
 1. Copy the channel URL, video link, or handle (e.g. \`@mkbhd\`).
 2. Paste it into the [YouTube Monetization Checker](/tools/monetization-checker).
-3. Click **Check Public Indicators**.
+3. Click **Check Monetization**.
 4. The tool reports public channel statistics and subscriber-threshold signals for any public channel.
 5. If you own the channel, use optional owner verification and authorize the read-only YouTube permissions shown by Google.
 
@@ -184,7 +185,7 @@ For third-party channels, public API data does not reveal private YPP enrollment
 
 ---
 
-## Method 2: Owner-Verify with the Official YouTube Analytics API
+## Method 2: Owner verification with the official YouTube Analytics API
 
 For your own channel, the most reliable check is owner-authorized verification. YouTubeFreeToolkit confirms that the connected Google account owns the channel, confirms normal Analytics access, and then requests a read-only monetary metric. This avoids guessing from subscribers, ads, or undocumented page markers.
 
@@ -806,13 +807,17 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return undefined;
   const expansion = BLOG_EXPANSIONS[slug];
-  if (!expansion) return post;
-  return {
-    ...post,
-    ...expansion,
-    faqs: expansion.faqs ?? post.faqs,
-    tableOfContents: expansion.tableOfContents ?? post.tableOfContents,
-  };
+  const merged = expansion
+    ? {
+        ...post,
+        ...expansion,
+        faqs: expansion.faqs ?? post.faqs,
+        tableOfContents: expansion.tableOfContents ?? post.tableOfContents,
+      }
+    : post;
+  const append = BLOG_CONTENT_APPEND[slug];
+  if (!append) return merged;
+  return { ...merged, content: merged.content + append };
 }
 
 export function getAllBlogSlugs(): string[] {

@@ -35,7 +35,7 @@ export function HashtagGenerator() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div>
-          <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
             Topic or Keyword
           </label>
           <input
@@ -43,18 +43,18 @@ export function HashtagGenerator() {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             placeholder="e.g. crypto, podcast, ai"
-            className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs text-white focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-3.5 py-2 text-xs text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
             Content Niche
           </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs text-white focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-3.5 py-2 text-xs text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
           >
             <option value="general">General / Entertainment</option>
             <option value="finance">Finance & Business</option>
@@ -65,10 +65,10 @@ export function HashtagGenerator() {
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
             Video Format
           </label>
-          <div className="flex rounded-xl bg-slate-950 p-1 border border-slate-700">
+          <div className="flex rounded-xl bg-slate-50 dark:bg-slate-950 p-1 border border-slate-300 dark:border-slate-700">
             <button
               type="button"
               onClick={() => setFormat('shorts')}
@@ -92,8 +92,8 @@ export function HashtagGenerator() {
       </div>
 
       {/* Output tags box */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5 space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-5 space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
           <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
             Recommended Hashtag Set ({generatedTags.length})
           </span>
@@ -110,7 +110,7 @@ export function HashtagGenerator() {
           {generatedTags.map((tag) => (
             <span
               key={tag}
-              className="rounded-xl border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs font-mono font-medium text-red-400"
+              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-100 dark:bg-slate-900/80 px-3 py-1.5 text-xs font-mono font-medium text-red-400"
             >
               {tag}
             </span>

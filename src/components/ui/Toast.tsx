@@ -99,12 +99,12 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             role="status"
             className={`pointer-events-auto flex items-start gap-3 rounded-2xl border p-4 shadow-2xl backdrop-blur-md transition-all animate-in slide-in-from-top-3 fade-in duration-200 ${
               item.type === 'warning'
-                ? 'border-amber-500/40 bg-slate-900/95 text-slate-100 shadow-amber-500/10'
+                ? 'border-amber-500/40 bg-slate-100 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-amber-500/10'
                 : item.type === 'error'
-                  ? 'border-red-500/40 bg-slate-900/95 text-slate-100 shadow-red-500/10'
+                  ? 'border-red-500/40 bg-slate-100 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-red-500/10'
                   : item.type === 'success'
-                    ? 'border-emerald-500/40 bg-slate-900/95 text-slate-100 shadow-emerald-500/10'
-                    : 'border-blue-500/40 bg-slate-900/95 text-slate-100 shadow-blue-500/10'
+                    ? 'border-emerald-500/40 bg-slate-100 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-emerald-500/10'
+                    : 'border-blue-500/40 bg-slate-100 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-blue-500/10'
             }`}
           >
             <div className="shrink-0 mt-0.5">
@@ -124,18 +124,18 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
 
             <div className="flex-1 min-w-0 pr-1">
               {item.title && (
-                <h4 className="text-sm font-semibold text-white mb-0.5">
+                <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-0.5">
                   {item.title}
                 </h4>
               )}
-              <p className="text-xs text-slate-300 leading-relaxed font-normal">
+              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
                 {item.message}
               </p>
             </div>
 
             <button
               onClick={() => removeToast(item.id)}
-              className="shrink-0 text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition cursor-pointer"
+              className="shrink-0 text-slate-400 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white p-1 rounded-lg hover:bg-slate-200 dark:bg-slate-800 transition cursor-pointer"
               aria-label="Dismiss notification"
             >
               <X className="h-4 w-4" />

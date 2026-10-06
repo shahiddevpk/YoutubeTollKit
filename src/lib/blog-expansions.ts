@@ -65,6 +65,22 @@ Pair tag research with the [Title & Description Analyzer](/tools/title-descripti
 ## 6. Measuring Whether Tag Changes Helped
 
 After publishing, watch **click-through rate**, **average view duration**, and **traffic sources** in YouTube Studio for two weeks before making another metadata overhaul. Small tag edits rarely move metrics alone; retention and topic fit matter more.
+
+---
+
+## 7. Building a Tag Style Guide for Your Channel
+
+Document which tag categories you allow (product names, misspellings, series labels) and which you avoid (unrelated trends). A one-page style guide keeps guest editors consistent across uploads.
+
+Review the guide when you enter a new sub-niche so tags stay aligned with the footage you actually publish.
+
+---
+
+## 8. Shorts Tag Research Differences
+
+Shorts often rely on hooks and retention, but niche tags can still clarify topics in vertical feeds. Extract tags from top Shorts in your category, then write Shorts-specific titles instead of copying long-form tag blocks verbatim.
+
+Pair Shorts uploads with the [Hashtag Generator](/tools/hashtag-generator) only for visible description hashtags, not hidden tag spam.
 `,
     faqs: [
       {
@@ -140,6 +156,22 @@ Use the [RPM Calculator](/tools/rpm-calculator) when you have real revenue and v
 - Comparing your RPM to a creator in a different niche and country mix
 
 Document assumptions in a spreadsheet so you can revisit forecasts quarterly.
+
+---
+
+## 7. Reading YouTube Analytics Revenue Reports
+
+Open Analytics → Revenue and note RPM, playback-based CPM, and transaction revenue separately. Export monthly CSVs so calculator scenarios reference real baselines instead of viral outliers.
+
+Compare long-form and Shorts rows when your upload mix shifts; blended RPM can hide a struggling format.
+
+---
+
+## 8. Sponsorship Math Alongside AdSense
+
+Brand deals often pay flat fees per integration. Model AdSense with this calculator, then add sponsorship, affiliate, and product revenue in a separate tab so you do not double-count impressions.
+
+Disclose paid promotions in descriptions and use YouTube’s paid promotion tools when required.
 `,
     faqs: [
       {
@@ -203,6 +235,22 @@ Upload consistency helps RPM indirectly by training the algorithm to send qualif
 Share RPM trends with editors and sponsors to set realistic goals. If RPM rises while views flatline, ad efficiency improved. If views rise but RPM falls, check geography shifts or Shorts mix.
 
 Pair RPM tracking with the [Earnings Calculator](/tools/earnings-calculator) for forward-looking scenarios.
+
+---
+
+## 7. Segmenting RPM by Content Type
+
+Filter Analytics by video or playlist to see whether tutorials, vlogs, or Shorts carry different RPM. Double down on formats that earn and retain, not only on formats that spike views.
+
+Document segment RPM in quarterly reviews so editors know which series fund production time.
+
+---
+
+## 8. When RPM Drops Suddenly
+
+Check for geography shifts, policy-limited ads, seasonal demand, or a surge of non-monetized views. A single viral clip in a low-CPM region can drag blended RPM without indicating channel-wide problems.
+
+Avoid panic-changing niches before you confirm the trend persists for a full billing cycle.
 `,
     faqs: [
       {
@@ -261,6 +309,28 @@ Counters show point-in-time public totals. They do not show revenue, watch time,
 ## 6. Policy-Safe Usage
 
 Do not automate bulk polling that violates API terms. Do not use counters to scrape private data or intimidate other creators.
+
+---
+
+## 7. Subathon and Charity Stream Guidelines
+
+If bonuses depend on subscriber milestones, state clearly that public counters may round or lag. Keep Studio analytics accessible to moderators who verify goals before announcing rewards.
+
+Refresh the [Live Subscriber Counter](/tools/live-subscriber-counter) during ad breaks rather than every second to reduce API load.
+
+---
+
+## 8. Growth Rate vs Absolute Totals
+
+A channel at 50,000 subscribers gaining 500 per week is growing faster in percentage terms than a channel at five million gaining 5,000. Contextualize milestones for your audience instead of comparing only raw totals.
+
+Use [Channel Compare](/tools/channel-compare) for peer context, not for harassment.
+
+---
+
+## 9. Archiving Milestone Proof
+
+Save dated screenshots from Studio and from your overlay when sponsors or community challenges require evidence. Public API snapshots are helpful for streams but may not satisfy formal contracts alone.
 `,
     faqs: [
       {
@@ -329,6 +399,26 @@ Write titles people can parse quickly with screen readers. Avoid misleading prom
 - No critical info after character 55 on mobile-first videos
 - Description hook matches the title promise
 - Thumbnail text does not repeat the entire title verbatim
+
+---
+
+## 7. Query-Match Titles for Search Traffic
+
+When you target a specific query, include the literal phrase early: “OBS Audio Sync Fix (Windows 11)” beats a vague curiosity title for that intent. Keep browse-first titles more emotional but still clear in the first clause.
+
+Validate length with the [Title & Description Analyzer](/tools/title-description-analyzer) before scheduling.
+
+---
+
+## 8. Localizing Titles Without Duplicating English
+
+Translate meaning, not words only. A German title should read naturally to German viewers while preserving the core keyword concept. Avoid publishing identical English and localized titles on separate channels unless each audience is distinct.
+
+---
+
+## 9. Updating Titles After Publish
+
+You may change titles when packaging underperforms, but give each version time to collect impressions. Log old titles so you can revert if retention collapses after a clickbait experiment.
 `,
     faqs: [
       {
@@ -385,6 +475,28 @@ Re-check after major YouTube app updates.
 ## 6. Performance Notes
 
 Safe zones protect comprehension; they do not replace strong hooks. Retention in the first two seconds still drives Shorts distribution.
+
+---
+
+## 7. Filming vs Cropping Horizontal Footage
+
+Native vertical footage keeps faces sharp and motion natural. Cropping 16:9 video to 9:16 often wastes resolution and pushes subjects into unsafe margins. Plan vertical shots when Shorts are a primary format.
+
+---
+
+## 8. Audio and Caption Stacks
+
+Music lyrics and auto-captions compete for bottom space. Leave extra padding if you burn subtitles, or rely on YouTube auto-captions and keep on-screen text higher in the frame.
+
+Test one export on iOS and Android because caption stacks differ slightly.
+
+---
+
+## 9. Batch Production With Templates
+
+Create a CapCut or Premiere template with the safe-zone PNG locked. Batch ten Shorts through the same template so hooks, logos, and CTAs stay consistent without redesigning margins each time.
+
+Revisit templates after major YouTube app redesigns announced through official creator channels.
 `,
     faqs: [
       {
@@ -447,6 +559,26 @@ Scripts that hammer undocumented endpoints or bypass rate limits risk API bans a
 Use competitor insights to choose **angles** your channel can authentically cover: deeper tutorials, contrarian expertise, or better packaging for underserved keywords.
 
 Cite statistics responsibly and link to sources in descriptions when quoting external data.
+
+---
+
+## 7. Ethical Boundaries in Public Debates
+
+Critique ideas and packaging, not personal attacks. If you respond to another creator, add original research or tutorials rather than reuploading their footage without commentary.
+
+Use public stats to inform your strategy doc, not to brigade comment sections.
+
+---
+
+## 8. Data Retention and Privacy
+
+Store only channel IDs, URLs, and metrics you need for analysis. Delete outdated spreadsheets when projects end. Do not collect emails or private contact details from unrelated platforms to “investigate” competitors.
+
+---
+
+## 9. Teaching Teams the Same Rules
+
+Agencies should onboard editors with a written research policy: official APIs only, no downloaders, no impersonation accounts. Align client reporting with public fields and Studio exports the client owns.
 `,
     faqs: [
       {
@@ -521,6 +653,28 @@ Use feeds for personal readers, Discord bots, or internal dashboards — respect
 - Confusing **user IDs** with **channel IDs** on brand accounts
 - Storing \`/c/\` URLs that redirect differently per region
 - Assuming vanity URLs are permanent API keys
+
+---
+
+## 7. Brand Account and Multi-Channel Setups
+
+Organizations may manage several channels under one Google login. Always confirm you copied the UC ID for the intended channel before wiring automations or RSS readers.
+
+Studio → Settings → Channel → Advanced settings lists the ID for channels you control.
+
+---
+
+## 8. Security for API Keys and Bots
+
+Run bots server-side with keys in environment variables. Never commit credentials to public GitHub repos or browser extensions distributed to fans.
+
+Rotate keys when contractors leave and audit which UC IDs each integration accesses.
+
+---
+
+## 9. Documenting IDs for Sponsors
+
+When sponsors ask for channel verification, share the UC ID and a public channel URL rather than internal user IDs. Explain that handles are branding labels while UC IDs are stable integration identifiers.
 `,
     faqs: [
       {
@@ -534,6 +688,254 @@ Use feeds for personal readers, Discord bots, or internal dashboards — respect
       {
         question: 'Can I look up IDs for competitors?',
         answer: 'Yes for public channels using legitimate tools; do not use data to harass or spam.',
+      },
+    ],
+  },
+  'youtube-partner-program-requirements-2026': {
+    readTime: '12 min read',
+    content: `
+## 1. The 2026 Standard YPP Requirements
+
+To unlock full AdSense revenue sharing, video ad placements, and premium subscription splits on YouTube, creators must meet the **Standard YouTube Partner Program (YPP) Thresholds**:
+
+- **1,000 subscribers** on your channel.
+- **And either:**
+  - **4,000 valid public watch hours** on long-form videos within the past 12 consecutive months, **or**
+  - **10 million valid public Shorts views** within the past 90 consecutive days.
+- **Two-step verification** enabled on your Google Account.
+- **No active Community Guidelines strikes** that block monetization (copyright and policy reviews are evaluated separately).
+- **An active Google AdSense account** linked to your channel.
+
+---
+
+## 2. The 500-Subscriber Expanded YPP Tier (Fan Funding)
+
+YouTube offers an earlier tier for **fan funding** before full ad revenue sharing:
+
+| Requirement | Fan funding tier | Full AdSense tier |
+|---|---|---|
+| **Subscribers** | 500 | 1,000 |
+| **Uploads** | 3 valid public uploads in the last 90 days | Active channel |
+| **Watch hours** | 3,000 (past 12 months) | 4,000 (past 12 months) |
+| **Or Shorts views** | 3 million (past 90 days) | 10 million (past 90 days) |
+| **Revenue sources** | Super Thanks, Super Chats, memberships, shopping | Full video ads + Premium split + fan funding |
+
+---
+
+## 3. What Counts as Valid Public Watch Hours?
+
+**Included:** public long-form watch time, public live streams and archived replays, unlisted videos that were public during the measurement window.
+
+**Excluded:** Shorts feed watch time toward the 4,000-hour path (Shorts views use the separate 10M threshold), private or deleted videos, Google Ads–promoted views, and other filtered traffic per YouTube policy.
+
+---
+
+## 4. Top Rejection Reasons
+
+1. **Reused content** without meaningful commentary or educational value.
+2. **Repetitive templated uploads** with little variation.
+3. **Misleading metadata** that does not match the video.
+4. **Community Guidelines violations** or active strikes.
+
+---
+
+## 5. Application Steps in YouTube Studio
+
+1. Open **YouTube Studio → Earn**.
+2. Select **Apply** when thresholds show complete.
+3. Accept the **Base Terms**.
+4. Link or create **Google AdSense**.
+5. Submit for review (often 2–7 business days; complex cases may take longer).
+
+Use our [Monetization Checker](/tools/monetization-checker) for public eligibility-style signals, then confirm every bar inside Studio.
+
+---
+
+## 6. After Approval: Staying in Good Standing
+
+Post consistently, resolve copyright claims quickly, and keep licenses for music and stock footage. Demonetization reviews can follow policy changes even when subscriber counts look healthy.
+
+Track Shorts versus long-form eligibility paths separately if you pivot formats mid-year.
+
+---
+
+## 7. Taxes, Payouts, and Realistic Forecasting
+
+AdSense payouts follow tax and identity rules in your country. Use the [Earnings Calculator](/tools/earnings-calculator) for planning conversations, not tax filing.
+
+Separate illustrative forecasts from verified bank deposits when you discuss income publicly.
+
+---
+
+## 8. Public Tools vs Studio Truth
+
+Third-party sites cannot see private watch-hour banks, Shorts view totals, or strike status for channels you do not own. Optional owner verification on our monetization checker helps **your** channel test Analytics monetary access — still read official Studio messages for final decisions.
+`,
+    faqs: [
+      {
+        question: 'Do Shorts watch hours count toward 4,000 hours?',
+        answer:
+          'No. Shorts watch time uses the separate 10 million Shorts views in 90 days path for standard YPP ad revenue eligibility.',
+      },
+      {
+        question: 'Will YouTube demonetize me if watch hours dip after approval?',
+        answer:
+          'Temporary dips are common; stay active and follow policy. Studio notifications govern enforcement, not public subscriber counters.',
+      },
+      {
+        question: 'How long does YPP review take in 2026?',
+        answer: 'Many channels hear back within a week; manual compliance reviews can take longer.',
+      },
+    ],
+  },
+  'how-to-check-if-youtube-channel-is-monetized': {
+    readTime: '11 min read',
+    content: `
+## Method 1: Use the Free Monetization Checker
+
+1. Copy a channel URL, @handle, or public video link.
+2. Open the [YouTube Monetization Checker](/tools/monetization-checker).
+3. Click **Check Monetization** to review public statistics and eligibility-style signals.
+4. If you **own** the channel, use optional owner verification and approve the read-only Google permissions shown.
+
+For third-party channels, public APIs do not confirm private YPP or AdSense enrollment.
+
+---
+
+## Method 2: Owner Verification With YouTube Analytics
+
+Channel owners should rely on **YouTube Studio → Earn** and read-only Analytics checks. Our tool confirms channel ownership, tests normal Analytics access, then requests a monetary metric where policy allows.
+
+Do not use view-source tricks or undocumented markup on other creators’ pages — those signals change without notice and are not official enrollment fields.
+
+---
+
+## Method 3: Fan Funding Badges
+
+Public buttons such as **Join**, **Thanks (Super Thanks)**, or shopping shelves suggest monetization products are enabled. They are hints, not proof of full ad revenue sharing.
+
+---
+
+## Method 4: Why Ads Are Not Proof
+
+YouTube may serve ads on videos when the uploader is **not** in YPP under its right-to-monetize terms. Ads playing does not prove the creator receives that revenue.
+
+---
+
+## Method 5: Studio Earn Tab (Owners Only)
+
+Studio shows application status, ad suitability messages, and which products you can enable. Screenshot status before major policy events for support tickets.
+
+---
+
+## Method 6: Client and Sponsor Documentation
+
+Share public stats plus Studio exports from the channel owner under NDA. Do not claim third-party tools proved another creator’s AdSense linkage.
+
+Point stakeholders to our [monetization hub](/guides/youtube-monetization) for shared vocabulary about public vs owner-verified data.
+
+---
+
+## Method 7: Red Flags
+
+Avoid services promising exact AdSense balances for other channels or tutorials that bypass access controls. When unsure, ask the owner for a screen recording of their own Earn tab.
+`,
+    faqs: [
+      {
+        question: 'Can I tell if someone else’s channel is monetized?',
+        answer:
+          'You can review public eligibility signals only. Private YPP status requires the owner’s authorized Analytics access.',
+      },
+      {
+        question: 'Does seeing ads mean the channel earns revenue?',
+        answer:
+          'Not always. Platform ads can run on non-partner videos; only YPP members receive creator ad share where applicable.',
+      },
+      {
+        question: 'Is owner verification required?',
+        answer: 'No for public checks. Owners may optionally verify for stronger Analytics-based signals on their own channel.',
+      },
+    ],
+  },
+  'youtube-seo-checklist-for-creators': {
+    readTime: '12 min read',
+    content: `
+## 1. Primary Keyword Research and Intent
+
+Label each video **search** or **browse** intent. Search videos need literal keywords early; browse videos can prioritize curiosity while staying clear.
+
+Review the top three ranking videos and note gaps with the [Tag Extractor](/tools/tag-extractor).
+
+---
+
+## 2. Title Crafting (50–70 Characters)
+
+Front-load keywords within the first 40 characters. Stay near 70 characters on mobile-first videos to avoid truncation.
+
+Use emotional qualifiers only when they match the footage: “step-by-step,” “updated,” or outcome-focused hooks.
+
+---
+
+## 3. Three-Part Description Formula
+
+1. **Above the fold:** outcome and hook in the first 150 characters.
+2. **Body:** chapters starting at \`00:00\`, synonyms, and supporting detail.
+3. **Footer:** links, disclosures, and related playlists.
+
+---
+
+## 4. Ethical Tags in 2026
+
+Use 5–12 focused tags for misspellings, models, and themes — not unrelated trends. Stay within roughly 200–400 characters when possible.
+
+---
+
+## 5. Chapters and Key Moments
+
+Format chapters with \`00:00\` first, at least three segments, and real section titles. Validate with the [Chapter Validator](/tools/timestamp-validator).
+
+---
+
+## 6. Thumbnails and CTR
+
+Preview contrast and text size with the [Thumbnail Preview](/tools/thumbnail-preview). Do not repeat the entire title on the image.
+
+---
+
+## 7. Hashtags and Series Branding
+
+Add visible hashtags that match the topic. Use consistent branded hashtags for episodic series.
+
+---
+
+## 8. Pre-Upload Pass
+
+Walk the [Upload Checklist](/tools/upload-checklist) and run the [SEO Score Checker](/tools/seo-score-checker) on final metadata.
+
+---
+
+## 9. Post-Publish Review
+
+After 48–72 hours, check impressions, CTR, and retention. Change titles or thumbnails before rewriting tags if CTR is the bottleneck.
+
+---
+
+## 10. When to Stop Tweaking
+
+Batch meaningful updates instead of daily edits that reset learning. Fix clear errors immediately; otherwise wait for statistically meaningful impressions.
+`,
+    faqs: [
+      {
+        question: 'What matters most for YouTube SEO in 2026?',
+        answer: 'CTR and retention after impressions; metadata helps match the right test audience.',
+      },
+      {
+        question: 'How many tags should I use?',
+        answer: 'Roughly 5–12 precise tags beat maxing the field with unrelated phrases.',
+      },
+      {
+        question: 'Should I update metadata on old videos?',
+        answer: 'Yes for clear errors or weak packaging, but change one major variable at a time and allow time to measure results.',
       },
     ],
   },

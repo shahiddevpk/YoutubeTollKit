@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Search, Fingerprint, Copy, Check, Rss, Loader2, AlertCircle } from 'lucide-react';
 import { fetchYouTubeChannel, parseApiJson } from '@/lib/api-client';
+import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
+import { toolFormRowClass } from '@/lib/tool-ui';
 
 const PRESET_CHANNELS = [
   { label: '@MrBeast', handle: '@MrBeast' },
@@ -81,10 +83,10 @@ export function ChannelIdFinder() {
   return (
     <div className="space-y-6">
       <form onSubmit={handleLookup} className="space-y-3">
-        <label className="block text-sm font-semibold text-slate-200">
+        <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200">
           Enter Channel Link, Handle (@name), or Video URL
         </label>
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className={toolFormRowClass}>
           <div className="relative flex-1">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
             <input
@@ -92,29 +94,25 @@ export function ChannelIdFinder() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="e.g. @mkbhd, youtube.com/@veritasium, or video link"
-              className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 pl-11 text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-3 pl-11 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               required
             />
           </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/30 hover:bg-red-500 transition-all shrink-0 cursor-pointer"
-          >
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Fingerprint className="h-4 w-4" />}
+          <ToolPrimaryButton type="submit" loading={loading} loadingLabel="Looking up…">
+            <Fingerprint className="h-4 w-4" aria-hidden />
             <span>Find Channel ID</span>
-          </button>
+          </ToolPrimaryButton>
         </div>
 
         {/* 1-Click Quick Preset Chips */}
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-slate-500">Try Preset:</span>
+          <span className="text-xs text-slate-500">Quick test:</span>
           {PRESET_CHANNELS.map((preset) => (
             <button
               key={preset.handle}
               type="button"
               onClick={() => selectPreset(preset.handle)}
-              className="rounded-lg border border-slate-800 bg-slate-900/80 px-2.5 py-1 text-xs text-slate-300 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all cursor-pointer"
+              className="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-100 dark:bg-slate-900/80 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-red-500/50 hover:bg-slate-200 dark:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white transition-all cursor-pointer"
             >
               {preset.label}
             </button>
@@ -130,18 +128,18 @@ export function ChannelIdFinder() {
       )}
 
       {data && (
-        <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 space-y-4 animate-in fade-in duration-150">
-          <div className="flex items-center gap-3 border-b border-slate-800 pb-3">
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-4 animate-in fade-in duration-150">
+          <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
             {data.avatarUrl && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={data.avatarUrl}
                 alt={data.title}
-                className="h-10 w-10 rounded-xl object-cover border border-slate-700"
+                className="h-10 w-10 rounded-xl object-cover border border-slate-300 dark:border-slate-700"
               />
             )}
             <div>
-              <h3 className="text-base font-bold text-white flex items-center gap-1.5">
+              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                 {data.title}
               </h3>
               <span className="text-xs text-slate-400 font-mono">{data.handle}</span>
@@ -149,7 +147,7 @@ export function ChannelIdFinder() {
           </div>
 
           {/* UC Channel ID */}
-          <div className="rounded-xl border border-slate-800/90 bg-slate-900/70 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-100 dark:bg-slate-900/70 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
               <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                 Permanent YouTube Channel ID (UC)
@@ -158,7 +156,7 @@ export function ChannelIdFinder() {
             </div>
             <button
               onClick={() => copyToClipboard(data.channelId, 'channelId')}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition-all cursor-pointer shrink-0"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-200 dark:bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-700 transition-all cursor-pointer shrink-0"
             >
               {copiedField === 'channelId' ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
               <span>{copiedField === 'channelId' ? 'Copied' : 'Copy ID'}</span>
@@ -166,16 +164,16 @@ export function ChannelIdFinder() {
           </div>
 
           {/* RSS Feed URL */}
-          <div className="rounded-xl border border-slate-800/90 bg-slate-900/70 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-100 dark:bg-slate-900/70 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="min-w-0 flex-1">
               <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
                 <Rss className="h-3.5 w-3.5 text-amber-400" /> YouTube RSS XML Feed
               </span>
-              <p className="text-xs font-mono text-slate-300 truncate mt-0.5 select-all">{data.rssFeed}</p>
+              <p className="text-xs font-mono text-slate-700 dark:text-slate-300 truncate mt-0.5 select-all">{data.rssFeed}</p>
             </div>
             <button
               onClick={() => copyToClipboard(data.rssFeed, 'rss')}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition-all cursor-pointer shrink-0"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-200 dark:bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-700 transition-all cursor-pointer shrink-0"
             >
               {copiedField === 'rss' ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
               <span>{copiedField === 'rss' ? 'Copied' : 'Copy RSS'}</span>

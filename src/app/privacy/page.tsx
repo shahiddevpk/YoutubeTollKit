@@ -13,16 +13,16 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-slate-950 py-16 text-slate-300">
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 py-16 text-slate-700 dark:text-slate-300">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white">Privacy Policy</h1>
+          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">Privacy Policy</h1>
           <p className="mt-2 text-xs text-slate-500 font-mono">Last updated: October 1, 2026</p>
         </div>
 
-        <div className="prose prose-invert max-w-none space-y-6 text-sm leading-relaxed">
+        <div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-sm leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white">1. Overview and Commitment</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">1. Overview and Commitment</h2>
             <p>
               At <strong>{SITE_CONFIG.name}</strong> (accessible from{' '}
               <a href={SITE_CONFIG.url} className="text-red-400 underline">
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white">2. YouTube API Services & Google Privacy</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">2. YouTube API Services & Google Privacy</h2>
             <p>
               {SITE_CONFIG.name} uses YouTube API Services to display public channel and video metrics. For the optional channel-owner monetization verification, we also use Google OAuth and the YouTube Analytics API after you explicitly choose to connect your account. By using our tools, you agree to be bound by the{' '}
               <a
@@ -59,7 +59,7 @@ export default function PrivacyPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white">3. Optional Google/YouTube Owner Verification</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">3. Optional Google/YouTube Owner Verification</h2>
             <p>
               Public channel checks do <strong>not</strong> require a Google login. If you choose{' '}
               <strong>Verify Exact Monetization Status</strong> for a channel you own, Google handles the sign-in and
@@ -75,21 +75,21 @@ export default function PrivacyPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white">4. Public Tool Inputs</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">4. Public Tool Inputs</h2>
             <p>
               Public YouTube channel/video URLs, handles, channel IDs, or video IDs submitted to a tool may be processed by our server and sent to the applicable YouTube API endpoint to complete the requested lookup. We do not use those public identifiers to infer private monetization data for third-party channels.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white">5. Cookies, Hosting Logs, and Web Analytics</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">5. Cookies, Hosting Logs, and Web Analytics</h2>
             <p>
               Our hosting and security infrastructure may process standard technical request data such as IP address, user agent, requested URL, timestamps, and diagnostic information. If analytics, advertising, or consent-managed cookies are enabled in production, this policy should be updated to name those providers, purposes, cookie categories, and applicable user choices.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white">6. Contact Information</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">6. Contact Information</h2>
             <p>
               If you have additional questions or require more information about our Privacy Policy, do not hesitate to
               contact us via our contact page.
