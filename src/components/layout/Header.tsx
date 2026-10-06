@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-[#e5e5e5] dark:border-[#2a2e38] bg-chrome/95 dark:bg-chrome backdrop-blur-sm transition-colors">
+      <header className="chrome-bar sticky top-0 z-40 w-full border-b border-theme backdrop-blur-md transition-colors">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">

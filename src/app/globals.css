@@ -4,43 +4,49 @@
 
 @layer base {
   :root {
-    --background: #f4f5f7;
+    --background: #f7f8fa;
     --foreground: #0f0f0f;
-    --theme-color: #f4f5f7;
-    --canvas-base: #f4f5f7;
-    --canvas-stripe-a: #f4f5f7;
-    --canvas-stripe-b: #e8ebf0;
-    --canvas-stripe-height: 56px;
+    --theme-color: #f7f8fa;
+    --canvas-base: #f7f8fa;
+    /* Barely visible — texture, not decoration */
+    --canvas-dot: rgba(0, 0, 0, 0.02);
+    --canvas-dot-size: 32px;
+    --canvas-glow: transparent;
     --card: #ffffff;
     --card-foreground: #0f0f0f;
-    --surface: #eceef2;
-    --surface-hover: #e0e4ea;
-    --border: #e3e6eb;
-    --muted: #606060;
-    --subtle: #909090;
+    --card-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 10px 28px rgba(15, 23, 42, 0.04);
+    --surface: #eef0f4;
+    --surface-hover: #e4e7ec;
+    --border: #e2e5eb;
+    --muted: #5c5c5c;
+    --subtle: #8a8a8a;
     --yt-red: #ff0000;
     --yt-red-hover: #cc0000;
     --chrome: #ffffff;
+    --chrome-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
   }
 
   .dark {
-    --background: #0f111a;
+    --background: #0c0d12;
     --foreground: #f1f1f1;
-    --theme-color: #0f111a;
-    --canvas-base: #0f111a;
-    --canvas-stripe-a: #0f111a;
-    --canvas-stripe-b: #161a24;
-    --canvas-stripe-height: 56px;
-    --card: #1c1e26;
+    --theme-color: #0c0d12;
+    --canvas-base: #0c0d12;
+    --canvas-dot: rgba(255, 255, 255, 0.016);
+    --canvas-dot-size: 32px;
+    /* Soft top lift — draws focus to hero / tools without stripes */
+    --canvas-glow: rgba(255, 255, 255, 0.045);
+    --card: #16181f;
     --card-foreground: #f1f1f1;
-    --surface: #252932;
-    --surface-hover: #2f3440;
+    --card-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 16px 40px rgba(0, 0, 0, 0.45);
+    --surface: #22252e;
+    --surface-hover: #2c303a;
     --border: #2a2e38;
-    --muted: #aaaaaa;
-    --subtle: #717171;
+    --muted: #a8a8a8;
+    --subtle: #737373;
     --yt-red: #ff0000;
     --yt-red-hover: #cc0000;
-    --chrome: #0f111a;
+    --chrome: #0c0d12;
+    --chrome-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
   html {
@@ -56,41 +62,20 @@
     overflow-x: hidden;
   }
 
-  /*
-   * Studio-style canvas: wide horizontal bands (like YouTube Studio / your reference).
-   * Light mode = stripes only. Dark mode = stripes + very faint neutral dot grid.
-   */
   .site-canvas {
     background-color: var(--canvas-base);
-    background-image: repeating-linear-gradient(
-      180deg,
-      var(--canvas-stripe-a) 0,
-      var(--canvas-stripe-a) var(--canvas-stripe-height),
-      var(--canvas-stripe-b) var(--canvas-stripe-height),
-      var(--canvas-stripe-b) calc(var(--canvas-stripe-height) * 2)
-    );
-    background-size: 100% calc(var(--canvas-stripe-height) * 2);
-    background-attachment: fixed;
-  }
-
-  .dark .site-canvas {
     background-image:
-      radial-gradient(rgba(255, 255, 255, 0.042) 0.55px, transparent 0.55px),
-      repeating-linear-gradient(
-        180deg,
-        var(--canvas-stripe-a) 0,
-        var(--canvas-stripe-a) var(--canvas-stripe-height),
-        var(--canvas-stripe-b) var(--canvas-stripe-height),
-        var(--canvas-stripe-b) calc(var(--canvas-stripe-height) * 2)
-      );
+      radial-gradient(ellipse 110% 65% at 50% -20%, var(--canvas-glow), transparent 58%),
+      radial-gradient(circle, var(--canvas-dot) 0.5px, transparent 0.5px);
     background-size:
-      20px 20px,
-      100% calc(var(--canvas-stripe-height) * 2);
+      100% 100%,
+      var(--canvas-dot-size) var(--canvas-dot-size);
+    background-repeat: no-repeat, repeat;
   }
 
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-contrast: more) {
     .site-canvas {
-      background-attachment: scroll;
+      background-image: none;
     }
   }
 }
@@ -105,6 +90,21 @@
   .bg-chrome {
     background-color: var(--chrome);
   }
+  .chrome-bar {
+    background-color: var(--chrome);
+    box-shadow: var(--chrome-shadow);
+  }
+  .elevated-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
+  }
+  .text-muted {
+    color: var(--muted);
+  }
+  .text-subtle {
+    color: var(--subtle);
+  }
 }
 
 ::-webkit-scrollbar {
@@ -112,20 +112,17 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #eceef2;
-}
-.dark ::-webkit-scrollbar-track {
-  background: #0f111a;
+  background: var(--canvas-base);
 }
 ::-webkit-scrollbar-thumb {
-  background: #cccccc;
+  background: #c8ccd4;
   border-radius: 4px;
 }
 .dark ::-webkit-scrollbar-thumb {
   background: #3a3f4c;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #999999;
+  background: #a8adb8;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #4d5362;

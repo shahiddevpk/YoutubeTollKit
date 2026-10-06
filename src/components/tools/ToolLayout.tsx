@@ -56,7 +56,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
       />
 
       {/* Header section with proper alignment */}
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-8 pb-6 border-b border-[#e5e5e5] dark:border-[#272727]">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-8 pb-6">
         <nav className="text-xs text-[#606060] dark:text-[#aaaaaa] mb-4" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">Home</Link>
           <span className="mx-1.5">/</span>
@@ -82,7 +82,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
 
       {/* Primary Tool interactive surface */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
-        <div className="rounded-2xl border border-theme bg-card p-5 sm:p-7 shadow-sm">
+        <div className="elevated-card rounded-2xl p-5 sm:p-7">
           {children}
         </div>
       </section>
