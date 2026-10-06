@@ -4,6 +4,7 @@ import { SITE_CONFIG } from '@/lib/tools-registry';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/seo';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ToastProvider } from '@/components/ui/Toast';
 
 export const viewport: Viewport = {
   themeColor: '#030712',
@@ -98,9 +99,11 @@ export default function RootLayout({
         className="min-h-screen bg-slate-950 text-slate-100 antialiased flex flex-col justify-between"
         suppressHydrationWarning
       >
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ToastProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ToastProvider>
       </body>
     </html>
   );

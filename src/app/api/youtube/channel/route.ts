@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { parseYouTubeUrl } from '@/lib/youtube';
 import { resolveChannelFromInput } from '@/lib/youtube-data';
-
+import {
+  checkRateLimit,
+  createRateLimitHeaders,
+  createRateLimitResponse,
+  type RateLimitInfo,
+} from '@/lib/rate-limit';
 const CACHE_HEADERS = {
   'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
 };
 
-async function lookupChannel(query: string) {
+async function lookupChannel(query: string, rateLimitInfo: RateLimitInfo) {
   if (!query.trim()) {
     return NextResponse.json({ success: false, error: 'Missing input (q)' }, { status: 400 });
   }
@@ -60,16 +65,29 @@ async function lookupChannel(query: string) {
     );
   }
 
-  return NextResponse.json({ success: true, data: channelData }, { headers: CACHE_HEADERS });
+  return NextResponse.json(
+    { success: true, data: channelData },
+    {
+      headers: {
+        ...CACHE_HEADERS,
+        ...createRateLimitHeaders(rateLimitInfo),
+      },
+    }
+  );
 }
 
 export async function GET(req: NextRequest) {
   try {
+    const rateLimit = checkRateLimit(req);
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit);
+    }
+
     const query = new URL(req.url).searchParams.get('q');
     if (!query?.trim()) {
       return NextResponse.json({ success: false, error: 'Missing query parameter (q)' }, { status: 400 });
     }
-    return await lookupChannel(query.trim());
+    return await lookupChannel(query.trim(), rateLimit);
   } catch (error: unknown) {
     console.error('YouTube channel lookup failed', error);
     return NextResponse.json(
@@ -81,12 +99,17 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    const rateLimit = checkRateLimit(req);
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit);
+    }
+
     const body = (await req.json().catch(() => null)) as { q?: string } | null;
     const query = body?.q?.trim();
     if (!query) {
       return NextResponse.json({ success: false, error: 'Missing JSON field (q)' }, { status: 400 });
     }
-    return await lookupChannel(query);
+    return await lookupChannel(query, rateLimit);
   } catch (error: unknown) {
     console.error('YouTube channel lookup failed', error);
     return NextResponse.json(
