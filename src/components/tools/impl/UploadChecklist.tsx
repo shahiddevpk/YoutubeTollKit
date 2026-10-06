@@ -63,36 +63,36 @@ export function UploadChecklist() {
   return (
     <div className="space-y-6">
       {/* Progress Bar Header */}
-      <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-5 space-y-3">
+      <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-5 space-y-3 shadow-sm">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-xs uppercase font-bold text-slate-400">Pre-Upload Readiness</span>
-            <h3 className="text-xl font-black text-slate-900 dark:text-white">{progressPercent}% Ready to Publish</h3>
+            <span className="text-xs uppercase font-bold text-[#606060] dark:text-[#aaaaaa]">Pre-Upload Readiness</span>
+            <h3 className="text-xl font-black text-[#0f0f0f] dark:text-[#f1f1f1]">{progressPercent}% Ready to Publish</h3>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={resetAll}
-              className="text-xs text-slate-400 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:bg-slate-800 transition-colors"
+              className="text-xs font-medium text-[#606060] hover:text-[#0f0f0f] dark:text-[#aaaaaa] dark:hover:text-[#f1f1f1] px-3 py-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] hover:bg-[#e5e5e5] dark:hover:bg-[#272727] transition-colors cursor-pointer"
             >
               Reset
             </button>
             <button
               onClick={copySummary}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-red-600 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-red-500 transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] transition-all cursor-pointer"
             >
-              {copied ? <Check className="h-3.5 w-3.5 text-emerald-300" /> : <Copy className="h-3.5 w-3.5" />}
+              {copied ? <Check className="h-3.5 w-3.5 text-white" /> : <Copy className="h-3.5 w-3.5" />}
               <span>{copied ? 'Copied Log!' : 'Copy Checklist'}</span>
             </button>
           </div>
         </div>
 
-        <div className="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+        <div className="w-full bg-[#e5e5e5] dark:bg-[#272727] h-2.5 rounded-full overflow-hidden">
           <div
             className={`h-full transition-all duration-300 ${
               progressPercent === 100
                 ? 'bg-emerald-500'
                 : progressPercent >= 70
-                ? 'bg-blue-500'
+                ? 'bg-[#ff0000]'
                 : 'bg-amber-500'
             }`}
             style={{ width: `${progressPercent}%` }}
@@ -101,36 +101,36 @@ export function UploadChecklist() {
       </div>
 
       {/* Checklist Items */}
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         {CHECKLIST_ITEMS.map((item) => {
           const isChecked = checkedIds.has(item.id);
           return (
             <div
               key={item.id}
               onClick={() => toggleItem(item.id)}
-              className={`flex items-start gap-3 p-3.5 rounded-xl border transition-all cursor-pointer select-none ${
+              className={`flex items-start gap-3 p-4 rounded-xl border transition-all cursor-pointer select-none shadow-sm ${
                 isChecked
-                  ? 'border-emerald-500/30 bg-emerald-950/15 text-slate-900 dark:text-slate-100'
-                  : 'border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/50 text-slate-400 hover:border-slate-300 dark:border-slate-700'
+                  ? 'border-emerald-500/30 bg-emerald-500/10 text-[#0f0f0f] dark:text-[#f1f1f1]'
+                  : 'border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] hover:border-[#ff0000]/40'
               }`}
             >
               <div className="mt-0.5 shrink-0">
                 {isChecked ? (
-                  <CheckSquare className="h-5 w-5 text-emerald-400" />
+                  <CheckSquare className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 ) : (
-                  <Square className="h-5 w-5 text-slate-600" />
+                  <Square className="h-5 w-5 text-[#909090] dark:text-[#717171]" />
                 )}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className={`text-sm font-semibold ${isChecked ? 'text-white' : 'text-slate-700 dark:text-slate-300'}`}>
+                  <span className={`text-sm font-bold ${isChecked ? 'text-emerald-950 dark:text-emerald-300' : 'text-[#0f0f0f] dark:text-[#f1f1f1]'}`}>
                     {item.label}
                   </span>
-                  <span className="rounded bg-slate-200 dark:bg-slate-800 px-2 py-0.2 text-[10px] text-slate-400">
+                  <span className="rounded-full bg-[#f2f2f2] dark:bg-[#272727] px-2.5 py-0.5 text-[10px] font-semibold text-[#606060] dark:text-[#aaaaaa]">
                     {item.category}
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">{item.tip}</p>
+                <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-1">{item.tip}</p>
               </div>
             </div>
           );

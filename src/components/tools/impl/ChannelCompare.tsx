@@ -61,7 +61,6 @@ export function ChannelCompare() {
         const d1 = parsed1.data;
         const d2 = parsed2.data;
 
-
         setCh1({
           handle: d1.handle,
           title: d1.title,
@@ -108,7 +107,7 @@ export function ChannelCompare() {
       <form onSubmit={handleCompare} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1] uppercase tracking-wider mb-1.5">
               Channel 1 (Handle or URL)
             </label>
             <input
@@ -116,13 +115,13 @@ export function ChannelCompare() {
               value={ch1Input}
               onChange={(e) => setCh1Input(e.target.value)}
               placeholder="e.g. @MrBeast"
-              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
+              className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] px-4 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] focus:border-[#ff0000] focus:outline-none transition-colors"
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1] uppercase tracking-wider mb-1.5">
               Channel 2 (Handle or URL)
             </label>
             <input
@@ -130,7 +129,7 @@ export function ChannelCompare() {
               value={ch2Input}
               onChange={(e) => setCh2Input(e.target.value)}
               placeholder="e.g. @mkbhd"
-              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
+              className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] px-4 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] focus:border-[#ff0000] focus:outline-none transition-colors"
               required
             />
           </div>
@@ -143,8 +142,8 @@ export function ChannelCompare() {
       </form>
 
       {error && (
-        <div className="rounded-xl border border-rose-500/30 bg-rose-950/20 p-4 text-xs text-rose-300 flex items-center gap-2">
-          <AlertCircle className="h-4 w-4 text-rose-400 shrink-0" />
+        <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-xs text-rose-700 dark:text-rose-300 flex items-center gap-2">
+          <AlertCircle className="h-4 w-4 text-rose-600 dark:text-rose-400 shrink-0" />
           <span>{error}</span>
         </div>
       )}
@@ -152,85 +151,85 @@ export function ChannelCompare() {
       {/* Comparison Results Grid */}
       {ch1 && ch2 && (
         <div className="space-y-6 animate-in fade-in">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Channel 1 Card */}
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-4">
-              <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-6 space-y-4 shadow-sm">
+              <div className="flex items-center gap-3 border-b border-[#e5e5e5] dark:border-[#272727] pb-4">
                 {ch1.avatarUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={ch1.avatarUrl}
                     alt={ch1.title}
-                    className="h-12 w-12 rounded-2xl border border-slate-300 dark:border-slate-700 object-cover"
+                    className="h-12 w-12 rounded-full border border-[#e5e5e5] dark:border-[#272727] object-cover"
                   />
                 ) : (
-                  <div className="h-12 w-12 rounded-2xl bg-red-600/20 text-red-400 font-black text-xl flex items-center justify-center border border-red-500/30">
+                  <div className="h-12 w-12 rounded-full bg-[#ff0000]/20 text-[#ff0000] font-black text-xl flex items-center justify-center border border-[#ff0000]/30">
                     {ch1.title.charAt(0)}
                   </div>
                 )}
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{ch1.title}</h3>
-                  <span className="text-xs text-slate-400 font-mono">{ch1.handle}</span>
+                  <h3 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{ch1.title}</h3>
+                  <span className="text-xs text-[#606060] dark:text-[#aaaaaa] font-mono">{ch1.handle}</span>
                 </div>
               </div>
 
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
-                  <span className="text-slate-400">Subscribers</span>
-                  <span className="font-bold text-slate-900 dark:text-white font-mono">{formatNumber(ch1.subscribers)}</span>
+                <div className="flex justify-between border-b border-[#e5e5e5] dark:border-[#272727] pb-2">
+                  <span className="text-[#606060] dark:text-[#aaaaaa]">Subscribers</span>
+                  <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">{formatNumber(ch1.subscribers)}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
-                  <span className="text-slate-400">Lifetime Views</span>
-                  <span className="font-bold text-slate-900 dark:text-white font-mono">{formatNumber(ch1.totalViews)}</span>
+                <div className="flex justify-between border-b border-[#e5e5e5] dark:border-[#272727] pb-2">
+                  <span className="text-[#606060] dark:text-[#aaaaaa]">Lifetime Views</span>
+                  <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">{formatNumber(ch1.totalViews)}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
-                  <span className="text-slate-400">Total Uploads</span>
-                  <span className="font-bold text-slate-900 dark:text-white font-mono">{ch1.videoCount}</span>
+                <div className="flex justify-between border-b border-[#e5e5e5] dark:border-[#272727] pb-2">
+                  <span className="text-[#606060] dark:text-[#aaaaaa]">Total Uploads</span>
+                  <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">{ch1.videoCount}</span>
                 </div>
                 <div className="flex justify-between pt-1 gap-4">
-                  <span className="text-slate-400">Channel ID</span>
-                  <span className="font-bold text-blue-400 font-mono text-right break-all">{ch1.channelId}</span>
+                  <span className="text-[#606060] dark:text-[#aaaaaa]">Channel ID</span>
+                  <span className="font-mono text-xs text-[#065fd4] dark:text-[#3ea6ff] font-semibold text-right break-all">{ch1.channelId}</span>
                 </div>
               </div>
             </div>
 
             {/* Channel 2 Card */}
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-4">
-              <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-6 space-y-4 shadow-sm">
+              <div className="flex items-center gap-3 border-b border-[#e5e5e5] dark:border-[#272727] pb-4">
                 {ch2.avatarUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={ch2.avatarUrl}
                     alt={ch2.title}
-                    className="h-12 w-12 rounded-2xl border border-slate-300 dark:border-slate-700 object-cover"
+                    className="h-12 w-12 rounded-full border border-[#e5e5e5] dark:border-[#272727] object-cover"
                   />
                 ) : (
-                  <div className="h-12 w-12 rounded-2xl bg-blue-600/20 text-blue-400 font-black text-xl flex items-center justify-center border border-blue-500/30">
+                  <div className="h-12 w-12 rounded-full bg-[#ff0000]/20 text-[#ff0000] font-black text-xl flex items-center justify-center border border-[#ff0000]/30">
                     {ch2.title.charAt(0)}
                   </div>
                 )}
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{ch2.title}</h3>
-                  <span className="text-xs text-slate-400 font-mono">{ch2.handle}</span>
+                  <h3 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{ch2.title}</h3>
+                  <span className="text-xs text-[#606060] dark:text-[#aaaaaa] font-mono">{ch2.handle}</span>
                 </div>
               </div>
 
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
-                  <span className="text-slate-400">Subscribers</span>
-                  <span className="font-bold text-slate-900 dark:text-white font-mono">{formatNumber(ch2.subscribers)}</span>
+                <div className="flex justify-between border-b border-[#e5e5e5] dark:border-[#272727] pb-2">
+                  <span className="text-[#606060] dark:text-[#aaaaaa]">Subscribers</span>
+                  <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">{formatNumber(ch2.subscribers)}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
-                  <span className="text-slate-400">Lifetime Views</span>
-                  <span className="font-bold text-slate-900 dark:text-white font-mono">{formatNumber(ch2.totalViews)}</span>
+                <div className="flex justify-between border-b border-[#e5e5e5] dark:border-[#272727] pb-2">
+                  <span className="text-[#606060] dark:text-[#aaaaaa]">Lifetime Views</span>
+                  <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">{formatNumber(ch2.totalViews)}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-200 dark:border-slate-800/60 pb-2">
-                  <span className="text-slate-400">Total Uploads</span>
-                  <span className="font-bold text-slate-900 dark:text-white font-mono">{ch2.videoCount}</span>
+                <div className="flex justify-between border-b border-[#e5e5e5] dark:border-[#272727] pb-2">
+                  <span className="text-[#606060] dark:text-[#aaaaaa]">Total Uploads</span>
+                  <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">{ch2.videoCount}</span>
                 </div>
                 <div className="flex justify-between pt-1 gap-4">
-                  <span className="text-slate-400">Channel ID</span>
-                  <span className="font-bold text-blue-400 font-mono text-right break-all">{ch2.channelId}</span>
+                  <span className="text-[#606060] dark:text-[#aaaaaa]">Channel ID</span>
+                  <span className="font-mono text-xs text-[#065fd4] dark:text-[#3ea6ff] font-semibold text-right break-all">{ch2.channelId}</span>
                 </div>
               </div>
             </div>

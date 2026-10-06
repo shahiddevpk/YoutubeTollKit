@@ -3,7 +3,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { formatNumber } from '@/lib/utils';
+import { formatCurrency, formatNumber } from '@/lib/utils';
+import { buildPublicMonetizationReport } from '@/lib/monetization-public-report';
+import { ToolEstimateNotice } from '@/components/ui/ToolEstimateNotice';
 import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
 import { toolFormRowClass } from '@/lib/tool-ui';
 import { fetchYouTubeChannel, parseApiJson } from '@/lib/api-client';
@@ -26,6 +28,7 @@ interface ChannelApiData {
   title: string;
   handle: string;
   avatarUrl?: string;
+  publishedAt: string;
   subscriberCount: number;
   viewCount: number;
   videoCount: number;
@@ -40,6 +43,7 @@ interface MonetizationResult {
   handle: string;
   channelId: string;
   avatarUrl?: string;
+  publishedAt: string;
   subscriberCount: number;
   viewCount: number;
   videoCount: number;
@@ -162,30 +166,63 @@ function monetizationAnswerLine(
     return {
       question: 'Is this channel monetized (YPP monetary access)?',
       answer: 'Yes — confirmed by the channel owner via YouTube Analytics.',
-      answerClass: 'text-emerald-400',
+      answerClass: 'text-emerald-600 dark:text-emerald-400',
     };
   }
   if (verificationMatchesResult && verification?.status === 'not_monetized') {
     return {
       question: 'Is this channel monetized (YPP monetary access)?',
       answer: 'No — owner verification shows no monetary Analytics access (typical for non-YPP channels).',
-      answerClass: 'text-rose-300',
+      answerClass: 'text-rose-600 dark:text-rose-400',
     };
   }
   if (verificationMatchesResult && verification?.status === 'channel_mismatch') {
     return {
       question: 'Is this channel monetized (YPP monetary access)?',
       answer: 'Not determined — connect the Google account that owns this channel.',
-      answerClass: 'text-amber-300',
+      answerClass: 'text-amber-600 dark:text-amber-400',
     };
   }
   return {
     question: 'Is this channel monetized (YPP / AdSense)?',
     answer:
-      'No public answer for this lookup. Unless you are the channel owner and complete verification below, this tool cannot confirm monetization — only public eligibility signals (above).',
-    answerClass: 'text-amber-200',
+      'No official public answer. See the inferred monetization report above (labeled non-official). Channel owners can verify below with Google + YouTube Analytics.',
+    answerClass: 'text-amber-700 dark:text-amber-300',
     audience: 'visitor' as const,
   };
+}
+
+function inferredStatusStyles(tier: ReturnType<typeof buildPublicMonetizationReport>['inferredTier']) {
+  switch (tier) {
+    case 'likely':
+      return {
+        border: 'border-emerald-500/35',
+        bg: 'bg-emerald-500/5 dark:bg-emerald-950/20',
+        badge: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
+        title: 'text-emerald-700 dark:text-emerald-300',
+      };
+    case 'possible':
+      return {
+        border: 'border-amber-500/35',
+        bg: 'bg-amber-500/5 dark:bg-amber-950/15',
+        badge: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30',
+        title: 'text-amber-700 dark:text-amber-300',
+      };
+    case 'unlikely':
+      return {
+        border: 'border-[#e5e5e5] dark:border-[#272727]',
+        bg: 'bg-[#f9f9f9] dark:bg-[#181818]',
+        badge: 'bg-[#f2f2f2] dark:bg-[#272727] text-[#0f0f0f] dark:text-[#f1f1f1] border-[#e5e5e5] dark:border-[#272727]',
+        title: 'text-[#0f0f0f] dark:text-[#f1f1f1]',
+      };
+    case 'below_thresholds':
+      return {
+        border: 'border-rose-500/35',
+        bg: 'bg-rose-500/5 dark:bg-rose-950/15',
+        badge: 'bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30',
+        title: 'text-rose-700 dark:text-rose-300',
+      };
+  }
 }
 
 export function MonetizationChecker() {
@@ -267,6 +304,7 @@ export function MonetizationChecker() {
         handle: d.handle,
         channelId: d.channelId,
         avatarUrl: d.avatarUrl,
+        publishedAt: d.publishedAt,
         subscriberCount: d.subscriberCount,
         viewCount: d.viewCount,
         videoCount: d.videoCount,
@@ -307,14 +345,20 @@ export function MonetizationChecker() {
             : `Owner verification: ${verification.status}`
         : 'Owner verification: Not completed';
 
+    const inferredLine =
+      publicReport && !verificationMatchesResult
+        ? `Inferred status (non-official): ${publicReport.headline}`
+        : '';
+
     navigator.clipboard.writeText(
       `YouTube monetization report for ${result.channelTitle} (${result.handle})
 Channel ID: ${result.channelId}
 Subscribers: ${formatNumber(result.subscriberCount)}
 500-subscriber expanded YPP signal: ${result.expandedYppSubscriberThresholdMet ? 'Met' : 'Not met'}
 1,000-subscriber full YPP subscriber signal: ${result.fullYppSubscriberThresholdMet ? 'Met' : 'Not met'}
+${inferredLine}
 ${ownerStatus}
-Source: youtubefreetoolkit.com`
+Source: youtubefreetoolkit.com — inferred rows are estimates, not YouTube confirmation.`
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -329,22 +373,34 @@ Source: youtubefreetoolkit.com`
   const monetizationAnswer = result
     ? monetizationAnswerLine(verificationMatchesResult, verification)
     : null;
+  const publicReport = useMemo(
+    () =>
+      result
+        ? buildPublicMonetizationReport({
+            subscriberCount: result.subscriberCount,
+            viewCount: result.viewCount,
+            videoCount: result.videoCount,
+            publishedAt: result.publishedAt,
+          })
+        : null,
+    [result]
+  );
 
   return (
     <div className="space-y-6">
       <form onSubmit={handleCheck} className="space-y-3">
-        <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200">
+        <label className="block text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">
           Enter YouTube Channel URL, Handle (@name), or Video Link
         </label>
         <div className={toolFormRowClass}>
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#606060] dark:text-[#aaaaaa]" />
             <input
               type="text"
               value={urlInput}
               onChange={(e) => setUrlInput(e.target.value)}
               placeholder="e.g. https://www.youtube.com/@MrBeast or @mkbhd"
-              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-3 pl-11 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#0f0f0f] px-4 py-3 pl-11 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder-[#606060] dark:placeholder-[#aaaaaa] focus:border-[#ff0000] focus:outline-none focus:ring-1 focus:ring-[#ff0000]"
               autoCapitalize="none"
               autoCorrect="off"
               spellCheck={false}
@@ -365,13 +421,13 @@ Source: youtubefreetoolkit.com`
         </div>
 
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-slate-500">Quick test:</span>
+          <span className="text-xs text-[#606060] dark:text-[#aaaaaa]">Quick test:</span>
           {PRESET_CHANNELS.map((preset) => (
             <button
               key={preset.handle}
               type="button"
               onClick={() => selectPreset(preset.handle)}
-              className="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-100 dark:bg-slate-900/80 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-red-500/50 hover:bg-slate-200 dark:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white transition-all cursor-pointer"
+              className="rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#272727] px-3 py-1 text-xs font-medium text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000] hover:bg-[#e5e5e5] dark:hover:bg-[#383838] transition-colors cursor-pointer"
             >
               {preset.label}
             </button>
@@ -379,47 +435,48 @@ Source: youtubefreetoolkit.com`
         </div>
       </form>
 
-      <div className="rounded-xl border border-blue-500/20 bg-blue-950/10 p-4 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-        <div className="flex items-start gap-2">
-          <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
+      <div className="rounded-xl border border-blue-500/25 bg-blue-500/5 dark:bg-blue-950/20 p-4 text-xs text-[#0f0f0f] dark:text-[#f1f1f1] leading-relaxed">
+        <div className="flex items-start gap-2.5">
+          <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-blue-600 dark:text-blue-400" />
           <p>
-            <strong className="text-blue-200">Most visitors are not the channel owner.</strong> For any public channel you
-            can see subscriber counts and unofficial YPP threshold signals only — not whether they earn ad revenue.
-            The Google sign-in step is <strong className="text-blue-200">only for the person who owns that channel</strong>{' '}
+            <strong className="text-blue-700 dark:text-blue-300">Most visitors are not the channel owner.</strong> We show inferred monetization
+            likelihood and illustrative revenue from public stats — always labeled non-official. That is not the same as
+            YouTube Studio confirmation.
+            The Google sign-in step is <strong className="text-blue-700 dark:text-blue-300">only for the person who owns that channel</strong>{' '}
             and does not reveal another creator’s monetization status to you.
           </p>
         </div>
       </div>
 
       <section className="space-y-2" aria-labelledby="visitor-faq-heading">
-        <h2 id="visitor-faq-heading" className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+        <h2 id="visitor-faq-heading" className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">
           Not the owner? Read this first
         </h2>
         <div className="space-y-2">
           {VISITOR_FAQS.map((faq) => (
             <details
               key={faq.question}
-              className="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 px-4 py-3"
+              className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3"
             >
-              <summary className="cursor-pointer text-sm font-medium text-slate-800 dark:text-slate-200 list-none">
+              <summary className="cursor-pointer text-sm font-medium text-[#0f0f0f] dark:text-[#f1f1f1] list-none">
                 {faq.question}
               </summary>
-              <p className="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{faq.answer}</p>
+              <p className="mt-2 text-xs text-[#606060] dark:text-[#aaaaaa] leading-relaxed">{faq.answer}</p>
             </details>
           ))}
         </div>
       </section>
 
       {verificationLoading && (
-        <div className="rounded-xl border border-blue-500/30 bg-blue-950/20 p-4 text-sm text-blue-200 flex items-center gap-2">
-          <Loader2 className="h-4 w-4 animate-spin shrink-0" />
+        <div className="rounded-xl border border-blue-500/30 bg-blue-500/10 dark:bg-blue-950/30 p-4 text-sm text-blue-700 dark:text-blue-200 flex items-center gap-2">
+          <Loader2 className="h-4 w-4 animate-spin shrink-0 text-blue-600 dark:text-blue-400" />
           <span>Loading your owner verification result…</span>
         </div>
       )}
 
       {displayedVerificationError && (
-        <div className="rounded-xl border border-amber-500/30 bg-amber-950/20 p-4 text-xs text-amber-200 flex items-start gap-2">
-          <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+        <div className="rounded-xl border border-amber-500/35 bg-amber-500/10 dark:bg-amber-950/30 p-4 text-xs text-amber-800 dark:text-amber-200 flex items-start gap-2">
+          <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
           <span>{displayedVerificationError}</span>
         </div>
       )}
@@ -429,22 +486,22 @@ Source: youtubefreetoolkit.com`
       )}
 
       {error && (
-        <div className="rounded-xl border border-rose-500/30 bg-rose-950/20 p-4 text-xs text-rose-300 flex items-center gap-2">
-          <AlertCircle className="h-4 w-4 text-rose-400 shrink-0" />
+        <div className="rounded-xl border border-rose-500/35 bg-rose-500/10 dark:bg-rose-950/30 p-4 text-xs text-rose-800 dark:text-rose-200 flex items-center gap-2">
+          <AlertCircle className="h-4 w-4 text-rose-600 dark:text-rose-400 shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
       {loading && (
-        <div className="min-h-40 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 p-8 text-center space-y-3 animate-pulse">
-          <Loader2 className="h-8 w-8 animate-spin text-red-500 mx-auto" />
-          <p className="text-sm font-medium text-slate-700 dark:text-slate-300">Fetching public channel data from YouTube...</p>
+        <div className="min-h-40 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 text-center space-y-3 animate-pulse">
+          <Loader2 className="h-8 w-8 animate-spin text-[#ff0000] mx-auto" />
+          <p className="text-sm font-medium text-[#0f0f0f] dark:text-[#f1f1f1]">Fetching public channel data from YouTube...</p>
         </div>
       )}
 
       {result && (
-        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-6 animate-in fade-in duration-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
+        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 space-y-6 animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5e5e5] dark:border-[#272727] pb-5">
             <div className="flex items-center gap-4">
               {result.avatarUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -455,31 +512,31 @@ Source: youtubefreetoolkit.com`
                   height={56}
                   loading="lazy"
                   referrerPolicy="no-referrer"
-                  className="h-14 w-14 rounded-2xl border border-slate-300 dark:border-slate-700 object-cover shadow-md"
+                  className="h-14 w-14 rounded-full border border-[#e5e5e5] dark:border-[#272727] object-cover shadow-sm"
                 />
               ) : (
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-200 dark:bg-slate-800 text-red-400 font-bold text-xl border border-slate-300 dark:border-slate-700">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f2f2f2] dark:bg-[#272727] text-[#ff0000] font-bold text-xl border border-[#e5e5e5] dark:border-[#272727]">
                   {result.channelTitle.charAt(0)}
                 </div>
               )}
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="text-xl font-black text-slate-900 dark:text-white">{result.channelTitle}</h3>
-                  <span className="text-xs text-slate-400 font-mono">{result.handle}</span>
+                  <h3 className="text-xl font-black text-[#0f0f0f] dark:text-[#f1f1f1]">{result.channelTitle}</h3>
+                  <span className="text-xs text-[#606060] dark:text-[#aaaaaa] font-mono">{result.handle}</span>
                 </div>
                 <div className="flex items-center gap-2 mt-1 flex-wrap">
                   {result.fullYppSubscriberThresholdMet ? (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/15 px-2.5 py-0.5 text-xs font-bold text-amber-300 border border-amber-500/30">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
                       <CheckCircle2 className="h-3.5 w-3.5" />
                       1K subscriber signal met
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-500/15 px-2.5 py-0.5 text-xs font-bold text-slate-700 dark:text-slate-300 border border-slate-600/40">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-[#f2f2f2] dark:bg-[#272727] px-2.5 py-0.5 text-xs font-semibold text-[#606060] dark:text-[#aaaaaa] border border-[#e5e5e5] dark:border-[#272727]">
                       <XCircle className="h-3.5 w-3.5" />
                       Below 1K subscriber signal
                     </span>
                   )}
-                  <span className="rounded bg-slate-200 dark:bg-slate-800 px-2 py-0.5 text-[10px] text-slate-400 font-mono">
+                  <span className="rounded bg-[#f2f2f2] dark:bg-[#272727] px-2 py-0.5 text-[10px] text-[#606060] dark:text-[#aaaaaa] font-mono">
                     {result.channelId}
                   </span>
                 </div>
@@ -488,61 +545,71 @@ Source: youtubefreetoolkit.com`
 
             <button
               onClick={copyResult}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white transition-all cursor-pointer shrink-0"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#272727] px-4 py-2 text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838] transition-colors cursor-pointer shrink-0"
             >
-              {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+              {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
               <span>{copied ? 'Copied' : 'Copy summary'}</span>
             </button>
           </div>
 
+          {publicReport && !verificationMatchesResult && (
+            <InferredMonetizationReport report={publicReport} />
+          )}
+
+          {publicReport && verificationMatchesResult && (
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-3 text-xs text-[#606060] dark:text-[#aaaaaa]">
+              Public inference is hidden because owner verification below is the official result for this channel.
+            </div>
+          )}
+
           {monetizationAnswer && publicEligibility && (
-            <div className="rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 p-5 space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Status summary</h4>
+            <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-5 space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa]">Status summary</h4>
               <div>
-                <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">{monetizationAnswer.question}</p>
+                <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">{monetizationAnswer.question}</p>
                 <p className={`mt-1.5 text-sm font-bold leading-relaxed ${monetizationAnswer.answerClass}`}>
                   {monetizationAnswer.answer}
                 </p>
               </div>
-              <div className="border-t border-slate-200 dark:border-slate-800 pt-4">
-                <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Public eligibility signals (not enrollment)</p>
+              <div className="border-t border-[#e5e5e5] dark:border-[#272727] pt-4">
+                <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">Public eligibility signals (not enrollment)</p>
                 <p
                   className={`mt-1.5 text-sm leading-relaxed ${
                     publicEligibility.tone === 'positive'
-                      ? 'text-emerald-400 font-medium'
+                      ? 'text-emerald-700 dark:text-emerald-400 font-medium'
                       : publicEligibility.tone === 'partial'
-                        ? 'text-amber-300 font-medium'
-                        : 'text-slate-600 dark:text-slate-400'
+                        ? 'text-amber-700 dark:text-amber-300 font-medium'
+                        : 'text-[#606060] dark:text-[#aaaaaa]'
                   }`}
                 >
                   {publicEligibility.text}
                 </p>
-                <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                <p className="mt-2 text-xs text-[#606060] dark:text-[#aaaaaa] leading-relaxed">
                   Watch hours, Shorts views, policy review, and AdSense linkage are not visible on a public lookup.
                 </p>
               </div>
               {!verificationMatchesResult && (
-                <div className="border-t border-slate-200 dark:border-slate-800 pt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 p-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Checking someone else&apos;s channel?</p>
-                    <ul className="mt-2 space-y-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed list-disc pl-4">
+                <div className="border-t border-[#e5e5e5] dark:border-[#272727] pt-4 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa]">Checking someone else&apos;s channel?</p>
+                    <ul className="mt-2 space-y-1.5 text-xs text-[#606060] dark:text-[#aaaaaa] leading-relaxed list-disc pl-4">
                       <li>You get public stats and subscriber-based YPP <em>signals</em> only.</li>
-                      <li>You <strong className="text-slate-800 dark:text-slate-200">cannot</strong> see if they are monetized — YouTube keeps that private.</li>
+                      <li>You <strong className="text-[#0f0f0f] dark:text-[#f1f1f1]">cannot</strong> see if they are monetized — YouTube keeps that private.</li>
                       <li>Ads on their videos do not prove they are in YPP.</li>
                       <li>Do not use “Verify” unless you manage this channel; signing in with your Google account will not show their revenue status.</li>
                     </ul>
                   </div>
-                  <div className="rounded-xl border border-emerald-500/25 bg-emerald-950/10 p-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-emerald-300/90">Checking your own channel?</p>
-                    <ul className="mt-2 space-y-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed list-disc pl-4">
-                      <li>Use <strong className="text-slate-800 dark:text-slate-100">Verify Exact Monetization Status</strong> below with the Google account tied to this channel.</li>
+                  <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/5 dark:bg-emerald-950/20 p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">Checking your own channel?</p>
+                    <ul className="mt-2 space-y-1.5 text-xs text-[#0f0f0f] dark:text-[#f1f1f1] leading-relaxed list-disc pl-4">
+                      <li>Use <strong className="text-[#0f0f0f] dark:text-white">Verify Exact Monetization Status</strong> below with the Google account tied to this channel.</li>
                       <li>That optional step returns a yes/no on official monetary Analytics access.</li>
                       <li>Final decisions always appear in{' '}
                         <a
                           href="https://studio.youtube.com/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline hover:text-emerald-200"
+                          className="underline hover:text-emerald-600 dark:hover:text-emerald-300"
                         >
                           YouTube Studio
                         </a>
@@ -555,79 +622,99 @@ Source: youtubefreetoolkit.com`
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5">
-              <span className="text-[11px] font-medium text-slate-400">Subscribers</span>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-1 font-mono">{formatNumber(result.subscriberCount)}</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-3.5">
+              <span className="text-[11px] font-medium text-[#606060] dark:text-[#aaaaaa]">Subscribers</span>
+              <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mt-1 font-mono">{formatNumber(result.subscriberCount)}</p>
             </div>
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5">
-              <span className="text-[11px] font-medium text-slate-400">Lifetime views</span>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-1 font-mono">{formatNumber(result.viewCount)}</p>
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-3.5">
+              <span className="text-[11px] font-medium text-[#606060] dark:text-[#aaaaaa]">Lifetime views</span>
+              <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mt-1 font-mono">{formatNumber(result.viewCount)}</p>
             </div>
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5">
-              <span className="text-[11px] font-medium text-slate-400">Public videos</span>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-1 font-mono">{formatNumber(result.videoCount)}</p>
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-3.5">
+              <span className="text-[11px] font-medium text-[#606060] dark:text-[#aaaaaa]">Public videos</span>
+              <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mt-1 font-mono">{formatNumber(result.videoCount)}</p>
             </div>
+            {publicReport && (
+              <>
+                <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-3.5">
+                  <span className="text-[11px] font-medium text-[#606060] dark:text-[#aaaaaa]">Joined</span>
+                  <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mt-1">{publicReport.joinedDateLabel}</p>
+                </div>
+                <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-3.5">
+                  <span className="text-[11px] font-medium text-[#606060] dark:text-[#aaaaaa]">Channel age</span>
+                  <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mt-1">
+                    ~{publicReport.channelAgeYears} yr{publicReport.channelAgeYears === 1 ? '' : 's'}
+                  </p>
+                </div>
+                <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-3.5">
+                  <span className="text-[11px] font-medium text-[#606060] dark:text-[#aaaaaa]">Avg views / video</span>
+                  <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mt-1 font-mono">
+                    {formatNumber(Math.round(publicReport.avgViewsPerVideo))}
+                  </p>
+                </div>
+              </>
+            )}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-100 dark:bg-slate-900/80 p-4">
-              <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Expanded YPP subscriber signal</span>
-              <p className={`mt-2 text-sm font-bold ${result.expandedYppSubscriberThresholdMet ? 'text-emerald-400' : 'text-slate-700 dark:text-slate-300'}`}>
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-4">
+              <span className="text-[11px] uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] font-semibold">Expanded YPP subscriber signal</span>
+              <p className={`mt-2 text-sm font-bold ${result.expandedYppSubscriberThresholdMet ? 'text-emerald-700 dark:text-emerald-400' : 'text-[#606060] dark:text-[#aaaaaa]'}`}>
                 {result.expandedYppSubscriberThresholdMet ? '500 subscriber threshold met' : 'Below 500 subscribers'}
               </p>
             </div>
-            <div className="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-100 dark:bg-slate-900/80 p-4">
-              <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Full YPP subscriber signal</span>
-              <p className={`mt-2 text-sm font-bold ${result.fullYppSubscriberThresholdMet ? 'text-emerald-400' : 'text-slate-700 dark:text-slate-300'}`}>
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-4">
+              <span className="text-[11px] uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] font-semibold">Full YPP subscriber signal</span>
+              <p className={`mt-2 text-sm font-bold ${result.fullYppSubscriberThresholdMet ? 'text-emerald-700 dark:text-emerald-400' : 'text-[#606060] dark:text-[#aaaaaa]'}`}>
                 {result.fullYppSubscriberThresholdMet ? '1,000 subscriber threshold met' : 'Below 1,000 subscribers'}
               </p>
             </div>
             <div
               className={`rounded-xl border p-4 ${
                 ownerCard.tone === 'positive'
-                  ? 'border-emerald-500/35 bg-emerald-950/15'
+                  ? 'border-emerald-500/35 bg-emerald-500/5 dark:bg-emerald-950/20'
                   : ownerCard.tone === 'negative'
-                    ? 'border-rose-500/35 bg-rose-950/15'
+                    ? 'border-rose-500/35 bg-rose-500/5 dark:bg-rose-950/20'
                     : ownerCard.tone === 'warning'
-                      ? 'border-amber-500/35 bg-amber-950/15'
-                      : 'border-blue-500/30 bg-blue-950/10'
+                      ? 'border-amber-500/35 bg-amber-500/5 dark:bg-amber-950/20'
+                      : 'border-blue-500/30 bg-blue-500/5 dark:bg-blue-950/15'
               }`}
             >
-              <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
+              <span className="text-[11px] uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] font-semibold">
                 Official YPP enrollment (owner check)
               </span>
               <p
                 className={`mt-2 text-sm font-bold ${
                   ownerCard.tone === 'positive'
-                    ? 'text-emerald-400'
+                    ? 'text-emerald-700 dark:text-emerald-400'
                     : ownerCard.tone === 'negative'
-                      ? 'text-rose-300'
+                      ? 'text-rose-700 dark:text-rose-400'
                       : ownerCard.tone === 'warning'
-                        ? 'text-amber-300'
-                        : 'text-amber-200'
+                        ? 'text-amber-700 dark:text-amber-400'
+                        : 'text-blue-700 dark:text-blue-300'
                 }`}
               >
                 {ownerCard.headline}
               </p>
-              <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{ownerCard.detail}</p>
+              <p className="mt-1.5 text-xs text-[#606060] dark:text-[#aaaaaa] leading-relaxed">{ownerCard.detail}</p>
             </div>
           </div>
 
           {verificationMatchesResult && verification ? (
             <OwnerVerificationBanner verification={verification} />
           ) : (
-            <div className="rounded-2xl border border-dashed border-emerald-500/35 bg-emerald-950/10 p-5 sm:p-6 space-y-4">
+            <div className="rounded-2xl border border-dashed border-emerald-500/35 bg-emerald-500/5 dark:bg-emerald-950/15 p-5 sm:p-6 space-y-4">
               <div className="flex items-start gap-3">
-                <div className="rounded-xl bg-emerald-500/10 p-2.5 border border-emerald-500/20">
-                  <LockKeyhole className="h-5 w-5 text-emerald-400" />
+                <div className="rounded-xl bg-emerald-500/15 p-2.5 border border-emerald-500/25">
+                  <LockKeyhole className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Channel owners only</p>
-                  <h4 className="font-bold text-slate-900 dark:text-white">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Channel owners only</p>
+                  <h4 className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
                     Verify your monetization (not available for other creators)
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#0f0f0f] dark:text-[#f1f1f1] leading-relaxed">
                     If you <strong>do not</strong> own {result.channelTitle}, skip this section — verification will not
                     tell you whether they are monetized. Owners can sign in once with the Google account linked to this
                     channel for a read-only yes/no on YouTube Analytics monetary access.
@@ -637,30 +724,30 @@ Source: youtubefreetoolkit.com`
 
               <a
                 href={`/api/youtube/monetization/start?channelId=${encodeURIComponent(result.channelId)}`}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-slate-900 dark:text-white hover:bg-emerald-500 transition-colors cursor-pointer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-emerald-600 px-5 py-3 text-sm font-bold text-white hover:bg-emerald-700 transition-colors cursor-pointer"
               >
                 <ShieldCheck className="h-4 w-4" />
                 Verify Exact Monetization Status
               </a>
 
-              <p className="text-[11px] text-slate-500 leading-relaxed">
+              <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa] leading-relaxed">
                 Optional owner-only verification. We do not receive your Google password and the verification code does not store your access token in a site database. By continuing, you agree to our{' '}
-                <Link href="/privacy" className="text-slate-700 dark:text-slate-300 underline hover:text-slate-900 dark:hover:text-slate-900 dark:text-white">Privacy Policy</Link>,{' '}
-                <Link href="/terms" className="text-slate-700 dark:text-slate-300 underline hover:text-slate-900 dark:hover:text-slate-900 dark:text-white">Terms</Link>, and the{' '}
-                <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer" className="text-slate-700 dark:text-slate-300 underline hover:text-slate-900 dark:hover:text-slate-900 dark:text-white">
+                <Link href="/privacy" className="text-[#0f0f0f] dark:text-[#f1f1f1] underline hover:text-[#ff0000]">Privacy Policy</Link>,{' '}
+                <Link href="/terms" className="text-[#0f0f0f] dark:text-[#f1f1f1] underline hover:text-[#ff0000]">Terms</Link>, and the{' '}
+                <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer" className="text-[#0f0f0f] dark:text-[#f1f1f1] underline hover:text-[#ff0000]">
                   YouTube Terms of Service <ExternalLink className="inline h-3 w-3" />
                 </a>.
               </p>
             </div>
           )}
 
-          <div className="rounded-xl border border-amber-500/20 bg-amber-950/10 p-4 space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-200/90 flex items-center gap-2">
+          <div className="rounded-xl border border-amber-500/25 bg-amber-500/5 dark:bg-amber-950/20 p-4 space-y-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 flex items-center gap-2">
               <Info className="h-3.5 w-3.5" />
               Public-check transparency
             </h4>
-            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">{result.monetizationDisclaimer}</p>
-            <ul className="space-y-1.5 text-xs text-slate-400 pt-1">
+            <p className="text-xs text-[#0f0f0f] dark:text-[#f1f1f1] leading-relaxed">{result.monetizationDisclaimer}</p>
+            <ul className="space-y-1.5 text-xs text-[#606060] dark:text-[#aaaaaa] pt-1">
               <li>• Public Data API statistics do not expose a random channel’s YPP/AdSense enrollment.</li>
               <li>• Current full YPP ad-revenue eligibility also requires qualifying watch hours or Shorts views, review, and other YouTube requirements.</li>
               <li>• Exact verification on this page only works when the channel owner authorizes read-only YouTube Analytics access.</li>
@@ -672,34 +759,122 @@ Source: youtubefreetoolkit.com`
   );
 }
 
+function InferredMonetizationReport({
+  report,
+}: {
+  report: ReturnType<typeof buildPublicMonetizationReport>;
+}) {
+  const styles = inferredStatusStyles(report.inferredTier);
+
+  return (
+    <section className={`rounded-2xl border ${styles.border} ${styles.bg} p-5 sm:p-6 space-y-5`} aria-labelledby="inferred-report-heading">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="space-y-2">
+          <span
+            className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${styles.badge}`}
+          >
+            Inferred · Not official YPP status
+          </span>
+          <h2 id="inferred-report-heading" className={`text-lg sm:text-xl font-black ${styles.title}`}>
+            {report.headline}
+          </h2>
+          <p className="text-xs sm:text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-3xl">
+            {report.subheadline}
+          </p>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 space-y-4">
+        <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Estimated revenue matrix</h3>
+        <div className="overflow-x-auto -mx-1">
+          <table className="w-full min-w-[320px] text-xs sm:text-sm">
+            <thead>
+              <tr className="text-left text-[#606060] dark:text-[#aaaaaa] border-b border-[#e5e5e5] dark:border-[#272727]">
+                <th className="py-2 pr-3 font-semibold">Metric</th>
+                <th className="py-2 px-2 font-semibold">Daily</th>
+                <th className="py-2 px-2 font-semibold">Monthly</th>
+                <th className="py-2 pl-2 font-semibold">Yearly</th>
+              </tr>
+            </thead>
+            <tbody className="text-[#0f0f0f] dark:text-[#f1f1f1]">
+              {report.revenueRows.map((row) => (
+                <tr key={row.label} className="border-b border-[#e5e5e5]/60 dark:border-[#272727]/60">
+                  <td className="py-2.5 pr-3 text-[#606060] dark:text-[#aaaaaa]">{row.label}</td>
+                  <td className="py-2.5 px-2 font-mono">{formatCurrency(row.daily)}</td>
+                  <td className="py-2.5 px-2 font-mono">{formatCurrency(row.monthly)}</td>
+                  <td className="py-2.5 pl-2 font-mono">{formatCurrency(row.yearly)}</td>
+                </tr>
+              ))}
+              <tr>
+                <td className="py-2.5 pr-3 text-[#606060] dark:text-[#aaaaaa]">Est. views (lifetime ÷ age)</td>
+                <td className="py-2.5 px-2 font-mono">{formatNumber(Math.round(report.estimatedViewsRow.daily))}</td>
+                <td className="py-2.5 px-2 font-mono">{formatNumber(Math.round(report.estimatedViewsRow.monthly))}</td>
+                <td className="py-2.5 pl-2 font-mono">{formatNumber(Math.round(report.estimatedViewsRow.yearly))}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ToolEstimateNotice>{report.revenueAssumptions}</ToolEstimateNotice>
+      </div>
+
+      <div>
+        <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-3">Key insights (public data)</h3>
+        <ul className="space-y-2">
+          {report.insights.map((item) => (
+            <li
+              key={item.text}
+              className={`flex gap-2 text-xs sm:text-sm leading-relaxed ${
+                item.tone === 'positive'
+                  ? 'text-emerald-700 dark:text-emerald-300'
+                  : item.tone === 'warning'
+                    ? 'text-amber-700 dark:text-amber-300'
+                    : 'text-[#606060] dark:text-[#aaaaaa]'
+              }`}
+            >
+              <span className="shrink-0 font-bold" aria-hidden>
+                {item.tone === 'positive' ? '✓' : item.tone === 'warning' ? '!' : 'ℹ'}
+              </span>
+              <span>{item.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-[#e5e5e5] dark:border-[#272727] pt-3">
+        {report.disclaimer}
+      </p>
+    </section>
+  );
+}
+
 function OwnerVerificationBanner({ verification }: { verification: OwnerVerificationResult }) {
   const styles = {
     monetized: {
       border: 'border-emerald-500/35',
-      background: 'bg-emerald-950/20',
-      title: 'text-emerald-300',
-      icon: <CheckCircle2 className="h-5 w-5 text-emerald-400" />,
+      background: 'bg-emerald-500/10 dark:bg-emerald-950/20',
+      title: 'text-emerald-700 dark:text-emerald-300',
+      icon: <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />,
       heading: 'Monetization verified by channel owner',
     },
     not_monetized: {
       border: 'border-rose-500/35',
-      background: 'bg-rose-950/20',
-      title: 'text-rose-300',
-      icon: <XCircle className="h-5 w-5 text-rose-400" />,
+      background: 'bg-rose-500/10 dark:bg-rose-950/20',
+      title: 'text-rose-700 dark:text-rose-300',
+      icon: <XCircle className="h-5 w-5 text-rose-600 dark:text-rose-400" />,
       heading: 'Channel is not currently verified as monetized',
     },
     channel_mismatch: {
       border: 'border-amber-500/35',
-      background: 'bg-amber-950/20',
-      title: 'text-amber-300',
-      icon: <AlertCircle className="h-5 w-5 text-amber-400" />,
+      background: 'bg-amber-500/10 dark:bg-amber-950/20',
+      title: 'text-amber-700 dark:text-amber-300',
+      icon: <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400" />,
       heading: 'Connected account does not own the checked channel',
     },
     error: {
-      border: 'border-slate-600',
-      background: 'bg-white dark:bg-slate-100 dark:bg-slate-900/80',
-      title: 'text-slate-800 dark:text-slate-200',
-      icon: <AlertCircle className="h-5 w-5 text-slate-400" />,
+      border: 'border-[#e5e5e5] dark:border-[#272727]',
+      background: 'bg-[#f9f9f9] dark:bg-[#181818]',
+      title: 'text-[#0f0f0f] dark:text-[#f1f1f1]',
+      icon: <AlertCircle className="h-5 w-5 text-[#606060] dark:text-[#aaaaaa]" />,
       heading: 'Owner verification could not be completed',
     },
   }[verification.status];
@@ -711,14 +886,14 @@ function OwnerVerificationBanner({ verification }: { verification: OwnerVerifica
         <div>
           <h4 className={`font-bold ${styles.title}`}>{styles.heading}</h4>
           {verification.channelTitle && (
-            <p className="mt-0.5 text-xs text-slate-400">
+            <p className="mt-0.5 text-xs text-[#606060] dark:text-[#aaaaaa]">
               {verification.channelTitle}{verification.handle ? ` (${verification.handle})` : ''}
             </p>
           )}
         </div>
       </div>
-      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed pl-8">{verification.message}</p>
-      <p className="text-[10px] uppercase tracking-wider text-slate-600 pl-8">
+      <p className="text-xs sm:text-sm text-[#0f0f0f] dark:text-[#f1f1f1] leading-relaxed pl-8">{verification.message}</p>
+      <p className="text-[10px] uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] pl-8">
         Owner-authorized source: YouTube Analytics API · Checked {new Date(verification.checkedAt).toLocaleString()}
       </p>
     </div>

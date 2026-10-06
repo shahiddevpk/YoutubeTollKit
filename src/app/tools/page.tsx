@@ -43,35 +43,37 @@ export async function generateMetadata({ searchParams }: ToolsPageProps): Promis
 
 export default function ToolsIndexPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-16">
-      <section className="border-b border-slate-200 dark:border-slate-800 py-10">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">All YouTube creator tools</h1>
-          <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-            {TOOLS_REGISTRY.length} free utilities for monetization indicators, channel research, SEO metadata,
-            analytics, and publishing helpers. Each tool includes instructions, limitations, and FAQs. We do not offer
-            video or audio downloaders.
-          </p>
-          <div className="mt-6 space-y-3 text-sm text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-6">
+    <div className="min-h-screen bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
+      <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+              <span>▶</span> {TOOLS_REGISTRY.length} Creator Tools
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
+              All YouTube creator tools
+            </h1>
+            <p className="mt-3 text-base text-[#606060] dark:text-[#aaaaaa] leading-relaxed">
+              {TOOLS_REGISTRY.length} free utilities for monetization indicators, channel research, SEO metadata,
+              analytics, and publishing helpers. Each tool includes instructions, limitations, and FAQs. We do not offer
+              video or audio downloaders.
+            </p>
+          </div>
+          <div className="mt-6 space-y-2 text-xs sm:text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-[#e5e5e5] dark:border-[#272727] pt-6 max-w-3xl">
             <p>
               Every tool page includes a short how-it-works list, a longer guide section, and policy limitations so you
-              know what public APIs can and cannot prove. Use category hubs for overviews of monetization, research,
-              SEO, analytics, and utilities, or open our{' '}
-              <Link href="/guides" className="text-red-400/90 hover:text-red-400 underline">
+              know what public APIs can and cannot prove. Use category hubs for overviews, or open our{' '}
+              <Link href="/guides" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
                 pillar guides
               </Link>{' '}
               for monetization, SEO, and troubleshooting workflows.
-            </p>
-            <p>
-              The blog covers Partner Program requirements, ethical tag research, and RPM planning — each article links
-              to the matching free tool when one exists on this site.
             </p>
           </div>
         </div>
       </section>
 
-      <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-8">
-        <Suspense fallback={<p className="text-sm text-slate-400">Loading tools…</p>}>
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8">
+        <Suspense fallback={<p className="text-sm text-[#606060] dark:text-[#aaaaaa]">Loading tools…</p>}>
           <ToolsExplorerClient initialTools={TOOLS_REGISTRY} categories={CATEGORIES} />
         </Suspense>
       </main>

@@ -13,21 +13,23 @@ interface CategoryNavProps {
 
 export function CategoryNav({ activeCategory, onSelectCategory, totalCount }: CategoryNavProps) {
   return (
-    <div className="flex flex-wrap items-center gap-2 pb-2">
+    <div className="flex flex-wrap items-center gap-2 pb-1">
       <button
         onClick={() => onSelectCategory('all')}
-        className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${
+        className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
           activeCategory === 'all'
-            ? 'bg-red-600 text-white'
-            : 'bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:border-slate-700 hover:text-slate-900 dark:hover:text-white'
+            ? 'bg-[#ff0000] text-white shadow-sm'
+            : 'bg-[#f2f2f2] dark:bg-[#272727] text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838]'
         }`}
       >
-        <Layers className="h-4 w-4" />
+        <Layers className="h-3.5 w-3.5" />
         <span>All Tools</span>
         {totalCount !== undefined && (
           <span
-            className={`rounded-full px-2 py-0.2 text-[11px] ${
-              activeCategory === 'all' ? 'bg-red-700/60 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-400'
+            className={`rounded-full px-2 py-0.2 text-[11px] font-semibold ${
+              activeCategory === 'all'
+                ? 'bg-white/20 text-white'
+                : 'bg-[#e5e5e5] dark:bg-[#383838] text-[#606060] dark:text-[#aaaaaa]'
             }`}
           >
             {totalCount}
@@ -41,10 +43,10 @@ export function CategoryNav({ activeCategory, onSelectCategory, totalCount }: Ca
           <button
             key={cat.id}
             onClick={() => onSelectCategory(cat.id)}
-            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
               isActive
-                ? 'bg-red-600 text-white'
-                : 'bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:border-slate-700 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-[#ff0000] text-white shadow-sm'
+                : 'bg-[#f2f2f2] dark:bg-[#272727] text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838]'
             }`}
           >
             <span>{cat.name}</span>

@@ -44,14 +44,14 @@ export function ThemeToggle({ className }: { className?: string }) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-sm text-slate-700 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-100 dark:bg-slate-900 dark:text-slate-800 dark:text-slate-200 dark:hover:bg-slate-200 dark:bg-slate-800 transition-colors"
+        className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#1f1f1f] px-2.5 py-1.5 text-xs text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#2e2e2e] transition-colors cursor-pointer"
         aria-label="Color theme"
         aria-expanded={open}
         aria-haspopup="listbox"
         title="Appearance: light, dark, or match system"
       >
-        <current.Icon className="h-4 w-4 shrink-0" aria-hidden />
-        <span className="hidden sm:inline text-xs font-medium">{current.label}</span>
+        <current.Icon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+        <span className="hidden sm:inline font-medium">{current.label}</span>
       </button>
 
       {open && (
@@ -65,7 +65,7 @@ export function ThemeToggle({ className }: { className?: string }) {
           <ul
             role="listbox"
             aria-label="Choose color theme"
-            className="absolute right-0 z-50 mt-1 min-w-[9.5rem] rounded-lg border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-700 dark:bg-slate-100 dark:bg-slate-900"
+            className="absolute right-0 z-50 mt-1 min-w-[9rem] rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] py-1 shadow-xl animate-in fade-in duration-100"
           >
             {OPTIONS.map(({ value, label, Icon }) => {
               const selected = preference === value;
@@ -75,13 +75,13 @@ export function ThemeToggle({ className }: { className?: string }) {
                     type="button"
                     onClick={() => select(value)}
                     className={cn(
-                      'flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors',
+                      'flex w-full items-center gap-2.5 px-3 py-2 text-left text-xs transition-colors cursor-pointer',
                       selected
-                        ? 'bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-300'
-                        : 'text-slate-700 hover:bg-slate-50 dark:text-slate-800 dark:text-slate-200 dark:hover:bg-slate-200 dark:bg-slate-800'
+                        ? 'bg-[#ff0000]/10 text-[#ff0000] dark:bg-[#ff0000]/20 dark:text-red-400 font-semibold'
+                        : 'text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#f2f2f2] dark:hover:bg-[#272727]'
                     )}
                   >
-                    <Icon className="h-4 w-4 shrink-0" aria-hidden />
+                    <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden />
                     {label}
                   </button>
                 </li>

@@ -120,11 +120,11 @@ export function SeoScoreChecker() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-bold text-slate-900 dark:text-white">Video Metadata SEO Auditor</h3>
+        <h3 className="text-base font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Video Metadata SEO Auditor</h3>
         <button
           type="button"
           onClick={loadDemo}
-          className="text-xs text-red-400 hover:text-red-300 font-semibold underline cursor-pointer"
+          className="text-xs text-[#ff0000] dark:text-red-400 hover:underline font-semibold cursor-pointer"
         >
           Load Example Data
         </button>
@@ -132,7 +132,7 @@ export function SeoScoreChecker() {
 
       <form onSubmit={runAudit} className="space-y-4">
         <div>
-          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1] uppercase tracking-wider mb-1.5">
             Video Title ({title.length} characters)
           </label>
           <input
@@ -140,13 +140,13 @@ export function SeoScoreChecker() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. How to Get Monetized on YouTube Fast (2026 Step-by-Step)"
-            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] px-4 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] focus:border-[#ff0000] focus:outline-none transition-colors"
             required
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1] uppercase tracking-wider mb-1.5">
             Video Description
           </label>
           <textarea
@@ -154,12 +154,12 @@ export function SeoScoreChecker() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Paste your video description text including links and timestamps..."
-            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] px-4 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] focus:border-[#ff0000] focus:outline-none transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1] uppercase tracking-wider mb-1.5">
             Tags (comma separated)
           </label>
           <input
@@ -167,7 +167,7 @@ export function SeoScoreChecker() {
             value={tagsInput}
             onChange={(e) => setTagsInput(e.target.value)}
             placeholder="e.g. youtube seo, channel growth, monetization 2026"
-            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] px-4 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] focus:border-[#ff0000] focus:outline-none transition-colors"
           />
         </div>
 
@@ -178,82 +178,82 @@ export function SeoScoreChecker() {
       </form>
 
       {audit && (
-        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-6 animate-in fade-in">
-          {/* Score Circle Banner */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
+        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-6 space-y-6 animate-in fade-in shadow-sm">
+          {/* Score Banner */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#e5e5e5] dark:border-[#272727] pb-5">
             <div className="flex items-center gap-4">
               <div
                 className={`flex h-16 w-16 items-center justify-center rounded-2xl font-black text-2xl border ${
                   audit.score >= 80
-                    ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
+                    ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30'
                     : audit.score >= 65
-                    ? 'bg-amber-500/15 text-amber-400 border-amber-500/30'
-                    : 'bg-rose-500/15 text-rose-400 border-rose-500/30'
+                    ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30'
+                    : 'bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30'
                 }`}
               >
                 {audit.score}
               </div>
               <div>
-                <span className="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                <span className="text-xs uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] font-bold">
                   Overall SEO Score
                 </span>
-                <h4 className="text-xl font-bold text-slate-900 dark:text-white">
+                <h4 className="text-xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
                   Grade {audit.grade} Optimization
                 </h4>
               </div>
             </div>
 
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-[#606060] dark:text-[#aaaaaa]">
               12 Algorithm Parameters Checked
             </span>
           </div>
 
           {/* Audit breakdown */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5 space-y-1">
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 space-y-1 shadow-sm">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-900 dark:text-white">Title Optimization</span>
-                <span className="text-slate-400 font-mono">{audit.titleAudit.length} chars</span>
+                <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Title Optimization</span>
+                <span className="text-[#606060] dark:text-[#aaaaaa] font-mono">{audit.titleAudit.length} chars</span>
               </div>
-              <p className="text-xs text-slate-400">{audit.titleAudit.message}</p>
+              <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">{audit.titleAudit.message}</p>
             </div>
 
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5 space-y-1">
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 space-y-1 shadow-sm">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-900 dark:text-white">Description Context</span>
-                <span className="text-slate-400 font-mono">{audit.descriptionAudit.words} words</span>
+                <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Description Context</span>
+                <span className="text-[#606060] dark:text-[#aaaaaa] font-mono">{audit.descriptionAudit.words} words</span>
               </div>
-              <p className="text-xs text-slate-400">{audit.descriptionAudit.message}</p>
+              <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">{audit.descriptionAudit.message}</p>
             </div>
 
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5 space-y-1">
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 space-y-1 shadow-sm">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-900 dark:text-white">Tags & Semantic Keywords</span>
-                <span className="text-slate-400 font-mono">{audit.tagsAudit.count} tags</span>
+                <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Tags & Semantic Keywords</span>
+                <span className="text-[#606060] dark:text-[#aaaaaa] font-mono">{audit.tagsAudit.count} tags</span>
               </div>
-              <p className="text-xs text-slate-400">{audit.tagsAudit.message}</p>
+              <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">{audit.tagsAudit.message}</p>
             </div>
 
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 p-3.5 space-y-1">
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 space-y-1 shadow-sm">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-900 dark:text-white">Chapters / Timestamps</span>
-                <span className="text-emerald-400 font-mono">Google Rich Snippet</span>
+                <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Chapters / Timestamps</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-mono font-semibold">Google Rich Snippet</span>
               </div>
-              <p className="text-xs text-slate-400">{audit.chaptersAudit.message}</p>
+              <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">{audit.chaptersAudit.message}</p>
             </div>
           </div>
 
           {/* Action Recommendations */}
           {audit.recommendations.length > 0 && (
-            <div className="rounded-xl border border-red-500/20 bg-red-950/20 p-4 space-y-2">
-              <h5 className="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+            <div className="rounded-xl border border-[#ff0000]/20 bg-[#ff0000]/5 dark:bg-[#ff0000]/10 p-4 space-y-2">
+              <h5 className="text-xs font-bold uppercase tracking-wider text-[#ff0000] dark:text-red-400 flex items-center gap-1.5">
                 <ListChecks className="h-3.5 w-3.5" aria-hidden />
                 Action Items to Boost Score
               </h5>
-              <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+              <ul className="space-y-1.5 text-xs text-[#0f0f0f] dark:text-[#f1f1f1]">
                 {audit.recommendations.map((rec, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <span className="text-red-400 font-bold mt-0.5">•</span>
+                    <span className="text-[#ff0000] dark:text-red-400 font-bold mt-0.5">•</span>
                     <span>{rec}</span>
                   </li>
                 ))}

@@ -36,24 +36,40 @@ export default function HomePage() {
   const featuredTools = getFeaturedTools();
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 pb-16">
-      <section className="border-b border-slate-200 dark:border-slate-800 py-10 sm:py-12">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
-            Free YouTube creator tools
-          </h1>
-          <p className="mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">
-            Monetization indicators, channel research, tags, SEO checks, and revenue estimates using public metadata
-            only. No video or audio downloaders. Most tools work without an account.
-          </p>
+    <div className="min-h-screen bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
+      {/* Hero Section */}
+      <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-14">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-4">
+              <span>▶</span> Free YouTube Creator Suite
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
+              Free YouTube creator tools
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-[#606060] dark:text-[#aaaaaa] leading-relaxed">
+              Monetization indicators, channel research, tags, SEO checks, and revenue estimates using public metadata
+              only. No video or audio downloaders. 100% free and no login required for public checks.
+            </p>
+          </div>
 
-          <div className="mt-8 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-100 dark:bg-slate-900/80 p-4 sm:p-6">
-            <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">YouTube Monetization Checker</h2>
-            <p className="text-xs text-slate-500 mb-4">Unofficial public indicators · optional owner verification</p>
+          {/* Flagship Monetization Checker Card */}
+          <div className="mt-10 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 sm:p-7 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">YouTube Monetization Checker</h2>
+                <p className="text-xs text-[#909090] dark:text-[#717171] mt-0.5">
+                  Unofficial public indicators · optional owner verification via YouTube Analytics
+                </p>
+              </div>
+              <span className="self-start sm:self-auto rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
+                Flagship Tool
+              </span>
+            </div>
             <Suspense
               fallback={
-                <div className="min-h-32 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 text-center text-sm text-slate-500">
-                  Loading…
+                <div className="min-h-32 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#1f1f1f] p-6 text-center text-sm text-[#909090]">
+                  Loading tool…
                 </div>
               }
             >
@@ -63,9 +79,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-b border-slate-200 dark:border-slate-800">
-        <h2 className="text-lg font-semibold text-slate-900 dark:text-white">What you will find here</h2>
-        <div className="mt-4 space-y-3 text-sm text-slate-400 leading-relaxed">
+      {/* Value Proposition / Mission */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-b border-[#e5e5e5] dark:border-[#272727]">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">What you will find here</h2>
+        <div className="mt-4 space-y-3 text-sm sm:text-base text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-4xl">
           <p>
             YouTubeFreeToolkit is a policy-aware suite for creators who need practical utilities without paywalls or
             misleading download promises. Each tool page explains what data we read, what we cannot infer, and how to
@@ -81,58 +98,71 @@ export default function HomePage() {
             open the full directory to search by name.
           </p>
         </div>
-        <p className="mt-4 flex flex-wrap gap-4 text-sm">
-          <Link href="/tools" className="font-medium text-red-400 hover:text-red-300">
-            View all tools →
+        <p className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
+          <Link href="/tools" className="text-[#ff0000] dark:text-red-400 hover:underline">
+            View all {TOOLS_REGISTRY.length} tools →
           </Link>
-          <Link href="/guides" className="font-medium text-slate-400 hover:text-slate-800 dark:text-slate-200">
+          <Link href="/guides" className="text-[#606060] dark:text-[#aaaaaa] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] transition-colors">
             Pillar guide hubs →
           </Link>
         </p>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10">
+      {/* Popular Tools Grid */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex items-baseline justify-between gap-4 mb-6">
-          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Popular tools</h2>
-          <Link href="/tools" className="text-xs text-slate-500 hover:text-slate-700 dark:text-slate-300">
-            See all {TOOLS_REGISTRY.length}
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Popular creator tools</h2>
+            <p className="text-xs sm:text-sm text-[#909090] dark:text-[#717171] mt-1">Frequently used by YouTube creators worldwide</p>
+          </div>
+          <Link href="/tools" className="text-xs sm:text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline">
+            See all {TOOLS_REGISTRY.length} →
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredTools.slice(0, 6).map((tool) => (
             <ToolCard key={tool.slug} tool={tool} compact />
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-200 dark:border-slate-800">
-        <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Browse by category</h2>
-        <ul className="space-y-3">
+      {/* Browse by Category */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-t border-[#e5e5e5] dark:border-[#272727]">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-6">Browse by category</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {CATEGORIES.map((cat) => {
             const count = TOOLS_REGISTRY.filter((t) => t.category === cat.id).length;
             return (
-              <li key={cat.id}>
-                <Link
-                  href={`/tools/category/${cat.id}`}
-                  className="block rounded-lg border border-slate-200 dark:border-slate-800 px-4 py-3 hover:border-slate-400 dark:hover:border-slate-600 transition-colors"
-                >
-                  <span className="font-medium text-slate-800 dark:text-slate-200">{cat.name}</span>
-                  <span className="text-xs text-slate-500 ml-2">({count})</span>
-                  <p className="text-xs text-slate-500 mt-1">{cat.description}</p>
-                </Link>
-              </li>
+              <Link
+                key={cat.id}
+                href={`/tools/category/${cat.id}`}
+                className="group block rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md transition-all"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors">
+                    {cat.name}
+                  </span>
+                  <span className="rounded-full bg-[#f2f2f2] dark:bg-[#272727] px-2.5 py-0.5 text-xs font-semibold text-[#606060] dark:text-[#aaaaaa]">
+                    {count} tools
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-[#606060] dark:text-[#aaaaaa] mt-2 leading-relaxed">
+                  {cat.description}
+                </p>
+              </Link>
             );
           })}
-        </ul>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-200 dark:border-slate-800">
-        <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Common questions</h2>
-        <div className="space-y-3 text-sm">
+      {/* Common Questions */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 border-t border-[#e5e5e5] dark:border-[#272727]">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-6">Frequently asked questions</h2>
+        <div className="space-y-3.5 text-sm">
           {[
             {
               q: 'Is this site free?',
-              a: 'Yes. Tools are free to use. We do not sell your data or require API keys for public checks.',
+              a: 'Yes. All tools are 100% free to use. We do not sell your data or require API keys for public checks.',
             },
             {
               q: 'Do you offer video downloaders?',
@@ -147,18 +177,25 @@ export default function HomePage() {
               a: 'Read our Privacy Policy, Terms, and Policy Compliance pages for API usage, limitations, and contact information.',
             },
           ].map(({ q, a }) => (
-            <details key={q} className="rounded-lg border border-slate-200 dark:border-slate-800 px-4 py-3">
-              <summary className="cursor-pointer font-medium text-slate-800 dark:text-slate-200 list-none">{q}</summary>
-              <p className="mt-2 text-slate-400 leading-relaxed">{a}</p>
+            <details key={q} className="group rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-5 py-4 transition-all">
+              <summary className="cursor-pointer font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 list-none flex items-center justify-between">
+                <span>{q}</span>
+                <span className="text-[#909090] dark:text-[#717171] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
+              </summary>
+              <p className="mt-3 text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-[#e5e5e5] dark:border-[#272727] pt-3">
+                {a}
+              </p>
             </details>
           ))}
         </div>
-        <p className="mt-6 text-xs text-slate-500">
-          <Link href="/compliance" className="underline hover:text-slate-400">Policy compliance</Link>
-          {' · '}
-          <Link href="/privacy" className="underline hover:text-slate-400">Privacy</Link>
-          {' · '}
-          <Link href="/contact" className="underline hover:text-slate-400">Contact</Link>
+        <p className="mt-8 text-xs text-[#909090] dark:text-[#717171] flex flex-wrap gap-3">
+          <Link href="/compliance" className="hover:text-[#ff0000] dark:hover:text-red-400 underline">Policy compliance</Link>
+          <span>·</span>
+          <Link href="/privacy" className="hover:text-[#ff0000] dark:hover:text-red-400 underline">Privacy</Link>
+          <span>·</span>
+          <Link href="/terms" className="hover:text-[#ff0000] dark:hover:text-red-400 underline">Terms</Link>
+          <span>·</span>
+          <Link href="/contact" className="hover:text-[#ff0000] dark:hover:text-red-400 underline">Contact</Link>
         </p>
       </section>
     </div>

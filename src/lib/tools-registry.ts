@@ -73,7 +73,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     metaTitle: 'YouTube Monetization Checker — Unofficial Public Data Check',
     metaDescription:
-      'Check unofficial YouTube monetization indicators from public channel data. Free, no signup. Owners can optionally verify Analytics monetary access — not official YPP status.',
+      'Check inferred monetization likelihood, revenue estimates, and YPP-style public signals from any channel. Free, no signup. Clearly labeled non-official; owners can verify with YouTube Analytics.',
     howItWorks: [
       {
         step: 1,
@@ -93,6 +93,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     features: [
       'Public channel stats via YouTube Data API v3',
+      'Inferred monetization likelihood (labeled non-official, not Studio confirmation)',
+      'Illustrative daily/monthly/yearly revenue matrix from public view counts',
+      'Key insights: channel age, avg views per video, upload frequency proxies',
       '500- and 1,000-subscriber YPP threshold signals (subscriber count is only one eligibility factor)',
       'Optional owner-only monetization verification via read-only Google OAuth',
       'Official YouTube Analytics monetary-access check for the authenticated channel owner',
@@ -114,6 +117,11 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         question: 'Will “Verify Exact Monetization Status” show me if another creator is monetized?',
         answer:
           'No. That button is for channel owners only. It checks whether the Google account you sign in with owns the channel you looked up and whether YouTube Analytics grants that account monetary-metric access. If you are researching another channel, rely on the public signals and disclaimers on this page — or ask the creator directly.',
+      },
+      {
+        question: 'How is the “inferred” monetization result different from other checker sites?',
+        answer:
+          'Many tools label a channel “monetized” using public proxies (subscribers, views, ads). We show the same style of inferred likelihood and revenue estimates, but every result is tagged “Inferred · Not official YPP status.” Only YouTube Studio or our optional owner verification confirms enrollment for your own channel.',
       },
       {
         question: 'How do you check if a YouTube channel is monetized?',

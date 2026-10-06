@@ -36,44 +36,44 @@ export function TimestampValidator() {
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+        <label className="block text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1] uppercase tracking-wider">
           Paste Timestamps and Chapter Titles
         </label>
         <textarea
           rows={6}
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-3 font-mono text-xs text-slate-900 dark:text-white focus:border-red-500 focus:outline-none"
+          className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] px-4 py-3 font-mono text-xs text-[#0f0f0f] dark:text-[#f1f1f1] focus:border-[#ff0000] focus:outline-none transition-colors"
         />
       </div>
 
       {/* Validation Status Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div
-          className={`flex items-center gap-3 p-3.5 rounded-xl border ${
+          className={`flex items-center gap-3 p-4 rounded-xl border ${
             startsWithZero
-              ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-              : 'bg-rose-500/10 border-rose-500/30 text-rose-400'
+              ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-600 dark:text-emerald-400'
+              : 'bg-rose-500/10 border-rose-500/25 text-rose-600 dark:text-rose-400'
           }`}
         >
-          {startsWithZero ? <CheckCircle2 className="h-5 w-5" /> : <AlertCircle className="h-5 w-5" />}
+          {startsWithZero ? <CheckCircle2 className="h-5 w-5 shrink-0" /> : <AlertCircle className="h-5 w-5 shrink-0" />}
           <div>
-            <p className="text-xs font-bold text-slate-900 dark:text-white">Rule 1: Starts at 00:00</p>
-            <p className="text-[11px] text-slate-400">First timestamp must begin at 00:00</p>
+            <p className="text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Rule 1: Starts at 00:00</p>
+            <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa]">First timestamp must begin at 00:00</p>
           </div>
         </div>
 
         <div
-          className={`flex items-center gap-3 p-3.5 rounded-xl border ${
+          className={`flex items-center gap-3 p-4 rounded-xl border ${
             hasMinChapters
-              ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-              : 'bg-rose-500/10 border-rose-500/30 text-rose-400'
+              ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-600 dark:text-emerald-400'
+              : 'bg-rose-500/10 border-rose-500/25 text-rose-600 dark:text-rose-400'
           }`}
         >
-          {hasMinChapters ? <CheckCircle2 className="h-5 w-5" /> : <AlertCircle className="h-5 w-5" />}
+          {hasMinChapters ? <CheckCircle2 className="h-5 w-5 shrink-0" /> : <AlertCircle className="h-5 w-5 shrink-0" />}
           <div>
-            <p className="text-xs font-bold text-slate-900 dark:text-white">Rule 2: Minimum 3 Chapters</p>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Rule 2: Minimum 3 Chapters</p>
+            <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa]">
               Found {parsedChapters.filter((c) => c.valid).length} valid chapters
             </p>
           </div>
@@ -81,16 +81,16 @@ export function TimestampValidator() {
       </div>
 
       {/* Action bar */}
-      <div className="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
-        <span className="text-xs text-slate-400">
+      <div className="flex items-center justify-between border-t border-[#e5e5e5] dark:border-[#272727] pt-4">
+        <span className="text-xs text-[#606060] dark:text-[#aaaaaa]">
           {allValid ? '✓ Ready for YouTube Studio & Google Key Moments' : '⚠ Fix highlighted errors above'}
         </span>
         <button
           onClick={copyFormatted}
           disabled={!allValid}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 px-4 py-2 text-xs font-bold text-white hover:bg-red-500 disabled:opacity-50 transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-4 py-2 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
         >
-          {copied ? <Check className="h-4 w-4 text-emerald-300" /> : <Copy className="h-4 w-4" />}
+          {copied ? <Check className="h-4 w-4 text-white" /> : <Copy className="h-4 w-4" />}
           <span>{copied ? 'Copied Chapters!' : 'Copy Formatted List'}</span>
         </button>
       </div>

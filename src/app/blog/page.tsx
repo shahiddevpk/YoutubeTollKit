@@ -34,49 +34,58 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
 
 export default function BlogIndexPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-16">
-      <section className="border-b border-slate-200 dark:border-slate-800 py-10">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">YouTube creator guides</h1>
-          <div className="mt-4 space-y-3 text-sm text-slate-400 leading-relaxed">
+    <div className="min-h-screen bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
+      <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-12">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+            <span>▶</span> Creator Knowledge Base
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
+            YouTube creator guides & articles
+          </h1>
+          <div className="mt-4 space-y-3 text-base text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-3xl">
             <p>
               These articles explain how YouTube monetization, metadata, and public channel research work in plain
               language. We cite official thresholds where possible, call out what YouTube keeps private, and link to
               free tools on this site when they match the topic.
             </p>
-            <p>
-              We do not publish download tutorials, gossip, or “bypass” guides. If a guide mentions checking
-              monetization, it distinguishes unofficial public signals from owner-verified YouTube Analytics access.
-            </p>
-            <p>
+            <p className="text-sm">
               Start with our pillar hubs:{' '}
-              <Link href="/guides/youtube-monetization" className="text-red-400 hover:text-red-300">Monetization</Link>
+              <Link href="/guides/youtube-monetization" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">Monetization</Link>
               {', '}
-              <Link href="/guides/youtube-seo" className="text-red-400 hover:text-red-300">SEO</Link>
+              <Link href="/guides/youtube-seo" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">SEO</Link>
               {', or '}
-              <Link href="/guides/youtube-troubleshooting" className="text-red-400 hover:text-red-300">Troubleshooting</Link>
+              <Link href="/guides/youtube-troubleshooting" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">Troubleshooting</Link>
               .
             </p>
           </div>
         </div>
       </section>
 
-      <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-8 space-y-6">
+      <main className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-10 space-y-5">
         {BLOG_POSTS.map((post) => (
           <article
             key={post.slug}
-            className="rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/40 p-5 hover:border-slate-400 dark:hover:border-slate-600 transition-colors"
+            className="group rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md transition-all"
           >
-            <p className="text-xs text-slate-500 mb-2">
-              {post.category} · {post.readTime} · Updated {post.updatedAt}
-            </p>
+            <div className="flex flex-wrap items-center gap-2 text-xs text-[#909090] dark:text-[#717171] mb-2">
+              <span className="rounded-full bg-[#ff0000]/10 px-2.5 py-0.5 font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20">
+                {post.category}
+              </span>
+              <span>·</span>
+              <span>{post.readTime}</span>
+              <span>·</span>
+              <span>Updated {post.updatedAt}</span>
+            </div>
             <Link href={`/blog/${post.slug}`}>
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-white hover:text-red-400/90">{post.title}</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors">
+                {post.title}
+              </h2>
             </Link>
-            <p className="mt-2 text-sm text-slate-400 leading-relaxed">{post.excerpt}</p>
+            <p className="mt-2 text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed">{post.excerpt}</p>
             <Link
               href={`/blog/${post.slug}`}
-              className="mt-3 inline-block text-sm font-medium text-red-400 hover:text-red-300"
+              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline"
             >
               Read guide →
             </Link>

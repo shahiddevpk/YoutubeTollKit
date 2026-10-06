@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Search, Fingerprint, Copy, Check, Rss, Loader2, AlertCircle } from 'lucide-react';
+import { Search, Fingerprint, Copy, Check, Rss, AlertCircle } from 'lucide-react';
 import { fetchYouTubeChannel, parseApiJson } from '@/lib/api-client';
 import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
 import { toolFormRowClass } from '@/lib/tool-ui';
@@ -83,18 +83,18 @@ export function ChannelIdFinder() {
   return (
     <div className="space-y-6">
       <form onSubmit={handleLookup} className="space-y-3">
-        <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200">
+        <label className="block text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">
           Enter Channel Link, Handle (@name), or Video URL
         </label>
         <div className={toolFormRowClass}>
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#909090] dark:text-[#717171]" />
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="e.g. @mkbhd, youtube.com/@veritasium, or video link"
-              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-3 pl-11 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+              className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] px-4 py-3 pl-11 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder-[#909090] dark:placeholder-[#717171] focus:border-[#ff0000] focus:outline-none focus:ring-1 focus:ring-[#ff0000] transition-colors"
               required
             />
           </div>
@@ -106,13 +106,13 @@ export function ChannelIdFinder() {
 
         {/* 1-Click Quick Preset Chips */}
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-slate-500">Quick test:</span>
+          <span className="text-xs text-[#909090] dark:text-[#717171]">Quick test:</span>
           {PRESET_CHANNELS.map((preset) => (
             <button
               key={preset.handle}
               type="button"
               onClick={() => selectPreset(preset.handle)}
-              className="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-100 dark:bg-slate-900/80 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-red-500/50 hover:bg-slate-200 dark:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white transition-all cursor-pointer"
+              className="rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#272727] px-3 py-1 text-xs font-medium text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/60 hover:bg-[#e5e5e5] dark:hover:bg-[#383838] transition-colors cursor-pointer"
             >
               {preset.label}
             </button>
@@ -121,62 +121,83 @@ export function ChannelIdFinder() {
       </form>
 
       {error && (
-        <div className="rounded-xl border border-rose-500/30 bg-rose-950/20 p-4 text-xs text-rose-300 flex items-center gap-2">
-          <AlertCircle className="h-4 w-4 text-rose-400 shrink-0" />
+        <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-xs text-rose-700 dark:text-rose-300 flex items-center gap-2">
+          <AlertCircle className="h-4 w-4 text-rose-600 dark:text-rose-400 shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
       {data && (
-        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 space-y-4 animate-in fade-in duration-150">
-          <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-6 space-y-4 animate-in fade-in duration-150">
+          <div className="flex items-center gap-3 border-b border-[#e5e5e5] dark:border-[#272727] pb-3">
             {data.avatarUrl && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={data.avatarUrl}
                 alt={data.title}
-                className="h-10 w-10 rounded-xl object-cover border border-slate-300 dark:border-slate-700"
+                className="h-10 w-10 rounded-xl object-cover border border-[#e5e5e5] dark:border-[#272727]"
               />
             )}
             <div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <h3 className="text-base font-bold text-[#0f0f0f] dark:text-[#f1f1f1] flex items-center gap-1.5">
                 {data.title}
               </h3>
-              <span className="text-xs text-slate-400 font-mono">{data.handle}</span>
+              <span className="text-xs text-[#606060] dark:text-[#aaaaaa] font-mono">{data.handle}</span>
             </div>
           </div>
 
           {/* UC Channel ID */}
-          <div className="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-100 dark:bg-slate-900/70 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
             <div>
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-[#606060] dark:text-[#aaaaaa] uppercase tracking-wider">
                 Permanent YouTube Channel ID (UC)
               </span>
-              <p className="text-base font-mono font-bold text-emerald-400 mt-0.5 select-all">{data.channelId}</p>
+              <p className="text-base font-mono font-bold text-emerald-600 dark:text-emerald-400 mt-0.5 select-all">{data.channelId}</p>
             </div>
             <button
               onClick={() => copyToClipboard(data.channelId, 'channelId')}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-200 dark:bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-700 transition-all cursor-pointer shrink-0"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#272727] px-3.5 py-1.5 text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838] transition-all cursor-pointer shrink-0"
             >
-              {copiedField === 'channelId' ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
-              <span>{copiedField === 'channelId' ? 'Copied' : 'Copy ID'}</span>
+              {copiedField === 'channelId' ? (
+                <>
+                  <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                  <span>Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="h-3.5 w-3.5 text-[#909090]" />
+                  <span>Copy ID</span>
+                </>
+              )}
             </button>
           </div>
 
           {/* RSS Feed URL */}
-          <div className="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-100 dark:bg-slate-900/70 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="min-w-0 flex-1">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Rss className="h-3.5 w-3.5 text-amber-400" /> YouTube RSS XML Feed
+          <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+            <div className="min-w-0 pr-2">
+              <span className="text-xs font-semibold text-[#606060] dark:text-[#aaaaaa] uppercase tracking-wider flex items-center gap-1">
+                <Rss className="h-3.5 w-3.5 text-amber-500" />
+                Channel RSS Feed
               </span>
-              <p className="text-xs font-mono text-slate-700 dark:text-slate-300 truncate mt-0.5 select-all">{data.rssFeed}</p>
+              <p className="text-xs font-mono text-[#0f0f0f] dark:text-[#f1f1f1] mt-0.5 truncate max-w-sm sm:max-w-md select-all">
+                {data.rssFeed}
+              </p>
             </div>
             <button
               onClick={() => copyToClipboard(data.rssFeed, 'rss')}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-200 dark:bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-700 transition-all cursor-pointer shrink-0"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#272727] px-3.5 py-1.5 text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838] transition-all cursor-pointer shrink-0"
             >
-              {copiedField === 'rss' ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
-              <span>{copiedField === 'rss' ? 'Copied' : 'Copy RSS'}</span>
+              {copiedField === 'rss' ? (
+                <>
+                  <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                  <span>Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="h-3.5 w-3.5 text-[#909090]" />
+                  <span>Copy RSS</span>
+                </>
+              )}
             </button>
           </div>
         </div>

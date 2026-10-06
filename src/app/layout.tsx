@@ -8,8 +8,8 @@ import { ThemeScript } from '@/components/theme/ThemeScript';
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
-    { media: '(prefers-color-scheme: dark)', color: '#030712' },
+    { media: '(prefers-color-scheme: light)', color: '#f9f9f9' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f0f0f' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -41,7 +41,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-slate-50 text-slate-900 antialiased flex flex-col justify-between dark:bg-slate-950 dark:text-slate-100"
+        className="min-h-screen bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] antialiased flex flex-col justify-between selection:bg-red-600 selection:text-white"
         suppressHydrationWarning
       >
         <ToastProvider>

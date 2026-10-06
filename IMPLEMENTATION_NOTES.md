@@ -60,4 +60,4 @@ This code package includes the applied changes from the October 2026 audit.
 - Updated Privacy, Terms, and Compliance copy for the optional OAuth verification flow.
 
 ### Important policy boundary
-Do not change the public third-party result into an inferred `monetized: true/false` based on subscribers, ad appearance, scraping, RPM, or other derived signals. YouTube's API developer guidance prohibits estimating a channel/video's monetization status. The exact status flow in this project is intentionally restricted to an owner-authorized channel and official YouTube Analytics access.
+Public third-party lookups may show **inferred** monetization likelihood and illustrative revenue from YouTube Data API statistics only. Every inferred block must be labeled non-official (not YPP/AdSense confirmation). Do not scrape undocumented player/page markers or present inference as Studio-verified truth. Definitive status remains owner OAuth + YouTube Analytics monetary access.

@@ -21,26 +21,20 @@ export function ShortsSafeZone() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Background transparent
     ctx.clearRect(0, 0, 1080, 1920);
 
-    // Draw safe zone box
-    ctx.strokeStyle = '#10b981';
+    // Safe zone box
+    ctx.strokeStyle = '#2ba640';
     ctx.lineWidth = 6;
     ctx.setLineDash([20, 15]);
     ctx.strokeRect(80, 240, 920, 1380);
 
-    // Draw text banner
-    ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+    ctx.fillStyle = 'rgba(43, 166, 64, 0.2)';
     ctx.fillRect(80, 240, 920, 1380);
 
     // Red Danger / Button Overlay Zones
-    // Right sidebar actions danger zone
-    ctx.fillStyle = 'rgba(239, 68, 68, 0.3)';
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
     ctx.fillRect(880, 900, 180, 950);
-
-    // Bottom info area danger zone
-    ctx.fillStyle = 'rgba(239, 68, 68, 0.3)';
     ctx.fillRect(40, 1550, 840, 320);
 
     // Text labels
@@ -66,8 +60,8 @@ export function ShortsSafeZone() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h3 className="text-sm font-bold text-slate-900 dark:text-white">Upload 9:16 Vertical Video Frame (1080x1920)</h3>
-          <p className="text-xs text-slate-400">
+          <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Upload 9:16 Vertical Video Frame (1080x1920)</h3>
+          <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-0.5">
             Check if your subtitles, call-to-actions, or faces are hidden behind YouTube Shorts action buttons.
           </p>
         </div>
@@ -76,14 +70,14 @@ export function ShortsSafeZone() {
           <button
             type="button"
             onClick={downloadPngOverlay}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 px-3.5 py-2 text-xs font-bold text-white hover:bg-red-500 transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-4 py-2 text-xs font-bold text-white hover:bg-[#cc0000] transition-all cursor-pointer"
           >
             <Download className="h-3.5 w-3.5" />
-            <span>Save 1080×1920 PNG overlay</span>
+            <span>Save PNG Overlay</span>
           </button>
 
-          <label className="inline-flex items-center gap-1.5 rounded-xl bg-slate-200 dark:bg-slate-800 px-3.5 py-2 text-xs font-semibold text-slate-900 dark:text-white hover:bg-slate-700 transition-all cursor-pointer">
-            <Upload className="h-3.5 w-3.5 text-red-400" />
+          <label className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#272727] px-4 py-2 text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838] transition-all cursor-pointer">
+            <Upload className="h-3.5 w-3.5 text-[#ff0000]" />
             <span>Upload Frame</span>
             <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
           </label>
@@ -92,30 +86,30 @@ export function ShortsSafeZone() {
 
       {/* Simulator Frame */}
       <div className="flex justify-center p-4">
-        <div className="relative aspect-[9/16] w-full max-w-xs rounded-3xl overflow-hidden border-2 border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-900 shadow-2xl">
+        <div className="relative aspect-[9/16] w-full max-w-xs rounded-3xl overflow-hidden border-2 border-[#e5e5e5] dark:border-[#272727] bg-black shadow-2xl">
           {imagePreview ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={imagePreview} alt="Shorts preview" className="h-full w-full object-cover" />
           ) : (
-            <div className="flex h-full flex-col items-center justify-center p-6 text-center text-slate-500">
-              <Smartphone className="h-16 w-16 mb-2 text-slate-600" />
-              <p className="text-xs font-medium">Upload a frame or save the transparent PNG overlay guide</p>
+            <div className="flex h-full flex-col items-center justify-center p-6 text-center text-[#717171]">
+              <Smartphone className="h-16 w-16 mb-2 text-[#555555]" />
+              <p className="text-xs font-medium text-[#aaaaaa]">Upload a frame or save the transparent PNG overlay guide</p>
             </div>
           )}
 
           {/* Transparent Safe Zone Center Area */}
           {showGrid && (
-            <div className="absolute inset-x-8 inset-y-24 rounded-2xl border-2 border-dashed border-emerald-500/60 bg-emerald-500/10 pointer-events-none flex items-center justify-center">
-              <span className="rounded bg-emerald-950/80 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
+            <div className="absolute inset-x-8 inset-y-24 rounded-2xl border-2 border-dashed border-emerald-500/70 bg-emerald-500/10 pointer-events-none flex items-center justify-center">
+              <span className="rounded-full bg-emerald-950/90 px-2.5 py-0.5 text-[10px] font-bold text-emerald-300">
                 ✓ 100% SAFE TEXT ZONE
               </span>
             </div>
           )}
 
           {/* YouTube Shorts UI Overlay Elements */}
-          <div className="absolute inset-0 pointer-events-none flex flex-col justify-between p-4 bg-gradient-to-b from-black/40 via-transparent to-black/70">
+          <div className="absolute inset-0 pointer-events-none flex flex-col justify-between p-4 bg-gradient-to-b from-black/50 via-transparent to-black/80">
             {/* Top Bar */}
-            <div className="flex justify-between items-center text-slate-900 dark:text-white text-xs font-bold pt-2">
+            <div className="flex justify-between items-center text-white text-xs font-bold pt-2">
               <span>Shorts</span>
               <span>🔍 📷</span>
             </div>
@@ -123,9 +117,9 @@ export function ShortsSafeZone() {
             {/* Bottom Content & Right Sidebar Actions */}
             <div className="flex items-end justify-between gap-4 pb-2">
               {/* Creator Metadata */}
-              <div className="space-y-1.5 max-w-[200px] text-slate-900 dark:text-white">
+              <div className="space-y-1.5 max-w-[200px] text-white">
                 <div className="flex items-center gap-2">
-                  <div className="h-6 w-6 rounded-full bg-red-600 text-[10px] font-bold flex items-center justify-center">
+                  <div className="h-6 w-6 rounded-full bg-[#ff0000] text-[10px] font-bold flex items-center justify-center text-white">
                     YT
                   </div>
                   <span className="text-xs font-bold">@creator</span>
@@ -133,17 +127,17 @@ export function ShortsSafeZone() {
                     Subscribe
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-800 dark:text-slate-200 line-clamp-2">
+                <p className="text-[11px] text-white/90 line-clamp-2">
                   How to make sure text is not cut off by Shorts UI #shorts #tips
                 </p>
-                <div className="flex items-center gap-1 text-[10px] text-slate-700 dark:text-slate-300">
+                <div className="flex items-center gap-1 text-[10px] text-white/70">
                   <Music className="h-3 w-3" />
                   <span className="truncate">Original Audio — Creator Pro</span>
                 </div>
               </div>
 
               {/* Right Action Icons (Like, Comment, Share) */}
-              <div className="flex flex-col items-center gap-3 text-slate-900 dark:text-white">
+              <div className="flex flex-col items-center gap-3 text-white">
                 <div className="flex flex-col items-center">
                   <div className="h-9 w-9 rounded-full bg-black/40 backdrop-blur-xs flex items-center justify-center">
                     <Heart className="h-4 w-4" />

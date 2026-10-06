@@ -99,43 +99,43 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             role="status"
             className={`pointer-events-auto flex items-start gap-3 rounded-2xl border p-4 shadow-2xl backdrop-blur-md transition-all animate-in slide-in-from-top-3 fade-in duration-200 ${
               item.type === 'warning'
-                ? 'border-amber-500/40 bg-slate-100 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-amber-500/10'
+                ? 'border-amber-500/40 bg-white/95 dark:bg-[#181818]/95 text-[#0f0f0f] dark:text-[#f1f1f1] shadow-amber-500/10'
                 : item.type === 'error'
-                  ? 'border-red-500/40 bg-slate-100 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-red-500/10'
+                  ? 'border-red-500/40 bg-white/95 dark:bg-[#181818]/95 text-[#0f0f0f] dark:text-[#f1f1f1] shadow-red-500/10'
                   : item.type === 'success'
-                    ? 'border-emerald-500/40 bg-slate-100 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-emerald-500/10'
-                    : 'border-blue-500/40 bg-slate-100 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-blue-500/10'
+                    ? 'border-emerald-500/40 bg-white/95 dark:bg-[#181818]/95 text-[#0f0f0f] dark:text-[#f1f1f1] shadow-emerald-500/10'
+                    : 'border-blue-500/40 bg-white/95 dark:bg-[#181818]/95 text-[#0f0f0f] dark:text-[#f1f1f1] shadow-blue-500/10'
             }`}
           >
             <div className="shrink-0 mt-0.5">
               {item.type === 'warning' && (
-                <AlertTriangle className="h-5 w-5 text-amber-400" />
+                <AlertTriangle className="h-5 w-5 text-amber-500 dark:text-amber-400" />
               )}
               {item.type === 'error' && (
-                <AlertCircle className="h-5 w-5 text-red-400" />
+                <AlertCircle className="h-5 w-5 text-[#ff0000] dark:text-red-400" />
               )}
               {item.type === 'success' && (
-                <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
               )}
               {item.type === 'info' && (
-                <Info className="h-5 w-5 text-blue-400" />
+                <Info className="h-5 w-5 text-blue-600 dark:text-blue-400" />
               )}
             </div>
 
             <div className="flex-1 min-w-0 pr-1">
               {item.title && (
-                <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-0.5">
+                <h4 className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] mb-0.5">
                   {item.title}
                 </h4>
               )}
-              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+              <p className="text-xs text-[#606060] dark:text-[#aaaaaa] leading-relaxed font-normal">
                 {item.message}
               </p>
             </div>
 
             <button
               onClick={() => removeToast(item.id)}
-              className="shrink-0 text-slate-400 hover:text-slate-900 dark:hover:text-slate-900 dark:text-white p-1 rounded-lg hover:bg-slate-200 dark:bg-slate-800 transition cursor-pointer"
+              className="shrink-0 text-[#909090] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] p-1 rounded-full hover:bg-[#f2f2f2] dark:hover:bg-[#272727] transition cursor-pointer"
               aria-label="Dismiss notification"
             >
               <X className="h-4 w-4" />

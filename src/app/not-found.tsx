@@ -19,53 +19,57 @@ export default async function NotFound() {
   const popular = TOOLS_REGISTRY.filter((t) => t.featured).slice(0, 5);
 
   return (
-    <div className="min-h-[60vh] bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-12">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 space-y-8">
+    <div className="min-h-[70vh] bg-[#f9f9f9] text-[#0f0f0f] dark:bg-[#0f0f0f] dark:text-[#f1f1f1] py-16 transition-colors">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
         <div>
-          <p className="text-xs font-medium text-slate-500 uppercase tracking-wide">Error 404</p>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Page not found</h1>
-          <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+            <span>404</span> Not Found
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
+            Page not found
+          </h1>
+          <p className="mt-3 text-base text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-2xl">
             The link may be outdated, mistyped, or removed. {SITE_CONFIG.name} only publishes creator tools,
-            guides, and legal pages — we do not host video downloads or WordPress-style attachment URLs.
+            guides, and legal pages — we do not host video downloads.
           </p>
         </div>
 
         <section className="space-y-3">
-          <h2 className="text-base font-semibold text-slate-900 dark:text-white">Try these instead</h2>
+          <h2 className="text-base font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Try these popular links instead</h2>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="/tools" className="text-red-400 hover:text-red-300 underline-offset-2 hover:underline">
+              <Link href="/tools" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
                 All YouTube creator tools
               </Link>
-              <span className="text-slate-500"> — {TOOLS_REGISTRY.length} free utilities</span>
+              <span className="text-[#606060] dark:text-[#aaaaaa]"> — {TOOLS_REGISTRY.length} free utilities</span>
             </li>
             <li>
               <Link
                 href="/tools/monetization-checker"
-                className="text-red-400 hover:text-red-300 underline-offset-2 hover:underline"
+                className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold"
               >
                 YouTube Monetization Checker
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="text-red-400 hover:text-red-300 underline-offset-2 hover:underline">
+              <Link href="/blog" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
                 Creator guides & blog
               </Link>
             </li>
             <li>
-              <Link href="/" className="text-red-400 hover:text-red-300 underline-offset-2 hover:underline">
+              <Link href="/" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
                 Home
               </Link>
             </li>
           </ul>
         </section>
 
-        <section className="rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/40 p-4">
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-white mb-2">Popular tools</h2>
-          <ul className="space-y-1.5 text-sm text-slate-400">
+        <section className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 shadow-sm max-w-xl">
+          <h2 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-2.5">Featured tools</h2>
+          <ul className="space-y-2 text-sm text-[#606060] dark:text-[#aaaaaa]">
             {popular.map((tool) => (
               <li key={tool.slug}>
-                <Link href={`/tools/${tool.slug}`} className="hover:text-slate-800 dark:text-slate-200">
+                <Link href={`/tools/${tool.slug}`} className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
                   {tool.name}
                 </Link>
               </li>
@@ -73,9 +77,9 @@ export default async function NotFound() {
           </ul>
         </section>
 
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-[#909090] dark:text-[#717171]">
           Wrong URL on our site?{' '}
-          <Link href="/contact" className="underline hover:text-slate-400">Contact us</Link> so we can add a redirect.
+          <Link href="/contact" className="underline hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1]">Contact us</Link> so we can add a redirect.
         </p>
       </div>
     </div>

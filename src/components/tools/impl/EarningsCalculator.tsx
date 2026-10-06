@@ -32,8 +32,8 @@ export function EarningsCalculator() {
         <div className="space-y-6">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-sm font-bold text-slate-900 dark:text-white">Daily Expected Video Views</label>
-              <span className="text-base font-black text-red-400 font-mono">
+              <label className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Daily Expected Video Views</label>
+              <span className="text-base font-black text-[#ff0000] dark:text-red-400 font-mono">
                 {dailyViews.toLocaleString()} views/day
               </span>
             </div>
@@ -44,9 +44,9 @@ export function EarningsCalculator() {
               step="1000"
               value={dailyViews}
               onChange={(e) => setDailyViews(Number(e.target.value))}
-              className="w-full accent-red-600 h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer"
+              className="w-full accent-[#ff0000] h-2 bg-[#e5e5e5] dark:bg-[#272727] rounded-lg cursor-pointer"
             />
-            <div className="flex justify-between text-[11px] text-slate-500 mt-1">
+            <div className="flex justify-between text-[11px] text-[#909090] dark:text-[#717171] mt-1">
               <span>1K/day</span>
               <span>100K/day</span>
               <span>1M+/day</span>
@@ -54,7 +54,7 @@ export function EarningsCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-slate-900 dark:text-white mb-2">
+            <label className="block text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-2">
               Choose an Illustrative RPM Assumption
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -67,12 +67,12 @@ export function EarningsCalculator() {
                     onClick={() => setSelectedRpm(niche.rpm)}
                     className={`flex items-center justify-between p-2.5 rounded-xl border text-xs font-semibold text-left transition-all cursor-pointer ${
                       isSelected
-                        ? 'border-red-500 bg-red-600/15 text-white'
-                        : 'border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-100 dark:bg-slate-900/60 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:border-slate-700'
+                        ? 'border-[#ff0000] bg-[#ff0000]/10 text-[#ff0000] dark:bg-[#ff0000]/20 dark:text-red-400 font-bold'
+                        : 'border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#222222] text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/40'
                     }`}
                   >
                     <span className="truncate pr-2">{niche.name}</span>
-                    <span className="text-emerald-400 font-mono shrink-0">${niche.rpm.toFixed(1)}</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-mono shrink-0 font-bold">${niche.rpm.toFixed(1)}</span>
                   </button>
                 );
               })}
@@ -81,8 +81,8 @@ export function EarningsCalculator() {
 
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-sm font-bold text-slate-900 dark:text-white">Custom RPM Value ($ per 1,000 views)</label>
-              <span className="text-sm font-mono text-emerald-400 font-bold">${selectedRpm.toFixed(2)}</span>
+              <label className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Custom RPM Value ($ per 1,000 views)</label>
+              <span className="text-sm font-mono text-emerald-600 dark:text-emerald-400 font-bold">${selectedRpm.toFixed(2)}</span>
             </div>
             <input
               type="number"
@@ -91,54 +91,54 @@ export function EarningsCalculator() {
               max="50"
               value={selectedRpm}
               onChange={(e) => setSelectedRpm(Number(e.target.value))}
-              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white font-mono focus:border-red-500 focus:outline-none"
+              className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] px-4 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] font-mono focus:border-[#ff0000] focus:outline-none transition-colors"
             />
           </div>
         </div>
 
         {/* Output Projected Earnings Column */}
-        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-6 flex flex-col justify-between space-y-6">
+        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-6 flex flex-col justify-between space-y-6">
           <div>
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <DollarSign className="h-5 w-5 text-emerald-400" />
+            <div className="flex items-center justify-between border-b border-[#e5e5e5] dark:border-[#272727] pb-4">
+              <h3 className="text-base font-bold text-[#0f0f0f] dark:text-[#f1f1f1] flex items-center gap-2">
+                <DollarSign className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 Revenue Scenario
               </h3>
-              <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-bold text-emerald-400 border border-emerald-500/20">
+              <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
                 Uses your RPM input
               </span>
             </div>
 
             <div className="space-y-4 mt-6">
               {/* Daily */}
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-900/70 p-4 flex items-center justify-between">
+              <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex items-center justify-between shadow-sm">
                 <div>
-                  <span className="text-xs text-slate-400 uppercase font-semibold">Daily Revenue</span>
-                  <p className="text-xs text-slate-500">{formatNumber(dailyViews)} views</p>
+                  <span className="text-xs text-[#606060] dark:text-[#aaaaaa] uppercase font-semibold">Daily Revenue</span>
+                  <p className="text-xs text-[#909090] dark:text-[#717171]">{formatNumber(dailyViews)} views</p>
                 </div>
-                <div className="text-2xl font-black text-slate-900 dark:text-white font-mono">
+                <div className="text-2xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">
                   {formatCurrency(dailyEarnings)}
                 </div>
               </div>
 
               {/* Monthly */}
-              <div className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-4 flex items-center justify-between">
+              <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 flex items-center justify-between shadow-sm">
                 <div>
-                  <span className="text-xs text-emerald-400 uppercase font-semibold">Monthly Revenue</span>
-                  <p className="text-xs text-slate-400">{formatNumber(dailyViews * 30)} views</p>
+                  <span className="text-xs text-emerald-700 dark:text-emerald-400 uppercase font-semibold">Monthly Revenue</span>
+                  <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">{formatNumber(dailyViews * 30)} views</p>
                 </div>
-                <div className="text-3xl font-black text-emerald-400 font-mono">
+                <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400 font-mono">
                   {formatCurrency(monthlyEarnings)}
                 </div>
               </div>
 
               {/* Yearly */}
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-900/70 p-4 flex items-center justify-between">
+              <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex items-center justify-between shadow-sm">
                 <div>
-                  <span className="text-xs text-slate-400 uppercase font-semibold">Annual Projected</span>
-                  <p className="text-xs text-slate-500">{formatNumber(dailyViews * 365)} views</p>
+                  <span className="text-xs text-[#606060] dark:text-[#aaaaaa] uppercase font-semibold">Annual Projected</span>
+                  <p className="text-xs text-[#909090] dark:text-[#717171]">{formatNumber(dailyViews * 365)} views</p>
                 </div>
-                <div className="text-2xl font-black text-slate-800 dark:text-slate-200 font-mono">
+                <div className="text-2xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">
                   {formatCurrency(yearlyEarnings)}
                 </div>
               </div>
