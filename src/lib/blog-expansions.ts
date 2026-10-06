@@ -519,7 +519,7 @@ Use feeds for personal readers, Discord bots, or internal dashboards — respect
 ## 6. Common Mistakes
 
 - Confusing **user IDs** with **channel IDs** on brand accounts
-- Storing `/c/` URLs that redirect differently per region
+- Storing \`/c/\` URLs that redirect differently per region
 - Assuming vanity URLs are permanent API keys
 `,
     faqs: [
