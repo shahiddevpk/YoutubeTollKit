@@ -1,6 +1,5 @@
 import { BlogPost } from '@/types/blog';
 import { BLOG_EXPANSIONS } from '@/lib/blog-expansions';
-import { BLOG_CONTENT_APPEND } from '@/lib/blog-expansion-append';
 
 export const BLOG_POSTS: BlogPost[] = [
   {
@@ -27,7 +26,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     metaTitle: 'YouTube Partner Program Requirements 2026 — YPP Checklist',
     metaDescription:
-      'The definitive 2026 guide to YouTube monetization requirements. Learn exact subscriber rules, 4,000 watch hours vs 10M Shorts views, and application tips.',
+      'YouTube Partner Program requirements for 2026: 1,000 subscribers, 4,000 watch hours or 10M Shorts views — plus what to watch for as YouTube reviews thresholds into 2027.',
     toolCta: {
       slug: 'monetization-checker',
       title: 'Check public YPP eligibility signals',
@@ -55,6 +54,8 @@ To unlock full AdSense revenue sharing, video ad placements, and premium subscri
 - **2-Step Verification** enabled on your Google Account.
 - **Zero Active Community Guidelines Strikes** (warnings and copyright claims are evaluated separately).
 - **An Active Google AdSense Account** linked to your channel.
+
+> **Heads up for 2027:** YouTube periodically reviews YPP eligibility thresholds and program policies. No official threshold changes have been announced for 2027 at the time of writing, but the Shorts view window (currently 90 days) and subscriber requirements have changed before. Always verify current thresholds in the **Earn** tab of YouTube Studio or in the [YouTube Help Center](https://support.google.com/youtube/answer/72851) before applying.
 
 ---
 
@@ -140,7 +141,7 @@ For fix timelines, reapplication steps, and what public checkers cannot see afte
     slug: 'how-to-check-if-youtube-channel-is-monetized',
     title: 'How to Check If a YouTube Channel Is Monetized (2026 Guide)',
     excerpt:
-      'Learn what public signals can tell you about YouTube monetization, why ads are not proof, and how channel owners can verify YPP monetary access with official YouTube Analytics.',
+      'Four step-by-step methods to check YouTube monetization status for any channel — public API signals via our free tool, fan funding badges, and owner verification for your own channel.',
     category: 'Monetization',
     author: {
       name: 'Shahid Developer',
@@ -159,7 +160,7 @@ For fix timelines, reapplication steps, and what public checkers cannot see afte
     ],
     metaTitle: 'How to Check YouTube Monetization Status (2026 Guide)',
     metaDescription:
-      'Check YouTube monetization responsibly: review public YPP signals for any channel and learn how channel owners can verify YPP monetary access with the official Analytics API.',
+      'Four methods to check if a YouTube channel is monetized: free tool lookup, fan funding badges, Super Thanks, and owner verification via YouTube Analytics API.',
     toolCta: {
       slug: 'monetization-checker',
       title: 'Free YouTube Monetization Checker',
@@ -191,9 +192,7 @@ For third-party channels, public API data does not reveal private YPP enrollment
 
 ## Method 2: Owner verification with the official YouTube Analytics API
 
-For your own channel, the most reliable check is owner-authorized verification. YouTubeFreeToolkit confirms that the connected Google account owns the channel, confirms normal Analytics access, and then requests a read-only monetary metric. This avoids guessing from subscribers, ads, or undocumented page markers.
-
-If you do not own the channel, do not try to infer private monetization status from page source. Undocumented YouTube implementation details can change without notice and are not an official public YPP-enrollment field.
+If you own the channel, use the **Verify Exact Monetization Status** option in the [Monetization Checker](/tools/monetization-checker) — it confirms your account's read-only YouTube Analytics monetary access via Google OAuth, which is more reliable than any public-data inference. For a full explanation of what that verification test actually proves (and its limits), see [Inferred vs Official Monetization Status](/blog/youtube-monetization-checker-inferred-vs-official).
 
 ---
 
@@ -237,7 +236,7 @@ Read the full breakdown in [Why YouTube Shows Ads on Non-Monetized Videos](/blog
     slug: 'youtube-monetization-checker-inferred-vs-official',
     title: 'YouTube Monetization Checker: Inferred Signals vs Official Status',
     excerpt:
-      'Learn what free monetization checkers can actually show from public data, why “Channel monetized” labels are often guesses, and how channel owners verify with YouTube Analytics.',
+      'Why “Channel monetized” badges on third-party tools are often guesses, not facts — and what public APIs can and cannot tell you about a channel\'s YPP enrollment.',
     category: 'Monetization',
     author: {
       name: 'Shahid Developer',
@@ -305,7 +304,7 @@ Since YouTube’s **Right to Monetize** terms update, the platform may run ads o
 
 That is why responsible checkers **do not** treat “I saw an ad” or undocumented page-source markers as proof of monetization. Public tools should stick to **API statistics** and clear disclaimers.
 
-For a deeper walkthrough, see [How to Check If a YouTube Channel Is Monetized](/blog/how-to-check-if-youtube-channel-is-monetized).
+For step-by-step methods to check any channel, see [How to Check If a YouTube Channel Is Monetized](/blog/how-to-check-if-youtube-channel-is-monetized).
 
 ---
 
@@ -512,7 +511,7 @@ Ad personalization, Premium subscriptions, region, and video settings can hide a
 
 YouTubeFreeToolkit **does not** use ad presence as a monetization signal. We use YouTube Data API statistics and transparent inference so results align with how the platform actually works.
 
-Browse the [YouTube Monetization Hub](/guides/youtube-monetization) for workflows linking checkers, calculators, and official sources.
+If you want to check a channel's public eligibility signals rather than guessing from ad observations, the [YouTube Monetization Checker](/tools/monetization-checker) gives you subscriber counts, lifetime views, and an inferred tier — all clearly labeled as non-official.
     `,
     faqs: [
       {
@@ -627,16 +626,9 @@ Important nuances creators miss:
 
 ---
 
-## Why Shorts watch time does not fill 4,000 watch hours
+## Why Shorts watch time does not count toward the long-form threshold
 
-If your strategy is long-form ad revenue, you need **4,000 valid public watch hours in 12 months** on qualifying long-form content. **Shorts viewing time does not accrue toward that 4,000-hour goal.**
-
-Creators choosing between paths should decide early:
-
-- **Shorts-first growth** → optimize for vertical hooks, posting cadence, and the 10M / 90-day window if targeting full YPP via Shorts.
-- **Long-form-first** → prioritize retention on 8+ minute videos where mid-rolls matter after monetization.
-
-Many channels blend both; Studio then shows separate performance curves. Do not assume total lifetime views on a public channel page reveal which path you qualify under.
+Shorts feed views accrue toward the 3M or 10M Shorts view thresholds only — not the 4,000 public watch hours bucket for long-form content. For the full excluded-activity breakdown and side-by-side comparison of both paths, see [YouTube Partner Program Requirements 2026](/blog/youtube-partner-program-requirements-2026).
 
 ---
 
@@ -705,11 +697,6 @@ Understanding this pool model explains why Shorts RPM generally hovers between *
         question: 'Can a monetization checker see my 90-day Shorts views?',
         answer:
           'No. Public APIs do not expose another channel’s qualified Shorts progress. Creators must use YouTube Studio analytics for that counter.',
-      },
-      {
-        question: 'Do Shorts watch hours count toward the 4,000 long-form watch hours requirement?',
-        answer:
-          'No. Official YouTube Partner Program guidelines state that watch hours accumulated in the vertical Shorts feed do not count toward the 4,000 long-form hour threshold.',
       },
       {
         question: 'How long do Shorts views remain valid toward YPP eligibility?',
@@ -860,8 +847,8 @@ For smaller gifting campaigns, Tier 1–2 may be enough. Raise the proof bar as 
 
 Before signing high-dollar talent contracts or wiring campaign deposits, require the talent manager or creator to provide authenticated exports of these five metrics:
 
-1. **90-Day Audience Geography:** Confirm that at least 50% to 70% of viewers reside in your target commercial territories (e.g., US, UK, Canada).
-2. **Average View Duration (AVD):** Verify that the channel maintains at least 40% to 50% audience retention across long-form uploads.
+1. **90-Day Audience Geography:** Confirm that a strong majority of viewers reside in your target commercial territories (e.g., US, UK, Canada). Specific thresholds like "50–70%" are common industry guidelines but vary by campaign — align on a floor during contract negotiation.
+2. **Average View Duration (AVD):** Verify that the channel maintains solid audience retention across long-form uploads. Many buyers look for 40–50% AVD as a rough benchmark, though norms differ significantly by niche and video format.
 3. **Traffic Source Breakdown:** Ensure views originate predominantly from organic YouTube Browse features, Suggested videos, and YouTube Search, rather than external click-farms or spam embeds.
 4. **Subscriber Age & Gender Demographics:** Validate that the creator’s audience purchasing power matches your product price tier.
 5. **Brand Safety Review on Unlisted Drafts:** Require unlisted video preview links at least 48 hours before publish to check ad disclosure compliance and brand messaging.
@@ -874,7 +861,7 @@ Before signing high-dollar talent contracts or wiring campaign deposits, require
 - [Tag Extractor](/tools/tag-extractor) — competitor SEO metadata on public videos.
 - [SEO Score Checker](/tools/seo-score-checker) — audit draft titles/descriptions before creators publish sponsored reads.
 
-Explore the [YouTube Monetization Hub](/guides/youtube-monetization) for linked articles on YPP thresholds and Shorts rules.
+For a fast first screen on any creator's public channel metrics, the [YouTube Monetization Checker](/tools/monetization-checker) pulls subscriber and view signals in one click — use it to build a shortlist, then request direct Studio verification from finalists before signing.
     `,
     faqs: [
       {
@@ -895,7 +882,7 @@ Explore the [YouTube Monetization Hub](/guides/youtube-monetization) for linked 
       {
         question: 'What is the standard payment terms for YouTube sponsorships?',
         answer:
-          'Industry standard contracts typically structure payment as 50% upon signing and 50% net-30 days after the sponsored video goes live and verification metrics are submitted.',
+          'Sponsorship payment structures vary, but many contracts split payment as 50% upon signing and 50% net-30 days after the video goes live and verification metrics are submitted. This is a common arrangement, not a regulated industry standard — terms should be negotiated per deal and documented in a signed agreement.',
       },
       {
         question: 'How do brands ensure creators disclose sponsored content legally?',
@@ -1065,16 +1052,13 @@ Pair tools with:
 
 ---
 
-## The 30-Day Reapplication Window: Strategic Preparation Steps
+## Using the 30-Day Window Before Reapplying
 
-When YouTube denies your application, you typically enter a **30-day waiting window** before the "Apply" button re-activates in Studio:
+When YouTube denies your application, the "Apply" button in Studio typically re-activates after 30 days. That window is not a waiting room — it is the time to fix the actual reason you were rejected.
 
-1. **Delete Low-Transformation Clips:** Remove compilations, generic AI voiceover clips with stock footage, and unedited screen recordings that violate Reused Content guidelines.
-2. **Re-Record Front-Camera Intros:** For tutorials, record custom face-cam introductions explaining who you are, what the tutorial covers, and how your insights differ.
-3. **Audit Video Descriptions:** Ensure descriptions do not contain repeating blocks of keywords or deceptive outbound affiliate links.
-4. **Publish 4 to 6 Highly Original Uploads:** Demonstrate to the human reviewer that your channel’s active production workflow is original, educational, and high-effort.
-5. **Clear Warning Logs and Verify Guidelines:** Review the Studio Dashboard channel status widget to ensure no active Community Guidelines strikes exist. Even an expired strike can attract stricter scrutiny during manual human review.
-6. **Harmonize Channel Branding:** Align your channel banner, about section, profile avatar, and video watermark so human evaluators immediately perceive a cohesive, dedicated creator brand rather than an automated content aggregation mill.
+**Start with the content itself.** Remove compilations, unedited screen recordings, and AI voiceover clips with generic stock footage — these are the most common reused-content flags. For each remaining tutorial, record a short face-cam intro explaining who you are and what makes your take different. If your remaining library still looks repetitive after deletions, publish 4–6 original uploads before reapplying to demonstrate that recent production is high-effort.
+
+**Then clean up the channel signals.** Check your Studio Dashboard for any active Community Guidelines strikes, audit descriptions for keyword blocks or misleading affiliate links, and make sure your banner, about section, and profile avatar read as a cohesive creator brand rather than an automated aggregation account. Human reviewers look at the whole channel during manual review, not just the flagged videos.
 
 Visit the [YouTube Monetization Hub](/guides/youtube-monetization) for calculators and workflow links while you rebuild toward reapplication.
     `,
@@ -1253,11 +1237,11 @@ Even with identical view totals, the personal finance creator earns over **8x mo
 ### Real-World Modifiers to Consider in Projections:
 - **Viewer Geography Weight:** An audience based 80% in the United States or Canada will generate up to 5x higher effective RPM than an audience based primarily in Tier-3 advertising regions.
 - **Audience Ad-Block Usage:** Tech and gaming audiences exhibit ad-blocker usage rates exceeding 40%, significantly suppressing monetized playback ratios compared to mainstream lifestyle or parenting audiences.
-- **Q4 Holiday Ad Surges:** Advertising rates reliably peak from October through December due to holiday e-commerce retail budgets, often doubling creator RPM relative to post-holiday January resets.
+- **Q4 Holiday Ad Surges:** Advertising rates typically peak from October through December due to holiday e-commerce retail budgets. Based on widely reported creator data, RPM can significantly increase in Q4 relative to Q1 resets — though the magnitude varies by niche and audience region.
 
 Use our dedicated [YouTube Earnings Calculator](/tools/earnings-calculator) to test custom RPM benchmarks tailored to your audience geography and content vertical.
 
-Browse the [YouTube Monetization Hub](/guides/youtube-monetization) for linked guides on rejections, brand due diligence, and Partner Program thresholds.
+For your own channel, plug your actual YouTube Analytics RPM range into the [YouTube Earnings Calculator](/tools/earnings-calculator) to replace generic benchmarks with a projection based on your real niche and geography data.
     `,
     faqs: [
       {
@@ -1278,7 +1262,7 @@ Browse the [YouTube Monetization Hub](/guides/youtube-monetization) for linked g
       {
         question: 'Does video length change RPM on 500,000 views?',
         answer:
-          'Yes. Videos over 8 minutes qualify for mid-roll ad placements, frequently doubling or tripling effective ad impressions compared to short 3-minute uploads.',
+          'Yes. Videos over 8 minutes qualify for mid-roll ad placements, which can significantly increase effective ad impressions compared to short 3-minute uploads — though the actual lift depends on audience retention and ad fill rates.',
       },
       {
         question: 'How does seasonal advertiser spending affect monthly estimates?',
@@ -1373,17 +1357,11 @@ Our [Partner Program requirements](/blog/youtube-partner-program-requirements-20
 
 ---
 
-## 500 vs 1,000 subscribers: side by side
+## 500 vs 1,000 subscribers: the key difference
 
-| Topic | ~500 expanded tier (typical framing) | ~1,000 standard tier (typical framing) |
-| --- | --- | --- |
-| Primary win | Fan funding & shopping tools | Full **ad revenue** sharing + fan funding |
-| Subscriber bar | 500 | 1,000 |
-| Watch-time alt. | Lower hour / Shorts view bars | 4,000 hours or 10M Shorts views (verify dates) |
-| Public checker | “500 signal met” badge | “1,000 signal met” badge |
-| Proof of enrollment | Studio only | Studio + optional owner Analytics verify |
+The 500-subscriber expanded tier unlocks **fan-funding products only** (Super Thanks, memberships, shopping). Crossing 1,000 subscribers with the matching watch-time or Shorts threshold is what unlocks **ad revenue sharing** — the bigger income stream.
 
-Neither milestone appears as an official “YPP yes/no” field on third-party channel lookups.
+Neither milestone appears as an official “YPP yes/no” field on third-party channel lookups. For a full side-by-side of every requirement, see the [YouTube Partner Program requirements comparison](/blog/youtube-partner-program-requirements-2026).
 
 ---
 
@@ -1414,19 +1392,15 @@ Pair signals with Studio. Owners can run **Verify Exact Monetization Status** to
 
 ---
 
-## Strategic Playbook: Monetizing Fan Funding Under 1K Subs
+## Making Fan Funding Work at Under 1,000 Subscribers
 
-To generate meaningful revenue through the 500-subscriber fan-funding tier before crossing the 1,000 subscriber ad threshold:
+Fan funding works best when your audience already feels connected to you as a creator — not as a passive viewer. The first thing to get right is **why someone should pay**. A vague "support the channel" pitch rarely converts. Be specific: tell your audience what member contributions actually fund (better audio gear, more frequent uploads, a software tool you use on screen).
 
-1. **Offer Direct Community Access:** Set up Channel Memberships with clear perks, such as exclusive community Discord roles, member-only voting polls, and customized loyalty badges.
-2. **Host Bi-Weekly Live Q&As:** Super Chats and Super Thanks thrive during live streaming sessions where you shout out community supporters and answer live questions.
-3. **Connect a Merchandise Store:** Utilize YouTube Shopping to promote digital templates, creator guides, or community stickers directly below your video player.
-4. **Transparent Goal Setting:** Explain to your audience what community contributions fund (e.g., upgrading studio lighting, testing new software tools).
-5. **Pin Member Badges in Comment Sections:** Publicly highlight and pin comments from paying channel members across your recent uploads to build tangible community prestige and encourage other dedicated viewers to join.
-6. **Integrate Milestone Trackers on Livestreams:** Display transparent subscriber and membership milestone counters during scheduled broadcast sessions to rally community participation.
-7. **Create Custom Emoji and Badge Packs:** Even small channels of 500 subscribers see 3x higher membership conversion when they design custom chat badges and hilarious localized reaction emojis tailored specifically to their audience's inside jokes and community lore.
+**Super Chats and Super Thanks** generate the most spontaneous revenue during live streams where you actively acknowledge supporters. A weekly or bi-weekly live Q&A — even a short one — gives your early community a reason to show up and participate. Channel Memberships need visible perks: a member-only Discord role, early access to videos, or custom emoji can make the tier feel worthwhile at a low price point.
 
-Explore the [YouTube Monetization Hub](/guides/youtube-monetization) for calculators and linked articles.
+**YouTube Shopping** is the other underused lever at this tier. If you make tutorials, digital products like templates or guides can be promoted directly below your video player without requiring a separate e-commerce setup. Keep the product relevant to what viewers just watched — a generically promoted "merch store" rarely converts from a tutorial audience.
+
+Once your channel crosses 500 subscribers, check your public eligibility signals with the [YouTube Monetization Checker](/tools/monetization-checker) — then head directly to YouTube Studio → Earn to apply, since public tools can only show what's visible in the API.
     `,
     faqs: [
       {
@@ -1447,7 +1421,7 @@ Explore the [YouTube Monetization Hub](/guides/youtube-monetization) for calcula
       {
         question: 'What percentage of fan funding does YouTube take?',
         answer:
-          'YouTube takes 30% of gross Fan Funding revenue (Super Thanks, Super Chats, Channel Memberships), distributing 70% to the creator after applicable local taxes and transaction processing fees.',
+          'Per YouTube\'s published partner policies, YouTube retains 30% of gross Fan Funding revenue (Super Thanks, Super Chats, Channel Memberships), with 70% distributed to the creator before applicable local taxes and transaction processing fees. Actual net payout varies by country — check the Earn tab in YouTube Studio for your specific rates.',
       },
       {
         question: 'Do you need a separate AdSense account for the 500-subscriber tier?',
@@ -1775,7 +1749,7 @@ You can look up any channel ID using our free [Channel ID Finder](/tools/channel
       'youtube title character limit',
       'increase youtube search ranking',
     ],
-    metaTitle: 'YouTube SEO Checklist 2026 — Rank Videos Fast (Free Guide)',
+    metaTitle: 'YouTube SEO Checklist 2026 — Optimize Metadata Before Publishing',
     metaDescription:
       'Actionable 10-step YouTube SEO checklist for 2026. Optimize titles, descriptions, tags, and timestamps to drive organic search views.',
     toolCta: {
@@ -1920,7 +1894,12 @@ Pair tags with our [SEO Score Checker](/tools/seo-score-checker) for a full meta
           'Only tags the uploader included in public video metadata are visible through legitimate tools. If a creator left tags empty, there is nothing to extract.',
       },
     ],
-    relatedBlogSlugs: ['youtube-seo-checklist-for-creators'],
+    relatedBlogSlugs: [
+      'youtube-seo-checklist-for-creators',
+      'youtube-competitor-analysis-without-violating-tos',
+      'youtube-title-length-best-practices',
+      'youtube-channel-id-vs-handle-guide',
+    ],
   },
   {
     slug: 'youtube-earnings-calculator-explained',
@@ -2027,7 +2006,12 @@ Use the [YouTube RPM Calculator](/tools/rpm-calculator) to benchmark niches and 
         answer: 'Audience geography, upload consistency, ad types, and percentage of monetized views all change RPM.',
       },
     ],
-    relatedBlogSlugs: ['youtube-earnings-calculator-explained'],
+    relatedBlogSlugs: [
+      'youtube-earnings-calculator-explained',
+      'estimated-youtube-channel-revenue-from-public-views',
+      'youtube-partner-program-requirements-2026',
+      'youtube-500-subscriber-monetization-tier',
+    ],
   },
   {
     slug: 'live-youtube-subscriber-count-guide',
@@ -2078,7 +2062,12 @@ Use fullscreen mode for OBS overlays, but always disclose that counts are based 
         answer: 'It should be close for public totals, but Studio may update slightly earlier. Treat API stats as display-grade, not accounting-grade.',
       },
     ],
-    relatedBlogSlugs: ['youtube-channel-id-vs-handle-guide'],
+    relatedBlogSlugs: [
+      'youtube-channel-id-vs-handle-guide',
+      'how-to-check-if-youtube-channel-is-monetized',
+      'youtube-competitor-analysis-without-violating-tos',
+      'youtube-partner-program-requirements-2026',
+    ],
   },
   {
     slug: 'youtube-title-length-best-practices',
@@ -2129,7 +2118,12 @@ Paste drafts into the [Title & Description Analyzer](/tools/title-description-an
         answer: 'They do not directly hurt rankings, but excessive emojis can reduce clarity and CTR. Use one purposeful emoji at most.',
       },
     ],
-    relatedBlogSlugs: ['youtube-seo-checklist-for-creators'],
+    relatedBlogSlugs: [
+      'youtube-seo-checklist-for-creators',
+      'how-to-extract-youtube-video-tags',
+      'youtube-shorts-safe-zone-dimensions',
+      'youtube-competitor-analysis-without-violating-tos',
+    ],
   },
   {
     slug: 'youtube-shorts-safe-zone-dimensions',
@@ -2180,7 +2174,12 @@ Upload a frame to the [Shorts Safe Zone Checker](/tools/shorts-safe-zone) to val
         answer: 'UI padding can shift slightly. Re-check important campaigns after major YouTube app redesigns.',
       },
     ],
-    relatedBlogSlugs: ['youtube-title-length-best-practices'],
+    relatedBlogSlugs: [
+      'youtube-title-length-best-practices',
+      'youtube-shorts-monetization-requirements-2026',
+      'youtube-seo-checklist-for-creators',
+      'youtube-competitor-analysis-without-violating-tos',
+    ],
   },
   {
     slug: 'youtube-competitor-analysis-without-violating-tos',
@@ -2251,11 +2250,27 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
         tableOfContents: expansion.tableOfContents ?? post.tableOfContents,
       }
     : post;
-  const append = BLOG_CONTENT_APPEND[slug];
-  if (!append) return merged;
-  return { ...merged, content: merged.content + append };
+  return merged;
 }
 
 export function getAllBlogSlugs(): string[] {
   return BLOG_POSTS.map((post) => post.slug);
+}
+
+// Build-time guard: posts with fewer than 300 words of base content must have a matching
+// expansion in BLOG_EXPANSIONS. This prevents a silent empty-page regression if an
+// expansion entry is accidentally removed or renamed.
+if (process.env.NODE_ENV !== 'production') {
+  const WORD_THRESHOLD = 300;
+  const thin = BLOG_POSTS.filter((post) => {
+    const wordCount = (post.content ?? '').trim().split(/\s+/).filter(Boolean).length;
+    return wordCount < WORD_THRESHOLD && !BLOG_EXPANSIONS[post.slug];
+  });
+  if (thin.length > 0) {
+    throw new Error(
+      `[blog-registry] The following posts have thin base content (< ${WORD_THRESHOLD} words) ` +
+        `but no matching expansion in BLOG_EXPANSIONS:\n` +
+        thin.map((p) => `  - ${p.slug} (${(p.content ?? '').trim().split(/\s+/).filter(Boolean).length} words)`).join('\n')
+    );
+  }
 }

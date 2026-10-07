@@ -22,7 +22,7 @@ export const NAV_TOOLS: NavToolItem[] = [
     name: 'YouTube Channel ID Finder',
     description: 'Find official UC Channel IDs from handles, custom URLs, or video links.',
     category: 'research',
-    badge: 'Popular',
+    badge: 'Flagship',
     primaryKeyword: 'youtube channel id finder',
   },
   {
@@ -46,7 +46,7 @@ export const NAV_TOOLS: NavToolItem[] = [
     name: 'YouTube SEO Score Checker',
     description: 'Audit video titles, descriptions, and tag optimization for search rankings.',
     category: 'seo',
-    badge: 'Popular',
+    badge: 'Flagship',
     primaryKeyword: 'youtube seo score checker',
   },
   {

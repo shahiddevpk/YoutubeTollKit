@@ -10,8 +10,8 @@ export interface ToolGuide {
 const DEFAULT_TRUST: GuideSection = {
   heading: 'Transparency and acceptable use',
   paragraphs: [
-    'YouTubeFreeToolkit is not affiliated with Google or YouTube. We do not offer video or audio downloaders, private-video viewers, or tools that bypass YouTube access controls.',
-    'Results are based on public metadata, your inputs, or optional read-only Google permissions you choose to grant. Review our Policy Compliance page before relying on any output for business decisions.',
+    'YouTubeFreeToolkit is not affiliated with Google or YouTube. This tool uses only public metadata, your own inputs, or optional read-only Google permissions you choose to grant. We do not offer video or audio downloaders, private-video viewers, or any feature that bypasses YouTube access controls.',
+    'Treat results as informational aids, not as official YouTube Studio data or legal confirmation. Review our Policy Compliance page before using any output for business decisions, sponsorship contracts, or monetization planning.',
   ],
 };
 

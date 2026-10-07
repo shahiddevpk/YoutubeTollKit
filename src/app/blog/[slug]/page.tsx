@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     description: post.excerpt,
     image: ogImageUrl,
     datePublished: post.publishedAt,
-    dateModified: post.updatedAt,
+    ...(post.updatedAt !== post.publishedAt && { dateModified: post.updatedAt }),
     author: {
       '@type': 'Person',
       name: post.author.name,
@@ -160,7 +160,9 @@ export default async function BlogPostPage({ params }: PageProps) {
             </span>
             <span className="flex items-center gap-1.5 text-xs text-[#606060] dark:text-[#aaaaaa]">
               <Calendar className="h-3.5 w-3.5" />
-              Updated {post.updatedAt}
+              {post.updatedAt !== post.publishedAt
+                ? `Updated ${post.updatedAt}`
+                : post.publishedAt}
             </span>
           </div>
 

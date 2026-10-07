@@ -37,7 +37,7 @@ export const CATEGORIES: CategoryDefinition[] = [
   {
     id: 'analytics',
     name: 'Analytics & Widgets',
-    description: 'Real-time subscriber stats, engagement calculations, comment insights, and video performance.',
+    description: 'Real-time subscriber stats and live channel monitoring widgets.',
     iconName: 'TrendingUp',
     gradient: 'from-amber-500 to-orange-700',
   },
@@ -198,7 +198,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     description:
       'Extract the 24-character YouTube Channel ID (UC...), Channel Handle, and canonical RSS feed URL from a modern @handle, channel URL, or public video link.',
     category: 'research',
-    badge: 'Popular',
+    badge: 'Flagship',
     priority: 'P0',
     featured: true,
     iconName: 'Fingerprint',
@@ -273,7 +273,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     description:
       'Extract all public tags and keywords used on any YouTube video. Analyze competitor SEO strategy, copy tags with commas, and optimize your video rankings.',
     category: 'seo',
-    badge: 'Popular',
+    badge: 'Flagship',
     priority: 'P0',
     featured: true,
     iconName: 'Tag',
@@ -287,7 +287,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     metaTitle: 'YouTube Tag Extractor — View Public Video Tags',
     metaDescription:
-      'Extract public SEO tags from any YouTube video in 1 click. View keyword rankings, tag count, and copy formatted tags for YouTube Studio.',
+      'See exactly which tags any YouTube video uses for SEO research — no account or browser extension needed. Copy them formatted for YouTube Studio in one click.',
     howItWorks: [
       {
         step: 1,
@@ -344,11 +344,11 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'earnings-calculator',
     name: 'YouTube Earnings Calculator',
     shortTitle: 'Earnings Calculator',
-    headline: 'Calculate YouTube AdSense Income from Views',
+    headline: 'Estimate YouTube Ad Revenue from Views and RPM',
     description:
       'Estimate your potential YouTube revenue based on daily video views, CPM/RPM brackets, creator niche, and geographic audience tier.',
     category: 'monetization',
-    badge: 'Popular',
+    badge: 'Flagship',
     priority: 'P0',
     featured: true,
     iconName: 'Calculator',
@@ -362,7 +362,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     metaTitle: 'YouTube Earnings Calculator — Estimate Ad Revenue',
     metaDescription:
-      'Free YouTube earnings calculator. Estimate your daily, monthly, and yearly income based on views, CPM/RPM, niche category, and audience location.',
+      'Estimate what your YouTube channel could realistically earn from ads — enter your views, choose your niche, and see daily, monthly, and yearly revenue scenarios in seconds.',
     howItWorks: [
       {
         step: 1,
@@ -436,7 +436,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     metaTitle: 'YouTube SEO Score Checker — Video Metadata Audit',
     metaDescription:
-      'Audit your YouTube video SEO score (0-100). Check title length, description formatting, tag count, chapters, and get actionable ranking recommendations.',
+      'Find out if your YouTube video metadata is holding back your rankings — get an instant 0–100 SEO score with specific fixes for title, description, tags, and chapters.',
     howItWorks: [
       {
         step: 1,
@@ -477,7 +477,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Can updating metadata revive older, flatlining videos?',
         answer:
-          'Yes. Refreshing the title, thumbnail, and chapter markers on older evergreen tutorials frequently triggers renewed impressions in browse features and Google Search Key Moments.',
+          'It can help. Refreshing the title, thumbnail, and chapter markers on older evergreen tutorials may trigger renewed impressions in browse features and Google Search Key Moments, though results vary by topic and competition.',
       },
       {
         question: 'Can description keyword density trigger spam penalties?',
@@ -490,13 +490,13 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
   },
   {
     slug: 'live-subscriber-count',
-    name: 'YouTube Live Subscriber Counter',
-    shortTitle: 'Subscriber Count',
-    headline: 'Live Public YouTube Subscriber Counter & Channel Statistics',
+    name: 'YouTube Subscriber Counter',
+    shortTitle: 'Subscriber Counter',
+    headline: 'Auto-Refreshing Public YouTube Subscriber Counter & Channel Statistics',
     description:
-      'Track live public YouTube subscriber milestones, total video view counts, and channel growth rates with a clean, distraction-free tracker.',
+      'Track public YouTube subscriber milestones, total video view counts, and channel growth with an auto-refreshing counter. Updates via the YouTube Data API every 60–90 seconds.',
     category: 'analytics',
-    badge: 'Popular',
+    badge: 'Flagship',
     priority: 'P0',
     featured: true,
     iconName: 'Users',
@@ -507,9 +507,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube subscriber tracker',
       'check youtube subscriber count',
     ],
-    metaTitle: 'Live YouTube Subscriber Count — Public Growth Tracker',
+    metaTitle: 'YouTube Subscriber Counter — Auto-Refreshing Public Stats',
     metaDescription:
-      'Track public YouTube subscriber statistics and milestone counts. Fast, full-screen live public sub tracker for any YouTube channel.',
+      'Track public YouTube subscriber counts and channel stats for any channel. Auto-refreshes via the YouTube Data API every 60–90 seconds — ideal for milestone streams and OBS overlays.',
     howItWorks: [
       {
         step: 1,
@@ -715,7 +715,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     description:
       'Discover high-performing hashtags for YouTube Shorts and long-form videos to increase algorithmic discovery on hashtag landing pages.',
     category: 'seo',
-    badge: 'Popular',
+    badge: 'Flagship',
     priority: 'P2',
     featured: false,
     iconName: 'Hash',

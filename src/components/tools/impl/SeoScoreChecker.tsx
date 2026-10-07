@@ -40,9 +40,9 @@ export function SeoScoreChecker() {
       let titleStatus: 'pass' | 'warn' | 'fail' = 'pass';
       let titleMsg = 'Title length is in the optimal 50-70 character sweet spot.';
       if (titleLen >= 50 && titleLen <= 70) {
-        score += 20;
+        score += 25;
       } else if (titleLen >= 30 && titleLen <= 90) {
-        score += 10;
+        score += 12;
         titleStatus = 'warn';
         titleMsg = 'Title is acceptable, but 50-70 characters gets maximum mobile CTR without truncation.';
         recommendations.push('Adjust title length between 50 and 70 characters for best mobile visibility.');
@@ -68,19 +68,19 @@ export function SeoScoreChecker() {
         recommendations.push('Add a full summary and call to action above the "Show More" fold.');
       }
 
-      // Tags scoring
+      // Tags scoring (minor signal — YouTube has de-emphasised tags in ranking)
       let tagsStatus: 'pass' | 'warn' | 'fail' = 'pass';
-      let tagsMsg = `${tags.length} tags detected. Good semantic coverage.`;
+      let tagsMsg = `${tags.length} tags detected.`;
       if (tags.length >= 5 && tags.length <= 15) {
-        score += 10;
-      } else if (tags.length > 0) {
         score += 5;
+      } else if (tags.length > 0) {
+        score += 3;
         tagsStatus = 'warn';
-        tagsMsg = 'We recommend 5 to 12 relevant topic tags.';
+        tagsMsg = 'Consider using 5–12 focused tags to help YouTube categorise the video.';
       } else {
         tagsStatus = 'fail';
-        tagsMsg = 'No tags detected.';
-        recommendations.push('Add 5-10 specific tags covering misspellings and related topics.');
+        tagsMsg = 'No tags detected. Tags have limited ranking impact but can help with categorisation.';
+        recommendations.push('Optionally add 5–10 relevant tags (misspellings, topic keywords). Tags carry less weight than title and description.');
       }
 
       // Chapters scoring

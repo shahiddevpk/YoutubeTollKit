@@ -168,40 +168,21 @@ Before scheduling your upload, run the complete metadata package through our [Up
   'youtube-earnings-calculator-explained': {
     readTime: '8 min read',
     tableOfContents: [
-      { id: 'rpm-vs-cpm', title: '1. RPM vs CPM: The Essential Difference' },
-      { id: 'revenue-split', title: '2. The 55/45 AdSense Revenue Split' },
-      { id: 'payout-variables', title: '3. Variables That Change Payouts Week to Week' },
-      { id: 'calculator-planning', title: '4. Using the Earnings Calculator for Realistic Planning' },
-      { id: 'seasonality-cycles', title: '5. Seasonality and Annual Advertising Cycles' },
-      { id: 'sponsorship-math', title: '6. Modeling Sponsorships Alongside AdSense' },
-      { id: 'studio-reports', title: '7. Reading YouTube Analytics Revenue Reports' },
-      { id: 'forecasting-mistakes', title: '8. Common Forecasting Mistakes to Avoid' },
-      { id: 'worked-example', title: '9. Worked Example: 100,000 Views in Tech vs Gaming' },
+      { id: 'payout-variables', title: '1. Variables That Change Payouts Week to Week' },
+      { id: 'calculator-planning', title: '2. Using the Earnings Calculator for Realistic Planning' },
+      { id: 'seasonality-cycles', title: '3. Seasonality and Annual Advertising Cycles' },
+      { id: 'sponsorship-math', title: '4. Modeling Sponsorships Alongside AdSense' },
+      { id: 'studio-reports', title: '5. Reading YouTube Analytics Revenue Reports' },
+      { id: 'forecasting-mistakes', title: '6. Common Forecasting Mistakes to Avoid' },
+      { id: 'worked-example', title: '7. Worked Example: 100,000 Views in Tech vs Gaming' },
       { id: 'faqs', title: 'Frequently Asked Questions' },
     ],
     content: `
-## 1. RPM vs CPM: The Essential Difference
-
-Understanding how video revenue is modeled requires distinguishing between **CPM** and **RPM**:
-
-- **CPM (Cost Per Mille):** The gross amount advertisers pay per 1,000 ad impressions before platform fees. Advertisers use CPM to measure campaign spending.
-- **RPM (Revenue Per Mille):** The net earnings a creator takes home per 1,000 total video views after YouTube’s 45% revenue split and factoring in views where no ads were served.
-
-RPM is the actionable metric for creator earnings because it accounts for non-monetized views, ad blockers, and regional rate variances.
+The earnings calculator uses **RPM (Revenue Per Mille)** — your net take-home per 1,000 views — rather than CPM, which is the gross advertiser rate before YouTube’s 45% cut. For a full breakdown of the RPM formula, the 55/45 revenue split, and why RPM diverges from CPM, see [What Is YouTube RPM?](/blog/what-is-youtube-rpm).
 
 ---
 
-## 2. The 55/45 AdSense Revenue Split
-
-Under standard YouTube Partner Program terms for long-form video ads, YouTube distributes **55%** of net advertising revenue to the creator and retains **45%**. 
-
-For YouTube Shorts, ad revenue from feed ads is pooled and distributed according to creator share of total Shorts views, accounting for music licensing costs. Fan funding products (Channel Memberships, Super Chats, Super Thanks) follow a 70/30 split in favor of the creator, minus applicable transaction fees and local taxes.
-
-Calculators on YouTubeFreeToolkit apply illustrative RPM ranges based on industry averages, providing planning scenarios rather than guaranteed accounting figures.
-
----
-
-## 3. Variables That Change Payouts Week to Week
+## 1. Variables That Change Payouts Week to Week
 
 A creator’s effective RPM fluctuates continuously based on multiple dynamic factors:
 
@@ -212,7 +193,7 @@ A creator’s effective RPM fluctuates continuously based on multiple dynamic fa
 
 ---
 
-## 4. Using the Earnings Calculator for Realistic Planning
+## 2. Using the Earnings Calculator for Realistic Planning
 
 To build practical financial projections:
 
@@ -225,19 +206,19 @@ Once enrolled in YPP, compare these scenario outputs against your verified earni
 
 ---
 
-## 5. Seasonality and Annual Advertising Cycles
+## 3. Seasonality and Annual Advertising Cycles
 
 Advertising budgets follow predictable quarterly cycles:
 
 - **Q4 (October – December):** Peak holiday retail and corporate year-end ad spending typically pushes CPMs and RPMs to their highest levels of the year.
-- **Q1 (January – March):** Advertisers reset budgets and audit annual performance, historically leading to a 30% to 50% drop in RPM across most niches.
+- **Q1 (January – March):** Advertisers reset budgets and audit annual performance. Based on widely reported creator experiences and industry seasonality data, RPM commonly drops 20–50% from Q4 peaks — the exact range varies significantly by niche and audience geography.
 - **Q2 and Q3 (April – September):** Mid-year ad spending stabilizes at moderate baseline levels.
 
 Creators should build emergency reserves during Q4 rather than assuming peak November RPMs will continue into January.
 
 ---
 
-## 6. Modeling Sponsorships Alongside AdSense
+## 4. Modeling Sponsorships Alongside AdSense
 
 AdSense is only one pillar of creator monetization. Brand integrations, affiliate marketing, digital products, and Patreon memberships often dwarf ad payouts:
 
@@ -247,7 +228,7 @@ AdSense is only one pillar of creator monetization. Brand integrations, affiliat
 
 ---
 
-## 7. Reading YouTube Analytics Revenue Reports
+## 5. Reading YouTube Analytics Revenue Reports
 
 Inside **YouTube Studio → Analytics → Revenue**, review:
 
@@ -258,7 +239,7 @@ Inside **YouTube Studio → Analytics → Revenue**, review:
 
 ---
 
-## 8. Common Forecasting Mistakes to Avoid
+## 6. Common Forecasting Mistakes to Avoid
 
 Avoid these frequent pitfalls when projecting creator income:
 
@@ -269,7 +250,7 @@ Avoid these frequent pitfalls when projecting creator income:
 
 ---
 
-## 9. Worked Example: 100,000 Views in Tech vs Gaming
+## 7. Worked Example: 100,000 Views in Tech vs Gaming
 
 To visualize why niche selection and audience location dictate YouTube revenue far more than raw view totals, examine this side-by-side comparison for a creator generating **100,000 monthly views**:
 
@@ -428,7 +409,7 @@ Inside YouTube Studio Analytics, avoid evaluating only channel-wide blended RPM:
 
 If your channel RPM drops unexpectedly, investigate these common culprits:
 
-- **Calendar Seasonality:** RPM drops 30% to 50% across the board in January as Q4 holiday budgets expire.
+- **Calendar Seasonality:** RPM commonly drops in January as Q4 holiday ad budgets expire — drops of 20–50% have been widely reported by creators, with the actual impact varying by niche and audience geography.
 - **Geographic Shift:** A viral video in lower-CPM regions can spike total views by millions while diluting channel-wide blended RPM.
 - **Limited Ad Suitability (Yellow Dollar Sign):** Confirm whether recent uploads were flagged for coarse language, sensitive themes, or controversial topics.
 - **Viewer Retention Decline:** If average view duration drops, viewers leave before mid-roll ad breaks occur.
@@ -1115,12 +1096,12 @@ Establishing a disciplined monthly cadence keeps your strategy proactive and foc
 YouTube uses three distinct types of identifiers across its web interface, mobile apps, and developer APIs:
 
 ### A. The Canonical Channel ID (\`UC...\`)
-- **Format:** Exactly 24 alphanumeric characters starting with \`UC\` (e.g., \`UCBJycsmduP4tOGS450zKN1Q\`).
+- **Format:** Exactly 24 characters starting with \`UC\`, followed by 22 base64url characters (letters, digits, hyphens, and underscores — e.g., \`UCBJycsmduP4tOGS450zKN1Q\`).
 - **Permanence:** Completely immutable. Once assigned at channel creation, it **never changes**, regardless of rebrands, handle swaps, or URL adjustments.
 - **Primary Use:** Backend database storage, official YouTube Data API queries, webhooks, RSS feeds, and legal contracts.
 
 ### B. The YouTube Handle (\`@username\`)
-- **Format:** Starts with an \`@\` symbol (e.g., \`@mkbhd\`), containing 3 to 30 alphanumeric characters.
+- **Format:** Starts with an \`@\` symbol (e.g., \`@mkbhd\`), containing 3 to 30 characters — letters, digits, underscores, hyphens, or periods.
 - **Permanence:** Mutable. Channel owners can modify their handle in YouTube Studio twice within a 14-day window.
 - **Primary Use:** Community mentions, comments, search discovery, and public branding.
 
@@ -1134,7 +1115,7 @@ YouTube uses three distinct types of identifiers across its web interface, mobil
 
 If you build software automations, Discord alert bots, or CRM integrations, relying on mutable handles causes recurring bugs:
 
-- When a creator rebrands and updates their \`@handle\`, any webhook or automation hardcoded to the old handle immediately breaks with HTTP 404 errors.
+- When a creator rebrands and updates their \`@handle\`, any webhook or automation hardcoded to the old handle can break — old handle URLs may return HTTP 404 errors or redirect unexpectedly.
 - The canonical 24-character UC identifier never breaks. Storing the UC ID in your database ensures your application continues functioning across future brand migrations.
 - YouTube Data API v3 endpoints natively accept \`id=UC...\` queries with minimal quota consumption.
 
@@ -1458,11 +1439,7 @@ While these badges indicate fan-funding approval, they do not disclose private a
 
 ## Method 4: Why Seeing Video Ads Is Not Proof of Monetization
 
-Many viewers assume that if a pre-roll or mid-roll ad plays before a video, the uploader is monetized. **This assumption is false.**
-
-Under YouTube's updated Terms of Service ("Right to Monetize" clause), YouTube reserves the right to place ads across all videos on the platform, even on channels that are not enrolled in the YouTube Partner Program. On non-monetized channels, 100% of the advertising revenue goes directly to YouTube, not the creator.
-
-Seeing an ad proves that the video is ad-friendly; it does not prove the creator receives a revenue share. For details, read [Why YouTube Shows Ads on Non-Monetized Channels](/blog/why-youtube-shows-ads-on-non-monetized-channels).
+Ads playing on a video do not confirm that the uploader is in YPP or earning anything. Under YouTube's Right to Monetize clause, YouTube can place ads on any video — including non-partner channels — and keep 100% of that revenue. For a full breakdown of how this works and what it means for your research, see [Why YouTube Shows Ads on Non-Monetized Channels](/blog/why-youtube-shows-ads-on-non-monetized-channels).
 
 ---
 
@@ -1554,13 +1531,37 @@ Be vigilant against outdated or deceptive verification methods:
       { id: 'faqs', title: 'Frequently Asked Questions' },
     ],
     content: `
+## Quick-reference checklist
+
+| Step | Focus area | Key action |
+| --- | --- | --- |
+| 1 | Keyword research | Identify search vs browse intent before writing anything |
+| 2 | Title | Front-load primary keyword; keep to 50–70 characters |
+| 3 | Description | Hook above the fold, chapters in the body, links in the footer |
+| 4 | Tags | 5–12 focused terms; use for synonyms and misspellings |
+| 5 | Chapters | Start at 00:00; 3+ segments for Google Key Moments |
+| 6 | Thumbnail | Single focal subject; readable at phone width |
+| 7 | Hashtags | 2–3 targeted; consistent branded tag per series |
+| 8 | Spoken keywords | Say primary keyword naturally in the first 60 seconds |
+| 9 | Playlists | Group related uploads; link playlist in description |
+| 10 | Pre-upload audit | SEO score checker + upload checklist before going public |
+| 11 | Post-publish review | Check CTR and retention after 48–72 hours in Studio |
+| 12 | First 24-hour push | Pin comment, reply to viewers, share to community tab |
+
+---
+
 ## 1. Primary Keyword Research and Intent (Search vs Browse)
 
 Every high-performing YouTube upload begins with identifying audience intent:
 
-- **Search Intent:** Viewers actively seeking an immediate solution (e.g., *"how to fix OBS audio sync"*). These videos require literal, exact-match keywords in the title and description hook.
-- **Browse / Suggested Intent:** Viewers discovering content on homepage feeds or sidebar recommendations. These videos require curiosity-driven, emotional hooks that capture casual interest.
-- **Competitor Gap Analysis:** Inspect top-ranking videos for your target phrase using our [Tag Extractor](/tools/tag-extractor) to identify missing subtopics and unanswered questions.
+### Search intent
+Viewers actively seeking an immediate solution (e.g., *"how to fix OBS audio sync"*). These videos require literal, exact-match keywords in the title and description hook. Optimize for specificity over broad phrasing.
+
+### Browse and suggested intent
+Viewers discovering content on homepage feeds or sidebar recommendations. These videos require curiosity-driven, emotional hooks that capture casual interest. The algorithm tests packaging before keywords.
+
+### Competitor gap analysis
+Inspect top-ranking videos for your target phrase using our [Tag Extractor](/tools/tag-extractor) to identify missing subtopics and unanswered questions. Look for topics covered in competitors' chapters but absent from their titles — those represent ranking opportunities.
 
 ---
 
@@ -1568,11 +1569,14 @@ Every high-performing YouTube upload begins with identifying audience intent:
 
 Your video title must satisfy both automated search indexing and human click-through rate (CTR):
 
-- **Front-Load Core Keywords:** Position your primary search phrase within the first 40 characters so it remains visible on mobile devices without truncation.
-- **Target 50 to 70 Characters:** Titles exceeding 70 characters get cut off with ellipses (...) on mobile app feeds.
-- **Add Value Qualifiers:** Use parentheses like *(Full Blueprint)*, *(Step-by-Step)*, or *(2026 Guide)* to signal comprehensive depth.
+### Front-load core keywords
+Position your primary search phrase within the first 40 characters so it remains visible on mobile devices without truncation. YouTube truncates titles on mobile feed cards after approximately 50 characters.
 
-Test your draft titles before publishing using our free [Title & Description Analyzer](/tools/title-description-analyzer).
+### Character count
+Titles exceeding 70 characters get cut off with ellipses (...) on mobile app feeds. Use the [Title & Description Analyzer](/tools/title-description-analyzer) to verify length before publishing.
+
+### Value qualifiers
+Use parentheses like *(Full Blueprint)*, *(Step-by-Step)*, or *(2026 Guide)* to signal comprehensive depth. Qualifiers lift CTR by telling viewers what format and depth to expect.
 
 ---
 
@@ -1580,9 +1584,14 @@ Test your draft titles before publishing using our free [Title & Description Ana
 
 YouTube search indexing scans your description to understand thematic context. Structure your description into three clear tiers:
 
-1. **Above the Fold (First 2–3 Lines / 150 Characters):** Clearly state the exact value proposition and hook before the "Show More" fold.
-2. **Body & Chapter Timestamps (200+ Words):** Include detailed chapter timestamps (starting with \`00:00\`) and natural keyword synonyms.
-3. **Footer & Resources:** Link to referenced tools, affiliate disclosures, and your playlist catalog.
+### Above the fold (first 150 characters)
+Clearly state the exact value proposition and hook before the "Show More" fold. This text is the most likely to appear in Google search snippets, so write it as a standalone sentence that makes sense without context.
+
+### Body and chapter timestamps (200+ words)
+Include detailed chapter timestamps (starting with `00:00`) and natural keyword synonyms. Chapters with 3 or more segments can qualify your video for Google Search Key Moments rich results.
+
+### Footer and resources
+Link to referenced tools, affiliate disclosures, and your playlist catalog. Group outbound links at the bottom so they do not compete with the indexable copy above them.
 
 ---
 
@@ -1664,11 +1673,16 @@ Before setting your video to public:
 
 ## 11. Post-Publish Review in YouTube Studio
 
-Allow YouTube’s recommendation systems 48 to 72 hours to distribute your video to initial test impressions:
+Allow YouTube’s recommendation systems 48 to 72 hours to distribute your video to initial test impressions before drawing conclusions.
 
-- In **YouTube Studio → Analytics → Reach**, evaluate your Click-Through Rate (CTR) and Average View Duration (AVD).
-- If impressions are high but CTR is below your channel average, test a new thumbnail or adjust the title hook.
-- If CTR is strong but retention collapses in the first 30 seconds, your packaging may be over-promising; refine your next video's hook accordingly.
+### What to check in Analytics → Reach
+In **YouTube Studio → Analytics → Reach**, evaluate Click-Through Rate (CTR) and Average View Duration (AVD). Compare both against your 28-day channel averages, not isolated video history.
+
+### Diagnosing low CTR
+If impressions are high but CTR is below your channel average (typically under 3–5%), test a new thumbnail or adjust the first 40 characters of the title hook. Do not change both at once — isolate variables.
+
+### Diagnosing retention drop
+If CTR is strong but retention collapses in the first 30 seconds, your packaging may be over-promising relative to your opening content. Refine the intro pacing on the next upload rather than re-editing the published video, which risks resetting the algorithm test batch.
 
 ---
 
