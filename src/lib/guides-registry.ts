@@ -38,32 +38,32 @@ export const GUIDE_HUBS: GuideHub[] = [
         ],
       },
       {
-        id: ‘rpm-planning’,
-        heading: ‘RPM, CPM, and planning calculators’,
+        id: 'rpm-planning',
+        heading: 'RPM, CPM, and planning calculators',
         paragraphs: [
-          ‘CPM reflects advertiser bids per thousand impressions. RPM reflects what creators earn per thousand views after YouTube’s share and mixed revenue types. Use calculators to model scenarios, then reconcile with YouTube Analytics after monetization.’,
-          ‘Finance, tech, and education niches often show higher RPM ranges than broad entertainment, but geography, seasonality, and audience device mix matter more than generic benchmarks.’,
-          ‘Q4 (October through December) historically delivers the highest RPMs of the year due to holiday advertising budgets, while Q1 often sees drops of 20–50% from those peaks. Creators should model both extremes to avoid overcommitting to expenses based solely on Q4 earnings.’,
-          ‘Long-form content (8+ minutes with mid-rolls enabled) typically earns higher per-view revenue than Shorts, which draws from a shared ad pool distributed across all monetized Shorts. Build separate revenue models for each format and compare them against actual Studio exports before drawing conclusions about which format to prioritize.’,
+          'CPM reflects advertiser bids per thousand impressions. RPM reflects what creators earn per thousand views after YouTube’s share and mixed revenue types. Use calculators to model scenarios, then reconcile with YouTube Analytics after monetization.',
+          'Finance, tech, and education niches often show higher RPM ranges than broad entertainment, but geography, seasonality, and audience device mix matter more than generic benchmarks.',
+          'Q4 (October through December) historically delivers the highest RPMs of the year due to holiday advertising budgets, while Q1 often sees drops of 20 to 50 percent from those peaks. Creators should model both extremes to avoid overcommitting to expenses based solely on Q4 earnings.',
+          'Long-form content with mid-rolls enabled typically earns higher per-view revenue than Shorts, which draws from a shared ad pool. Build separate revenue models for each format and compare them against actual Studio exports before drawing conclusions about which format to prioritize.',
         ],
       },
       {
-        id: ‘shorts-monetization’,
-        heading: ‘Shorts monetization vs long-form revenue’,
+        id: 'shorts-monetization',
+        heading: 'Shorts monetization vs long-form revenue',
         paragraphs: [
-          ‘Shorts monetization works differently from long-form ad revenue. YouTube pools ad revenue from ads shown between Shorts in the feed and distributes it monthly to eligible creators based on their share of total Shorts views — after accounting for music licensing costs.’,
-          ‘The payout-per-view on Shorts is typically lower than long-form, but Shorts can drive channel growth that increases long-form watch hours over time. Many creators use Shorts for audience acquisition while relying on long-form content for the bulk of AdSense income.’,
-          ‘Fan-funding products — Super Thanks, Channel Memberships, and Super Chats — use a different 70/30 split in favor of the creator and are available at both the 500-subscriber and 1,000-subscriber YPP tiers. These products can be a more predictable income stream than ad revenue alone.’,
+          'Shorts monetization works differently from long-form ad revenue. YouTube pools ad revenue from ads shown between Shorts in the feed and distributes it monthly to eligible creators based on their share of total Shorts views, after accounting for music licensing costs.',
+          'The payout-per-view on Shorts is typically lower than long-form, but Shorts can drive channel growth that increases long-form watch hours over time. Many creators use Shorts for audience acquisition while relying on long-form content for the bulk of AdSense income.',
+          'Fan-funding products such as Super Thanks, Channel Memberships, and Super Chats use a 70/30 split in favour of the creator and are available at both the 500-subscriber and 1,000-subscriber YPP tiers. These products can be a more predictable income stream than ad revenue alone.',
         ],
       },
       {
-        id: ‘policy-traps’,
-        heading: ‘Common monetization mistakes to avoid’,
+        id: 'policy-traps',
+        heading: 'Common monetization mistakes to avoid',
         paragraphs: [
-          ‘Reused content, misleading metadata, and copyright strikes can delay or remove YPP access even when public subscriber counts look healthy. Public tools cannot see strikes or reused-content reviews — only your Studio account can.’,
-          ‘Never promise viewers that a third-party “monetization checker” proves another channel’s AdSense status. Responsible research sticks to public eligibility-style signals and cites official YouTube help articles for thresholds.’,
-          ‘Many creators assume that reaching 1,000 subscribers and 4,000 watch hours means automatic approval. In practice, YouTube conducts automated and manual reviews for originality, advertiser-friendliness, and Community Guidelines compliance. Channels with reused or low-effort content regularly fail review even with healthy public metrics.’,
-          ‘AdSense account issues — unverified address, tax form problems, or an existing suspended account — can block payouts independently from YPP approval. Resolve AdSense setup steps in parallel with building watch hours, not after, to avoid delays once you meet the thresholds.’,
+          'Reused content, misleading metadata, and copyright strikes can delay or remove YPP access even when public subscriber counts look healthy. Public tools cannot see strikes or reused-content reviews — only your Studio account can.',
+          'Never promise viewers that a third-party “monetization checker” proves another channel’s AdSense status. Responsible research sticks to public eligibility-style signals and cites official YouTube help articles for thresholds.',
+          'Many creators assume that reaching 1,000 subscribers and 4,000 watch hours means automatic approval. In practice, YouTube conducts automated and manual reviews for originality, advertiser-friendliness, and Community Guidelines compliance. Channels with reused or low-effort content regularly fail review even with healthy public metrics.',
+          'AdSense account issues such as an unverified address, tax form problems, or an existing suspended account can block payouts independently of YPP approval. Resolve AdSense setup steps in parallel with building watch hours, not after, to avoid delays once thresholds are met.',
         ],
       },
       {
@@ -128,11 +128,11 @@ export const GUIDE_HUBS: GuideHub[] = [
       },
       {
         question: 'What is the difference between RPM and CPM?',
-        answer: 'CPM (Cost Per Mille) is the gross rate advertisers pay per 1,000 ad impressions. RPM (Revenue Per Mille) is your net earnings per 1,000 total video views after YouTube's 45% share and accounting for views where no ad was served. RPM is always lower than CPM and is the number that affects your actual income.',
+        answer: 'CPM (Cost Per Mille) is the gross rate advertisers pay per 1,000 ad impressions. RPM (Revenue Per Mille) is your net earnings per 1,000 total video views after YouTube’s 45 percent share and non-monetised views are factored in. RPM is always lower than CPM and is the number that directly affects your payout.',
       },
       {
         question: 'Can I be in YPP and still earn zero ad revenue on a video?',
-        answer: 'Yes. Videos flagged as "limited or no ads" by YouTube's content classifiers earn little to no ad revenue even if your channel is enrolled in YPP. Sensitive topics, profanity in the opening 30 seconds, and misleading thumbnails are common triggers. You can request a manual review inside YouTube Studio.',
+        answer: 'Yes. Videos flagged as limited or no ads by YouTube’s content classifiers earn little to no ad revenue even if your channel is enrolled in YPP. Sensitive topics, profanity in the opening 30 seconds, and misleading thumbnails are common triggers. You can request a manual review inside YouTube Studio.',
       },
     ],
   },
@@ -153,8 +153,8 @@ export const GUIDE_HUBS: GuideHub[] = [
         paragraphs: [
           'Titles should front-load the primary topic within the first 40–50 characters when possible so mobile feeds do not truncate the promise. Descriptions need a strong hook above the “Show more” fold, then supporting copy, chapters, and links.',
           'Tags are a supporting signal for synonyms and misspellings. Extract public tags only for research, then rewrite them for your own video rather than copying competitors verbatim.',
-          'Descriptions should begin with a sentence that restates the video's core topic in natural language — this text is indexed by both YouTube and Google. The first 150–200 characters often surface in search snippets, so write them as a standalone sentence that works without additional context.',
-          'Category selection (set under Advanced Settings) helps YouTube's recommendation system place your video alongside topically similar content. Choose the most specific matching category rather than defaulting to “People & Blogs.” Playlists serve a similar reinforcement function: grouping videos by series helps YouTube build watch-session chains within your channel.',
+          'Descriptions should begin with a sentence that restates the video’s core topic in natural language, since this text is indexed by both YouTube and Google. The first 150 to 200 characters often appear in search snippets, so write them as a standalone sentence that works without additional context.',
+          'Category selection (set under Advanced Settings in YouTube Studio) helps the recommendation system group your video with topically similar content. Playlists reinforce the same signal by chaining related uploads, which extends average session watch time within your channel.',
         ],
       },
       {
@@ -187,8 +187,8 @@ export const GUIDE_HUBS: GuideHub[] = [
         paragraphs: [
           'Wait at least one to two weeks after a meaningful metadata change before judging results, unless you are fixing a clear error such as a misleading title. Compare click-through rate, average view duration, and traffic sources in Studio.',
           'If CTR improves but retention drops, the new packaging may be over-promising. Iterate on honesty and clarity before adding more keywords.',
-          'YouTube Studio's Reach tab shows impressions by traffic source. "Browse features" and "Suggested videos" impressions together indicate algorithmic reach, while "YouTube search" impressions tell you how often YouTube showed your video for keyword queries. Low search impressions on a target keyword often means the video is not yet indexed for that intent — check whether the keyword appears in the title and first paragraph of the description.',
-          'A/B thumbnail testing is available to YouTube Partner Program members through a built-in Studio experiment. Run tests for at least two weeks to ensure the result is not driven by an algorithm boost on the newer thumbnail variant.',
+          'YouTube Studio’s Reach tab shows impressions by traffic source. Browse features and Suggested videos impressions together indicate algorithmic reach, while YouTube search impressions show how often YouTube served your video for keyword queries. Low search impressions on a target keyword often mean the video is not yet indexed for that intent.',
+          'A/B thumbnail testing is available to YouTube Partner Program members through a built-in Studio experiment. Run tests for at least two weeks to ensure the result reflects genuine CTR improvement rather than a short-term algorithm boost on the newer variant.',
         ],
       },
       {
@@ -252,11 +252,11 @@ export const GUIDE_HUBS: GuideHub[] = [
       },
       {
         question: 'Does updating old video metadata help with rankings?',
-        answer: 'It can, especially if search intent for a keyword has shifted or if the original title was vague. Focus changes on the title and description first. Re-publishing or privating-then-republishing a video resets its social proof and watch-time history, which usually hurts more than a metadata refresh helps.',
+        answer: 'It can, especially if search intent for a keyword has shifted or if the original title was vague. Focus changes on the title and description first. Re-publishing a video resets its watch-time history and social proof, which usually hurts more than a metadata refresh helps.',
       },
       {
         question: 'How does YouTube decide which search queries to show my video for?',
-        answer: 'YouTube matches videos to queries based on title, description, tags, transcript (auto-captions or manual), viewer behavior patterns, and channel topic signals. Writing a clear first sentence in the description that restates the video's core topic in natural language is one of the most reliable on-page SEO improvements you can make.',
+        answer: 'YouTube matches videos to queries based on title, description, tags, transcript, viewer behaviour patterns, and channel topic signals. Writing a clear first sentence in the description that restates the video’s core topic in natural language is one of the most reliable on-page SEO improvements available.',
       },
     ],
   },
@@ -277,8 +277,8 @@ export const GUIDE_HUBS: GuideHub[] = [
         paragraphs: [
           'Handles and custom URLs are for humans; the 24-character UC channel ID is for APIs, RSS, and automations. Handles can change, which breaks hard-coded bots if you skip the UC ID.',
           'Use the channel ID finder when integrating Discord bots, analytics pipelines, or feed readers. Always test with a fresh public video URL if a handle redirect fails.',
-          'Channel handles follow the format @handle, where the handle is 3–30 characters using letters, digits, underscores, hyphens, or periods. Handles are unique across YouTube but can be changed by the owner, which is why the UC channel ID is the stable identifier to store in any integration.',
-          'When looking up a channel through the Data API, prefer the channels.list endpoint with the id parameter (the UC ID) over the forHandle parameter, as handle lookups require an extra API unit and can fail if the handle includes special characters that need URL encoding.',
+          'Channel handles follow the format @handle, using 3 to 30 characters including letters, digits, underscores, hyphens, or periods. Handles are unique across YouTube but can be changed by the owner, which is why the UC channel ID is the stable identifier to store in any integration.',
+          'When querying the YouTube Data API, prefer the channels.list endpoint with the id parameter (the UC channel ID) over the forHandle parameter, since handle lookups require an extra API unit and can fail if the handle contains characters that need URL encoding.',
         ],
       },
       {
@@ -369,11 +369,11 @@ export const GUIDE_HUBS: GuideHub[] = [
       },
       {
         question: 'Why does a channel handle return different results in different tools?',
-        answer: 'Handle lookups can differ between tools if one caches stale data, the handle was recently changed, or the tool uses the older forUsername API parameter rather than the forHandle parameter. Always verify with the channel\'s current UC ID, which remains constant regardless of handle changes.',
+        answer: 'Handle lookups can differ between tools if one caches stale data, the handle was recently changed, or the tool uses the older forUsername API parameter instead of forHandle. Always verify with the channel’s current UC ID, which stays constant regardless of handle changes.',
       },
       {
         question: 'How do I find a channel ID when the channel has no public videos?',
-        answer: 'On the channel page, view source or inspect the page element — look for "externalId" or a UC... value in the page HTML. Alternatively, subscribe to the channel and check your subscriptions feed via the YouTube Data API subscriptions.list endpoint. Public-facing tools can only look up active public channels.',
+        answer: 'On the channel page, view the page source and search for externalId or a UC-prefixed value in the HTML. Alternatively, subscribe to the channel and query your subscriptions via the YouTube Data API subscriptions.list endpoint. Public-facing tools can only look up active public channels.',
       },
     ],
   },

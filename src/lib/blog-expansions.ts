@@ -1588,7 +1588,7 @@ YouTube search indexing scans your description to understand thematic context. S
 Clearly state the exact value proposition and hook before the "Show More" fold. This text is the most likely to appear in Google search snippets, so write it as a standalone sentence that makes sense without context.
 
 ### Body and chapter timestamps (200+ words)
-Include detailed chapter timestamps (starting with `00:00`) and natural keyword synonyms. Chapters with 3 or more segments can qualify your video for Google Search Key Moments rich results.
+Include detailed chapter timestamps (starting with \`00:00\`) and natural keyword synonyms. Chapters with 3 or more segments can qualify your video for Google Search Key Moments rich results.
 
 ### Footer and resources
 Link to referenced tools, affiliate disclosures, and your playlist catalog. Group outbound links at the bottom so they do not compete with the indexable copy above them.
