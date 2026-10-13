@@ -74,6 +74,20 @@ export function Header() {
             >
               Earnings Calc
             </Link>
+
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-[#606060] hover:text-[#0f0f0f] dark:text-[#aaaaaa] dark:hover:text-[#f1f1f1] transition-colors"
+            >
+              Blog
+            </Link>
+
+            <Link
+              href="/guides"
+              className="text-sm font-medium text-[#606060] hover:text-[#0f0f0f] dark:text-[#aaaaaa] dark:hover:text-[#f1f1f1] transition-colors"
+            >
+              Guides
+            </Link>
           </nav>
 
           {/* Search Trigger & Actions */}
@@ -164,6 +178,20 @@ export function Header() {
                 className="rounded-lg px-3 py-2 text-sm font-medium text-[#606060] dark:text-[#aaaaaa] hover:bg-[#f2f2f2] dark:hover:bg-[#272727] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1]"
               >
                 SEO Score Checker
+              </Link>
+              <Link
+                href="/blog"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-lg px-3 py-2 text-sm font-medium text-[#606060] dark:text-[#aaaaaa] hover:bg-[#f2f2f2] dark:hover:bg-[#272727] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1]"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/guides"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-lg px-3 py-2 text-sm font-medium text-[#606060] dark:text-[#aaaaaa] hover:bg-[#f2f2f2] dark:hover:bg-[#272727] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1]"
+              >
+                Guides
               </Link>
             </div>
           </div>

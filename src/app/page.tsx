@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { TOOLS_REGISTRY, CATEGORIES, getFeaturedTools, SITE_CONFIG } from '@/lib/tools-registry';
+import { BLOG_POSTS } from '@/lib/blog-registry';
 import { ToolCard } from '@/components/tools/ToolCard';
 import { MonetizationChecker } from '@/components/tools/impl/MonetizationChecker';
 
@@ -153,6 +154,39 @@ export default function HomePage() {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      {/* Latest Blog Posts */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 sm:py-14">
+        <div className="flex items-baseline justify-between gap-4 mb-6">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Latest creator guides</h2>
+            <p className="text-xs sm:text-sm text-[#909090] dark:text-[#717171] mt-1">In-depth articles on YouTube SEO, monetization, and channel growth</p>
+          </div>
+          <Link href="/blog" className="text-xs sm:text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline shrink-0">
+            All posts →
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {BLOG_POSTS.slice(-3).reverse().map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="group rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 hover:border-[#ff0000]/40 transition-all"
+            >
+              <span className="inline-block rounded-full bg-[#ff0000]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+                {post.category}
+              </span>
+              <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2 group-hover:text-[#ff0000] transition-colors leading-snug">
+                {post.title}
+              </h3>
+              <p className="mt-2 text-xs text-[#606060] dark:text-[#aaaaaa] line-clamp-2 leading-relaxed">
+                {post.excerpt}
+              </p>
+              <p className="mt-3 text-[11px] text-[#909090] dark:text-[#717171]">{post.readTime}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
