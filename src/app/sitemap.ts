@@ -58,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/free-youtube-tools`,
+      lastModified: siteUpdated,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
   ];
 
   // Exclude single-tool noindex categories (e.g. analytics) to avoid conflicting signals
