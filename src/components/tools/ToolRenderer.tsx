@@ -15,6 +15,11 @@ import { TimestampValidator } from './impl/TimestampValidator';
 import { RpmCalculator } from './impl/RpmCalculator';
 import { ChannelCompare } from './impl/ChannelCompare';
 import { UploadChecklist } from './impl/UploadChecklist';
+import { ThumbnailDownloader } from './impl/ThumbnailDownloader';
+import { LogoBannerDownloader } from './impl/LogoBannerDownloader';
+import { VideoDataViewer } from './impl/VideoDataViewer';
+import { LiveViewCount } from './impl/LiveViewCount';
+import { YoutubeTrending } from './impl/YoutubeTrending';
 
 const monetizationFallback = (
   <div className="min-h-40 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 text-center text-sm text-[#909090] dark:text-[#717171]">
@@ -64,6 +69,16 @@ export function ToolRenderer({ slug }: ToolRendererProps) {
       return <ChannelCompare />;
     case 'upload-checklist':
       return <UploadChecklist />;
+    case 'thumbnail-downloader':
+      return <ThumbnailDownloader />;
+    case 'logo-banner-downloader':
+      return <LogoBannerDownloader />;
+    case 'video-data-viewer':
+      return <VideoDataViewer />;
+    case 'live-view-count':
+      return <LiveViewCount />;
+    case 'youtube-trending':
+      return <YoutubeTrending />;
     default:
       return (
         <Suspense fallback={monetizationFallback}>

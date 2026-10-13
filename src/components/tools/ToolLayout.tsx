@@ -6,6 +6,7 @@ import {
   generateWebApplicationSchema,
   generateBreadcrumbSchema,
   generateHowToSchema,
+  generateFAQSchema,
 } from '@/lib/seo';
 import { getToolGuide } from '@/lib/tool-guides';
 import { ProseBlock } from '@/components/content/ProseBlock';
@@ -19,6 +20,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
   const guide = getToolGuide(tool.slug);
   const webAppSchema = generateWebApplicationSchema(tool);
   const howToSchema = generateHowToSchema(tool);
+  const faqSchema = generateFAQSchema(tool.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
     { name: 'Tools', url: `${SITE_CONFIG.url}/tools` },
@@ -40,6 +42,12 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
       <script

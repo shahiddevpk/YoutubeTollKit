@@ -5,7 +5,7 @@ import { GUIDE_HUBS } from '@/lib/guides-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
-  const siteUpdated = new Date('2026-10-06T00:00:00.000Z');
+  const siteUpdated = new Date('2026-10-13T00:00:00.000Z');
 
   // Core static routes
   const staticRoutes: MetadataRoute.Sitemap = [
