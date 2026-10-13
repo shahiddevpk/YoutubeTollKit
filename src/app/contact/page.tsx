@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/tools-registry';
+import { noindexFollowRobots } from '@/lib/seo-site-config';
 import { ContactForm } from './ContactForm';
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
       'Send tool suggestions, bug reports, and inquiries to the YouTubeFreeToolkit creator team.',
     url: `${SITE_CONFIG.url}/contact`,
   },
+  robots: noindexFollowRobots(),
 };
 
 export default function ContactPage() {

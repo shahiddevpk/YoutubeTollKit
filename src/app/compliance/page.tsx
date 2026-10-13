@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/tools-registry';
+import { noindexFollowRobots } from '@/lib/seo-site-config';
 import { ShieldCheck, CheckCircle2, Lock, FileCheck, ExternalLink } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_CONFIG.url}/compliance`,
   },
+  robots: noindexFollowRobots(),
 };
 
 export default function CompliancePage() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/tools-registry';
+import { noindexFollowRobots } from '@/lib/seo-site-config';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | YouTubeFreeToolkit',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_CONFIG.url}/privacy`,
   },
+  robots: noindexFollowRobots(),
 };
 
 export default function PrivacyPage() {

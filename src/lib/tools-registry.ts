@@ -196,7 +196,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     shortTitle: 'Channel ID Finder',
     headline: 'Resolve @handles, channel URLs, and public video links to the canonical UC identifier.',
     description:
-      'Extract the 24-character YouTube Channel ID (UC...), Channel Handle, and canonical RSS feed URL from a modern @handle, channel URL, or public video link.',
+      'Extract the permanent 24-character YouTube Channel ID (UC...), canonical @handle, and direct RSS feed URL from any @handle, channel URL, or public video link. The UC channel ID never changes even when a creator renames or rebrands, making it the reliable identifier for API integrations, Discord bots, and RSS readers.',
     category: 'research',
     badge: 'Flagship',
     priority: 'P0',
@@ -344,9 +344,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'earnings-calculator',
     name: 'YouTube Earnings Calculator',
     shortTitle: 'Earnings Calculator',
-    headline: 'Estimate YouTube Ad Revenue from Views and RPM',
+    headline: 'Estimate your YouTube ad revenue from daily views, RPM brackets, and creator niche in seconds.',
     description:
-      'Estimate your potential YouTube revenue based on daily video views, CPM/RPM brackets, creator niche, and geographic audience tier.',
+      'Enter your expected daily or monthly view count, choose your content niche, and see illustrative daily, monthly, and annual revenue projections after YouTube\'s 45% platform share. Calculations use 2026 RPM benchmarks across 12 creator niches and are clearly labeled as planning estimates, not actual AdSense data.',
     category: 'monetization',
     badge: 'Flagship',
     priority: 'P0',
@@ -418,9 +418,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     slug: 'seo-score-checker',
     name: 'YouTube SEO Score Checker',
     shortTitle: 'SEO Score Checker',
-    headline: 'Audit YouTube Video SEO, Title Length, Tags & Descriptions',
+    headline: 'Audit your YouTube video\'s SEO across title length, description, tags, and metadata with one click.',
     description:
-      'Comprehensive YouTube SEO audit tool. Score your video optimization across title character counts, description keyword density, tag relevance, and metadata checklist.',
+      'Get an instant 0–100 SEO score for any published video or draft title. The 12-point checklist evaluates title character counts, description structure, tag relevance, and chapter presence, then returns specific actionable fixes to improve click-through rate and organic search visibility.',
     category: 'seo',
     badge: 'Creator Pick',
     priority: 'P0',
@@ -566,7 +566,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     shortTitle: 'Thumbnail Preview',
     headline: 'Inspect HD Thumbnails & Test CTR Against Dark/Light Feeds',
     description:
-      'Preview your YouTube video thumbnail across YouTube Homepage, Mobile Feed, Search Results, and Dark/Light mode before publishing.',
+      'Preview your YouTube video thumbnail across the YouTube Homepage, Mobile Feed, Search Results, and Sidebar in both Dark and Light mode before you publish. Upload a draft image or paste an existing video URL to test readability at every size, check that text is not obscured by the timestamp badge, and compare CTR impact across dark and light feeds.',
     category: 'utilities',
     badge: 'Trending',
     priority: 'P2',
@@ -640,7 +640,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     shortTitle: 'Title & Description',
     headline: 'Optimize YouTube Titles, Descriptions & Character Limits',
     description:
-      'Analyze character count, mobile truncation cutoff, emoji density, and readability for YouTube titles and descriptions.',
+      'Analyze character count, mobile truncation cutoff, emoji density, and readability scores for YouTube titles and descriptions before you publish. The live meters show desktop (70-character) and mobile (55-character) cutoff points, a preview of the first three description lines above the "Show More" fold, and keyword density flags — so you can front-load your primary keyword and hook before viewers click away.',
     category: 'seo',
     badge: 'Creator Pick',
     priority: 'P1',
@@ -713,7 +713,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     shortTitle: 'Hashtag Generator',
     headline: 'Generate Trending & Relevant Hashtags for YouTube Videos & Shorts',
     description:
-      'Discover high-performing hashtags for YouTube Shorts and long-form videos to increase algorithmic discovery on hashtag landing pages.',
+      'Discover high-performing hashtags for YouTube Shorts and long-form videos across 15+ creator niches to boost algorithmic discovery on hashtag landing pages. Enter your video topic, choose your format, and copy 3–5 optimized hashtags in one click — with built-in guidance to avoid the 60-hashtag penalty that causes YouTube to ignore all tags on a video.',
     category: 'seo',
     badge: 'Flagship',
     priority: 'P2',
@@ -816,7 +816,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         step: 3,
         title: 'Export Safe-Zone Guide',
-        description: 'Adjust text positioning into the unobstructed green safe-zone area.',
+        description: 'Download the PNG safe-zone overlay template and adjust your text and graphics into the unobstructed green safe-zone area before exporting your final video.',
       },
     ],
     features: [
@@ -920,7 +920,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Can I use timestamps in YouTube Shorts descriptions?',
         answer:
-          'YouTube Shorts do not generate scrub-bar chapter markers because Shorts are designed for quick continuous viewing under 60 seconds. However, clickable timestamps still work in comments or descriptions on the desktop watch page.',
+          'YouTube Shorts do not generate scrub-bar chapter markers because the Shorts player uses a continuous-scroll feed format rather than a seek bar. Shorts can be up to 3 minutes (180 seconds) as of October 2024, but even longer Shorts still do not display chapter breakpoints in the Shorts player. Clickable timestamps in descriptions are visible on the desktop watch page, but they do not activate scrub-bar chapters for vertical Shorts.',
       },
     ],
     relatedToolSlugs: ['title-description-analyzer', 'seo-score-checker'],
@@ -976,7 +976,8 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     faqs: [
       {
         question: 'What is the formula for calculating YouTube RPM?',
-        answer: 'RPM = (Total Estimated Earnings / Total Views) × 1,000.',
+        answer:
+          'The formula is: RPM = (Total Estimated Earnings ÷ Total Views) × 1,000. For example, if your channel earned $50 from 10,000 total views in a given period, your RPM would be ($50 ÷ 10,000) × 1,000 = $5.00. RPM is always lower than CPM because it factors in both monetized and non-monetized views.',
       },
       {
         question: 'Why is my YouTube RPM lower than my CPM?',

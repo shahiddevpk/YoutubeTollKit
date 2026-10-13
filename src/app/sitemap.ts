@@ -45,30 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: siteUpdated,
-      changeFrequency: 'monthly',
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/compliance`,
-      lastModified: siteUpdated,
-      changeFrequency: 'monthly',
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: siteUpdated,
-      changeFrequency: 'monthly',
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: siteUpdated,
-      changeFrequency: 'monthly',
-      priority: 0.4,
-    },
+    // /privacy, /terms, /compliance, /contact are noindex — excluded from sitemap
   ];
 
   // Exclude single-tool noindex categories (e.g. analytics) to avoid conflicting signals
