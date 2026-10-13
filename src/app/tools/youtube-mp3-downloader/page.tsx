@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { ExternalLink, Music, HelpCircle, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Music, HelpCircle, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { defaultRobots } from '@/lib/seo-site-config';
+import { ConverterCTA } from '@/components/tools/ConverterCTA';
 
 export const revalidate = 3600;
 
@@ -121,45 +122,17 @@ export default function YoutubeMp3DownloaderPage() {
         </div>
 
         {/* CTA card */}
-        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 space-y-6">
-          <div className="space-y-2">
-            <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">
-              Step 1 — Copy your YouTube URL
-            </p>
-            <div className="rounded-lg border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#0f0f0f] px-4 py-3 text-sm font-mono text-[#606060] dark:text-[#aaaaaa] select-all">
-              https://www.youtube.com/watch?v=...
-            </div>
-          </div>
-          <div className="space-y-3">
-            <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">
-              Step 2 — Open a free converter below
-            </p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-              {[
-                { name: 'cobalt.tools', desc: 'Open-source · No ads', href: 'https://cobalt.tools' },
-                { name: 'yt1s.com', desc: 'Fast · MP3 & MP4', href: 'https://yt1s.com' },
-                { name: 'loader.to', desc: 'Multiple formats', href: 'https://loader.to' },
-              ].map(({ name, desc, href }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-1 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#0f0f0f] px-4 py-3.5 hover:border-[#ff0000]/50 hover:shadow-sm transition-all"
-                >
-                  <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{name}</span>
-                  <span className="text-[11px] text-[#909090] dark:text-[#717171]">{desc}</span>
-                  <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-[#ff0000]">
-                    Open free <ExternalLink className="h-3 w-3" />
-                  </span>
-                </a>
-              ))}
-            </div>
-            <p className="text-xs text-[#909090] dark:text-[#717171] text-center pt-1">
-              All three are free, browser-based, no signup. Paste your URL and select MP3.
-            </p>
-          </div>
-        </div>
+        <ConverterCTA
+          placeholder="Paste YouTube URL (e.g. youtube.com/watch?v=…)"
+          converters={[
+            { name: 'cobalt.tools', desc: 'Open-source · No ads', href: 'https://cobalt.tools' },
+            { name: 'yt1s.com', desc: 'Fast · MP3 & MP4', href: 'https://yt1s.com' },
+            { name: 'loader.to', desc: 'MP3 · OGG · M4A', href: 'https://loader.to' },
+            { name: 'y2mate.com', desc: 'Popular · Fast', href: 'https://www.y2mate.com' },
+            { name: 'onlinevideoconverter.pro', desc: 'HD audio support', href: 'https://onlinevideoconverter.pro' },
+            { name: 'ytmp3.cc', desc: 'Simple · MP3 only', href: 'https://ytmp3.cc' },
+          ]}
+        />
 
         {/* Legal notice */}
         <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 flex gap-3">
