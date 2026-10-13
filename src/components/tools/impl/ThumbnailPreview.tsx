@@ -107,6 +107,7 @@ export function ThumbnailPreview() {
                 src={previewUrl}
                 alt="Thumbnail preview"
                 className="h-full w-full object-cover"
+                            loading="lazy"
               />
             ) : (
               <div className="flex h-full items-center justify-center text-[#717171]">

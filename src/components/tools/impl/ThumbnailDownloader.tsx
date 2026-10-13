@@ -151,6 +151,7 @@ export function ThumbnailDownloader() {
               src={thumbUrl('hqdefault') ?? ''}
               alt={videoData.title}
               className="h-14 w-24 rounded-lg object-cover border border-[#e5e5e5] dark:border-[#272727] shrink-0"
+                        loading="lazy"
             />
             <div className="min-w-0">
               <h4 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2">

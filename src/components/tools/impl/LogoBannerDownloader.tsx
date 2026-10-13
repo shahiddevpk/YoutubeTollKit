@@ -167,6 +167,7 @@ export function LogoBannerDownloader() {
                 src={data.avatarHdUrl ?? data.avatarUrl}
                 alt={data.title}
                 className="h-12 w-12 rounded-full border border-[#e5e5e5] dark:border-[#272727] object-cover shrink-0"
+                            loading="lazy"
               />
             )}
             <div className="min-w-0">
@@ -190,6 +191,7 @@ export function LogoBannerDownloader() {
                   src={data.avatarHdUrl ?? data.avatarUrl ?? ''}
                   alt={`${data.title} channel logo`}
                   className="h-20 w-20 rounded-full border border-[#e5e5e5] dark:border-[#272727] object-cover shrink-0"
+                                loading="lazy"
                 />
                 <div className="flex-1 min-w-0">
                   <p className="text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">Profile Picture</p>
@@ -228,6 +230,7 @@ export function LogoBannerDownloader() {
                   alt={`${data.title} channel banner`}
                   className="w-full object-cover"
                   style={{ maxHeight: '180px' }}
+                                loading="lazy"
                 />
                 <div className="p-3 flex items-center justify-between gap-2">
                   <div>

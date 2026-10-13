@@ -161,6 +161,7 @@ export function ChannelCompare() {
                     src={ch1.avatarUrl}
                     alt={ch1.title}
                     className="h-12 w-12 rounded-full border border-[#e5e5e5] dark:border-[#272727] object-cover"
+                                    loading="lazy"
                   />
                 ) : (
                   <div className="h-12 w-12 rounded-full bg-[#ff0000]/20 text-[#ff0000] font-black text-xl flex items-center justify-center border border-[#ff0000]/30">
@@ -202,6 +203,7 @@ export function ChannelCompare() {
                     src={ch2.avatarUrl}
                     alt={ch2.title}
                     className="h-12 w-12 rounded-full border border-[#e5e5e5] dark:border-[#272727] object-cover"
+                                    loading="lazy"
                   />
                 ) : (
                   <div className="h-12 w-12 rounded-full bg-[#ff0000]/20 text-[#ff0000] font-black text-xl flex items-center justify-center border border-[#ff0000]/30">

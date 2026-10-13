@@ -114,6 +114,7 @@ export function LikeCounter() {
               src={stats.thumbnails?.medium?.url ?? stats.thumbnails?.default?.url ?? `https://i.ytimg.com/vi/${stats.videoId}/mqdefault.jpg`}
               alt={stats.title}
               className="h-16 w-28 rounded-lg object-cover border border-[#e5e5e5] dark:border-[#272727] shrink-0"
+                        loading="lazy"
             />
             <div className="min-w-0 flex-1">
               <a

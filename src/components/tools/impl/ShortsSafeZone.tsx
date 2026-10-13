@@ -89,7 +89,8 @@ export function ShortsSafeZone() {
         <div className="relative aspect-[9/16] w-full max-w-xs rounded-3xl overflow-hidden border-2 border-[#e5e5e5] dark:border-[#272727] bg-black shadow-2xl">
           {imagePreview ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={imagePreview} alt="Shorts preview" className="h-full w-full object-cover" />
+            <img src={imagePreview} alt="Shorts preview" className="h-full w-full object-cover"  loading="lazy"
+ />
           ) : (
             <div className="flex h-full flex-col items-center justify-center p-6 text-center text-[#717171]">
               <Smartphone className="h-16 w-16 mb-2 text-[#555555]" />

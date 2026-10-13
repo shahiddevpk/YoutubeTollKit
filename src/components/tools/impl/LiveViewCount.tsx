@@ -190,6 +190,7 @@ export function LiveViewCount() {
                 src={stats.thumbnails.high.url}
                 alt={stats.title}
                 className="h-14 w-24 rounded-lg object-cover border border-[#e5e5e5] dark:border-[#272727] shrink-0"
+                            loading="lazy"
               />
             )}
             <div className="min-w-0">

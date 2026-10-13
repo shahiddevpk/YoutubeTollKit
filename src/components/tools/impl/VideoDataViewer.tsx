@@ -161,6 +161,7 @@ export function VideoDataViewer() {
                 src={videoData.thumbnails?.maxres?.url ?? videoData.thumbnails?.high?.url ?? ''}
                 alt={videoData.title}
                 className="h-20 w-36 rounded-xl object-cover border border-[#e5e5e5] dark:border-[#272727] shrink-0"
+                            loading="lazy"
               />
             )}
             <div className="min-w-0 flex-1">

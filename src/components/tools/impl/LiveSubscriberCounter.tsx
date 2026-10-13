@@ -137,6 +137,7 @@ export function LiveSubscriberCounter() {
             src={avatarUrl}
             alt={channelTitle ?? 'Channel avatar'}
             className="h-16 w-16 rounded-full mx-auto mb-3 border-2 border-[#272727] object-cover shadow-lg"
+                    loading="lazy"
           />
         )}
 

@@ -38,7 +38,7 @@ const faqItems = [
   {
     question: 'Do I need to create an account to use these free YouTube tools?',
     answer:
-      'No account is required for any of the 23 tools listed here. The one optional exception is the Monetization Checker\'s "Verify" feature, which lets channel owners confirm their own YPP status by connecting their Google account with read-only OAuth — even that is optional.',
+      `No account is required for any of the ${TOOLS_REGISTRY.length} tools listed here. The one optional exception is the Monetization Checker's "Verify" feature, which lets channel owners confirm their own YPP status by connecting their Google account with read-only OAuth — even that is optional.`,
   },
   {
     question: 'What is the best free YouTube tool for checking monetization?',

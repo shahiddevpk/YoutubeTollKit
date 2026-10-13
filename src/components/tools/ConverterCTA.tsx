@@ -102,7 +102,7 @@ export function ConverterCTA({ converters, placeholder = 'Paste YouTube URL here
         )}
 
         <p className="text-xs text-[#909090] dark:text-[#717171] text-center">
-          All three are free, browser-based, no signup required.
+          All are free, browser-based, no signup required.
         </p>
       </div>
     </div>

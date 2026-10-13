@@ -135,6 +135,7 @@ export function TagExtractor() {
                   src={thumbnailUrl}
                   alt={videoTitle}
                   className="h-12 w-20 rounded-lg object-cover border border-[#e5e5e5] dark:border-[#272727] shrink-0"
+                                loading="lazy"
                 />
               )}
               <div className="min-w-0">

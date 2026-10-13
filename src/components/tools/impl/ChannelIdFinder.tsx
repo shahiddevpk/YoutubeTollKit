@@ -136,6 +136,7 @@ export function ChannelIdFinder() {
                 src={data.avatarUrl}
                 alt={data.title}
                 className="h-10 w-10 rounded-xl object-cover border border-[#e5e5e5] dark:border-[#272727]"
+                            loading="lazy"
               />
             )}
             <div>
