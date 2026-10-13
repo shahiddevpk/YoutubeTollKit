@@ -64,6 +64,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/write-for-us`,
+      lastModified: siteUpdated,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 
   // Exclude single-tool noindex categories (e.g. analytics) to avoid conflicting signals

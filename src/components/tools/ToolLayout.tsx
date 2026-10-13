@@ -85,6 +85,21 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
         <div className="elevated-card rounded-2xl p-5 sm:p-7">
           {children}
         </div>
+        {/* Trust badge */}
+        <div className="mt-3 flex flex-wrap items-center gap-3 px-1">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3 py-1 text-[11px] text-[#606060] dark:text-[#aaaaaa]">
+            <svg className="h-3 w-3 text-[#ff0000]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="white"/></svg>
+            Powered by YouTube Data API v3
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3 py-1 text-[11px] text-[#606060] dark:text-[#aaaaaa]">
+            <svg className="h-3 w-3 text-emerald-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd"/></svg>
+            Free — No Login Required
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3 py-1 text-[11px] text-[#606060] dark:text-[#aaaaaa]">
+            <svg className="h-3 w-3 text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clipRule="evenodd"/></svg>
+            Policy-Safe Public Data Only
+          </span>
+        </div>
       </section>
 
       {/* Content & Education */}
