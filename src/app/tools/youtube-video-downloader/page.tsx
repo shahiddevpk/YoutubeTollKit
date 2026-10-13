@@ -121,7 +121,7 @@ export default function YoutubeVideoDownloaderPage() {
         </div>
 
         {/* CTA card */}
-        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 text-center space-y-5">
+        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 space-y-6">
           <div className="space-y-2">
             <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">
               Step 1 — Copy your YouTube video URL
@@ -130,22 +130,33 @@ export default function YoutubeVideoDownloaderPage() {
               https://www.youtube.com/watch?v=...
             </div>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-3">
             <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">
-              Step 2 — Paste it into the free downloader
+              Step 2 — Open a free downloader below
             </p>
-            <a
-              href="https://cobalt.tools"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#ff0000] px-8 py-3.5 text-sm font-bold text-white shadow-md hover:bg-[#cc0000] active:scale-95 transition-all cursor-pointer"
-            >
-              <Download className="h-4 w-4" />
-              Open Free YouTube Downloader
-              <ExternalLink className="h-3.5 w-3.5 opacity-75" />
-            </a>
-            <p className="text-xs text-[#909090] dark:text-[#717171]">
-              Opens cobalt.tools — a free, open-source video downloader. No ads, no signup.
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {[
+                { name: 'cobalt.tools', desc: 'Open-source · No ads', href: 'https://cobalt.tools' },
+                { name: 'yt1s.com', desc: 'HD · 1080p · 4K', href: 'https://yt1s.com' },
+                { name: 'loader.to', desc: 'MP4 · WebM · AVI', href: 'https://loader.to' },
+              ].map(({ name, desc, href }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-1 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#0f0f0f] px-4 py-3.5 hover:border-[#ff0000]/50 hover:shadow-sm transition-all"
+                >
+                  <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{name}</span>
+                  <span className="text-[11px] text-[#909090] dark:text-[#717171]">{desc}</span>
+                  <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-[#ff0000]">
+                    Open free <ExternalLink className="h-3 w-3" />
+                  </span>
+                </a>
+              ))}
+            </div>
+            <p className="text-xs text-[#909090] dark:text-[#717171] text-center pt-1">
+              All three are free, browser-based, no signup. Paste your URL and select quality.
             </p>
           </div>
         </div>
