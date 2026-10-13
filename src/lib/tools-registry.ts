@@ -1516,6 +1516,304 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     relatedToolSlugs: ['tag-extractor', 'video-data-viewer', 'live-view-count'],
     updatedAt: '2026-10-13',
   },
+  {
+    slug: 'watch-time-calculator',
+    name: 'YouTube Watch Time Calculator',
+    shortTitle: 'Watch Time Calculator',
+    headline: 'Calculate How Long Until You Hit 4,000 YouTube Watch Hours (YPP)',
+    description:
+      'Enter your average daily watch hours to see exactly how many days it will take to reach the 4,000-hour YPP threshold. Includes a progress tracker and tips to accelerate watch time.',
+    category: 'monetization',
+    badge: 'Free',
+    priority: 'P1',
+    featured: true,
+    iconName: 'Clock',
+    primaryKeyword: 'youtube watch time calculator',
+    secondaryKeywords: [
+      '4000 watch hours calculator',
+      'youtube 4000 hours calculator',
+      'watch hours youtube calculator',
+      'how long to get 4000 watch hours',
+      'youtube monetization watch hours tracker',
+    ],
+    metaTitle: 'YouTube Watch Time Calculator — 4,000 Hours YPP Tracker Free',
+    metaDescription:
+      'Calculate how many days until you hit 4,000 YouTube watch hours for monetization. Enter your current hours and daily growth to see your exact timeline.',
+    howItWorks: [
+      {
+        step: 1,
+        title: 'Enter Your Current Watch Hours',
+        description: 'Input your total watch hours so far (find this in YouTube Studio → Analytics).',
+      },
+      {
+        step: 2,
+        title: 'Set Your Daily Watch Hour Growth',
+        description: 'Enter how many watch hours you earn per day on average.',
+      },
+      {
+        step: 3,
+        title: 'See Your Timeline',
+        description: 'Instantly see the days remaining, projected date, and progress percentage toward 4,000 hours.',
+      },
+    ],
+    features: [
+      'Calculates exact days remaining to 4,000 watch hours',
+      'Shows projected YPP-eligible date based on daily growth rate',
+      'Visual progress bar toward the 4,000-hour milestone',
+      'Scenarios: conservative, moderate, and optimistic growth',
+      'Tips to increase watch time faster',
+    ],
+    limitations: [
+      'Calculation assumes a consistent daily growth rate. Actual results vary with upload frequency and algorithm performance.',
+    ],
+    faqs: [
+      {
+        question: 'How many watch hours do I need to monetize my YouTube channel?',
+        answer:
+          'You need 4,000 public watch hours in the last 12 months (not lifetime) plus 1,000 subscribers to qualify for the YouTube Partner Program (YPP). Watch hours from private or unlisted videos do not count.',
+      },
+      {
+        question: 'How do I find my current YouTube watch hours?',
+        answer:
+          'Go to YouTube Studio → Analytics → Overview. Switch the date filter to "Last 365 days." The "Watch Time (Hours)" card shows your rolling 12-month total. Only public video watch time counts toward the YPP threshold.',
+      },
+      {
+        question: 'How can I increase my YouTube watch hours faster?',
+        answer:
+          'Key strategies include: uploading longer videos (8+ minutes), creating playlists to encourage auto-play, embedding videos on your blog or website, using end screens to chain videos together, promoting older videos in new video descriptions, and improving audience retention with strong hooks in the first 30 seconds.',
+      },
+      {
+        question: 'Do YouTube Shorts watch hours count toward 4,000 hours?',
+        answer:
+          'No. As of 2023, YouTube Shorts watch time does not count toward the 4,000-hour YPP requirement for long-form monetization. Shorts have a separate monetization path that requires 1,000 subscribers and 10 million Shorts views in 90 days.',
+      },
+    ],
+    relatedToolSlugs: ['monetization-checker', 'earnings-calculator', 'live-subscriber-count'],
+    updatedAt: '2026-10-13',
+  },
+  {
+    slug: 'like-counter',
+    name: 'YouTube Like Counter',
+    shortTitle: 'Like Counter',
+    headline: 'Check the Live Like Count on Any YouTube Video',
+    description:
+      'Enter any YouTube video URL to see its current like count, view count, and like-to-view ratio. Live data from the YouTube Data API v3.',
+    category: 'analytics',
+    badge: 'Live',
+    priority: 'P1',
+    featured: true,
+    iconName: 'ThumbsUp',
+    primaryKeyword: 'youtube like counter',
+    secondaryKeywords: [
+      'youtube likes counter',
+      'check youtube video likes',
+      'youtube live like count',
+      'how many likes youtube video',
+      'like counter youtube',
+    ],
+    metaTitle: 'YouTube Like Counter — Check Live Like Count on Any Video Free',
+    metaDescription:
+      'Check the live like count on any YouTube video instantly. See total likes, views, and like-to-view ratio. Free, no signup, uses official YouTube Data API.',
+    howItWorks: [
+      {
+        step: 1,
+        title: 'Paste Any YouTube Video URL',
+        description: 'Enter a full YouTube URL, short link, or video ID.',
+      },
+      {
+        step: 2,
+        title: 'See Live Like Count',
+        description: 'Instantly view the current like count, view count, and like-to-view ratio from the YouTube Data API.',
+      },
+      {
+        step: 3,
+        title: 'Compare & Analyze',
+        description: 'Compare the like-to-view ratio against industry benchmarks to gauge audience satisfaction.',
+      },
+    ],
+    features: [
+      'Live like count from YouTube Data API v3',
+      'Like-to-view ratio calculation',
+      'View count, like count, and publish date in one view',
+      'Works with any public YouTube video URL or video ID',
+    ],
+    limitations: [
+      'YouTube hides exact dislike counts from the public API since December 2021. Like counts are fully public.',
+    ],
+    faqs: [
+      {
+        question: 'Can I see the like count on a YouTube video?',
+        answer:
+          'Yes. YouTube like counts are public and available through the official YouTube Data API v3. Paste any YouTube video URL into this tool to see the current like count instantly.',
+      },
+      {
+        question: 'What is a good like-to-view ratio on YouTube?',
+        answer:
+          'A like-to-view ratio of 4–6% is considered good on YouTube. Ratios above 8% indicate highly engaged audiences. Viral or viral-adjacent content can reach 10–15%. Educational and tutorial videos often see higher ratios than entertainment content.',
+      },
+      {
+        question: 'Why can I no longer see dislikes on YouTube?',
+        answer:
+          'In November 2021, YouTube removed the public dislike count from the player to reduce targeted dislike attacks on creators. The total like count is still publicly visible. Some third-party browser extensions attempt to estimate dislikes using community-sourced data.',
+      },
+      {
+        question: 'How accurate is the like count shown?',
+        answer:
+          'The like count is fetched live from the official YouTube Data API v3 and reflects the most recently cached value from YouTube\'s servers, typically accurate to within a few minutes for active videos.',
+      },
+    ],
+    relatedToolSlugs: ['video-data-viewer', 'live-view-count', 'live-subscriber-count'],
+    updatedAt: '2026-10-13',
+  },
+  {
+    slug: 'dislike-checker',
+    name: 'YouTube Dislike Checker',
+    shortTitle: 'Dislike Checker',
+    headline: 'Check Estimated Dislikes & Like-to-Dislike Ratio on Any YouTube Video',
+    description:
+      'See the estimated dislike count and like-to-dislike ratio for any YouTube video using community-sourced data from the Return YouTube Dislike project.',
+    category: 'analytics',
+    badge: 'Community Data',
+    priority: 'P2',
+    featured: false,
+    iconName: 'ThumbsDown',
+    primaryKeyword: 'youtube dislike checker',
+    secondaryKeywords: [
+      'like to dislike ratio youtube',
+      'youtube like dislike ratio',
+      'check youtube dislikes',
+      'youtube dislike count',
+      'return youtube dislike',
+    ],
+    metaTitle: 'YouTube Dislike Checker — See Like-to-Dislike Ratio Free',
+    metaDescription:
+      'Check estimated dislike counts and like-to-dislike ratio on any YouTube video. Uses Return YouTube Dislike community data. Free, no signup.',
+    howItWorks: [
+      {
+        step: 1,
+        title: 'Paste a YouTube Video URL',
+        description: 'Enter any public YouTube video URL, short link, or video ID.',
+      },
+      {
+        step: 2,
+        title: 'See Estimated Dislike Count',
+        description: 'View the estimated dislike count from Return YouTube Dislike community data plus official like count from YouTube Data API.',
+      },
+      {
+        step: 3,
+        title: 'Analyze the Ratio',
+        description: 'See the like-to-dislike ratio and gauge how well a video is received.',
+      },
+    ],
+    features: [
+      'Estimated dislike count from Return YouTube Dislike API (community-sourced)',
+      'Official like count from YouTube Data API v3',
+      'Like-to-dislike ratio visualization',
+      'View count and video metadata',
+    ],
+    limitations: [
+      'YouTube removed public dislike counts in December 2021. Estimated dislike counts are community-sourced extrapolations from the Return YouTube Dislike project and are approximations, not official data.',
+    ],
+    faqs: [
+      {
+        question: 'Can I see YouTube dislikes in 2026?',
+        answer:
+          'Not officially. YouTube removed public dislike counts in November 2021. However, the Return YouTube Dislike browser extension and API track estimated dislikes using pre-removal data and community contributions. This tool uses that community data to show estimated dislike counts.',
+      },
+      {
+        question: 'How accurate are the estimated YouTube dislike counts?',
+        answer:
+          'Estimated dislike counts from the Return YouTube Dislike project are extrapolations based on pre-removal data and user reports. They become less accurate over time for recent videos. Treat them as rough estimates rather than exact figures.',
+      },
+      {
+        question: 'What is a typical like-to-dislike ratio on YouTube?',
+        answer:
+          'Before YouTube hid dislikes, popular videos averaged 95–98% likes. Ratios below 80% (based on historical data) typically indicated controversial or low-quality content. A ratio above 95% likes is considered very well received.',
+      },
+      {
+        question: 'Why did YouTube remove the dislike button count?',
+        answer:
+          'YouTube officially removed public dislike counts in November 2021 to reduce coordinated dislike attacks (dislike bombing) on smaller creators and to reduce the psychological impact on creators experiencing targeted harassment.',
+      },
+    ],
+    relatedToolSlugs: ['like-counter', 'video-data-viewer', 'live-view-count'],
+    updatedAt: '2026-10-13',
+  },
+  {
+    slug: 'live-stream-calculator',
+    name: 'YouTube Live Stream Earnings Calculator',
+    shortTitle: 'Live Stream Calculator',
+    headline: 'Calculate How Much You Can Earn from YouTube Live Super Chats & Memberships',
+    description:
+      'Estimate your YouTube live stream earnings from Super Chats, Super Stickers, and Channel Memberships. Enter your average viewers and engagement rate to project hourly and monthly income.',
+    category: 'monetization',
+    badge: 'Free',
+    priority: 'P2',
+    featured: true,
+    iconName: 'Zap',
+    primaryKeyword: 'youtube live stream earnings calculator',
+    secondaryKeywords: [
+      'superchat earnings calculator',
+      'youtube superchat calculator',
+      'youtube live stream income',
+      'superchat live income',
+      'how much do youtubers make from superchats',
+    ],
+    metaTitle: 'YouTube Live Stream Earnings Calculator — Super Chat Income Free',
+    metaDescription:
+      'Calculate how much you can earn from YouTube live streams via Super Chats, Super Stickers, and memberships. Free calculator, no signup.',
+    howItWorks: [
+      {
+        step: 1,
+        title: 'Enter Your Average Live Viewers',
+        description: 'Input your typical concurrent viewer count during a live stream.',
+      },
+      {
+        step: 2,
+        title: 'Set Engagement & Super Chat Rates',
+        description: 'Adjust the Super Chat engagement rate (% of viewers who send a Super Chat) and average Super Chat value.',
+      },
+      {
+        step: 3,
+        title: 'See Projected Live Income',
+        description: 'Get estimated Super Chat revenue per stream, per month, and per year including membership projections.',
+      },
+    ],
+    features: [
+      'Super Chat revenue estimate based on viewer count and engagement rate',
+      'Channel Membership revenue projection',
+      'Super Sticker earnings estimate',
+      'Per-stream and monthly income breakdown',
+      'YouTube\'s 30% fee factored in automatically',
+    ],
+    limitations: [
+      'Actual Super Chat revenue varies widely by audience demographics, content category, and individual viewer generosity. These are estimates based on industry averages.',
+    ],
+    faqs: [
+      {
+        question: 'How much does YouTube take from Super Chats?',
+        answer:
+          'YouTube takes 30% of all Super Chat and Super Sticker revenue. The creator receives 70%. For example, if a viewer sends a $10 Super Chat, YouTube keeps $3.00 and the creator earns $7.00 (before applicable taxes).',
+      },
+      {
+        question: 'How much can a YouTuber earn from Super Chats?',
+        answer:
+          'Super Chat income varies enormously. Smaller channels with 100–500 concurrent viewers might earn $20–$200 per stream. Popular live streamers with 5,000+ viewers can earn $1,000–$10,000+ per stream. Gaming, vTuber, and React content niches tend to have the highest Super Chat engagement rates.',
+      },
+      {
+        question: 'What is the minimum Super Chat amount?',
+        answer:
+          'The minimum Super Chat amount is $2.00 (or equivalent in local currency). Super Chats range from $2 to $500. Messages from Super Chats of $5 or more are highlighted in the live chat for up to 5 minutes.',
+      },
+      {
+        question: 'Do Channel Memberships count toward live stream earnings?',
+        answer:
+          'Channel Memberships ($0.99–$99.99/month) are not live-stream specific, but they are often driven by live stream loyalty. YouTube takes 30% of membership revenue. A channel with 500 members at $4.99/month earns approximately $1,747/month after YouTube\'s cut.',
+      },
+    ],
+    relatedToolSlugs: ['earnings-calculator', 'rpm-calculator', 'monetization-checker'],
+    updatedAt: '2026-10-13',
+  },
 ];
 
 export function getToolBySlug(slug: string): ToolDefinition | undefined {

@@ -20,6 +20,10 @@ import { LogoBannerDownloader } from './impl/LogoBannerDownloader';
 import { VideoDataViewer } from './impl/VideoDataViewer';
 import { LiveViewCount } from './impl/LiveViewCount';
 import { YoutubeTrending } from './impl/YoutubeTrending';
+import { WatchTimeCalculator } from './impl/WatchTimeCalculator';
+import { LikeCounter } from './impl/LikeCounter';
+import { DislikeChecker } from './impl/DislikeChecker';
+import { LiveStreamCalculator } from './impl/LiveStreamCalculator';
 
 const monetizationFallback = (
   <div className="min-h-40 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 text-center text-sm text-[#909090] dark:text-[#717171]">
@@ -79,6 +83,14 @@ export function ToolRenderer({ slug }: ToolRendererProps) {
       return <LiveViewCount />;
     case 'youtube-trending':
       return <YoutubeTrending />;
+    case 'watch-time-calculator':
+      return <WatchTimeCalculator />;
+    case 'like-counter':
+      return <LikeCounter />;
+    case 'dislike-checker':
+      return <DislikeChecker />;
+    case 'live-stream-calculator':
+      return <LiveStreamCalculator />;
     default:
       return (
         <Suspense fallback={monetizationFallback}>

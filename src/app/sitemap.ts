@@ -46,6 +46,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     // /privacy, /terms, /compliance, /contact are noindex — excluded from sitemap
+    {
+      url: `${baseUrl}/tools/youtube-video-downloader`,
+      lastModified: siteUpdated,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools/youtube-mp3-downloader`,
+      lastModified: siteUpdated,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
   ];
 
   // Exclude single-tool noindex categories (e.g. analytics) to avoid conflicting signals
