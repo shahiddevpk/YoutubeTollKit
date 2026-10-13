@@ -4,7 +4,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  category: 'Monetization' | 'YouTube SEO' | 'Channel Growth' | 'Troubleshooting';
+  category: 'Monetization' | 'YouTube SEO' | 'Channel Growth' | 'Troubleshooting' | 'Tools' | 'Design';
   author: {
     name: string;
     role: string;

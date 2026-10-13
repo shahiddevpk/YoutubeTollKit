@@ -23,7 +23,7 @@ export interface ToolDefinition {
   headline: string;
   description: string;
   category: ToolCategory;
-  badge?: 'Popular' | 'Flagship' | 'Trending' | 'Essential' | 'New' | 'Creator Pick';
+  badge?: 'Popular' | 'Flagship' | 'Trending' | 'Essential' | 'New' | 'Creator Pick' | 'Free' | 'Live' | 'Community Data';
   priority: 'P0' | 'P1' | 'P2' | 'P3';
   featured: boolean;
   iconName: string; // Lucide icon identifier
