@@ -114,7 +114,7 @@ export function SubscribeLinkGenerator() {
             </div>
             <div className="text-xs text-[#606060] dark:text-[#aaaaaa] space-y-2">
               <p>Print the QR code on merch, flyers or end slides — scanning it opens your channel with the Subscribe confirmation already showing.</p>
-              <a href={idLink} target="_blank" rel="noopener noreferrer" className="inline-block text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
+              <a href={idLink} target="_blank" rel="noopener noreferrer" className="inline-block text-[#cc0000] dark:text-red-400 hover:underline font-semibold">
                 Test the link →
               </a>
             </div>

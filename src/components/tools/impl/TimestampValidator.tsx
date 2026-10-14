@@ -88,7 +88,7 @@ export function TimestampValidator() {
         <button
           onClick={copyFormatted}
           disabled={!allValid}
-          className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-4 py-2 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-full bg-[#d40000] px-4 py-2 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
         >
           {copied ? <Check className="h-4 w-4 text-white" /> : <Copy className="h-4 w-4" />}
           <span>{copied ? 'Copied Chapters!' : 'Copy Formatted List'}</span>

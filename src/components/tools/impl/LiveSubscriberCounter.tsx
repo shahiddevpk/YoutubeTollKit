@@ -149,7 +149,7 @@ export function LiveSubscriberCounter() {
           <Maximize2 className="h-4 w-4" />
         </button>
 
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000]/15 px-3 py-0.5 text-xs font-bold text-[#ff0000] border border-[#ff0000]/30 mb-4">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000]/15 px-3 py-0.5 text-xs font-bold text-[#cc0000] border border-[#ff0000]/30 mb-4 dark:text-red-400">
           <span className="h-2 w-2 rounded-full bg-[#ff0000] animate-ping" />
           Live Public Subscriber Tracker
         </span>

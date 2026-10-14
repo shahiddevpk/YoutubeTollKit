@@ -154,7 +154,7 @@ export function DislikeChecker() {
                 <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2 group-hover:text-[#ff0000] transition-colors">
                   {stats.title}
                 </p>
-                <ExternalLink className="h-3.5 w-3.5 text-[#606060] shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ExternalLink className="h-3.5 w-3.5 text-[#606060] shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity dark:text-[#aaaaaa]" />
               </a>
               <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-0.5">{stats.channelTitle}</p>
             </div>

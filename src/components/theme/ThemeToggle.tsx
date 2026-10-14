@@ -77,7 +77,7 @@ export function ThemeToggle({ className }: { className?: string }) {
                     className={cn(
                       'flex w-full items-center gap-2.5 px-3 py-2 text-left text-xs transition-colors cursor-pointer',
                       selected
-                        ? 'bg-[#ff0000]/10 text-[#ff0000] dark:bg-[#ff0000]/20 dark:text-red-400 font-semibold'
+                        ? 'bg-[#ff0000]/10 text-[#cc0000] dark:bg-[#ff0000]/20 dark:text-red-400 font-semibold'
                         : 'text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#f2f2f2] dark:hover:bg-[#272727]'
                     )}
                   >

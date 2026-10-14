@@ -89,12 +89,12 @@ export function WatchTimeCalculator() {
       <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-6 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Target className="h-4 w-4 text-[#ff0000]" />
+            <Target className="h-4 w-4 text-[#cc0000] dark:text-red-400" />
             <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
               YPP Watch Hour Progress
             </span>
           </div>
-          <span className="text-sm font-black text-[#ff0000]">
+          <span className="text-sm font-black text-[#cc0000] dark:text-red-400">
             {result.progressPct.toFixed(1)}%
           </span>
         </div>
@@ -108,7 +108,7 @@ export function WatchTimeCalculator() {
 
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
-            <p className="text-lg font-black text-[#ff0000]">
+            <p className="text-lg font-black text-[#cc0000] dark:text-red-400">
               {parseFloat(currentHours) || 0}h
             </p>
             <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">Current</p>
@@ -130,7 +130,7 @@ export function WatchTimeCalculator() {
       {result.days !== null && (
         <div className="space-y-3">
           <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-[#ff0000]" />
+            <Clock className="h-4 w-4 text-[#cc0000] dark:text-red-400" />
             <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
               Timeline Scenarios
             </span>
@@ -166,7 +166,7 @@ export function WatchTimeCalculator() {
       {/* Tips */}
       <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-5 space-y-3">
         <div className="flex items-center gap-2">
-          <TrendingUp className="h-4 w-4 text-[#ff0000]" />
+          <TrendingUp className="h-4 w-4 text-[#cc0000] dark:text-red-400" />
           <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
             Tips to Reach 4,000 Hours Faster
           </span>

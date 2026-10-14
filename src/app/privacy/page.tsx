@@ -18,7 +18,7 @@ export default function PrivacyPage() {
     <div className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] py-14 transition-colors">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
             <span>▶</span> Legal & Privacy
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1]">Privacy Policy</h1>
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
             <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">1. Overview and Commitment</h2>
             <p>
               At <strong>{SITE_CONFIG.name}</strong> (accessible from{' '}
-              <a href={SITE_CONFIG.url} className="text-[#ff0000] dark:text-red-400 hover:underline">
+              <a href={SITE_CONFIG.url} className="text-[#cc0000] dark:text-red-400 hover:underline">
                 {SITE_CONFIG.domain}
               </a>
               ), we prioritize the privacy of our visitors. This Privacy Policy details the types of
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
                 href="https://www.youtube.com/t/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#ff0000] dark:text-red-400 hover:underline"
+                className="text-[#cc0000] dark:text-red-400 hover:underline"
               >
                 YouTube Terms of Service
               </a>{' '}
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#ff0000] dark:text-red-400 hover:underline"
+                className="text-[#cc0000] dark:text-red-400 hover:underline"
               >
                 Google Privacy Policy
               </a>

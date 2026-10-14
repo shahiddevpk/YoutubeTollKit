@@ -19,7 +19,7 @@ export function Footer() {
             <div className="flex items-center gap-2 shrink-0">
               <Link
                 href="/tools/monetization-checker"
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000]/10 px-3 py-1.5 text-xs font-semibold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/25 hover:bg-[#ff0000]/20 transition-all"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000]/10 px-3 py-1.5 text-xs font-semibold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/25 hover:bg-[#ff0000]/20 transition-all"
               >
                 <Sparkles className="h-3.5 w-3.5" />
                 Monetization Checker
@@ -41,11 +41,11 @@ export function Footer() {
           {/* Brand & Mission Column */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-9 items-center justify-center rounded-xl bg-[#ff0000] text-white font-black text-xs">
+              <div className="flex h-8 w-9 items-center justify-center rounded-xl bg-[#d40000] text-white font-black text-xs">
                 ▶
               </div>
               <span className="text-lg font-bold tracking-tight text-[#0f0f0f] dark:text-[#f1f1f1]">
-                YouTube<span className="text-[#ff0000]">Free</span>Toolkit
+                YouTube<span className="text-[#cc0000] dark:text-red-400">Free</span>Toolkit
               </span>
             </Link>
             <p className="mt-3 text-xs text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-xs">

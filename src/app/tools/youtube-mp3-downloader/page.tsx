@@ -102,9 +102,9 @@ export default function Page() {
         <section className="border-t border-[#e5e5e5] dark:border-[#272727] pt-8">
           <h2 className="text-lg font-bold mb-3">Free tools that work with public YouTube data</h2>
           <ul className="space-y-2">
-            <li><Link href="/tools/upload-checklist" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Upload Checklist</Link></li>
-            <li><Link href="/tools/description-generator" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Description Generator</Link></li>
-            <li><Link href="/tools/video-data-viewer" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Video Data Viewer</Link></li>
+            <li><Link href="/tools/upload-checklist" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">YouTube Upload Checklist</Link></li>
+            <li><Link href="/tools/description-generator" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">YouTube Description Generator</Link></li>
+            <li><Link href="/tools/video-data-viewer" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">YouTube Video Data Viewer</Link></li>
           </ul>
         </section>
       </div>

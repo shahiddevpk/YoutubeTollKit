@@ -527,7 +527,7 @@ Source: youtubefreetoolkit.com — inferred rows are estimates, not YouTube conf
 
       {loading && (
         <div className="min-h-40 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 text-center space-y-3 animate-pulse">
-          <Loader2 className="h-8 w-8 animate-spin text-[#ff0000] mx-auto" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#cc0000] mx-auto dark:text-red-400" />
           <p className="text-sm font-medium text-[#0f0f0f] dark:text-[#f1f1f1]">Fetching public channel data from YouTube...</p>
         </div>
       )}
@@ -548,7 +548,7 @@ Source: youtubefreetoolkit.com — inferred rows are estimates, not YouTube conf
                   className="h-14 w-14 rounded-full border border-[#e5e5e5] dark:border-[#272727] object-cover shadow-sm"
                 />
               ) : (
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f2f2f2] dark:bg-[#272727] text-[#ff0000] font-bold text-xl border border-[#e5e5e5] dark:border-[#272727]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f2f2f2] dark:bg-[#272727] text-[#cc0000] font-bold text-xl border border-[#e5e5e5] dark:border-[#272727] dark:text-red-400">
                   {result.channelTitle.charAt(0)}
                 </div>
               )}

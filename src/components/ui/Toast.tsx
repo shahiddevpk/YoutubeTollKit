@@ -112,7 +112,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                 <AlertTriangle className="h-5 w-5 text-amber-500 dark:text-amber-400" />
               )}
               {item.type === 'error' && (
-                <AlertCircle className="h-5 w-5 text-[#ff0000] dark:text-red-400" />
+                <AlertCircle className="h-5 w-5 text-[#cc0000] dark:text-red-400" />
               )}
               {item.type === 'success' && (
                 <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
@@ -135,7 +135,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
 
             <button
               onClick={() => removeToast(item.id)}
-              className="shrink-0 text-[#606060] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] p-1 rounded-full hover:bg-[#f2f2f2] dark:hover:bg-[#272727] transition cursor-pointer"
+              className="shrink-0 text-[#606060] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] p-1 rounded-full hover:bg-[#f2f2f2] dark:hover:bg-[#272727] transition cursor-pointer dark:text-[#aaaaaa]"
               aria-label="Dismiss notification"
             >
               <X className="h-4 w-4" />

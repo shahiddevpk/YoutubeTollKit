@@ -118,7 +118,7 @@ export function CategoryChecker() {
       )}
       <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
         Change a category in YouTube Studio → Content → Details → Show more → Category. Need to fix the rest of your metadata? Try the{' '}
-        <Link href="/tools/seo-score-checker" className="text-[#ff0000] dark:text-red-400 hover:underline">SEO Score Checker</Link>.
+        <Link href="/tools/seo-score-checker" className="text-[#cc0000] dark:text-red-400 hover:underline">SEO Score Checker</Link>.
       </p>
     </div>
   );

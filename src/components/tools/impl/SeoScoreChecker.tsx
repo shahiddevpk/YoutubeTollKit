@@ -150,7 +150,7 @@ export function SeoScoreChecker() {
         <button
           type="button"
           onClick={loadDemo}
-          className="text-xs text-[#ff0000] dark:text-red-400 hover:underline font-semibold cursor-pointer"
+          className="text-xs text-[#cc0000] dark:text-red-400 hover:underline font-semibold cursor-pointer"
         >
           Load Example Data
         </button>
@@ -305,14 +305,14 @@ export function SeoScoreChecker() {
           {/* Action Recommendations */}
           {audit.recommendations.length > 0 && (
             <div className="rounded-xl border border-[#ff0000]/20 bg-[#ff0000]/5 dark:bg-[#ff0000]/10 p-4 space-y-2">
-              <h5 className="text-xs font-bold uppercase tracking-wider text-[#ff0000] dark:text-red-400 flex items-center gap-1.5">
+              <h5 className="text-xs font-bold uppercase tracking-wider text-[#cc0000] dark:text-red-400 flex items-center gap-1.5">
                 <ListChecks className="h-3.5 w-3.5" aria-hidden />
                 Action Items to Boost Score
               </h5>
               <ul className="space-y-1.5 text-xs text-[#0f0f0f] dark:text-[#f1f1f1]">
                 {audit.recommendations.map((rec, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <span className="text-[#ff0000] dark:text-red-400 font-bold mt-0.5">•</span>
+                    <span className="text-[#cc0000] dark:text-red-400 font-bold mt-0.5">•</span>
                     <span>{rec}</span>
                   </li>
                 ))}

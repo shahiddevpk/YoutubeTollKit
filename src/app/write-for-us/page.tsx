@@ -101,7 +101,7 @@ export default function WriteForUsPage() {
               <span className="mx-1.5">/</span>
               <span className="text-[#0f0f0f] dark:text-[#f1f1f1]">Write for Us</span>
             </nav>
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20 mb-4">
               <span>✍</span> Guest Contributions Open
             </div>
             <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
@@ -171,7 +171,7 @@ export default function WriteForUsPage() {
                 { step: '05', title: 'Published', desc: "Once approved, your article goes live. We'll share the URL with you and keep it indexed permanently." },
               ].map(({ step, title, desc }) => (
                 <li key={step} className="flex gap-4">
-                  <span className="shrink-0 h-8 w-8 rounded-full bg-[#ff0000]/10 text-[#ff0000] dark:text-red-400 flex items-center justify-center text-xs font-black border border-[#ff0000]/20">
+                  <span className="shrink-0 h-8 w-8 rounded-full bg-[#ff0000]/10 text-[#cc0000] dark:text-red-400 flex items-center justify-center text-xs font-black border border-[#ff0000]/20">
                     {step}
                   </span>
                   <div>
@@ -228,7 +228,7 @@ export default function WriteForUsPage() {
             </p>
             <a
               href="mailto:contact@youtubefreetoolkit.com?subject=Guest Post Pitch"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#ff0000] px-6 py-3 text-sm font-bold text-white hover:bg-[#cc0000] transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#d40000] px-6 py-3 text-sm font-bold text-white hover:bg-[#cc0000] transition-colors"
             >
               Send Your Pitch →
             </a>

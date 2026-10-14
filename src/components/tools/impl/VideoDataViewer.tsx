@@ -99,7 +99,7 @@ export function VideoDataViewer() {
   const CopyBtn = ({ value, id }: { value: string; id: string }) => (
     <button
       onClick={() => copyField(value, id)}
-      className="ml-1.5 inline-flex items-center rounded-md p-1 text-[#606060] hover:text-[#ff0000] transition-colors cursor-pointer"
+      className="ml-1.5 inline-flex items-center rounded-md p-1 text-[#606060] hover:text-[#ff0000] transition-colors cursor-pointer dark:text-[#aaaaaa]"
       title="Copy"
     >
       {copied === id ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
@@ -214,7 +214,7 @@ export function VideoDataViewer() {
                 href={`https://www.youtube.com/watch?v=${videoData.videoId}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 inline-block text-xs text-[#ff0000] hover:underline"
+                className="mt-1 inline-block text-xs text-[#cc0000] hover:underline dark:text-red-400"
               >
                 Watch on YouTube ↗
               </a>
@@ -233,7 +233,7 @@ export function VideoDataViewer() {
                 key={label}
                 className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-3 flex items-center gap-2"
               >
-                <Icon className="h-4 w-4 text-[#ff0000] shrink-0" aria-hidden />
+                <Icon className="h-4 w-4 text-[#cc0000] shrink-0 dark:text-red-400" aria-hidden />
                 <div className="min-w-0">
                   <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">{label}</p>
                   <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] truncate" title={raw}>
@@ -272,7 +272,7 @@ export function VideoDataViewer() {
           {videoData.tags.length > 0 && (
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Hash className="h-4 w-4 text-[#ff0000]" aria-hidden />
+                <Hash className="h-4 w-4 text-[#cc0000] dark:text-red-400" aria-hidden />
                 <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
                   Video Tags ({videoData.tags.length})
                 </h3>

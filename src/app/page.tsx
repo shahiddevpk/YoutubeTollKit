@@ -42,7 +42,7 @@ export default function HomePage() {
       <section className="py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20 mb-4">
               <span>▶</span> Free YouTube Creator Suite
             </div>
             <h1 className="text-3xl sm:text-5xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
@@ -70,7 +70,7 @@ export default function HomePage() {
             </div>
             <Suspense
               fallback={
-                <div className="min-h-32 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#1f1f1f] p-6 text-center text-sm text-[#606060]">
+                <div className="min-h-32 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#1f1f1f] p-6 text-center text-sm text-[#606060] dark:text-[#aaaaaa]">
                   Loading tool…
                 </div>
               }
@@ -101,7 +101,7 @@ export default function HomePage() {
           </p>
         </div>
         <p className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
-          <Link href="/tools" className="text-[#ff0000] dark:text-red-400 hover:underline">
+          <Link href="/tools" className="text-[#cc0000] dark:text-red-400 hover:underline">
             View all {TOOLS_REGISTRY.length} tools →
           </Link>
           <Link href="/guides" className="text-[#606060] dark:text-[#aaaaaa] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] transition-colors">
@@ -117,7 +117,7 @@ export default function HomePage() {
             <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Featured creator tools</h2>
             <p className="text-xs sm:text-sm text-[#606060] dark:text-[#a0a0a0] mt-1">Practical utilities to audit metadata, research channels, and model scenarios</p>
           </div>
-          <Link href="/tools" className="text-xs sm:text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline">
+          <Link href="/tools" className="text-xs sm:text-sm font-semibold text-[#cc0000] dark:text-red-400 hover:underline">
             See all {TOOLS_REGISTRY.length} →
           </Link>
         </div>
@@ -164,7 +164,7 @@ export default function HomePage() {
             <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Latest creator guides</h2>
             <p className="text-xs sm:text-sm text-[#606060] dark:text-[#a0a0a0] mt-1">In-depth articles on YouTube SEO, monetization, and channel growth</p>
           </div>
-          <Link href="/blog" className="text-xs sm:text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline shrink-0">
+          <Link href="/blog" className="text-xs sm:text-sm font-semibold text-[#cc0000] dark:text-red-400 hover:underline shrink-0">
             All posts →
           </Link>
         </div>
@@ -175,7 +175,7 @@ export default function HomePage() {
               href={`/blog/${post.slug}`}
               className="group rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 hover:border-[#ff0000]/40 transition-all"
             >
-              <span className="inline-block rounded-full bg-[#ff0000]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+              <span className="inline-block rounded-full bg-[#ff0000]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
                 {post.category}
               </span>
               <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2 group-hover:text-[#ff0000] transition-colors leading-snug">

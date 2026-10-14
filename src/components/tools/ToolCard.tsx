@@ -11,7 +11,7 @@ interface ToolCardProps {
 export function ToolCard({ tool, compact = false }: ToolCardProps) {
   const badgeColors: Record<string, string> = {
     Flagship: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/25',
-    Popular: 'bg-red-500/10 text-[#ff0000] dark:text-red-400 border-red-500/25',
+    Popular: 'bg-red-500/10 text-[#cc0000] dark:text-red-400 border-red-500/25',
     Trending: 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/25',
     Essential: 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/25',
     'Creator Pick': 'bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/25',

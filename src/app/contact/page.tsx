@@ -25,7 +25,7 @@ export default function ContactPage() {
     <div className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] py-16 transition-colors">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20">
             <span>▶</span> Get In Touch
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">

@@ -18,7 +18,7 @@ export function CategoryNav({ activeCategory, onSelectCategory, totalCount }: Ca
         onClick={() => onSelectCategory('all')}
         className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
           activeCategory === 'all'
-            ? 'bg-[#ff0000] text-white shadow-sm'
+            ? 'bg-[#d40000] text-white shadow-sm'
             : 'bg-[#f2f2f2] dark:bg-[#272727] text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838]'
         }`}
       >
@@ -28,7 +28,7 @@ export function CategoryNav({ activeCategory, onSelectCategory, totalCount }: Ca
           <span
             className={`rounded-full px-2 py-0.2 text-[11px] font-semibold ${
               activeCategory === 'all'
-                ? 'bg-white/20 text-white'
+                ? 'bg-black/25 text-white'
                 : 'bg-[#e5e5e5] dark:bg-[#383838] text-[#606060] dark:text-[#aaaaaa]'
             }`}
           >
@@ -45,7 +45,7 @@ export function CategoryNav({ activeCategory, onSelectCategory, totalCount }: Ca
             onClick={() => onSelectCategory(cat.id)}
             className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
               isActive
-                ? 'bg-[#ff0000] text-white shadow-sm'
+                ? 'bg-[#d40000] text-white shadow-sm'
                 : 'bg-[#f2f2f2] dark:bg-[#272727] text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838]'
             }`}
           >

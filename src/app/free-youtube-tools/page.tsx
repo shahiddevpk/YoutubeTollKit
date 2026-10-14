@@ -97,7 +97,7 @@ const jsonLd = {
 };
 
 const BADGE_COLORS: Record<string, string> = {
-  Flagship: 'bg-[#ff0000]/10 text-[#ff0000] border-[#ff0000]/20',
+  Flagship: 'bg-[#ff0000]/10 text-[#cc0000] border-[#ff0000]/20 dark:text-red-400',
   Free: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
   Live: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
   'Community Data': 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
@@ -198,7 +198,7 @@ export default function FreeYouTubeToolsPage() {
                     <p className="text-xs text-[#606060] dark:text-[#aaaaaa] line-clamp-3 leading-relaxed">
                       {tool.description}
                     </p>
-                    <div className="mt-3 text-xs font-semibold text-[#ff0000] group-hover:underline">
+                    <div className="mt-3 text-xs font-semibold text-[#cc0000] group-hover:underline dark:text-red-400">
                       Use free tool →
                     </div>
                   </Link>
@@ -239,7 +239,7 @@ export default function FreeYouTubeToolsPage() {
             </p>
             <Link
               href="/tools"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#ff0000] px-6 py-3 text-sm font-bold text-white hover:bg-[#cc0000] transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#d40000] px-6 py-3 text-sm font-bold text-white hover:bg-[#cc0000] transition-colors"
             >
               Browse All Tools with Search &amp; Filter →
             </Link>

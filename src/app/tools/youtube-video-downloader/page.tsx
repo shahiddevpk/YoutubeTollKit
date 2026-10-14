@@ -103,9 +103,9 @@ export default function Page() {
         <section className="border-t border-[#e5e5e5] dark:border-[#272727] pt-8">
           <h2 className="text-lg font-bold mb-3">Free tools that work with public YouTube data</h2>
           <ul className="space-y-2">
-            <li><Link href="/tools/thumbnail-downloader" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Thumbnail Downloader</Link></li>
-            <li><Link href="/tools/video-data-viewer" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Video Data Viewer</Link></li>
-            <li><Link href="/tools/tag-extractor" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Tag Extractor</Link></li>
+            <li><Link href="/tools/thumbnail-downloader" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">YouTube Thumbnail Downloader</Link></li>
+            <li><Link href="/tools/video-data-viewer" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">YouTube Video Data Viewer</Link></li>
+            <li><Link href="/tools/tag-extractor" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">YouTube Tag Extractor</Link></li>
           </ul>
         </section>
       </div>

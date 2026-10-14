@@ -37,7 +37,7 @@ export default function BlogIndexPage() {
     <div className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
       <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-12">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
             <span>▶</span> Creator Knowledge Base
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
@@ -51,11 +51,11 @@ export default function BlogIndexPage() {
             </p>
             <p className="text-sm">
               Start with our pillar hubs:{' '}
-              <Link href="/guides/youtube-monetization" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">Monetization</Link>
+              <Link href="/guides/youtube-monetization" className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">Monetization</Link>
               {', '}
-              <Link href="/guides/youtube-seo" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">SEO</Link>
+              <Link href="/guides/youtube-seo" className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">SEO</Link>
               {', or '}
-              <Link href="/guides/youtube-troubleshooting" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">Troubleshooting</Link>
+              <Link href="/guides/youtube-troubleshooting" className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">Troubleshooting</Link>
               .
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function BlogIndexPage() {
             className="group rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md transition-all"
           >
             <div className="flex flex-wrap items-center gap-2 text-xs text-[#606060] dark:text-[#a0a0a0] mb-2">
-              <span className="rounded-full bg-[#ff0000]/10 px-2.5 py-0.5 font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20">
+              <span className="rounded-full bg-[#ff0000]/10 px-2.5 py-0.5 font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20">
                 {post.category}
               </span>
               <span>·</span>
@@ -85,7 +85,7 @@ export default function BlogIndexPage() {
             <p className="mt-2 text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed">{post.excerpt}</p>
             <Link
               href={`/blog/${post.slug}`}
-              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline"
+              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#cc0000] dark:text-red-400 hover:underline"
             >
               Read guide →
             </Link>

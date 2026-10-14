@@ -70,14 +70,14 @@ export function ShortsSafeZone() {
           <button
             type="button"
             onClick={downloadPngOverlay}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-4 py-2 text-xs font-bold text-white hover:bg-[#cc0000] transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-full bg-[#d40000] px-4 py-2 text-xs font-bold text-white hover:bg-[#cc0000] transition-all cursor-pointer"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Save PNG Overlay</span>
           </button>
 
           <label className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#272727] px-4 py-2 text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#e5e5e5] dark:hover:bg-[#383838] transition-all cursor-pointer">
-            <Upload className="h-3.5 w-3.5 text-[#ff0000]" />
+            <Upload className="h-3.5 w-3.5 text-[#cc0000] dark:text-red-400" />
             <span>Upload Frame</span>
             <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
           </label>
@@ -120,7 +120,7 @@ export function ShortsSafeZone() {
               {/* Creator Metadata */}
               <div className="space-y-1.5 max-w-[200px] text-white">
                 <div className="flex items-center gap-2">
-                  <div className="h-6 w-6 rounded-full bg-[#ff0000] text-[10px] font-bold flex items-center justify-center text-white">
+                  <div className="h-6 w-6 rounded-full bg-[#d40000] text-[10px] font-bold flex items-center justify-center text-white">
                     YT
                   </div>
                   <span className="text-xs font-bold">@creator</span>

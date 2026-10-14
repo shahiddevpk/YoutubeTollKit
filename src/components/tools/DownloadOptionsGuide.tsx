@@ -140,18 +140,18 @@ export function DownloadOptionsGuide({ mode }: { mode: Mode }) {
             href={answer.link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex rounded-xl bg-[#ff0000] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#cc0000]"
+            className="mt-4 inline-flex rounded-xl bg-[#d40000] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#cc0000]"
           >
             {answer.link.label}
           </a>
         )}
         {situation === 'other' && (
           <p className="mt-4 text-sm">
-            <Link href="/tools/video-data-viewer" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">Video Data Viewer</Link>
+            <Link href="/tools/video-data-viewer" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">Video Data Viewer</Link>
             {' · '}
-            <Link href="/tools/thumbnail-downloader" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">Thumbnail Downloader</Link>
+            <Link href="/tools/thumbnail-downloader" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">Thumbnail Downloader</Link>
             {' · '}
-            <Link href="/tools/tag-extractor" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">Tag Extractor</Link>
+            <Link href="/tools/tag-extractor" className="text-[#cc0000] dark:text-red-400 hover:underline font-medium">Tag Extractor</Link>
           </p>
         )}
       </div>

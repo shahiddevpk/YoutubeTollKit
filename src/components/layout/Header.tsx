@@ -26,11 +26,11 @@ export function Header() {
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="flex h-8 w-9 items-center justify-center rounded-xl bg-[#ff0000] text-white shadow-sm group-hover:bg-[#cc0000] transition-colors">
+            <div className="flex h-8 w-9 items-center justify-center rounded-xl bg-[#d40000] text-white shadow-sm group-hover:bg-[#cc0000] transition-colors">
               <span className="font-black text-xs leading-none">▶</span>
             </div>
             <span className="text-base font-bold tracking-tight text-[#0f0f0f] dark:text-[#f1f1f1]">
-              YouTube<span className="text-[#ff0000]">Free</span>Toolkit
+              YouTube<span className="text-[#cc0000] dark:text-red-400">Free</span>Toolkit
             </span>
           </Link>
 
@@ -41,7 +41,7 @@ export function Header() {
               className="text-sm font-medium text-[#606060] hover:text-[#0f0f0f] dark:text-[#aaaaaa] dark:hover:text-[#f1f1f1] transition-colors flex items-center gap-1.5"
             >
               All Tools
-              <span className="rounded-full bg-[#ff0000]/10 px-2 py-0.5 text-xs font-semibold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20">
+              <span className="rounded-full bg-[#ff0000]/10 px-2 py-0.5 text-xs font-semibold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20">
                 {TOTAL_TOOLS_COUNT}
               </span>
             </Link>
@@ -107,7 +107,7 @@ export function Header() {
 
             <Link
               href="/tools"
-              className="hidden lg:inline-flex items-center justify-center rounded-full bg-[#ff0000] px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-[#cc0000] active:bg-[#990000] transition-colors"
+              className="hidden lg:inline-flex items-center justify-center rounded-full bg-[#d40000] px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-[#cc0000] active:bg-[#990000] transition-colors"
             >
               Explore Free Suite
             </Link>
@@ -139,7 +139,7 @@ export function Header() {
                 className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-[#0f0f0f] dark:text-[#f1f1f1] hover:bg-[#f2f2f2] dark:hover:bg-[#272727]"
               >
                 <span>All Tools Directory</span>
-                <span className="rounded-full bg-[#ff0000]/10 px-2 py-0.5 text-xs text-[#ff0000] dark:text-red-400 font-bold border border-[#ff0000]/20">
+                <span className="rounded-full bg-[#ff0000]/10 px-2 py-0.5 text-xs text-[#cc0000] dark:text-red-400 font-bold border border-[#ff0000]/20">
                   {TOTAL_TOOLS_COUNT}
                 </span>
               </Link>
@@ -203,7 +203,7 @@ export function Header() {
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 backdrop-blur-sm p-4 pt-16 sm:pt-20">
           <div className="w-full max-w-2xl rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center border-b border-[#e5e5e5] dark:border-[#272727] px-4 py-3">
-              <Search className="h-5 w-5 text-[#ff0000] mr-3 shrink-0" />
+              <Search className="h-5 w-5 text-[#cc0000] mr-3 shrink-0 dark:text-red-400" />
               <input
                 type="text"
                 autoFocus
@@ -244,7 +244,7 @@ export function Header() {
                       >
                         <span className="text-sm font-medium text-[#0f0f0f] dark:text-[#f1f1f1]">{tool.name}</span>
                         {tool.badge && (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#ff0000]/10 text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#ff0000]/10 text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20">
                             {tool.badge}
                           </span>
                         )}
@@ -276,7 +276,7 @@ export function Header() {
                   <Link
                     href="/tools"
                     onClick={() => setSearchOpen(false)}
-                    className="mt-2 inline-block text-xs text-[#ff0000] dark:text-red-400 underline"
+                    className="mt-2 inline-block text-xs text-[#cc0000] dark:text-red-400 underline"
                   >
                     View all {TOTAL_TOOLS_COUNT} tools in index
                   </Link>

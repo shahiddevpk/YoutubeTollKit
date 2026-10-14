@@ -220,11 +220,11 @@ export function LiveViewCount() {
 
           {/* Live view counter — hero display */}
           <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#0f0f0f] dark:bg-[#0f0f0f] p-6 text-center space-y-2">
-            <div className="flex items-center justify-center gap-2 text-[#606060] mb-3">
-              <Eye className="h-4 w-4 text-[#ff0000]" aria-hidden />
+            <div className="flex items-center justify-center gap-2 text-[#606060] mb-3 dark:text-[#aaaaaa]">
+              <Eye className="h-4 w-4 text-[#cc0000] dark:text-red-400" aria-hidden />
               <span className="text-xs font-semibold uppercase tracking-widest text-[#aaaaaa]">Live View Count</span>
               {autoRefresh && (
-                <span className="ml-2 rounded-full bg-[#ff0000] px-2 py-0.5 text-[10px] font-bold text-white animate-pulse">
+                <span className="ml-2 rounded-full bg-[#d40000] px-2 py-0.5 text-[10px] font-bold text-white animate-pulse">
                   LIVE
                 </span>
               )}
@@ -232,14 +232,14 @@ export function LiveViewCount() {
             <p className="text-5xl sm:text-6xl font-black text-white tracking-tight tabular-nums">
               {formatLargeNumber(stats.viewCount)}
             </p>
-            <p className="text-sm text-[#606060]">{formatCompact(stats.viewCount)} views</p>
+            <p className="text-sm text-[#606060] dark:text-[#aaaaaa]">{formatCompact(stats.viewCount)} views</p>
             {viewDelta !== null && viewDelta !== 0 && (
               <p className={`text-sm font-bold ${viewDelta > 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
                 {viewDelta > 0 ? '▲' : '▼'} {Math.abs(viewDelta).toLocaleString()} since last refresh
               </p>
             )}
             {lastUpdated && (
-              <p className="text-xs text-[#606060]">
+              <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">
                 Updated {lastUpdated.toLocaleTimeString()} · Refreshed {refreshCount}×
               </p>
             )}
@@ -278,14 +278,14 @@ export function LiveViewCount() {
           {/* Stats row */}
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex items-center gap-3">
-              <ThumbsUp className="h-5 w-5 text-[#ff0000] shrink-0" aria-hidden />
+              <ThumbsUp className="h-5 w-5 text-[#cc0000] shrink-0 dark:text-red-400" aria-hidden />
               <div>
                 <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">Likes</p>
                 <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{formatLargeNumber(stats.likeCount)}</p>
               </div>
             </div>
             <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex items-center gap-3">
-              <MessageSquare className="h-5 w-5 text-[#ff0000] shrink-0" aria-hidden />
+              <MessageSquare className="h-5 w-5 text-[#cc0000] shrink-0 dark:text-red-400" aria-hidden />
               <div>
                 <p className="text-xs text-[#606060] dark:text-[#aaaaaa]">Comments</p>
                 <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{formatLargeNumber(stats.commentCount)}</p>
@@ -297,7 +297,7 @@ export function LiveViewCount() {
           <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-4 space-y-3">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <RefreshCw className={`h-4 w-4 text-[#ff0000] ${autoRefresh ? 'animate-spin' : ''}`} style={autoRefresh ? { animationDuration: '3s' } : {}} aria-hidden />
+                <RefreshCw className={`h-4 w-4 text-[#cc0000] ${autoRefresh ? 'animate-spin' : ''}`} style={autoRefresh ? { animationDuration: '3s' } : {}} aria-hidden />
                 <span className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">Auto-Refresh</span>
                 {autoRefresh && countdown > 0 && (
                   <span className="text-xs text-[#606060] dark:text-[#aaaaaa]">
@@ -310,7 +310,7 @@ export function LiveViewCount() {
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer ${
                   autoRefresh
                     ? 'bg-[#272727] text-white hover:bg-[#383838]'
-                    : 'bg-[#ff0000] text-white hover:bg-[#cc0000]'
+                    : 'bg-[#d40000] text-white hover:bg-[#cc0000]'
                 }`}
               >
                 {autoRefresh ? (
@@ -330,7 +330,7 @@ export function LiveViewCount() {
                     onClick={() => setIntervalSeconds(value)}
                     className={`rounded-full px-3 py-1 text-xs font-bold transition-colors cursor-pointer ${
                       intervalSeconds === value
-                        ? 'bg-[#ff0000] text-white'
+                        ? 'bg-[#d40000] text-white'
                         : 'border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/50'
                     }`}
                   >

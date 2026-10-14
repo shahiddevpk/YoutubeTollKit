@@ -149,13 +149,13 @@ export function TagExtractor() {
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] flex items-center gap-2">
-              <Tag className="h-4 w-4 text-[#ff0000]" />
+              <Tag className="h-4 w-4 text-[#cc0000] dark:text-red-400" />
               Extracted Tags ({tags.length})
             </h3>
 
             <button
               onClick={copyAll}
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-4 py-2 text-xs font-bold text-white hover:bg-[#cc0000] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#d40000] px-4 py-2 text-xs font-bold text-white hover:bg-[#cc0000] transition-colors cursor-pointer"
             >
               {copiedAll ? <Check className="h-4 w-4 text-white" /> : <Copy className="h-4 w-4 text-white" />}
               <span>{copiedAll ? 'Copied to Clipboard!' : 'Copy all for YouTube Studio'}</span>
@@ -171,12 +171,12 @@ export function TagExtractor() {
                 className="group flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3.5 py-1.5 text-xs text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000] hover:bg-[#f2f2f2] dark:hover:bg-[#272727] transition-all cursor-pointer shadow-sm"
                 title="Click to copy single tag"
               >
-                <Hash className="h-3 w-3 text-[#606060] group-hover:text-[#ff0000]" />
+                <Hash className="h-3 w-3 text-[#606060] group-hover:text-[#ff0000] dark:text-[#aaaaaa]" />
                 <span>{tag}</span>
                 {copiedTag === tag ? (
                   <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400 ml-1" />
                 ) : (
-                  <Copy className="h-3 w-3 text-[#606060] opacity-0 group-hover:opacity-100 ml-1 transition-opacity" />
+                  <Copy className="h-3 w-3 text-[#606060] opacity-0 group-hover:opacity-100 ml-1 transition-opacity dark:text-[#aaaaaa]" />
                 )}
               </button>
             ))}

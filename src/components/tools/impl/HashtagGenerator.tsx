@@ -73,7 +73,7 @@ export function HashtagGenerator() {
               type="button"
               onClick={() => setFormat('shorts')}
               className={`flex-1 py-1 rounded-full text-xs font-semibold transition-colors cursor-pointer ${
-                format === 'shorts' ? 'bg-[#ff0000] text-white shadow-sm' : 'text-[#606060] dark:text-[#aaaaaa]'
+                format === 'shorts' ? 'bg-[#d40000] text-white shadow-sm' : 'text-[#606060] dark:text-[#aaaaaa]'
               }`}
             >
               Shorts (9:16)
@@ -82,7 +82,7 @@ export function HashtagGenerator() {
               type="button"
               onClick={() => setFormat('long')}
               className={`flex-1 py-1 rounded-full text-xs font-semibold transition-colors cursor-pointer ${
-                format === 'long' ? 'bg-[#ff0000] text-white shadow-sm' : 'text-[#606060] dark:text-[#aaaaaa]'
+                format === 'long' ? 'bg-[#d40000] text-white shadow-sm' : 'text-[#606060] dark:text-[#aaaaaa]'
               }`}
             >
               Long Form (16:9)
@@ -99,7 +99,7 @@ export function HashtagGenerator() {
           </span>
           <button
             onClick={copyTags}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-full bg-[#d40000] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] transition-all cursor-pointer"
           >
             {copied ? <Check className="h-3.5 w-3.5 text-white" /> : <Copy className="h-3.5 w-3.5" />}
             <span>{copied ? 'Copied!' : 'Copy Hashtags'}</span>
@@ -110,7 +110,7 @@ export function HashtagGenerator() {
           {generatedTags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3.5 py-1.5 text-xs font-mono font-semibold text-[#ff0000] dark:text-red-400 shadow-sm"
+              className="rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3.5 py-1.5 text-xs font-mono font-semibold text-[#cc0000] dark:text-red-400 shadow-sm"
             >
               {tag}
             </span>

@@ -99,7 +99,7 @@ export default function AuthorProfilePage() {
           </nav>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-3xl bg-[#ff0000] text-white font-black text-2xl sm:text-3xl flex items-center justify-center shadow-lg shrink-0">
+            <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-3xl bg-[#d40000] text-white font-black text-2xl sm:text-3xl flex items-center justify-center shadow-lg shrink-0">
               SD
             </div>
             <div>
@@ -127,14 +127,14 @@ export default function AuthorProfilePage() {
               href="/about"
               className="inline-flex items-center gap-1.5 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-2 text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000] transition-colors shadow-sm"
             >
-              <BookOpen className="h-3.5 w-3.5 text-[#ff0000]" />
+              <BookOpen className="h-3.5 w-3.5 text-[#cc0000] dark:text-red-400" />
               About Our Platform
             </Link>
             <Link
               href="/contact"
               className="inline-flex items-center gap-1.5 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-2 text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000] transition-colors shadow-sm"
             >
-              <Mail className="h-3.5 w-3.5 text-[#ff0000]" />
+              <Mail className="h-3.5 w-3.5 text-[#cc0000] dark:text-red-400" />
               Contact Shahid
             </Link>
           </div>
@@ -145,7 +145,7 @@ export default function AuthorProfilePage() {
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-12 space-y-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 shadow-sm">
-            <div className="flex items-center gap-2.5 text-[#ff0000] dark:text-red-400 font-bold text-sm mb-3">
+            <div className="flex items-center gap-2.5 text-[#cc0000] dark:text-red-400 font-bold text-sm mb-3">
               <Code2 className="h-5 w-5" />
               Technical & Platform Background
             </div>
@@ -204,7 +204,7 @@ export default function AuthorProfilePage() {
             </h2>
             <Link
               href="/blog"
-              className="text-xs font-semibold text-[#ff0000] dark:text-red-400 hover:underline flex items-center gap-1"
+              className="text-xs font-semibold text-[#cc0000] dark:text-red-400 hover:underline flex items-center gap-1"
             >
               All Articles <ArrowRight className="h-3 w-3" />
             </Link>
@@ -218,7 +218,7 @@ export default function AuthorProfilePage() {
                 className="group rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 shadow-sm hover:border-[#ff0000]/50 transition-all flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-[11px] font-bold text-[#ff0000] dark:text-red-400 uppercase tracking-wider">
+                  <span className="text-[11px] font-bold text-[#cc0000] dark:text-red-400 uppercase tracking-wider">
                     {post.category}
                   </span>
                   <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors mt-1.5 line-clamp-2">

@@ -82,7 +82,7 @@ export default function CompliancePage() {
               href="https://support.google.com/adsense/answer/48182"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#ff0000] dark:text-red-400 underline"
+              className="text-[#cc0000] dark:text-red-400 underline"
             >
               AdSense Program policies
             </a>
@@ -105,7 +105,7 @@ export default function CompliancePage() {
                 href="https://developers.google.com/search/docs/essentials"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#ff0000] dark:text-red-400 hover:underline flex items-center gap-1.5"
+                className="text-[#cc0000] dark:text-red-400 hover:underline flex items-center gap-1.5"
               >
                 Google Search Essentials (Search Quality Guidelines) <ExternalLink className="h-3.5 w-3.5" />
               </a>
@@ -115,7 +115,7 @@ export default function CompliancePage() {
                 href="https://support.google.com/adsense/answer/48182"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#ff0000] dark:text-red-400 hover:underline flex items-center gap-1.5"
+                className="text-[#cc0000] dark:text-red-400 hover:underline flex items-center gap-1.5"
               >
                 Google AdSense Program & Publisher Policies <ExternalLink className="h-3.5 w-3.5" />
               </a>
@@ -125,7 +125,7 @@ export default function CompliancePage() {
                 href="https://developers.google.com/youtube/terms/developer-policies"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#ff0000] dark:text-red-400 hover:underline flex items-center gap-1.5"
+                className="text-[#cc0000] dark:text-red-400 hover:underline flex items-center gap-1.5"
               >
                 YouTube API Services Developer Policies <ExternalLink className="h-3.5 w-3.5" />
               </a>
@@ -135,7 +135,7 @@ export default function CompliancePage() {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#ff0000] dark:text-red-400 hover:underline flex items-center gap-1.5"
+                className="text-[#cc0000] dark:text-red-400 hover:underline flex items-center gap-1.5"
               >
                 Google Privacy Policy <ExternalLink className="h-3.5 w-3.5" />
               </a>

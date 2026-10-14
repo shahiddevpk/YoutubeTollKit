@@ -117,7 +117,7 @@ export function YoutubeTrending() {
               onClick={() => handleRegionChange(code)}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer ${
                 region === code
-                  ? 'bg-[#ff0000] text-white font-bold'
+                  ? 'bg-[#d40000] text-white font-bold'
                   : 'border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/50'
               }`}
             >
@@ -139,7 +139,7 @@ export function YoutubeTrending() {
               onClick={() => handleCategoryChange(id)}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer ${
                 category === id
-                  ? 'bg-[#ff0000] text-white font-bold'
+                  ? 'bg-[#d40000] text-white font-bold'
                   : 'border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/50'
               }`}
             >
@@ -152,7 +152,7 @@ export function YoutubeTrending() {
       {/* Refresh button */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <TrendingUp className="h-4 w-4 text-[#ff0000]" aria-hidden />
+          <TrendingUp className="h-4 w-4 text-[#cc0000] dark:text-red-400" aria-hidden />
           <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
             Top 20 Trending — {REGIONS.find(r => r.code === region)?.name.split(' ')[1] ?? region}
           </span>

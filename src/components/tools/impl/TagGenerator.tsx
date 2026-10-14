@@ -157,7 +157,7 @@ export function TagGenerator() {
                   title={`Seen in ${s.sources} suggestion list${s.sources === 1 ? '' : 's'}`}
                   className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
                     on
-                      ? 'border-[#ff0000] bg-[#ff0000] text-white'
+                      ? 'border-[#ff0000] bg-[#d40000] text-white'
                       : 'border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/60'
                   }`}
                 >
@@ -179,8 +179,8 @@ export function TagGenerator() {
           </div>
           <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
             Want to see what a ranking video already uses? Check it with the{' '}
-            <Link href="/tools/tag-extractor" className="text-[#ff0000] dark:text-red-400 hover:underline">Tag Extractor</Link>, then score your
-            draft with the <Link href="/tools/seo-score-checker" className="text-[#ff0000] dark:text-red-400 hover:underline">SEO Score Checker</Link>.
+            <Link href="/tools/tag-extractor" className="text-[#cc0000] dark:text-red-400 hover:underline">Tag Extractor</Link>, then score your
+            draft with the <Link href="/tools/seo-score-checker" className="text-[#cc0000] dark:text-red-400 hover:underline">SEO Score Checker</Link>.
           </p>
         </div>
       )}

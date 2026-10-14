@@ -64,13 +64,13 @@ export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) 
         <span>
           Showing <strong className="text-[#0f0f0f] dark:text-[#f1f1f1]">{filteredTools.length}</strong> tools
           {selectedCategory !== 'all' && (
-            <span> in <strong className="text-[#ff0000] dark:text-red-400 capitalize">{selectedCategory}</strong></span>
+            <span> in <strong className="text-[#cc0000] dark:text-red-400 capitalize">{selectedCategory}</strong></span>
           )}
         </span>
         {searchQuery && (
           <button
             onClick={clearSearch}
-            className="text-[#ff0000] dark:text-red-400 hover:underline cursor-pointer"
+            className="text-[#cc0000] dark:text-red-400 hover:underline cursor-pointer"
           >
             Clear search
           </button>
@@ -78,6 +78,7 @@ export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) 
       </div>
 
       {/* Tools Grid */}
+      <h2 className="sr-only">{searchQuery ? 'Matching tools' : 'Tools'}</h2>
       {filteredTools.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredTools.map((tool) => (
@@ -95,7 +96,7 @@ export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) 
               setSelectedCategory('all');
               clearSearch();
             }}
-            className="mt-4 rounded-full bg-[#ff0000] px-5 py-2 text-xs font-semibold text-white hover:bg-[#cc0000] cursor-pointer transition-colors"
+            className="mt-4 rounded-full bg-[#d40000] px-5 py-2 text-xs font-semibold text-white hover:bg-[#cc0000] cursor-pointer transition-colors"
           >
             Reset Filters
           </button>

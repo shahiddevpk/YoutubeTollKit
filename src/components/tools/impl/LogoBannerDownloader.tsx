@@ -181,7 +181,7 @@ export function LogoBannerDownloader() {
           {/* Channel Logo */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <User className="h-4 w-4 text-[#ff0000]" aria-hidden />
+              <User className="h-4 w-4 text-[#cc0000] dark:text-red-400" aria-hidden />
               <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Channel Logo (Profile Picture)</h3>
             </div>
             {data.avatarHdUrl || data.avatarUrl ? (
@@ -199,7 +199,7 @@ export function LogoBannerDownloader() {
                   <button
                     onClick={() => downloadAsset('avatar')}
                     disabled={downloading === 'avatar'}
-                    className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-60 transition-colors cursor-pointer"
+                    className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#d40000] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-60 transition-colors cursor-pointer"
                   >
                     {downloaded === 'avatar' ? (
                       <><CheckCircle2 className="h-3.5 w-3.5" aria-hidden /><span>Saved</span></>
@@ -219,7 +219,7 @@ export function LogoBannerDownloader() {
           {/* Channel Banner */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Image className="h-4 w-4 text-[#ff0000]" aria-hidden />
+              <Image className="h-4 w-4 text-[#cc0000] dark:text-red-400" aria-hidden />
               <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Channel Banner Art</h3>
             </div>
             {data.bannerUrl ? (
@@ -240,7 +240,7 @@ export function LogoBannerDownloader() {
                   <button
                     onClick={() => downloadAsset('banner')}
                     disabled={downloading === 'banner'}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-60 transition-colors cursor-pointer shrink-0"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#d40000] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-60 transition-colors cursor-pointer shrink-0"
                   >
                     {downloaded === 'banner' ? (
                       <><CheckCircle2 className="h-3.5 w-3.5" aria-hidden /><span>Saved</span></>

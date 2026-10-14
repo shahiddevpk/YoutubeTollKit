@@ -47,7 +47,7 @@ export default function ToolsIndexPage() {
       <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
               <span>▶</span> {TOOLS_REGISTRY.length} Creator Tools
             </div>
             <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
@@ -63,7 +63,7 @@ export default function ToolsIndexPage() {
             <p>
               Every tool page includes a short how-it-works list, a longer guide section, and policy limitations so you
               know what public APIs can and cannot prove. Use category hubs for overviews, or open our{' '}
-              <Link href="/guides" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
+              <Link href="/guides" className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">
                 pillar guides
               </Link>{' '}
               for monetization, SEO, and troubleshooting workflows.

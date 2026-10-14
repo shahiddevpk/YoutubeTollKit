@@ -78,7 +78,7 @@ export function UploadChecklist() {
             </button>
             <button
               onClick={copySummary}
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#d40000] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] transition-all cursor-pointer"
             >
               {copied ? <Check className="h-3.5 w-3.5 text-white" /> : <Copy className="h-3.5 w-3.5" />}
               <span>{copied ? 'Copied Log!' : 'Copy Checklist'}</span>

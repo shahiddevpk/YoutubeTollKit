@@ -103,7 +103,7 @@ export function ChannelNameGenerator() {
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">{names.length} name ideas</p>
-            <button type="button" onClick={() => generate()} className="inline-flex items-center gap-1 text-xs font-semibold text-[#ff0000] dark:text-red-400">
+            <button type="button" onClick={() => generate()} className="inline-flex items-center gap-1 text-xs font-semibold text-[#cc0000] dark:text-red-400">
               <RefreshCw className="h-3.5 w-3.5" /> Shuffle
             </button>
           </div>
@@ -117,10 +117,10 @@ export function ChannelNameGenerator() {
                     <p className="text-[11px] font-mono text-[#606060] dark:text-[#aaaaaa] truncate">{handle}</p>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
-                    <button type="button" onClick={() => copy(n)} aria-label={`Copy ${n}`} className="p-1.5 text-[#606060] hover:text-[#ff0000]">
+                    <button type="button" onClick={() => copy(n)} aria-label={`Copy ${n}`} className="p-1.5 text-[#606060] hover:text-[#ff0000] dark:text-[#aaaaaa]">
                       {copied === n ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
                     </button>
-                    <a href={`https://www.youtube.com/${handle}`} target="_blank" rel="noopener noreferrer" aria-label={`Check if ${handle} is taken on YouTube`} title="Check if this handle is taken" className="p-1.5 text-[#606060] hover:text-[#ff0000]">
+                    <a href={`https://www.youtube.com/${handle}`} target="_blank" rel="noopener noreferrer" aria-label={`Check if ${handle} is taken on YouTube`} title="Check if this handle is taken" className="p-1.5 text-[#606060] hover:text-[#ff0000] dark:text-[#aaaaaa]">
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>

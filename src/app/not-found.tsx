@@ -22,7 +22,7 @@ export default async function NotFound() {
     <div className="min-h-[70vh] text-[#0f0f0f] dark:text-[#f1f1f1] py-16 transition-colors">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20 mb-3">
             <span>404</span> Not Found
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
@@ -38,7 +38,7 @@ export default async function NotFound() {
           <h2 className="text-base font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Try these popular links instead</h2>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="/tools" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
+              <Link href="/tools" className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">
                 All YouTube creator tools
               </Link>
               <span className="text-[#606060] dark:text-[#aaaaaa]"> — {TOOLS_REGISTRY.length} free utilities</span>
@@ -46,18 +46,18 @@ export default async function NotFound() {
             <li>
               <Link
                 href="/tools/monetization-checker"
-                className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold"
+                className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold"
               >
                 YouTube Monetization Checker
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
+              <Link href="/blog" className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">
                 Creator guides & blog
               </Link>
             </li>
             <li>
-              <Link href="/" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
+              <Link href="/" className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">
                 Home
               </Link>
             </li>

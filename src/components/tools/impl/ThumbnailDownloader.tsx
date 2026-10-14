@@ -162,7 +162,7 @@ export function ThumbnailDownloader() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Image className="h-4 w-4 text-[#ff0000]" aria-hidden />
+            <Image className="h-4 w-4 text-[#cc0000] dark:text-red-400" aria-hidden />
             <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
               Download Thumbnails — All Sizes
             </h3>
@@ -195,7 +195,7 @@ export function ThumbnailDownloader() {
                     <button
                       onClick={() => downloadThumbnail(key)}
                       disabled={isDownloading}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-[#ff0000] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-60 transition-colors cursor-pointer shrink-0"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-[#d40000] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#cc0000] disabled:opacity-60 transition-colors cursor-pointer shrink-0"
                     >
                       {isDone ? (
                         <>

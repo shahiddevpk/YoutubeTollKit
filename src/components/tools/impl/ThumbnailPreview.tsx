@@ -78,7 +78,7 @@ export function ThumbnailPreview() {
           <button
             onClick={() => setDeviceMode('desktop')}
             className={`flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-              deviceMode === 'desktop' ? 'bg-[#ff0000] text-white shadow-sm' : 'text-[#606060] dark:text-[#aaaaaa]'
+              deviceMode === 'desktop' ? 'bg-[#d40000] text-white shadow-sm' : 'text-[#606060] dark:text-[#aaaaaa]'
             }`}
           >
             <Monitor className="h-3.5 w-3.5" />
@@ -87,7 +87,7 @@ export function ThumbnailPreview() {
           <button
             onClick={() => setDeviceMode('mobile')}
             className={`flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-              deviceMode === 'mobile' ? 'bg-[#ff0000] text-white shadow-sm' : 'text-[#606060] dark:text-[#aaaaaa]'
+              deviceMode === 'mobile' ? 'bg-[#d40000] text-white shadow-sm' : 'text-[#606060] dark:text-[#aaaaaa]'
             }`}
           >
             <Smartphone className="h-3.5 w-3.5" />
@@ -124,7 +124,7 @@ export function ThumbnailPreview() {
 
           {/* Video Metadata in Feed */}
           <div className="flex gap-3 pt-1">
-            <div className="h-9 w-9 rounded-full bg-[#ff0000] shrink-0 font-bold text-xs flex items-center justify-center text-white shadow-sm">
+            <div className="h-9 w-9 rounded-full bg-[#d40000] shrink-0 font-bold text-xs flex items-center justify-center text-white shadow-sm">
               C
             </div>
             <div className="flex-1 min-w-0">

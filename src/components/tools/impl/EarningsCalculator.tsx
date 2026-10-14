@@ -33,7 +33,7 @@ export function EarningsCalculator() {
           <div>
             <div className="flex items-center justify-between mb-2">
               <label className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Daily Expected Video Views</label>
-              <span className="text-base font-black text-[#ff0000] dark:text-red-400 font-mono">
+              <span className="text-base font-black text-[#cc0000] dark:text-red-400 font-mono">
                 {dailyViews.toLocaleString()} views/day
               </span>
             </div>
@@ -67,7 +67,7 @@ export function EarningsCalculator() {
                     onClick={() => setSelectedRpm(niche.rpm)}
                     className={`flex items-center justify-between p-2.5 rounded-xl border text-xs font-semibold text-left transition-all cursor-pointer ${
                       isSelected
-                        ? 'border-[#ff0000] bg-[#ff0000]/10 text-[#ff0000] dark:bg-[#ff0000]/20 dark:text-red-400 font-bold'
+                        ? 'border-[#ff0000] bg-[#ff0000]/10 text-[#cc0000] dark:bg-[#ff0000]/20 dark:text-red-400 font-bold'
                         : 'border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#222222] text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/40'
                     }`}
                   >

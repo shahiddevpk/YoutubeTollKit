@@ -164,7 +164,7 @@ export function ChannelCompare() {
                                     loading="lazy"
                   />
                 ) : (
-                  <div className="h-12 w-12 rounded-full bg-[#ff0000]/20 text-[#ff0000] font-black text-xl flex items-center justify-center border border-[#ff0000]/30">
+                  <div className="h-12 w-12 rounded-full bg-[#ff0000]/20 text-[#cc0000] font-black text-xl flex items-center justify-center border border-[#ff0000]/30 dark:text-red-400">
                     {ch1.title.charAt(0)}
                   </div>
                 )}
@@ -206,7 +206,7 @@ export function ChannelCompare() {
                                     loading="lazy"
                   />
                 ) : (
-                  <div className="h-12 w-12 rounded-full bg-[#ff0000]/20 text-[#ff0000] font-black text-xl flex items-center justify-center border border-[#ff0000]/30">
+                  <div className="h-12 w-12 rounded-full bg-[#ff0000]/20 text-[#cc0000] font-black text-xl flex items-center justify-center border border-[#ff0000]/30 dark:text-red-400">
                     {ch2.title.charAt(0)}
                   </div>
                 )}

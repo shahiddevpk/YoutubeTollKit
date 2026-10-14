@@ -67,7 +67,7 @@ export function TitleDescriptionAnalyzer() {
         {/* Live Snippet Preview */}
         <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-5 space-y-4 shadow-sm">
           <h3 className="text-xs font-bold uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] flex items-center gap-1.5">
-            <Eye className="h-4 w-4 text-[#ff0000]" />
+            <Eye className="h-4 w-4 text-[#cc0000] dark:text-red-400" />
             Search & Feed Snippet Preview
           </h3>
 

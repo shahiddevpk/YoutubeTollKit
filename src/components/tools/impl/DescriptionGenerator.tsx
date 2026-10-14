@@ -100,7 +100,7 @@ export function DescriptionGenerator() {
                 role="radio"
                 aria-checked={template === k}
                 onClick={() => setTemplate(k)}
-                className={`rounded-full px-3 py-1.5 text-xs font-semibold border ${template === k ? 'bg-[#ff0000] border-[#ff0000] text-white' : 'border-[#e5e5e5] dark:border-[#272727] text-[#0f0f0f] dark:text-[#f1f1f1]'}`}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold border ${template === k ? 'bg-[#d40000] border-[#ff0000] text-white' : 'border-[#e5e5e5] dark:border-[#272727] text-[#0f0f0f] dark:text-[#f1f1f1]'}`}
               >
                 {TEMPLATES[k].label}
               </button>
@@ -156,8 +156,8 @@ export function DescriptionGenerator() {
           ))}
         </ul>
         <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
-          Validate your chapter list with the <Link href="/tools/timestamp-validator" className="text-[#ff0000] dark:text-red-400 hover:underline">Timestamp Validator</Link> and pick hashtags with the{' '}
-          <Link href="/tools/hashtag-generator" className="text-[#ff0000] dark:text-red-400 hover:underline">Hashtag Generator</Link>.
+          Validate your chapter list with the <Link href="/tools/timestamp-validator" className="text-[#cc0000] dark:text-red-400 hover:underline">Timestamp Validator</Link> and pick hashtags with the{' '}
+          <Link href="/tools/hashtag-generator" className="text-[#cc0000] dark:text-red-400 hover:underline">Hashtag Generator</Link>.
         </p>
       </div>
     </div>

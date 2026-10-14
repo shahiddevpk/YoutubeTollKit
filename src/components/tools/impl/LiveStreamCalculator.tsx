@@ -67,7 +67,7 @@ export function LiveStreamCalculator() {
         {/* Super Chat inputs */}
         <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-5 space-y-4">
           <div className="flex items-center gap-2">
-            <Zap className="h-4 w-4 text-[#ff0000]" />
+            <Zap className="h-4 w-4 text-[#cc0000] dark:text-red-400" />
             <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Super Chat Settings</span>
           </div>
 
@@ -128,7 +128,7 @@ export function LiveStreamCalculator() {
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 text-center space-y-1">
-            <p className="text-2xl font-black text-[#ff0000]">{formatUSD(results.netPerStream)}</p>
+            <p className="text-2xl font-black text-[#cc0000] dark:text-red-400">{formatUSD(results.netPerStream)}</p>
             <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Per Stream (Super Chats)</p>
             <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa]">{results.superChatsPerStream} super chats expected</p>
           </div>
@@ -152,7 +152,7 @@ export function LiveStreamCalculator() {
       {/* Super Chat tiers */}
       <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-5 space-y-3">
         <div className="flex items-center gap-2">
-          <TrendingUp className="h-4 w-4 text-[#ff0000]" />
+          <TrendingUp className="h-4 w-4 text-[#cc0000] dark:text-red-400" />
           <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Typical Super Chat Distribution</span>
         </div>
         <div className="space-y-2">

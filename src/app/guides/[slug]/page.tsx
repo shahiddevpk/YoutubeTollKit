@@ -103,7 +103,7 @@ export default async function GuideHubPage({ params }: PageProps) {
             {tools.map((tool) =>
               tool ? (
                 <li key={tool.slug}>
-                  <Link href={`/tools/${tool.slug}`} className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">
+                  <Link href={`/tools/${tool.slug}`} className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">
                     {tool.name}
                   </Link>
                   <span className="text-[#606060] dark:text-[#aaaaaa]"> — {tool.description.slice(0, 100)}…</span>
@@ -145,7 +145,7 @@ export default async function GuideHubPage({ params }: PageProps) {
         )}
 
         <p className="text-sm text-[#606060] dark:text-[#aaaaaa] pt-4 border-t border-[#e5e5e5] dark:border-[#272727]">
-          <Link href="/guides" className="text-[#ff0000] dark:text-red-400 hover:underline font-semibold">← All guide hubs</Link>
+          <Link href="/guides" className="text-[#cc0000] dark:text-red-400 hover:underline font-semibold">← All guide hubs</Link>
           {' · '}
           <Link href="/blog" className="hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] transition-colors">Blog index</Link>
           {' · '}

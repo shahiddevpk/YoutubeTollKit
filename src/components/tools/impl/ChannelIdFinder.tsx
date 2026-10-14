@@ -166,7 +166,7 @@ export function ChannelIdFinder() {
                 </>
               ) : (
                 <>
-                  <Copy className="h-3.5 w-3.5 text-[#606060]" />
+                  <Copy className="h-3.5 w-3.5 text-[#606060] dark:text-[#aaaaaa]" />
                   <span>Copy ID</span>
                 </>
               )}
@@ -195,7 +195,7 @@ export function ChannelIdFinder() {
                 </>
               ) : (
                 <>
-                  <Copy className="h-3.5 w-3.5 text-[#606060]" />
+                  <Copy className="h-3.5 w-3.5 text-[#606060] dark:text-[#aaaaaa]" />
                   <span>Copy RSS</span>
                 </>
               )}

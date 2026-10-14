@@ -90,7 +90,7 @@ export default function AboutPage() {
             <span className="text-[#0f0f0f] dark:text-[#f1f1f1] font-semibold">About</span>
           </nav>
 
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20 mb-4">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3.5 py-1 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20 mb-4">
             <span>▶</span> Our Mission & Standards
           </div>
 
@@ -111,12 +111,12 @@ export default function AboutPage() {
         {/* Who Built YouTubeFreeToolkit */}
         <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 sm:p-8 shadow-sm">
           <h2 className="text-xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1] flex items-center gap-2.5">
-            <Code2 className="h-5 w-5 text-[#ff0000]" />
+            <Code2 className="h-5 w-5 text-[#cc0000] dark:text-red-400" />
             Who Built YouTubeFreeToolkit?
           </h2>
           <p className="mt-3 text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed">
             The platform was founded and is actively maintained by{' '}
-            <Link href="/author/shahid" className="text-[#ff0000] dark:text-red-400 font-semibold hover:underline">
+            <Link href="/author/shahid" className="text-[#cc0000] dark:text-red-400 font-semibold hover:underline">
               Shahid Developer
             </Link>
             , a full-stack developer specializing in YouTube platform integrations. After seeing countless creator tools
@@ -124,8 +124,8 @@ export default function AboutPage() {
             Shahid set out to engineer a transparent, policy-safe alternative.
           </p>
           <div className="mt-4 pt-4 border-t border-[#e5e5e5] dark:border-[#272727] flex items-center justify-between text-xs">
-            <span className="text-[#606060]">Meet the developer:</span>
-            <Link href="/author/shahid" className="font-bold text-[#ff0000] dark:text-red-400 hover:underline">
+            <span className="text-[#606060] dark:text-[#aaaaaa]">Meet the developer:</span>
+            <Link href="/author/shahid" className="font-bold text-[#cc0000] dark:text-red-400 hover:underline">
               View Shahid’s Profile & Credentials →
             </Link>
           </div>
@@ -250,7 +250,7 @@ export default function AboutPage() {
               </li>
               <li>
                 If you spot a typo, an outdated policy reference, or a technical bug, you can report it directly via our{' '}
-                <Link href="/contact" className="text-[#ff0000] dark:text-red-400 font-semibold hover:underline">
+                <Link href="/contact" className="text-[#cc0000] dark:text-red-400 font-semibold hover:underline">
                   Contact Form
                 </Link>
                 . Validated corrections are published within 48 hours.
@@ -261,7 +261,7 @@ export default function AboutPage() {
 
         {/* Quick Links */}
         <div className="border-t border-[#e5e5e5] dark:border-[#272727] pt-8 flex flex-wrap gap-4 text-xs font-semibold">
-          <Link href="/tools" className="text-[#ff0000] dark:text-red-400 hover:underline">
+          <Link href="/tools" className="text-[#cc0000] dark:text-red-400 hover:underline">
             Explore All {TOOLS_REGISTRY.length} Tools →
           </Link>
           <Link href="/compliance" className="text-[#606060] dark:text-[#aaaaaa] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] transition-colors">

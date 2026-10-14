@@ -151,7 +151,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </nav>
 
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="rounded-full bg-[#ff0000]/10 px-3 py-0.5 text-xs font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20">
+            <span className="rounded-full bg-[#ff0000]/10 px-3 py-0.5 text-xs font-bold text-[#cc0000] dark:text-red-400 border border-[#ff0000]/20">
               {post.category}
             </span>
             <span className="flex items-center gap-1.5 text-xs text-[#606060] dark:text-[#aaaaaa]">
@@ -177,7 +177,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           {/* Author Card */}
           <div className="mt-6 flex items-center gap-3 border-t border-[#e5e5e5] dark:border-[#272727] pt-4">
             <Link href="/author/shahid" className="flex items-center gap-3 group">
-              <div className="h-10 w-10 rounded-full bg-[#ff0000] text-white font-bold flex items-center justify-center text-sm shadow-sm group-hover:scale-105 transition-transform">
+              <div className="h-10 w-10 rounded-full bg-[#d40000] text-white font-bold flex items-center justify-center text-sm shadow-sm group-hover:scale-105 transition-transform">
                 SD
               </div>
               <div>
@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {post.tableOfContents.length > 0 && (
           <nav className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 shadow-sm">
             <h2 className="text-xs font-bold uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] mb-3 flex items-center gap-2">
-              <BookOpen className="h-4 w-4 text-[#ff0000]" />
+              <BookOpen className="h-4 w-4 text-[#cc0000] dark:text-red-400" />
               Table of Contents
             </h2>
             <ul className="space-y-2 text-xs sm:text-sm">
@@ -218,7 +218,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Embedded Tool CTA Widget */}
         <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
-            <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#ff0000] dark:text-red-400">
+            <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#cc0000] dark:text-red-400">
               <Wrench className="h-3 w-3" aria-hidden />
               Related free tool
             </span>
@@ -243,7 +243,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {post.faqs.length > 0 && (
           <section className="mt-16 pt-8 border-t border-[#e5e5e5] dark:border-[#272727] space-y-4">
             <div className="flex items-center gap-2">
-              <HelpCircle className="h-5 w-5 text-[#ff0000]" />
+              <HelpCircle className="h-5 w-5 text-[#cc0000] dark:text-red-400" />
               <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Frequently Asked Questions</h2>
             </div>
 
@@ -279,7 +279,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   href={`/blog/${related.slug}`}
                   className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md transition-all group"
                 >
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#ff0000] dark:text-red-400">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#cc0000] dark:text-red-400">
                     {related.category}
                   </span>
                   <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors mt-1">
