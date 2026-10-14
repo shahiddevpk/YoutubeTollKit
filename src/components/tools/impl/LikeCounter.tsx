@@ -77,6 +77,33 @@ export function LikeCounter() {
     }
   };
 
+  const [compareInput, setCompareInput] = useState('');
+  const [compareStats, setCompareStats] = useState<VideoStats | null>(null);
+  const [compareError, setCompareError] = useState<string | null>(null);
+  const [comparing, setComparing] = useState(false);
+
+  const handleCompare = async () => {
+    const id = extractVideoId(compareInput);
+    if (!id) {
+      setCompareError('Enter a valid YouTube video URL or ID to compare.');
+      return;
+    }
+    setComparing(true);
+    setCompareError(null);
+    try {
+      const parsed = await parseApiJson<VideoStats>(await fetchYouTubeVideo(id));
+      if (parsed.ok) setCompareStats(parsed.data);
+      else setCompareError(parsed.error);
+    } catch {
+      setCompareError('Could not load the comparison video.');
+    } finally {
+      setComparing(false);
+    }
+  };
+
+  const [now] = useState(() => Date.now());
+  const daysLive = (v: VideoStats) => Math.max(1, Math.round((now - new Date(v.publishedAt).getTime()) / 86_400_000));
+
   const likeRatio = stats && stats.viewCount > 0 ? stats.likeCount / stats.viewCount : 0;
   const tier = stats ? likeRatioTier(likeRatio) : null;
 
@@ -90,7 +117,7 @@ export function LikeCounter() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleCheck()}
-          className="flex-1 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#909090] focus:border-[#ff0000] focus:outline-none"
+          className="flex-1 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#606060] focus:border-[#ff0000] focus:outline-none"
         />
         <ToolPrimaryButton type="button" loading={loading} loadingLabel="Checking…" onClick={handleCheck}>
           <ThumbsUp className="h-4 w-4" aria-hidden />
@@ -126,10 +153,10 @@ export function LikeCounter() {
                 <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2 group-hover:text-[#ff0000] transition-colors">
                   {stats.title}
                 </p>
-                <ExternalLink className="h-3.5 w-3.5 text-[#909090] shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ExternalLink className="h-3.5 w-3.5 text-[#606060] shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-0.5">{stats.channelTitle}</p>
-              <p className="text-[11px] text-[#909090] dark:text-[#717171]">
+              <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">
                 {new Date(stats.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
             </div>
@@ -142,7 +169,7 @@ export function LikeCounter() {
               <p className="text-lg font-black text-[#0f0f0f] dark:text-[#f1f1f1]">
                 {formatCompact(stats.likeCount)}
               </p>
-              <p className="text-xs text-[#909090] dark:text-[#717171]">Likes</p>
+              <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Likes</p>
               <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa]">
                 {formatNumber(stats.likeCount)}
               </p>
@@ -153,7 +180,7 @@ export function LikeCounter() {
               <p className="text-lg font-black text-[#0f0f0f] dark:text-[#f1f1f1]">
                 {formatCompact(stats.viewCount)}
               </p>
-              <p className="text-xs text-[#909090] dark:text-[#717171]">Views</p>
+              <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Views</p>
               <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa]">
                 {formatNumber(stats.viewCount)}
               </p>
@@ -163,7 +190,7 @@ export function LikeCounter() {
               <p className="text-2xl font-black text-[#0f0f0f] dark:text-[#f1f1f1]">
                 {(likeRatio * 100).toFixed(2)}%
               </p>
-              <p className="text-xs text-[#909090] dark:text-[#717171]">Like-to-View Ratio</p>
+              <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Like-to-View Ratio</p>
               {tier && (
                 <p className={`text-xs font-bold ${tier.color}`}>{tier.label}</p>
               )}
@@ -197,7 +224,52 @@ export function LikeCounter() {
         </div>
       )}
 
-      <p className="text-xs text-[#909090] dark:text-[#717171]">
+      {stats && (
+        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-4 space-y-3">
+          <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">Compare likes with another video</p>
+          <div className="flex gap-2">
+            <input
+              type="url"
+              value={compareInput}
+              onChange={(e) => setCompareInput(e.target.value)}
+              placeholder="Paste a second video URL (e.g. a competitor's upload)"
+              aria-label="Second video URL to compare"
+              className="flex-1 min-w-0 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#0f0f0f] px-3 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] focus:border-[#ff0000] focus:outline-none"
+            />
+            <button type="button" onClick={handleCompare} disabled={comparing} className="rounded-xl bg-[#0f0f0f] dark:bg-[#f1f1f1] px-4 text-sm font-semibold text-white dark:text-[#0f0f0f] disabled:opacity-50">
+              {comparing ? '…' : 'Compare'}
+            </button>
+          </div>
+          {compareError && <p role="alert" className="text-xs text-rose-600 dark:text-rose-400">{compareError}</p>}
+          {compareStats && (
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs text-left">
+                <thead className="text-[#606060] dark:text-[#aaaaaa]">
+                  <tr><th className="py-1 pr-2">Metric</th><th className="py-1 pr-2">Video A</th><th className="py-1">Video B</th></tr>
+                </thead>
+                <tbody className="text-[#0f0f0f] dark:text-[#f1f1f1]">
+                  {[
+                    ['Likes', (v: VideoStats) => formatNumber(v.likeCount)],
+                    ['Views', (v: VideoStats) => formatNumber(v.viewCount)],
+                    ['Like-to-view ratio', (v: VideoStats) => (v.viewCount ? ((v.likeCount / v.viewCount) * 100).toFixed(2) + '%' : '—')],
+                    ['Likes per day', (v: VideoStats) => formatNumber(Math.round(v.likeCount / daysLive(v)))],
+                    ['Comments per 1K views', (v: VideoStats) => (v.viewCount ? ((v.commentCount / v.viewCount) * 1000).toFixed(2) : '—')],
+                  ].map(([label, fn]) => (
+                    <tr key={label as string} className="border-t border-[#e5e5e5] dark:border-[#272727]">
+                      <td className="py-1.5 pr-2 font-semibold">{label as string}</td>
+                      <td className="py-1.5 pr-2">{(fn as (v: VideoStats) => string)(stats)}</td>
+                      <td className="py-1.5">{(fn as (v: VideoStats) => string)(compareStats)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="mt-1 text-[11px] text-[#606060] dark:text-[#a0a0a0]">A: {stats.title.slice(0, 60)} · B: {compareStats.title.slice(0, 60)}</p>
+            </div>
+          )}
+        </div>
+      )}
+
+      <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
         Like count is fetched live from YouTube Data API v3 · Reflects YouTube&apos;s cached value, typically accurate within minutes
       </p>
     </div>

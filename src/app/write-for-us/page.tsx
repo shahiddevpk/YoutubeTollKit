@@ -7,9 +7,9 @@ import { defaultRobots } from '@/lib/seo-site-config';
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: 'Write for Us — YouTubeFreeToolkit Guest Post Guidelines',
+  title: 'Write for Us — Guest Post Guidelines',
   description:
-    'Contribute a guest post to YouTubeFreeToolkit. We accept original, in-depth articles on YouTube SEO, monetization, channel growth, and creator tools. Get a dofollow backlink to your site.',
+    'Pitch an original, in-depth guest post on YouTube SEO, monetization or channel growth. Read our editorial guidelines and submission process.',
   alternates: {
     canonical: `${SITE_CONFIG.url}/write-for-us`,
   },
@@ -96,7 +96,7 @@ export default function WriteForUsPage() {
         {/* Hero */}
         <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-12 sm:py-16">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <nav aria-label="Breadcrumb" className="mb-4 text-xs text-[#909090] dark:text-[#717171]">
+            <nav aria-label="Breadcrumb" className="mb-4 text-xs text-[#606060] dark:text-[#a0a0a0]">
               <Link href="/" className="hover:text-[#ff0000] transition-colors">Home</Link>
               <span className="mx-1.5">/</span>
               <span className="text-[#0f0f0f] dark:text-[#f1f1f1]">Write for Us</span>
@@ -212,7 +212,7 @@ export default function WriteForUsPage() {
                 <details key={q} className="group rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3.5">
                   <summary className="cursor-pointer font-semibold text-sm text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] list-none flex items-center justify-between">
                     <span>{q}</span>
-                    <span className="text-[#909090] dark:text-[#717171] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
+                    <span className="text-[#606060] dark:text-[#a0a0a0] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
                   </summary>
                   <p className="mt-2.5 text-xs text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-[#e5e5e5] dark:border-[#272727] pt-2.5">{a}</p>
                 </details>
@@ -232,7 +232,7 @@ export default function WriteForUsPage() {
             >
               Send Your Pitch →
             </a>
-            <p className="mt-3 text-xs text-[#909090] dark:text-[#717171]">
+            <p className="mt-3 text-xs text-[#606060] dark:text-[#a0a0a0]">
               contact@youtubefreetoolkit.com — response within 5 business days
             </p>
           </section>

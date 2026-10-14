@@ -46,7 +46,7 @@ export function EarningsCalculator() {
               onChange={(e) => setDailyViews(Number(e.target.value))}
               className="w-full accent-[#ff0000] h-2 bg-[#e5e5e5] dark:bg-[#272727] rounded-lg cursor-pointer"
             />
-            <div className="flex justify-between text-[11px] text-[#909090] dark:text-[#717171] mt-1">
+            <div className="flex justify-between text-[11px] text-[#606060] dark:text-[#a0a0a0] mt-1">
               <span>1K/day</span>
               <span>100K/day</span>
               <span>1M+/day</span>
@@ -114,7 +114,7 @@ export function EarningsCalculator() {
               <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex items-center justify-between shadow-sm">
                 <div>
                   <span className="text-xs text-[#606060] dark:text-[#aaaaaa] uppercase font-semibold">Daily Revenue</span>
-                  <p className="text-xs text-[#909090] dark:text-[#717171]">{formatNumber(dailyViews)} views</p>
+                  <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">{formatNumber(dailyViews)} views</p>
                 </div>
                 <div className="text-2xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">
                   {formatCurrency(dailyEarnings)}
@@ -136,7 +136,7 @@ export function EarningsCalculator() {
               <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex items-center justify-between shadow-sm">
                 <div>
                   <span className="text-xs text-[#606060] dark:text-[#aaaaaa] uppercase font-semibold">Annual Projected</span>
-                  <p className="text-xs text-[#909090] dark:text-[#717171]">{formatNumber(dailyViews * 365)} views</p>
+                  <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">{formatNumber(dailyViews * 365)} views</p>
                 </div>
                 <div className="text-2xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] font-mono">
                   {formatCurrency(yearlyEarnings)}

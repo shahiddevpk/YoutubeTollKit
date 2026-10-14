@@ -104,7 +104,7 @@ export function ThumbnailDownloader() {
         </label>
         <div className={toolFormRowClass}>
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#909090] dark:text-[#717171]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#606060] dark:text-[#a0a0a0]" />
             <input
               type="text"
               value={url}
@@ -121,7 +121,7 @@ export function ThumbnailDownloader() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-[#909090] dark:text-[#717171]">Quick test:</span>
+          <span className="text-xs text-[#606060] dark:text-[#a0a0a0]">Quick test:</span>
           {PRESET_VIDEOS.map((preset) => (
             <button
               key={preset.label}
@@ -154,9 +154,9 @@ export function ThumbnailDownloader() {
                         loading="lazy"
             />
             <div className="min-w-0">
-              <h4 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2">
+              <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2">
                 {videoData.title}
-              </h4>
+              </h3>
               <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-0.5">{videoData.channelTitle}</p>
             </div>
           </div>
@@ -217,7 +217,7 @@ export function ThumbnailDownloader() {
             })}
           </div>
 
-          <p className="text-xs text-[#909090] dark:text-[#717171]">
+          <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
             Note: Max Resolution (1280×720) may not be available for all videos — use HQ (480×360) as a reliable fallback.
           </p>
         </div>

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 /** Default lookups allowed per IP per calendar day (UTC) */
-export const DEFAULT_DAILY_LIMIT = 20;
+export const DEFAULT_DAILY_LIMIT = 200;
 
 export interface RateLimitInfo {
   allowed: boolean;
@@ -54,114 +54,98 @@ function getUtcDateKey(): string {
 }
 
 /**
- * Known search engine crawler user-agents.
- * We exempt these to guarantee zero impact on search engine crawling / SEO.
- */
-const SEARCH_ENGINE_BOTS = [
-  'googlebot',
-  'bingbot',
-  'slurp',
-  'duckduckbot',
-  'baiduspider',
-  'yandexbot',
-  'sogou',
-  'exabot',
-  'facebot',
-  'ia_archiver',
-  'semrushbot',
-  'ahrefsbot',
-];
-
-/**
- * Checks if request is from a known search engine bot.
- */
-export function isSearchEngineBot(req: NextRequest): boolean {
-  const userAgent = (req.headers.get('user-agent') || '').toLowerCase();
-  return SEARCH_ENGINE_BOTS.some((bot) => userAgent.includes(bot));
-}
-
-/**
  * Extracts client IP from request headers (supports proxies, Vercel, Cloudflare, etc.)
+ * Note: no user-agent based exemptions — a UA string is trivially spoofable and search
+ * engines never call these POST/API endpoints, so exempting them only enabled quota abuse.
  */
 export function getClientIp(req: NextRequest): string {
-  // 1. Cloudflare
   const cfIp = req.headers.get('cf-connecting-ip');
   if (cfIp) return cfIp.trim();
-
-  // 2. Standard X-Forwarded-For (first entry is the client IP)
   const forwardedFor = req.headers.get('x-forwarded-for');
   if (forwardedFor) {
     const first = forwardedFor.split(',')[0]?.trim();
     if (first) return first;
   }
-
-  // 3. X-Real-IP
   const realIp = req.headers.get('x-real-ip');
   if (realIp) return realIp.trim();
-
-  // 4. Fallback / local
   return '127.0.0.1';
 }
 
-/**
- * Checks and increments rate limit for the given request.
- */
-export function checkRateLimit(req: NextRequest): RateLimitInfo {
-  // Always allow search engines to avoid any SEO disturbance
-  if (isSearchEngineBot(req)) {
-    return {
-      allowed: true,
-      limit: 999999,
-      remaining: 999999,
-      reset: getMidnightUtcTimestamp(),
-      retryAfter: 0,
-    };
-  }
+export interface RateLimitOptions {
+  /** Separate counter namespace, e.g. 'api' (YouTube quota) or 'proxy' (image proxies) */
+  bucket?: string;
+  /** Override the daily limit for this bucket */
+  limit?: number;
+}
 
+/**
+ * Optional shared store: Upstash Redis REST (free tier) or Vercel KV (same REST protocol).
+ * Set UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN (or KV_REST_API_URL + KV_REST_API_TOKEN).
+ * Without them, or if the store errors, we fall back to the per-instance in-memory Map.
+ */
+function getSharedStoreConfig(): { url: string; token: string } | null {
+  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+  return url && token ? { url: url.replace(/\/$/, ''), token } : null;
+}
+
+async function incrementShared(key: string, ttlSec: number): Promise<number | null> {
+  const cfg = getSharedStoreConfig();
+  if (!cfg) return null;
+  try {
+    const res = await fetch(`${cfg.url}/pipeline`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${cfg.token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify([
+        ['INCR', key],
+        ['EXPIRE', key, String(ttlSec)],
+      ]),
+      signal: AbortSignal.timeout(1500),
+      cache: 'no-store',
+    });
+    if (!res.ok) return null;
+    const out = (await res.json()) as Array<{ result?: number }>;
+    const count = Number(out?.[0]?.result);
+    return Number.isFinite(count) ? count : null;
+  } catch {
+    return null;
+  }
+}
+
+function incrementMemory(key: string, resetAt: number): number {
+  const existing = store.get(key);
+  if (!existing) {
+    store.set(key, { count: 1, resetAt });
+    return 1;
+  }
+  existing.count += 1;
+  return existing.count;
+}
+
+/**
+ * Checks and increments the daily rate limit for the given request.
+ */
+export async function checkRateLimit(req: NextRequest, options: RateLimitOptions = {}): Promise<RateLimitInfo> {
   const configuredLimit = Number(process.env.DAILY_API_LIMIT);
-  const limit = !Number.isNaN(configuredLimit) && configuredLimit > 0
-    ? configuredLimit
-    : DEFAULT_DAILY_LIMIT;
+  const baseLimit = !Number.isNaN(configuredLimit) && configuredLimit > 0 ? configuredLimit : DEFAULT_DAILY_LIMIT;
+  const limit = options.limit ?? baseLimit;
+  const bucket = options.bucket ?? 'api';
 
   const nowSec = Math.floor(Date.now() / 1000);
   cleanupStaleRecords(nowSec);
 
   const ip = getClientIp(req);
-  const dateKey = getUtcDateKey();
-  const storeKey = `${dateKey}:${ip}`;
-
+  const storeKey = `rl:${bucket}:${getUtcDateKey()}:${ip}`;
   const midnightSec = getMidnightUtcTimestamp();
   const retryAfter = Math.max(1, midnightSec - nowSec);
 
-  const existing = store.get(storeKey);
+  const count = (await incrementShared(storeKey, retryAfter + 60)) ?? incrementMemory(storeKey, midnightSec);
 
-  if (!existing) {
-    store.set(storeKey, { count: 1, resetAt: midnightSec });
-    return {
-      allowed: true,
-      limit,
-      remaining: Math.max(0, limit - 1),
-      reset: midnightSec,
-      retryAfter,
-    };
-  }
-
-  if (existing.count >= limit) {
-    return {
-      allowed: false,
-      limit,
-      remaining: 0,
-      reset: existing.resetAt,
-      retryAfter,
-    };
-  }
-
-  existing.count += 1;
   return {
-    allowed: true,
+    allowed: count <= limit,
     limit,
-    remaining: Math.max(0, limit - existing.count),
-    reset: existing.resetAt,
+    remaining: Math.max(0, limit - count),
+    reset: midnightSec,
     retryAfter,
   };
 }

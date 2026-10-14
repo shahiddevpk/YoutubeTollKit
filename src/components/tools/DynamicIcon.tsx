@@ -3,6 +3,9 @@ import {
   DollarSign,
   Search,
   Sparkles,
+  Tags,
+  Link2,
+  FolderSearch,
   TrendingUp,
   Wrench,
   BadgeCheck,
@@ -27,6 +30,9 @@ import {
 } from 'lucide-react';
 
 const ICON_MAP: Record<string, LucideIcon> = {
+  Tags,
+  Link2,
+  FolderSearch,
   DollarSign,
   Search,
   Sparkles,

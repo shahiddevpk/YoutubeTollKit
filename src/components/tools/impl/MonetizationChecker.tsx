@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { formatCurrency, formatNumber } from '@/lib/utils';
-import { buildPublicMonetizationReport } from '@/lib/monetization-public-report';
+import { computeSignalConfidence, buildPublicMonetizationReport } from '@/lib/monetization-public-report';
 import { ToolEstimateNotice } from '@/components/ui/ToolEstimateNotice';
 import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
 import { toolFormRowClass } from '@/lib/tool-ui';
@@ -39,6 +39,7 @@ interface ChannelApiData {
 
 interface MonetizationResult {
   input: string;
+  checkedAt?: string;
   channelTitle: string;
   handle: string;
   channelId: string;
@@ -300,6 +301,7 @@ export function MonetizationChecker() {
       const d = parsed.data;
       setResult({
         input: query,
+        checkedAt: new Date().toISOString(),
         channelTitle: d.title,
         handle: d.handle,
         channelId: d.channelId,
@@ -385,6 +387,37 @@ Source: youtubefreetoolkit.com — inferred rows are estimates, not YouTube conf
         : null,
     [result]
   );
+  const confidence = useMemo(
+    () =>
+      result
+        ? computeSignalConfidence({
+            subscriberCount: result.subscriberCount,
+            viewCount: result.viewCount,
+            videoCount: result.videoCount,
+            publishedAt: result.publishedAt,
+          })
+        : null,
+    [result]
+  );
+  const [shareCopied, setShareCopied] = useState(false);
+  const copyShareLink = async () => {
+    if (!result) return;
+    const url = `${window.location.origin}/tools/monetization-checker?channel=${encodeURIComponent(result.handle || result.channelId)}`;
+    await navigator.clipboard.writeText(url);
+    setShareCopied(true);
+    setTimeout(() => setShareCopied(false), 2000);
+  };
+
+  // Shared links (?channel=@handle) run the check automatically once.
+  const channelParam = searchParams.get('channel');
+  const autoRan = React.useRef(false);
+  useEffect(() => {
+    if (!channelParam || autoRan.current) return;
+    autoRan.current = true;
+    setUrlInput(channelParam);
+    void checkChannel(channelParam);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [channelParam]);
 
   return (
     <div className="space-y-6">
@@ -562,9 +595,36 @@ Source: youtubefreetoolkit.com — inferred rows are estimates, not YouTube conf
             </div>
           )}
 
+          {confidence && !verificationMatchesResult && (
+            <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 space-y-3">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Public signal strength</h3>
+                <span className="text-2xl font-black text-[#0f0f0f] dark:text-[#f1f1f1]">{confidence.score}<span className="text-sm font-semibold text-[#606060] dark:text-[#aaaaaa]">/100</span></span>
+              </div>
+              <div className="h-2 rounded-full bg-[#e5e5e5] dark:bg-[#272727] overflow-hidden" role="progressbar" aria-valuenow={confidence.score} aria-valuemin={0} aria-valuemax={100} aria-label="Public monetization signal strength">
+                <div className={`h-full ${confidence.score >= 70 ? 'bg-emerald-500' : confidence.score >= 40 ? 'bg-amber-500' : 'bg-rose-500'}`} style={{ width: `${confidence.score}%` }} />
+              </div>
+              <ul className="grid gap-1 sm:grid-cols-2 text-xs">
+                {confidence.checks.map((c) => (
+                  <li key={c.label} className={c.met ? 'text-emerald-700 dark:text-emerald-400' : 'text-[#606060] dark:text-[#aaaaaa]'}>
+                    {c.met ? '✓' : '○'} {c.label} <span className="opacity-70">(+{c.points})</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex items-center justify-between gap-2 flex-wrap text-xs text-[#606060] dark:text-[#aaaaaa]">
+                <span>
+                  Checked {result?.checkedAt ? new Date(result.checkedAt).toLocaleString() : 'just now'} from live YouTube Data API stats. Signal strength is not official YPP status.
+                </span>
+                <button type="button" onClick={copyShareLink} className="rounded-full border border-[#e5e5e5] dark:border-[#272727] px-3 py-1 font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/60">
+                  {shareCopied ? 'Link copied' : 'Copy share link'}
+                </button>
+              </div>
+            </div>
+          )}
+
           {monetizationAnswer && publicEligibility && (
             <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#212121] p-5 space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa]">Status summary</h4>
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa]">Status summary</h3>
               <div>
                 <p className="text-sm font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">{monetizationAnswer.question}</p>
                 <p className={`mt-1.5 text-sm font-bold leading-relaxed ${monetizationAnswer.answerClass}`}>
@@ -711,9 +771,9 @@ Source: youtubefreetoolkit.com — inferred rows are estimates, not YouTube conf
                 </div>
                 <div className="space-y-1">
                   <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Channel owners only</p>
-                  <h4 className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
+                  <h3 className="font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
                     Verify your monetization (not available for other creators)
-                  </h4>
+                  </h3>
                   <p className="text-xs sm:text-sm text-[#0f0f0f] dark:text-[#f1f1f1] leading-relaxed">
                     If you <strong>do not</strong> own {result.channelTitle}, skip this section — verification will not
                     tell you whether they are monetized. Owners can sign in once with the Google account linked to this
@@ -742,10 +802,10 @@ Source: youtubefreetoolkit.com — inferred rows are estimates, not YouTube conf
           )}
 
           <div className="rounded-xl border border-amber-500/25 bg-amber-500/5 dark:bg-amber-950/20 p-4 space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 flex items-center gap-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 flex items-center gap-2">
               <Info className="h-3.5 w-3.5" />
               Public-check transparency
-            </h4>
+            </h3>
             <p className="text-xs text-[#0f0f0f] dark:text-[#f1f1f1] leading-relaxed">{result.monetizationDisclaimer}</p>
             <ul className="space-y-1.5 text-xs text-[#606060] dark:text-[#aaaaaa] pt-1">
               <li>• Public Data API statistics do not expose a random channel’s YPP/AdSense enrollment.</li>
@@ -884,7 +944,7 @@ function OwnerVerificationBanner({ verification }: { verification: OwnerVerifica
       <div className="flex items-start gap-3">
         <div className="mt-0.5 shrink-0">{styles.icon}</div>
         <div>
-          <h4 className={`font-bold ${styles.title}`}>{styles.heading}</h4>
+          <h3 className={`font-bold ${styles.title}`}>{styles.heading}</h3>
           {verification.channelTitle && (
             <p className="mt-0.5 text-xs text-[#606060] dark:text-[#aaaaaa]">
               {verification.channelTitle}{verification.handle ? ` (${verification.handle})` : ''}

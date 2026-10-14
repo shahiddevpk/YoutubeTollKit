@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     absolute: 'Shahid Developer — Creator & Lead Developer | YouTubeFreeToolkit',
   },
   description:
-    'Full-stack developer and creator of YouTubeFreeToolkit. Building policy-safe, transparent tools and technical guides for YouTube creators using the YouTube Data API.',
+    'Full-stack developer behind YouTubeFreeToolkit, building transparent, policy-safe YouTube creator tools and guides with the YouTube Data API.',
   alternates: {
     canonical: `${SITE_CONFIG.url}/author/shahid`,
   },
@@ -228,7 +228,7 @@ export default function AuthorProfilePage() {
                     {post.excerpt}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[#e5e5e5] dark:border-[#272727] flex items-center justify-between text-[11px] text-[#909090] dark:text-[#717171]">
+                <div className="mt-4 pt-3 border-t border-[#e5e5e5] dark:border-[#272727] flex items-center justify-between text-[11px] text-[#606060] dark:text-[#a0a0a0]">
                   <span>{post.readTime}</span>
                   <span>Updated {post.updatedAt}</span>
                 </div>

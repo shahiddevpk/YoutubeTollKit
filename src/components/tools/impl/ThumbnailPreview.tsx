@@ -128,9 +128,9 @@ export function ThumbnailPreview() {
               C
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2 leading-tight">
+              <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2 leading-tight">
                 {videoTitle}
-              </h4>
+              </h3>
               <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-1">{channelName} • 142K views • 2 days ago</p>
             </div>
           </div>

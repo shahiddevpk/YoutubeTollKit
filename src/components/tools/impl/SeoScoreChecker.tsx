@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Gauge, ListChecks } from 'lucide-react';
 import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
+import { fetchYouTubeVideo, parseApiJson } from '@/lib/api-client';
 
 interface SeoAuditResult {
   score: number;
@@ -20,6 +21,31 @@ export function SeoScoreChecker() {
   const [tagsInput, setTagsInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [audit, setAudit] = useState<SeoAuditResult | null>(null);
+  const [videoUrl, setVideoUrl] = useState('');
+  const [importing, setImporting] = useState(false);
+  const [importError, setImportError] = useState<string | null>(null);
+
+  const importFromUrl = async () => {
+    if (!videoUrl.trim()) return;
+    setImporting(true);
+    setImportError(null);
+    try {
+      const res = await fetchYouTubeVideo(videoUrl);
+      const parsed = await parseApiJson<{ title: string; description: string; tags?: string[] }>(res);
+      if (!parsed.ok) {
+        setImportError(parsed.error);
+        return;
+      }
+      setTitle(parsed.data.title || '');
+      setDescription(parsed.data.description || '');
+      setTagsInput((parsed.data.tags || []).join(', '));
+      setAudit(null);
+    } catch {
+      setImportError('Could not load that video. Check the URL and try again.');
+    } finally {
+      setImporting(false);
+    }
+  };
 
   const runAudit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,6 +156,34 @@ export function SeoScoreChecker() {
         </button>
       </div>
 
+      <div className="mb-5 space-y-2">
+        <label htmlFor="seo-video-url" className="block text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1] uppercase tracking-wider">
+          Audit a published video (optional)
+        </label>
+        <div className="flex gap-2">
+          <input
+            id="seo-video-url"
+            type="url"
+            inputMode="url"
+            value={videoUrl}
+            onChange={(e) => setVideoUrl(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); importFromUrl(); } }}
+            placeholder="Paste a YouTube video URL to load its title, description and tags"
+            className="flex-1 min-w-0 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#0f0f0f] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] focus:border-[#ff0000] focus:outline-none"
+          />
+          <button
+            type="button"
+            onClick={importFromUrl}
+            disabled={importing || !videoUrl.trim()}
+            className="rounded-xl bg-[#0f0f0f] dark:bg-[#f1f1f1] px-4 text-sm font-semibold text-white dark:text-[#0f0f0f] disabled:opacity-50"
+          >
+            {importing ? 'Loading…' : 'Load video'}
+          </button>
+        </div>
+        {importError && <p role="alert" className="text-xs text-red-600 dark:text-red-400">{importError}</p>}
+        <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Or type a draft title, description and tags below.</p>
+      </div>
+
       <form onSubmit={runAudit} className="space-y-4">
         <div>
           <label className="block text-xs font-bold text-[#0f0f0f] dark:text-[#f1f1f1] uppercase tracking-wider mb-1.5">
@@ -197,9 +251,9 @@ export function SeoScoreChecker() {
                 <span className="text-xs uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] font-bold">
                   Overall SEO Score
                 </span>
-                <h4 className="text-xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
+                <h3 className="text-xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
                   Grade {audit.grade} Optimization
-                </h4>
+                </h3>
               </div>
             </div>
 
@@ -207,7 +261,7 @@ export function SeoScoreChecker() {
               <span className="text-xs text-[#606060] dark:text-[#aaaaaa] block">
                 Educational Metadata Checklist
               </span>
-              <span className="text-[10px] text-[#909090] dark:text-[#717171] block mt-0.5">
+              <span className="text-[10px] text-[#606060] dark:text-[#a0a0a0] block mt-0.5">
                 Heuristic audit · Not an official Google/YouTube ranking score
               </span>
             </div>

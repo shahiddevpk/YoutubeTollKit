@@ -1,239 +1,114 @@
 import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Download, HelpCircle, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/tools-registry';
-import { defaultRobots } from '@/lib/seo-site-config';
-import { ConverterCTA } from '@/components/tools/ConverterCTA';
+import { noindexFollowRobots } from '@/lib/seo-site-config';
+import { DownloadOptionsGuide } from '@/components/tools/DownloadOptionsGuide';
 
-export const revalidate = 3600;
+export const revalidate = 86400;
+
+const PATH = '/tools/youtube-video-downloader';
 
 export const metadata: Metadata = {
-  title: 'YouTube Video Downloader — Free HD, 4K & 1080p Download (No Install)',
-  description:
-    'Download YouTube videos free in HD, 1080p, 4K and MP4 format directly from any YouTube link. No software install required. Works on PC, Mac, and mobile.',
-  alternates: {
-    canonical: `${SITE_CONFIG.url}/tools/youtube-video-downloader`,
-  },
-  openGraph: {
-    title: 'YouTube Video Downloader — Free HD, 4K & 1080p Download',
-    description:
-      'Download YouTube videos in HD, 1080p, 4K and MP4 format directly from any link. Free, no install.',
-    url: `${SITE_CONFIG.url}/tools/youtube-video-downloader`,
-  },
-  robots: defaultRobots(),
+  title: 'How to Download YouTube Videos Legally (2026 Options)',
+  description: 'The legitimate ways to save YouTube videos: YouTube Studio for your own uploads, YouTube Premium offline downloads, and Creative Commons footage. No shady converters.',
+  alternates: { canonical: `${SITE_CONFIG.url}${PATH}` },
+  openGraph: { title: 'How to Download YouTube Videos Legally (2026 Options)', description: 'The legitimate ways to save YouTube videos: YouTube Studio for your own uploads, YouTube Premium offline downloads, and Creative Commons footage. No shady converters.', url: `${SITE_CONFIG.url}${PATH}` },
+  // Informational page about legitimate options — kept out of the index on purpose.
+  robots: noindexFollowRobots(),
 };
 
 const faqItems = [
   {
-    question: 'How do I download a YouTube video for free?',
-    answer:
-      'Copy the YouTube video URL from your browser, paste it into a free online downloader like cobalt.tools, choose your quality (1080p, 4K, 720p, etc.), and click download. No software or app install is needed.',
+    "q": "Is it legal to download YouTube videos?",
+    "a": "Downloading is allowed when YouTube provides the feature (Premium offline, Studio download for your own videos) or when the copyright owner gives permission or a licence such as Creative Commons. Ripping other people’s videos with third-party sites breaks YouTube’s Terms of Service and may infringe copyright."
   },
   {
-    question: 'Can I download YouTube videos in 4K or 1080p?',
-    answer:
-      'Yes. Free online YouTube video downloaders support up to 4K (2160p), 1440p, 1080p, 720p, and 360p depending on the quality available in the original video.',
+    "q": "What is the highest quality I can download?",
+    "a": "YouTube Premium offers up to 1080p offline downloads in the app. YouTube Studio downloads of your own uploads are usually 720p MP4; keep your original export for full quality."
   },
   {
-    question: 'Is downloading a YouTube video free?',
-    answer:
-      'Using a free online downloader like cobalt.tools is completely free with no signup required. However, please be aware that downloading copyrighted content without the creator\'s permission may violate YouTube\'s Terms of Service. Only download videos you own or that are licensed for download.',
-  },
-  {
-    question: 'What video format will the downloaded file be in?',
-    answer:
-      'Most YouTube video downloaders export videos in MP4 format, which is compatible with all devices including PC, Mac, iPhone, and Android. Some tools also offer WebM or MKV for 4K.',
-  },
-  {
-    question: 'Can I download YouTube videos on mobile?',
-    answer:
-      'Yes. Web-based downloaders like cobalt.tools work on mobile browsers (Chrome, Safari, Firefox) on both Android and iPhone without any app installation.',
-  },
-  {
-    question: 'Why can\'t I directly download YouTube videos?',
-    answer:
-      'YouTube\'s official apps do not allow downloading to local storage (only offline caching within the app for YouTube Premium subscribers). Third-party tools extract the video stream from YouTube\'s public CDN and let you save it as a file.',
-  },
+    "q": "Can I download a YouTube video’s thumbnail or tags instead?",
+    "a": "Yes. Thumbnails and tags are public metadata. Use our Thumbnail Downloader and Tag Extractor to save them for research and reference."
+  }
 ];
 
-export default function YoutubeVideoDownloaderPage() {
-  const pageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: 'YouTube Video Downloader',
-    description:
-      'Download YouTube videos free in HD, 1080p, 4K and MP4 format. No install required.',
-    url: `${SITE_CONFIG.url}/tools/youtube-video-downloader`,
-    breadcrumb: {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_CONFIG.url },
-        { '@type': 'ListItem', position: 2, name: 'Tools', item: `${SITE_CONFIG.url}/tools` },
-        { '@type': 'ListItem', position: 3, name: 'YouTube Video Downloader', item: `${SITE_CONFIG.url}/tools/youtube-video-downloader` },
-      ],
-    },
-  };
+const sections = [
+  {
+    "h": "Why we do not offer a “YouTube video downloader”",
+    "p": [
+      "YouTube’s Terms of Service only allow downloads where YouTube shows a download button (Premium, Studio) or where the copyright owner gives permission. Third-party rippers break those terms, are frequently blocked, and are a common source of malware, pop-under ads and fake “update” prompts.",
+      "Instead, this page explains the official routes. They are free or included in a subscription you may already have, and they give you clean files without risk to your device or your channel."
+    ]
+  },
+  {
+    "h": "Downloading your own uploads",
+    "p": [
+      "Creators can download any video they uploaded from YouTube Studio → Content → ⋮ → Download. If you need every upload (for example when migrating or backing up a channel), Google Takeout exports all videos plus metadata in one archive.",
+      "If you lost the original high-quality file, check your editing software’s export folder or cloud backup first — the Studio download is re-encoded and usually capped at 720p."
+    ]
+  },
+  {
+    "h": "Watching offline on phone or tablet",
+    "p": [
+      "YouTube Premium adds a Download button to every eligible video in the mobile app, with quality options up to 1080p. Downloads remain available offline as long as the device reconnects at least once every 30 days."
+    ]
+  }
+];
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map(({ question, answer }) => ({
-      '@type': 'Question',
-      name: question,
-      acceptedAnswer: { '@type': 'Answer', text: answer },
-    })),
-  };
-
+export default function Page() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
-      <div className="mx-auto max-w-3xl px-4 py-10 space-y-10">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-[#606060] dark:text-[#aaaaaa]">
+    <article className="min-h-screen pb-16 text-[#0f0f0f] dark:text-[#f1f1f1]">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-2">
+        <nav className="text-xs text-[#606060] dark:text-[#aaaaaa] mb-4" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-[#ff0000]">Home</Link>
-          <span>/</span>
+          <span className="mx-1.5">/</span>
           <Link href="/tools" className="hover:text-[#ff0000]">Tools</Link>
-          <span>/</span>
-          <span className="text-[#0f0f0f] dark:text-[#f1f1f1]">YouTube Video Downloader</span>
+          <span className="mx-1.5">/</span>
+          <span className="font-medium text-[#0f0f0f] dark:text-[#f1f1f1]">Download YouTube Videos</span>
         </nav>
-
-        {/* Hero */}
-        <div className="space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#ff0000]/10 px-3 py-1 text-xs font-semibold text-[#ff0000]">
-            <Download className="h-3.5 w-3.5" />
-            Free Online Tool
-          </div>
-          <h1 className="text-3xl font-black tracking-tight text-[#0f0f0f] dark:text-[#f1f1f1] sm:text-4xl">
-            YouTube Video Downloader
-          </h1>
-          <p className="text-base text-[#606060] dark:text-[#aaaaaa] max-w-xl mx-auto">
-            Download any YouTube video in HD, 1080p, 4K or MP4 — free, no software install,
-            works on any device. Paste your YouTube link below to get started.
-          </p>
-        </div>
-
-        {/* CTA card */}
-        <ConverterCTA
-          placeholder="Paste YouTube URL (e.g. youtube.com/watch?v=…)"
-          converters={[
-            { name: 'cobalt.tools', desc: 'Open-source · No ads', href: 'https://cobalt.tools' },
-            { name: 'yt1s.com', desc: 'HD · 1080p · 4K', href: 'https://yt1s.com' },
-            { name: 'loader.to', desc: 'MP4 · WebM · AVI', href: 'https://loader.to' },
-            { name: 'y2mate.com', desc: 'Popular · 4K support', href: 'https://www.y2mate.com' },
-            { name: 'savefrom.net', desc: 'Fast · HD download', href: 'https://en.savefrom.net' },
-            { name: 'ssyoutube.com', desc: 'Simple · Direct save', href: 'https://ssyoutube.com' },
-          ]}
-        />
-
-        {/* Legal notice */}
-        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 flex gap-3">
-          <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-          <p className="text-xs text-amber-800 dark:text-amber-300">
-            Only download videos you own or that are licensed for download. Downloading copyrighted
-            content without permission may violate YouTube&apos;s Terms of Service and applicable
-            copyright law.
-          </p>
-        </div>
-
-        {/* Supported formats & qualities */}
-        <div className="space-y-4">
-          <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
-            Supported Download Qualities
-          </h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {['4K (2160p)', '1440p (2K)', '1080p Full HD', '720p HD', '480p SD', '360p'].map((q) => (
-              <div
-                key={q}
-                className="flex items-center gap-2 rounded-lg border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3 py-2.5 text-sm font-medium text-[#0f0f0f] dark:text-[#f1f1f1]"
-              >
-                <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-                {q}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* How to download */}
-        <div className="space-y-4">
-          <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
-            How to Download a YouTube Video (Step-by-Step)
-          </h2>
-          <ol className="space-y-3">
-            {[
-              'Open the YouTube video you want to download in your browser.',
-              'Copy the full video URL from the address bar (e.g. https://www.youtube.com/watch?v=xxxxx).',
-              'Click the "Open Free YouTube Downloader" button above to open cobalt.tools.',
-              'Paste the YouTube URL into the input box on cobalt.tools.',
-              'Select your preferred video quality (1080p, 4K, 720p, etc.) and format (MP4).',
-              'Click Download and save the file to your device.',
-            ].map((step, i) => (
-              <li
-                key={i}
-                className="flex gap-3 text-sm text-[#606060] dark:text-[#aaaaaa]"
-              >
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ff0000]/10 text-xs font-bold text-[#ff0000]">
-                  {i + 1}
-                </span>
-                {step}
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        {/* More tools */}
-        <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-6 space-y-4">
-          <h2 className="text-base font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
-            More Free YouTube Creator Tools
-          </h2>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {[
-              { label: 'YouTube Thumbnail Downloader', href: '/tools/thumbnail-downloader' },
-              { label: 'Channel Logo & Banner Downloader', href: '/tools/logo-banner-downloader' },
-              { label: 'YouTube Monetization Checker', href: '/tools/monetization-checker' },
-              { label: 'YouTube Tag Extractor', href: '/tools/tag-extractor' },
-              { label: 'YouTube to MP3 Downloader', href: '/tools/youtube-mp3-downloader' },
-              { label: 'YouTube Video Data Viewer', href: '/tools/video-data-viewer' },
-            ].map(({ label, href }) => (
-              <Link
-                key={href}
-                href={href}
-                className="flex items-center gap-2 rounded-lg border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/50 hover:text-[#ff0000] transition-colors"
-              >
-                <span className="text-[#ff0000]">→</span>
-                {label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* FAQ */}
-        <div className="space-y-4">
-          <h2 className="flex items-center gap-2 text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
-            <HelpCircle className="h-5 w-5 text-[#ff0000]" />
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-4">
-            {faqItems.map(({ question, answer }) => (
-              <div
-                key={question}
-                className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-5 space-y-2"
-              >
-                <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{question}</h3>
-                <p className="text-sm text-[#606060] dark:text-[#aaaaaa]">{answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight">How to Download YouTube Videos (Legitimate Options)</h1>
+        <p className="mt-2 text-sm sm:text-base text-[#606060] dark:text-[#aaaaaa]">We do not host a video ripper or send you to one. Pick your situation below and we will show the official, safe way to get the video file or watch it offline.</p>
       </div>
-    </>
+
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6" aria-labelledby="chooser-heading">
+        <h2 id="chooser-heading" className="sr-only">Find the right option</h2>
+        <div className="elevated-card rounded-2xl p-5 sm:p-7">
+          <DownloadOptionsGuide mode="video" />
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10 text-sm">
+        {sections.map((s) => (
+          <section key={s.h} className="space-y-2">
+            <h2 className="text-lg font-bold">{s.h}</h2>
+            {s.p.map((para) => (
+              <p key={para} className="text-[#606060] dark:text-[#aaaaaa] leading-relaxed">{para}</p>
+            ))}
+          </section>
+        ))}
+
+        <section className="border-t border-[#e5e5e5] dark:border-[#272727] pt-8" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" className="text-lg font-bold mb-4">Frequently asked questions</h2>
+          <div className="space-y-3">
+            {faqItems.map((f) => (
+              <details key={f.q} className="rounded-xl border border-theme bg-card px-4 py-3.5">
+                <summary className="cursor-pointer font-semibold">{f.q}</summary>
+                <p className="mt-2.5 text-[#606060] dark:text-[#aaaaaa] leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-t border-[#e5e5e5] dark:border-[#272727] pt-8">
+          <h2 className="text-lg font-bold mb-3">Free tools that work with public YouTube data</h2>
+          <ul className="space-y-2">
+            <li><Link href="/tools/thumbnail-downloader" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Thumbnail Downloader</Link></li>
+            <li><Link href="/tools/video-data-viewer" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Video Data Viewer</Link></li>
+            <li><Link href="/tools/tag-extractor" className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">YouTube Tag Extractor</Link></li>
+          </ul>
+        </section>
+      </div>
+    </article>
   );
 }

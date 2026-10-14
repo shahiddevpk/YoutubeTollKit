@@ -142,11 +142,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             <Link href="/" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
               Home
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#909090] dark:text-[#717171]" />
+            <ChevronRight className="h-3 w-3 text-[#606060] dark:text-[#a0a0a0]" />
             <Link href="/blog" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
               Blog
             </Link>
-            <ChevronRight className="h-3 w-3 text-[#909090] dark:text-[#717171]" />
+            <ChevronRight className="h-3 w-3 text-[#606060] dark:text-[#a0a0a0]" />
             <span className="text-[#0f0f0f] dark:text-[#f1f1f1] font-medium truncate">{post.category}</span>
           </nav>
 
@@ -255,7 +255,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 >
                   <summary className="flex cursor-pointer items-center justify-between font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] text-base group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors list-none">
                     <span>{faq.question}</span>
-                    <span className="ml-4 text-[#909090] dark:text-[#717171] group-open:rotate-180 transition-transform text-xs">
+                    <span className="ml-4 text-[#606060] dark:text-[#a0a0a0] group-open:rotate-180 transition-transform text-xs">
                       ▼
                     </span>
                   </summary>
@@ -282,9 +282,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#ff0000] dark:text-red-400">
                     {related.category}
                   </span>
-                  <h4 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors mt-1">
+                  <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors mt-1">
                     {related.title}
-                  </h4>
+                  </h3>
                   <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-2 line-clamp-2">{related.excerpt}</p>
                 </Link>
               ))}

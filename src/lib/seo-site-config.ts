@@ -41,7 +41,7 @@ export const SEO_SITE = {
   /** Filtered URLs (Rank Math: noindex_search) */
   noindexQueryKeys: ['q'] as const,
   /** OAuth return / status params — thin duplicates of tool pages */
-  noindexUtilityQueryKeys: ['oauth_error', 'owner_verified', 'error'] as const,
+  noindexUtilityQueryKeys: ['oauth_error', 'owner_verified', 'error', 'channel'] as const,
 };
 
 export function defaultRobots(): NonNullable<Metadata['robots']> {

@@ -48,7 +48,7 @@ export function ToolsExplorerClient({ initialTools }: ToolsExplorerClientProps) 
         />
 
         <div className="relative min-w-[280px]">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#909090] dark:text-[#717171]" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#606060] dark:text-[#a0a0a0]" />
           <input
             type="text"
             value={searchQuery}

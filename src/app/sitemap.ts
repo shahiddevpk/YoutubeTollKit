@@ -5,7 +5,7 @@ import { GUIDE_HUBS } from '@/lib/guides-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
-  const siteUpdated = new Date('2026-10-13T00:00:00.000Z');
+  const siteUpdated = new Date('2026-10-14T00:00:00.000Z');
 
   // Core static routes
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -45,19 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
-    // /privacy, /terms, /compliance, /contact are noindex — excluded from sitemap
-    {
-      url: `${baseUrl}/tools/youtube-video-downloader`,
-      lastModified: siteUpdated,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tools/youtube-mp3-downloader`,
-      lastModified: siteUpdated,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
+    // /privacy, /terms, /compliance, /contact and the two download-options pages are noindex — excluded from sitemap
     {
       url: `${baseUrl}/free-youtube-tools`,
       lastModified: siteUpdated,

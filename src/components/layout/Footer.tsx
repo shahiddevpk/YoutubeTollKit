@@ -61,7 +61,7 @@ export function Footer() {
 
           {/* Column 1: Monetization & Revenue */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0f0f0f] dark:text-[#f1f1f1]">Monetization</h4>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#0f0f0f] dark:text-[#f1f1f1]">Monetization</h2>
             <ul className="mt-3 space-y-2 text-xs">
               <li>
                 <Link
@@ -89,8 +89,18 @@ export function Footer() {
 
           {/* Column 2: SEO & Metadata */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0f0f0f] dark:text-[#f1f1f1]">SEO & Metadata</h4>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#0f0f0f] dark:text-[#f1f1f1]">SEO & Metadata</h2>
             <ul className="mt-3 space-y-2 text-xs">
+              <li>
+                <Link href="/tools/tag-generator" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
+                  Tag Generator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/description-generator" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
+                  Description Generator
+                </Link>
+              </li>
               <li>
                 <Link href="/tools/tag-extractor" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
                   Tag Extractor
@@ -119,7 +129,7 @@ export function Footer() {
 
           {/* Column 3: Utilities & Legal */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0f0f0f] dark:text-[#f1f1f1]">Utilities & Legal</h4>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#0f0f0f] dark:text-[#f1f1f1]">Utilities & Legal</h2>
             <ul className="mt-3 space-y-2 text-xs">
               <li>
                 <Link href="/tools/channel-id-finder" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
@@ -186,7 +196,7 @@ export function Footer() {
         </div>
 
         {/* Legal Disclaimer & YouTube API notice */}
-        <div className="mt-10 border-t border-[#e5e5e5] dark:border-[#272727] pt-6 text-[11px] text-[#909090] dark:text-[#717171] space-y-2">
+        <div className="mt-10 border-t border-[#e5e5e5] dark:border-[#272727] pt-6 text-[11px] text-[#606060] dark:text-[#a0a0a0] space-y-2">
           <p>
             Uses YouTube API Services. Not affiliated with YouTube, Google LLC, or Alphabet Inc. YouTube™ is a
             registered trademark of Google LLC. Use of this site is subject to the{' '}

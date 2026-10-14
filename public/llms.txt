@@ -10,6 +10,11 @@ Canonical site: https://youtubefreetoolkit.com
 - https://youtubefreetoolkit.com/guides — Monetization, SEO, and troubleshooting hubs
 - https://youtubefreetoolkit.com/blog — Creator guides and articles
 - https://youtubefreetoolkit.com/tools/monetization-checker — Public YPP indicators + optional owner verification
+- https://youtubefreetoolkit.com/tools/tag-generator — Tag ideas from real YouTube search autocomplete, 500-character budget meter
+- https://youtubefreetoolkit.com/tools/description-generator — Description templates with chapters, links, hashtags and rule checks
+- https://youtubefreetoolkit.com/tools/category-checker — Official category of any public video, with competitor comparison
+- https://youtubefreetoolkit.com/tools/subscribe-link-generator — ?sub_confirmation=1 links, HTML button and QR code
+- https://youtubefreetoolkit.com/tools/channel-name-generator — Channel name ideas with matching @handle check links
 - https://youtubefreetoolkit.com/author/shahid — Lead developer and author profile
 - https://youtubefreetoolkit.com/compliance — YouTube API and policy compliance
 - https://youtubefreetoolkit.com/privacy — Privacy policy

@@ -88,7 +88,7 @@ export default async function GuideHubPage({ params }: PageProps) {
           </nav>
           <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">{guide.title}</h1>
           <p className="mt-3 text-base text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-3xl">{guide.intro}</p>
-          <p className="mt-3 text-xs text-[#909090] dark:text-[#717171]">Last updated {guide.updatedAt}</p>
+          <p className="mt-3 text-xs text-[#606060] dark:text-[#a0a0a0]">Last updated {guide.updatedAt}</p>
         </div>
       </header>
 
@@ -135,7 +135,7 @@ export default async function GuideHubPage({ params }: PageProps) {
                 <details key={i} className="group rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-5 py-4 transition-all">
                   <summary className="cursor-pointer font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 list-none flex items-center justify-between">
                     <span>{faq.question}</span>
-                    <span className="text-[#909090] dark:text-[#717171] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
+                    <span className="text-[#606060] dark:text-[#a0a0a0] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
                   </summary>
                   <p className="mt-3 text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-[#e5e5e5] dark:border-[#272727] pt-3">{faq.answer}</p>
                 </details>

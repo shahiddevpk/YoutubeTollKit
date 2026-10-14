@@ -56,7 +56,7 @@ export function LiveStreamCalculator() {
   }, [avgViewers, superChatRate, avgSuperChat, memberCount, memberPrice, streamsPerMonth]);
 
   const inputCls =
-    'w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#909090] focus:border-[#ff0000] focus:outline-none';
+    'w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-2.5 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#606060] focus:border-[#ff0000] focus:outline-none';
   const labelCls =
     'block text-xs font-semibold text-[#606060] dark:text-[#aaaaaa] uppercase tracking-wide mb-1';
 
@@ -79,7 +79,7 @@ export function LiveStreamCalculator() {
           <div>
             <label className={labelCls}>Super Chat Rate (% of viewers)</label>
             <input type="number" min="0" max="100" step="0.1" className={inputCls} value={superChatRate} onChange={(e) => setSuperChatRate(e.target.value)} />
-            <p className="text-[11px] text-[#909090] dark:text-[#717171] mt-1">Industry average: 1–3%</p>
+            <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0] mt-1">Industry average: 1–3%</p>
           </div>
 
           <div>
@@ -108,7 +108,7 @@ export function LiveStreamCalculator() {
           <div>
             <label className={labelCls}>Membership Price ($/month)</label>
             <input type="number" min="0.99" step="0.01" className={inputCls} value={memberPrice} onChange={(e) => setMemberPrice(e.target.value)} />
-            <p className="text-[11px] text-[#909090] dark:text-[#717171] mt-1">Minimum: $0.99/month</p>
+            <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0] mt-1">Minimum: $0.99/month</p>
           </div>
 
           <div>
@@ -123,19 +123,19 @@ export function LiveStreamCalculator() {
         <div className="flex items-center gap-2">
           <DollarSign className="h-4 w-4 text-emerald-500" />
           <span className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Earnings Estimate</span>
-          <span className="ml-auto text-[11px] text-[#909090] dark:text-[#717171]">After YouTube&apos;s 30% cut</span>
+          <span className="ml-auto text-[11px] text-[#606060] dark:text-[#a0a0a0]">After YouTube&apos;s 30% cut</span>
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 text-center space-y-1">
             <p className="text-2xl font-black text-[#ff0000]">{formatUSD(results.netPerStream)}</p>
-            <p className="text-xs text-[#909090] dark:text-[#717171]">Per Stream (Super Chats)</p>
+            <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Per Stream (Super Chats)</p>
             <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa]">{results.superChatsPerStream} super chats expected</p>
           </div>
 
           <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 text-center space-y-1">
             <p className="text-2xl font-black text-emerald-500">{formatUSD(results.netMonthly)}</p>
-            <p className="text-xs text-[#909090] dark:text-[#717171]">Per Month Total</p>
+            <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Per Month Total</p>
             <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa]">
               SC {formatUSD(results.netSCPerStream * parseFloat(streamsPerMonth) || 0)} + Memberships {formatUSD(results.netMemberships)}
             </p>
@@ -143,7 +143,7 @@ export function LiveStreamCalculator() {
 
           <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 text-center space-y-1">
             <p className="text-2xl font-black text-violet-500">{formatUSD(results.netYearly)}</p>
-            <p className="text-xs text-[#909090] dark:text-[#717171]">Per Year Projection</p>
+            <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Per Year Projection</p>
             <p className="text-[11px] text-[#606060] dark:text-[#aaaaaa]">Based on current settings</p>
           </div>
         </div>
@@ -162,13 +162,13 @@ export function LiveStreamCalculator() {
               <div className="flex-1 h-2.5 rounded-full bg-[#e5e5e5] dark:bg-[#272727]">
                 <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
               </div>
-              <span className="text-[11px] text-[#909090] dark:text-[#717171] w-8 text-right">{pct}%</span>
+              <span className="text-[11px] text-[#606060] dark:text-[#a0a0a0] w-8 text-right">{pct}%</span>
             </div>
           ))}
         </div>
       </div>
 
-      <p className="text-xs text-[#909090] dark:text-[#717171]">
+      <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
         Estimates based on industry averages. Actual earnings vary by audience demographics, niche, and engagement. YouTube takes 30% of Super Chat and Membership revenue.
       </p>
     </div>

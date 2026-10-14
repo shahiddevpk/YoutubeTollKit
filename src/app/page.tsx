@@ -10,15 +10,15 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Free YouTube Creator Tools — Monetization & SEO Suite | YouTubeFreeToolkit',
+    absolute: 'YouTubeFreeToolkit — The YouTube Creator Toolkit',
   },
   description:
-    'Free YouTube creator tools for monetization indicators, SEO metadata, and channel research. Public-data checks only — no video downloads. Optional owner verification via YouTube Analytics.',
+    'Check monetization, generate tags and descriptions, research channels and plan uploads in one free creator toolkit. Public data only, no login needed.',
   alternates: {
     canonical: SITE_CONFIG.url,
   },
   openGraph: {
-    title: 'Free YouTube Creator Tools — Monetization & SEO Suite',
+    title: 'YouTubeFreeToolkit — The YouTube Creator Toolkit',
     description:
       'Free YouTube monetization, SEO, and creator tools. Public checks need no login; channel owners can optionally verify YPP monetary access with YouTube Analytics.',
     url: SITE_CONFIG.url,
@@ -46,7 +46,7 @@ export default function HomePage() {
               <span>▶</span> Free YouTube Creator Suite
             </div>
             <h1 className="text-3xl sm:text-5xl font-black text-[#0f0f0f] dark:text-[#f1f1f1] tracking-tight">
-              Free YouTube creator tools
+              The YouTube creator toolkit
             </h1>
             <p className="mt-4 text-base sm:text-lg text-[#606060] dark:text-[#aaaaaa] leading-relaxed">
               Check any channel for inferred monetization likelihood and illustrative revenue from public stats — clearly
@@ -60,7 +60,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
               <div>
                 <h2 className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">YouTube Monetization Checker</h2>
-                <p className="text-xs text-[#909090] dark:text-[#717171] mt-0.5">
+                <p className="text-xs text-[#606060] dark:text-[#a0a0a0] mt-0.5">
                   Inferred report + revenue matrix · optional owner verification via YouTube Analytics
                 </p>
               </div>
@@ -70,7 +70,7 @@ export default function HomePage() {
             </div>
             <Suspense
               fallback={
-                <div className="min-h-32 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#1f1f1f] p-6 text-center text-sm text-[#909090]">
+                <div className="min-h-32 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#1f1f1f] p-6 text-center text-sm text-[#606060]">
                   Loading tool…
                 </div>
               }
@@ -115,7 +115,7 @@ export default function HomePage() {
         <div className="flex items-baseline justify-between gap-4 mb-6">
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Featured creator tools</h2>
-            <p className="text-xs sm:text-sm text-[#909090] dark:text-[#717171] mt-1">Practical utilities to audit metadata, research channels, and model scenarios</p>
+            <p className="text-xs sm:text-sm text-[#606060] dark:text-[#a0a0a0] mt-1">Practical utilities to audit metadata, research channels, and model scenarios</p>
           </div>
           <Link href="/tools" className="text-xs sm:text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline">
             See all {TOOLS_REGISTRY.length} →
@@ -162,7 +162,7 @@ export default function HomePage() {
         <div className="flex items-baseline justify-between gap-4 mb-6">
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">Latest creator guides</h2>
-            <p className="text-xs sm:text-sm text-[#909090] dark:text-[#717171] mt-1">In-depth articles on YouTube SEO, monetization, and channel growth</p>
+            <p className="text-xs sm:text-sm text-[#606060] dark:text-[#a0a0a0] mt-1">In-depth articles on YouTube SEO, monetization, and channel growth</p>
           </div>
           <Link href="/blog" className="text-xs sm:text-sm font-semibold text-[#ff0000] dark:text-red-400 hover:underline shrink-0">
             All posts →
@@ -184,7 +184,7 @@ export default function HomePage() {
               <p className="mt-2 text-xs text-[#606060] dark:text-[#aaaaaa] line-clamp-2 leading-relaxed">
                 {post.excerpt}
               </p>
-              <p className="mt-3 text-[11px] text-[#909090] dark:text-[#717171]">{post.readTime}</p>
+              <p className="mt-3 text-[11px] text-[#606060] dark:text-[#a0a0a0]">{post.readTime}</p>
             </Link>
           ))}
         </div>
@@ -215,7 +215,7 @@ export default function HomePage() {
             <details key={q} className="group elevated-card rounded-xl px-5 py-4 transition-all">
               <summary className="cursor-pointer font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 list-none flex items-center justify-between">
                 <span>{q}</span>
-                <span className="text-[#909090] dark:text-[#717171] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
+                <span className="text-[#606060] dark:text-[#a0a0a0] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
               </summary>
               <p className="mt-3 text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-theme pt-3">
                 {a}
@@ -223,7 +223,7 @@ export default function HomePage() {
             </details>
           ))}
         </div>
-        <p className="mt-8 text-xs text-[#909090] dark:text-[#717171] flex flex-wrap gap-3">
+        <p className="mt-8 text-xs text-[#606060] dark:text-[#a0a0a0] flex flex-wrap gap-3">
           <Link href="/compliance" className="hover:text-[#ff0000] dark:hover:text-red-400 underline">Policy compliance</Link>
           <span>·</span>
           <Link href="/privacy" className="hover:text-[#ff0000] dark:hover:text-red-400 underline">Privacy</Link>

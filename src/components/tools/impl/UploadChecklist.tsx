@@ -118,7 +118,7 @@ export function UploadChecklist() {
                 {isChecked ? (
                   <CheckSquare className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 ) : (
-                  <Square className="h-5 w-5 text-[#909090] dark:text-[#717171]" />
+                  <Square className="h-5 w-5 text-[#606060] dark:text-[#a0a0a0]" />
                 )}
               </div>
               <div className="flex-1 min-w-0">

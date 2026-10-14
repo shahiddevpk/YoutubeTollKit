@@ -6,6 +6,7 @@ import {
   createRateLimitResponse,
   type RateLimitInfo,
 } from '@/lib/rate-limit';
+import { getCachedResponse, storeCachedResponse } from '@/lib/response-cache';
 const CACHE_HEADERS = {
   'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
 };
@@ -65,6 +66,8 @@ async function lookupVideo(query: string, rateLimitInfo: RateLimitInfo) {
     channelId: item.snippet.channelId,
     publishedAt: item.snippet.publishedAt,
     tags: item.snippet.tags || [],
+    categoryId: item.snippet.categoryId ?? null,
+    defaultLanguage: item.snippet.defaultLanguage ?? item.snippet.defaultAudioLanguage ?? null,
     viewCount: Number(item.statistics.viewCount || 0),
     likeCount: Number(item.statistics.likeCount || 0),
     commentCount: Number(item.statistics.commentCount || 0),
@@ -87,16 +90,17 @@ async function lookupVideo(query: string, rateLimitInfo: RateLimitInfo) {
 
 export async function GET(req: NextRequest) {
   try {
-    const rateLimit = checkRateLimit(req);
-    if (!rateLimit.allowed) {
-      return createRateLimitResponse(rateLimit);
-    }
-
     const query = new URL(req.url).searchParams.get('q');
     if (!query?.trim()) {
       return NextResponse.json({ success: false, error: 'Missing query parameter (q)' }, { status: 400 });
     }
-    return await lookupVideo(query.trim(), rateLimit);
+    const q = query.trim();
+    const cacheKey = `video:${q.toLowerCase()}`;
+    const cached = getCachedResponse(cacheKey);
+    if (cached) return cached;
+    const rateLimit = await checkRateLimit(req);
+    if (!rateLimit.allowed) return createRateLimitResponse(rateLimit);
+    return await storeCachedResponse(cacheKey, await lookupVideo(q, rateLimit));
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ success: false, error: message }, { status: 500 });
@@ -105,17 +109,18 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const rateLimit = checkRateLimit(req);
-    if (!rateLimit.allowed) {
-      return createRateLimitResponse(rateLimit);
-    }
-
     const body = (await req.json().catch(() => null)) as { q?: string } | null;
     const query = body?.q?.trim();
     if (!query) {
       return NextResponse.json({ success: false, error: 'Missing JSON field (q)' }, { status: 400 });
     }
-    return await lookupVideo(query, rateLimit);
+    const q = query;
+    const cacheKey = `video:${q.toLowerCase()}`;
+    const cached = getCachedResponse(cacheKey);
+    if (cached) return cached;
+    const rateLimit = await checkRateLimit(req);
+    if (!rateLimit.allowed) return createRateLimitResponse(rateLimit);
+    return await storeCachedResponse(cacheKey, await lookupVideo(q, rateLimit));
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ success: false, error: message }, { status: 500 });

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Eye, Search, RefreshCw, ThumbsUp, MessageSquare, Play, AlertCircle, PauseCircle, PlayCircle } from 'lucide-react';
+import { usePageVisible } from '@/lib/use-page-visible';
 import { fetchYouTubeVideo, parseApiJson } from '@/lib/api-client';
 import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
 import { toolFormRowClass } from '@/lib/tool-ui';
@@ -12,9 +13,9 @@ const PRESET_VIDEOS = [
 ];
 
 const REFRESH_INTERVALS = [
-  { label: '10s', value: 10 },
   { label: '30s', value: 30 },
   { label: '60s', value: 60 },
+  { label: '2 min', value: 120 },
 ];
 
 interface VideoStats {
@@ -45,7 +46,7 @@ export function LiveViewCount() {
   const [prevViews, setPrevViews] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [autoRefresh, setAutoRefresh] = useState(false);
-  const [intervalSeconds, setIntervalSeconds] = useState(30);
+  const [intervalSeconds, setIntervalSeconds] = useState(60);
   const [countdown, setCountdown] = useState(0);
   const [refreshCount, setRefreshCount] = useState(0);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
@@ -53,6 +54,8 @@ export function LiveViewCount() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const countdownRef = useRef<NodeJS.Timeout | null>(null);
   const activeQuery = useRef('');
+  const pageVisible = usePageVisible();
+  const [history, setHistory] = useState<{ t: number; v: number }[]>([]);
 
   const fetchStats = useCallback(async (query: string, silent = false) => {
     if (!query.trim()) return;
@@ -68,6 +71,7 @@ export function LiveViewCount() {
           return parsed.data;
         });
         setLastUpdated(new Date());
+        setHistory((h) => [...h.slice(-29), { t: Date.now(), v: parsed.data.viewCount }]);
         setRefreshCount((c) => c + 1);
       } else {
         setError(parsed.error);
@@ -96,7 +100,7 @@ export function LiveViewCount() {
   }, []);
 
   useEffect(() => {
-    if (autoRefresh && stats) {
+    if (autoRefresh && stats && pageVisible) {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (countdownRef.current) clearInterval(countdownRef.current);
 
@@ -114,13 +118,14 @@ export function LiveViewCount() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (countdownRef.current) clearInterval(countdownRef.current);
     };
-  }, [autoRefresh, intervalSeconds, stats, fetchStats, startCountdown]);
+  }, [autoRefresh, intervalSeconds, stats, fetchStats, startCountdown, pageVisible]);
 
   const handleFetch = (e: React.FormEvent) => {
     e.preventDefault();
     activeQuery.current = url;
     setRefreshCount(0);
     setPrevViews(null);
+    setHistory([]);
     fetchStats(url);
   };
 
@@ -129,10 +134,24 @@ export function LiveViewCount() {
     activeQuery.current = presetUrl;
     setRefreshCount(0);
     setPrevViews(null);
+    setHistory([]);
     fetchStats(presetUrl);
   };
 
   const viewDelta = stats && prevViews !== null ? stats.viewCount - prevViews : null;
+  const first = history[0];
+  const last = history[history.length - 1];
+  const elapsedMin = first && last && last.t > first.t ? (last.t - first.t) / 60000 : 0;
+  const viewsPerMinute = elapsedMin > 0 ? (last.v - first.v) / elapsedMin : null;
+  const sparkPoints = (() => {
+    if (history.length < 2) return '';
+    const vals = history.map((h) => h.v);
+    const min = Math.min(...vals);
+    const range = Math.max(1, Math.max(...vals) - min);
+    return history
+      .map((h, i) => `${((i / (history.length - 1)) * 200).toFixed(1)},${(38 - ((h.v - min) / range) * 34).toFixed(1)}`)
+      .join(' ');
+  })();
 
   return (
     <div className="space-y-6">
@@ -142,7 +161,7 @@ export function LiveViewCount() {
         </label>
         <div className={toolFormRowClass}>
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#909090] dark:text-[#717171]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#606060] dark:text-[#a0a0a0]" />
             <input
               type="text"
               value={url}
@@ -159,7 +178,7 @@ export function LiveViewCount() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-[#909090] dark:text-[#717171]">Quick test:</span>
+          <span className="text-xs text-[#606060] dark:text-[#a0a0a0]">Quick test:</span>
           {PRESET_VIDEOS.map((preset) => (
             <button
               key={preset.label}
@@ -226,6 +245,36 @@ export function LiveViewCount() {
             )}
           </div>
 
+          {/* Session growth tracker */}
+          {history.length >= 2 && (
+            <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4">
+              <div className="flex items-center justify-between text-xs text-[#606060] dark:text-[#aaaaaa]">
+                <span className="font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">This session</span>
+                <span>
+                  +{(last.v - first.v).toLocaleString()} views
+                  {viewsPerMinute !== null && ` · ~${Math.round(viewsPerMinute).toLocaleString()}/min`}
+                </span>
+              </div>
+              <svg viewBox="0 0 200 40" className="mt-2 h-12 w-full" role="img" aria-label="View count trend for this session">
+                <polyline points={sparkPoints} fill="none" stroke="#ff0000" strokeWidth="2" strokeLinejoin="round" />
+              </svg>
+              <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">Trend of the public view count across {history.length} refreshes. Download as CSV for your records.</p>
+              <button
+                type="button"
+                onClick={() => {
+                  const csv = 'time,views\n' + history.map((h) => `${new Date(h.t).toISOString()},${h.v}`).join('\n');
+                  const a = document.createElement('a');
+                  a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+                  a.download = `view-count-${stats.videoId ?? 'video'}.csv`;
+                  a.click();
+                }}
+                className="mt-2 rounded-full border border-[#e5e5e5] dark:border-[#272727] px-3 py-1 text-xs font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000]/60"
+              >
+                Export CSV
+              </button>
+            </div>
+          )}
+
           {/* Stats row */}
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 flex items-center gap-3">
@@ -291,9 +340,9 @@ export function LiveViewCount() {
               </div>
             </div>
 
-            <p className="text-xs text-[#909090] dark:text-[#717171]">
+            <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
               <Play className="inline h-3 w-3 mr-1" />
-              YouTube API caches view counts and updates them periodically — small delays between refreshes are normal.
+              YouTube API caches view counts and updates them periodically — small delays between refreshes are normal. Auto-refresh pauses while this tab is in the background.
             </p>
           </div>
         </div>

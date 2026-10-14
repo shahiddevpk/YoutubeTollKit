@@ -231,3 +231,30 @@ export function buildPublicMonetizationReport(input: PublicMonetizationReportInp
       'Inferred report only. YouTube does not publish YPP/AdSense enrollment for third-party lookups. Owner verification on this page or YouTube Studio is required for definitive status.',
   };
 }
+
+
+export interface SignalConfidence {
+  score: number;
+  checks: { label: string; met: boolean; points: number }[];
+}
+
+/**
+ * Transparent 0–100 "signal strength" score built only from public stats.
+ * It measures how strongly public data points toward YPP eligibility — not official status.
+ */
+export function computeSignalConfidence(input: PublicMonetizationReportInput): SignalConfidence {
+  const ageDays = Math.max(1, (Date.now() - new Date(input.publishedAt).getTime()) / 86_400_000);
+  const avgViews = input.videoCount > 0 ? input.viewCount / input.videoCount : 0;
+  const viewsPerSub = input.subscriberCount > 0 ? input.viewCount / input.subscriberCount : 0;
+  const checks = [
+    { label: '1,000+ subscribers (full YPP threshold)', met: input.subscriberCount >= 1000, points: 30 },
+    { label: '100,000+ lifetime views (watch-hour proxy)', met: input.viewCount >= 100_000, points: 20 },
+    { label: '1,000+ average views per video', met: avgViews >= 1000, points: 15 },
+    { label: '10+ views per subscriber (active audience)', met: viewsPerSub >= 10, points: 15 },
+    { label: '10+ public videos', met: input.videoCount >= 10, points: 10 },
+    { label: 'Channel older than 1 year', met: ageDays >= 365, points: 10 },
+  ];
+  let score = checks.reduce((sum, c) => sum + (c.met ? c.points : 0), 0);
+  if (input.subscriberCount < 500) score = Math.min(score, 20);
+  return { score, checks };
+}

@@ -124,7 +124,7 @@ export default function AboutPage() {
             Shahid set out to engineer a transparent, policy-safe alternative.
           </p>
           <div className="mt-4 pt-4 border-t border-[#e5e5e5] dark:border-[#272727] flex items-center justify-between text-xs">
-            <span className="text-[#909090]">Meet the developer:</span>
+            <span className="text-[#606060]">Meet the developer:</span>
             <Link href="/author/shahid" className="font-bold text-[#ff0000] dark:text-red-400 hover:underline">
               View Shahid’s Profile & Credentials →
             </Link>

@@ -22,7 +22,7 @@ export default function PrivacyPage() {
             <span>▶</span> Legal & Privacy
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-[#0f0f0f] dark:text-[#f1f1f1]">Privacy Policy</h1>
-          <p className="mt-2 text-xs text-[#909090] dark:text-[#717171] font-mono">Last updated: October 1, 2026</p>
+          <p className="mt-2 text-xs text-[#606060] dark:text-[#a0a0a0] font-mono">Last updated: October 1, 2026</p>
         </div>
 
         <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 sm:p-8 space-y-6 text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed shadow-sm">

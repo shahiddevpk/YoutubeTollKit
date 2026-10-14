@@ -37,7 +37,7 @@ export function ToolCard({ tool, compact = false }: ToolCardProps) {
           ) : (
             <span />
           )}
-          <ArrowUpRight className="h-4 w-4 text-[#909090] dark:text-[#717171] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors ml-auto" aria-hidden />
+          <ArrowUpRight className="h-4 w-4 text-[#606060] dark:text-[#a0a0a0] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors ml-auto" aria-hidden />
         </div>
 
         <h3 className="text-sm sm:text-base font-bold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 transition-colors">

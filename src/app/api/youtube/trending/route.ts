@@ -5,6 +5,7 @@ import {
   createRateLimitResponse,
   type RateLimitInfo,
 } from '@/lib/rate-limit';
+import { getCachedResponse, storeCachedResponse } from '@/lib/response-cache';
 
 const CACHE_HEADERS = {
   'Cache-Control': 'public, s-maxage=1800, stale-while-revalidate=3600',
@@ -117,9 +118,6 @@ async function lookupTrending(
 
 export async function GET(req: NextRequest) {
   try {
-    const rateLimit = checkRateLimit(req);
-    if (!rateLimit.allowed) return createRateLimitResponse(rateLimit);
-
     const { searchParams } = new URL(req.url);
     const regionCode = searchParams.get('region')?.toUpperCase() ?? 'US';
     const categoryId = searchParams.get('category') ?? '0';
@@ -131,7 +129,12 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Invalid category' }, { status: 400 });
     }
 
-    return await lookupTrending(regionCode, categoryId, rateLimit);
+    const cacheKey = `trending:${regionCode}:${categoryId}`;
+    const cached = getCachedResponse(cacheKey);
+    if (cached) return cached;
+    const rateLimit = await checkRateLimit(req);
+    if (!rateLimit.allowed) return createRateLimitResponse(rateLimit);
+    return await storeCachedResponse(cacheKey, await lookupTrending(regionCode, categoryId, rateLimit), 10 * 60_000);
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ success: false, error: message }, { status: 500 });

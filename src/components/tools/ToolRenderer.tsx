@@ -24,9 +24,14 @@ import { WatchTimeCalculator } from './impl/WatchTimeCalculator';
 import { LikeCounter } from './impl/LikeCounter';
 import { DislikeChecker } from './impl/DislikeChecker';
 import { LiveStreamCalculator } from './impl/LiveStreamCalculator';
+import { TagGenerator } from './impl/TagGenerator';
+import { DescriptionGenerator } from './impl/DescriptionGenerator';
+import { SubscribeLinkGenerator } from './impl/SubscribeLinkGenerator';
+import { CategoryChecker } from './impl/CategoryChecker';
+import { ChannelNameGenerator } from './impl/ChannelNameGenerator';
 
 const monetizationFallback = (
-  <div className="min-h-40 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 text-center text-sm text-[#909090] dark:text-[#717171]">
+  <div className="min-h-40 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#181818] p-8 text-center text-sm text-[#606060] dark:text-[#a0a0a0]">
     Loading monetization checker…
   </div>
 );
@@ -49,6 +54,16 @@ export function ToolRenderer({ slug }: ToolRendererProps) {
       );
     case 'channel-id-finder':
       return <ChannelIdFinder />;
+    case 'tag-generator':
+      return <TagGenerator />;
+    case 'description-generator':
+      return <DescriptionGenerator />;
+    case 'subscribe-link-generator':
+      return <SubscribeLinkGenerator />;
+    case 'category-checker':
+      return <CategoryChecker />;
+    case 'channel-name-generator':
+      return <ChannelNameGenerator />;
     case 'tag-extractor':
       return <TagExtractor />;
     case 'earnings-calculator':

@@ -21,6 +21,9 @@ export const REDIRECT_RULES: Record<string, RedirectRule> = {
   '/guides/monetization': { destination: '/guides/youtube-monetization' },
   '/guides/seo': { destination: '/guides/youtube-seo' },
 
+  // Consolidated duplicate-intent posts (cannibalization fix, 2026-10-14)
+  '/blog/how-to-check-if-youtube-channel-is-monetized': { destination: '/blog/how-to-check-youtube-monetization-status' },
+
   // WordPress migration hygiene (Rank Math often redirects attachments)
   '/wp-admin': { destination: '/' },
   '/wp-login.php': { destination: '/' },

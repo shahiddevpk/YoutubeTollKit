@@ -17,8 +17,8 @@ interface ChannelStats {
 }
 
 export function ChannelCompare() {
-  const [ch1Input, setCh1Input] = useState('@MrBeast');
-  const [ch2Input, setCh2Input] = useState('@mkbhd');
+  const [ch1Input, setCh1Input] = useState('');
+  const [ch2Input, setCh2Input] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ch1, setCh1] = useState<ChannelStats | null>(null);

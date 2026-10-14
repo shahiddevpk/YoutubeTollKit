@@ -59,9 +59,9 @@ export function WatchTimeCalculator() {
             placeholder="e.g. 1250"
             value={currentHours}
             onChange={(e) => setCurrentHours(e.target.value)}
-            className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#909090] focus:border-[#ff0000] focus:outline-none"
+            className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#606060] focus:border-[#ff0000] focus:outline-none"
           />
-          <p className="text-[11px] text-[#909090] dark:text-[#717171]">
+          <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">
             Find in YouTube Studio → Analytics → Watch Time (last 365 days)
           </p>
         </div>
@@ -77,9 +77,9 @@ export function WatchTimeCalculator() {
             placeholder="e.g. 8.5"
             value={dailyHours}
             onChange={(e) => setDailyHours(e.target.value)}
-            className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#909090] focus:border-[#ff0000] focus:outline-none"
+            className="w-full rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#606060] focus:border-[#ff0000] focus:outline-none"
           />
-          <p className="text-[11px] text-[#909090] dark:text-[#717171]">
+          <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">
             Check YouTube Studio → Analytics → 28-day Watch Time ÷ 28
           </p>
         </div>
@@ -111,17 +111,17 @@ export function WatchTimeCalculator() {
             <p className="text-lg font-black text-[#ff0000]">
               {parseFloat(currentHours) || 0}h
             </p>
-            <p className="text-[11px] text-[#909090] dark:text-[#717171]">Current</p>
+            <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">Current</p>
           </div>
           <div>
             <p className="text-lg font-black text-[#0f0f0f] dark:text-[#f1f1f1]">
               {result.remaining.toFixed(0)}h
             </p>
-            <p className="text-[11px] text-[#909090] dark:text-[#717171]">Remaining</p>
+            <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">Remaining</p>
           </div>
           <div>
             <p className="text-lg font-black text-emerald-500">4,000h</p>
-            <p className="text-[11px] text-[#909090] dark:text-[#717171]">YPP Goal</p>
+            <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">YPP Goal</p>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@ export function WatchTimeCalculator() {
                 <p className="text-xl font-black text-[#0f0f0f] dark:text-[#f1f1f1]">
                   {scenarioDays < 1 ? '< 1 day' : `${Math.ceil(scenarioDays)} days`}
                 </p>
-                <p className="text-[11px] text-[#909090] dark:text-[#717171]">
+                <p className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">
                   {scenarioDaily.toFixed(1)}h/day · {formatDate(scenarioDays)}
                 </p>
               </div>
@@ -181,7 +181,7 @@ export function WatchTimeCalculator() {
         </ul>
       </div>
 
-      <p className="text-xs text-[#909090] dark:text-[#717171]">
+      <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
         Only public video watch time from the last 12 months counts toward YPP. Shorts and private
         video watch time are excluded.
       </p>

@@ -114,6 +114,46 @@ export const NAV_TOOLS: NavToolItem[] = [
     badge: 'Creator Pick',
     primaryKeyword: 'youtube video upload checklist',
   },
+  {
+    "slug": "tag-generator",
+    "name": "YouTube Tag Generator",
+    "description": "Free YouTube tag generator that uses real YouTube search suggestions. Pick relevant tags, stay under the.",
+    "category": "seo",
+    "badge": "New",
+    "primaryKeyword": "youtube tag generator"
+  },
+  {
+    "slug": "description-generator",
+    "name": "YouTube Description Generator",
+    "description": "Write a YouTube description fast with templates for tutorials, reviews, vlogs, Shorts and podcasts. Adds.",
+    "category": "seo",
+    "badge": "New",
+    "primaryKeyword": "youtube description generator"
+  },
+  {
+    "slug": "subscribe-link-generator",
+    "name": "YouTube Subscribe Link Generator",
+    "description": "Create a YouTube subscribe link that opens the Subscribe confirmation pop-up. Get the channel ID and @handle.",
+    "category": "utilities",
+    "badge": "New",
+    "primaryKeyword": "youtube subscribe link generator"
+  },
+  {
+    "slug": "category-checker",
+    "name": "YouTube Category Checker",
+    "description": "Check the category of any YouTube video or Short. See the category ID and language, compare with a competitor.",
+    "category": "seo",
+    "badge": "New",
+    "primaryKeyword": "youtube category checker"
+  },
+  {
+    "slug": "channel-name-generator",
+    "name": "YouTube Channel Name Generator",
+    "description": "Get YouTube channel name ideas from your niche in four styles, with a matching @handle for each and a quick.",
+    "category": "utilities",
+    "badge": "New",
+    "primaryKeyword": "youtube channel name generator"
+  },
 ];
 
 export const TOTAL_TOOLS_COUNT = NAV_TOOLS.length;

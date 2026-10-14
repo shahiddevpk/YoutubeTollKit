@@ -135,7 +135,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
 
             <button
               onClick={() => removeToast(item.id)}
-              className="shrink-0 text-[#909090] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] p-1 rounded-full hover:bg-[#f2f2f2] dark:hover:bg-[#272727] transition cursor-pointer"
+              className="shrink-0 text-[#606060] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] p-1 rounded-full hover:bg-[#f2f2f2] dark:hover:bg-[#272727] transition cursor-pointer"
               aria-label="Dismiss notification"
             >
               <X className="h-4 w-4" />

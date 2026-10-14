@@ -16,15 +16,15 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
   const filtered = hasNoindexSearchParams(params);
 
   return {
-    title: 'YouTube Creator Guides & SEO Blog | YouTubeFreeToolkit',
+    title: 'YouTube Creator Guides & SEO Blog',
     description:
-      'Free guides on YouTube Partner Program requirements, monetization checks, SEO checklists, and channel research — written for creators, with links to matching free tools.',
+      'Creator guides on YPP requirements, monetization checks, YouTube SEO and channel research, each linked to a matching free tool.',
     alternates: {
       canonical: `${SITE_CONFIG.url}/blog`,
     },
     robots: filtered ? noindexFollowRobots() : defaultRobots(),
     openGraph: {
-      title: 'YouTube Creator Guides & SEO Blog | YouTubeFreeToolkit',
+      title: 'YouTube Creator Guides & SEO Blog',
       description:
         'Policy-safe YouTube monetization, SEO, and channel research guides with transparent limitations.',
       url: `${SITE_CONFIG.url}/blog`,
@@ -62,13 +62,13 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-10 space-y-5">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-10 space-y-5">
         {BLOG_POSTS.map((post) => (
           <article
             key={post.slug}
             className="group rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 hover:border-[#ff0000]/60 dark:hover:border-[#ff0000]/40 hover:shadow-md transition-all"
           >
-            <div className="flex flex-wrap items-center gap-2 text-xs text-[#909090] dark:text-[#717171] mb-2">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-[#606060] dark:text-[#a0a0a0] mb-2">
               <span className="rounded-full bg-[#ff0000]/10 px-2.5 py-0.5 font-bold text-[#ff0000] dark:text-red-400 border border-[#ff0000]/20">
                 {post.category}
               </span>
@@ -91,7 +91,7 @@ export default function BlogIndexPage() {
             </Link>
           </article>
         ))}
-      </main>
+      </div>
     </div>
   );
 }

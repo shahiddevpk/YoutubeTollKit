@@ -72,9 +72,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'is channel monetized',
       'youtube partner program checker',
     ],
-    metaTitle: 'YouTube Monetization Checker — Check Any Channel (Public Signals)',
+    metaTitle: 'YouTube Monetization Checker (Free)',
     metaDescription:
-      'Check inferred monetization likelihood, revenue estimates, and YPP-style public signals from any channel. Free, no signup. Clearly labeled non-official; owners can verify with YouTube Analytics.',
+      'Check if any YouTube channel shows monetization signals, with YPP eligibility and revenue estimates. Free, no signup; owners can verify via YouTube Analytics.',
     howItWorks: [
       {
         step: 1,
@@ -212,7 +212,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     metaTitle: 'YouTube Channel ID Finder — Get ID From URL',
     metaDescription:
-      'Find the exact 24-character YouTube Channel ID (UC...) from a YouTube @handle, channel URL, UC ID, or public video link. Free lookup tool with RSS feed generator.',
+      'Find the 24-character YouTube channel ID (UC…) from any @handle, channel URL or video link. Free, instant lookup with RSS feed link.',
     howItWorks: [
       {
         step: 1,
@@ -285,7 +285,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'copy tags from youtube video',
       'youtube keyword tags extractor',
     ],
-    metaTitle: 'YouTube Tag Extractor — View Public Video Tags',
+    metaTitle: 'YouTube Tag Extractor — Copy Video Tags',
     metaDescription:
       'See exactly which tags any YouTube video uses for SEO research — no account or browser extension needed. Copy them formatted for YouTube Studio in one click.',
     howItWorks: [
@@ -360,9 +360,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'how much does youtube pay for 1 million views',
       'youtube adsense calculator',
     ],
-    metaTitle: 'YouTube Earnings Calculator — Estimate Ad Revenue',
+    metaTitle: 'YouTube Earnings & Money Calculator',
     metaDescription:
-      'Estimate what your YouTube channel could realistically earn from ads — enter your views, choose your niche, and see daily, monthly, and yearly revenue scenarios in seconds.',
+      'Estimate YouTube ad earnings from your views and niche. See daily, monthly and yearly revenue ranges with transparent RPM assumptions. Free.',
     howItWorks: [
       {
         step: 1,
@@ -434,9 +434,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube metadata audit',
       'seo score youtube',
     ],
-    metaTitle: 'YouTube SEO Score Checker — Video Metadata Audit',
+    metaTitle: 'YouTube SEO Score Checker (Free)',
     metaDescription:
-      'Find out if your YouTube video metadata is holding back your rankings — get an instant 0–100 SEO score with specific fixes for title, description, tags, and chapters.',
+      'Paste a video URL or draft and get a 0–100 YouTube SEO score with specific fixes for the title, description, tags and chapters. Free.',
     howItWorks: [
       {
         step: 1,
@@ -507,9 +507,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube subscriber tracker',
       'check youtube subscriber count',
     ],
-    metaTitle: 'YouTube Subscriber Counter — Auto-Refreshing Public Stats',
+    metaTitle: 'YouTube Live Subscriber Count — Real-Time',
     metaDescription:
-      'Track public YouTube subscriber counts and channel stats for any channel. Auto-refreshes via the YouTube Data API every 60–90 seconds — ideal for milestone streams and OBS overlays.',
+      'Live YouTube subscriber count for any channel, auto-refreshing every 90 seconds with a goal progress bar. Great for milestone streams.',
     howItWorks: [
       {
         step: 1,
@@ -580,7 +580,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube thumbnail hd preview',
       'test thumbnail on youtube homepage',
     ],
-    metaTitle: 'YouTube Thumbnail Preview — Test CTR on Mobile & Desktop',
+    metaTitle: 'YouTube Thumbnail Preview & Tester',
     metaDescription:
       'Test your video thumbnail inside a realistic YouTube desktop & mobile mockup. View high-res HD/4K maxresdefault thumbnail images for free.',
     howItWorks: [
@@ -653,7 +653,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube title analyzer',
       'youtube title length check',
     ],
-    metaTitle: 'YouTube Title & Description Optimizer — Character & Truncation Checker',
+    metaTitle: 'YouTube Title & Description Length Checker',
     metaDescription:
       'Optimize YouTube titles and descriptions for maximum click-through rate. Check mobile truncation cutoff, readability, and keyword density.',
     howItWorks: [
@@ -726,7 +726,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'trending youtube hashtags',
       'best youtube hashtags generator',
     ],
-    metaTitle: 'YouTube Hashtag Generator — Best Hashtags for Shorts & Videos',
+    metaTitle: 'YouTube Hashtag Generator for Shorts & Videos',
     metaDescription:
       'Generate high-ranking hashtags for YouTube Shorts and videos. 100% free tool to find trending topic tags and copy them with one click.',
     howItWorks: [
@@ -799,7 +799,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'shorts aspect ratio preview',
       'shorts ui overlay template',
     ],
-    metaTitle: 'YouTube Shorts Safe Zone Checker — 9:16 UI Overlay Guide',
+    metaTitle: 'YouTube Shorts Safe Zone Checker (9:16)',
     metaDescription:
       'Test your vertical video against YouTube Shorts UI overlay. Prevent captions and faces from being covered by Like/Comment buttons. 100% free.',
     howItWorks: [
@@ -872,7 +872,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'fix youtube chapters not working',
       'youtube video chapters format',
     ],
-    metaTitle: 'YouTube Chapter & Timestamp Validator — Fix Video Chapters Free',
+    metaTitle: 'YouTube Timestamp & Chapter Validator',
     metaDescription:
       'Validate and generate error-free YouTube chapters and timestamps. Qualify for Google Search video key moments and rich snippets.',
     howItWorks: [
@@ -945,7 +945,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'cpm vs rpm calculator youtube',
       'how to calculate rpm on youtube',
     ],
-    metaTitle: 'YouTube RPM Calculator — Calculate Revenue Per 1,000 Views Free',
+    metaTitle: 'YouTube RPM Calculator — Revenue per 1K Views',
     metaDescription:
       'Calculate your YouTube RPM accurately. Compare your Revenue Per Mille against industry standards across Finance, Gaming, Tech, and Education.',
     howItWorks: [
@@ -1017,7 +1017,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube subscriber compare',
       'compare views youtube channels',
     ],
-    metaTitle: 'YouTube Channel Comparison Tool — Compare Competitors Free',
+    metaTitle: 'YouTube Channel Comparison Tool (Free)',
     metaDescription:
       'Compare any two YouTube channels side-by-side. Analyze public subscribers, lifetime views, upload counts, and channel IDs with 100% free metrics.',
     howItWorks: [
@@ -1090,7 +1090,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube seo checklist tool',
       'video publishing checklist',
     ],
-    metaTitle: 'YouTube Upload Checklist — 15-Step Pre-Publishing Audit Free',
+    metaTitle: 'YouTube Upload Checklist — 15-Step Audit',
     metaDescription:
       'Free interactive YouTube pre-upload checklist. Ensure your video has optimal titles, thumbnail readability, tags, chapters, and cards before clicking publish.',
     howItWorks: [
@@ -1164,9 +1164,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube video thumbnail download',
       'yt thumbnail downloader',
     ],
-    metaTitle: 'YouTube Thumbnail Downloader — Download HD Thumbnails Free',
+    metaTitle: 'YouTube Thumbnail Downloader — HD & 4K',
     metaDescription:
-      'Download any YouTube video thumbnail for free in all sizes: 1280×720 Max Resolution, HQ (480×360), SD (640×480), and more. No signup, no watermark, instant download.',
+      'Download any YouTube video or Shorts thumbnail in every size, up to 1280×720 HD. No signup, no watermark, instant download.',
     howItWorks: [
       {
         step: 1,
@@ -1221,9 +1221,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
   },
   {
     slug: 'logo-banner-downloader',
-    name: 'YouTube Channel Logo & Banner Downloader',
-    shortTitle: 'Logo & Banner Downloader',
-    headline: 'Download Any YouTube Channel Logo and Banner Image Free',
+    name: 'YouTube Profile Picture & Banner Downloader',
+    shortTitle: 'Profile Picture Downloader',
+    headline: 'Download Any Channel’s Profile Picture (Logo) and Banner in HD',
     description:
       'Enter any YouTube channel URL, @handle, or channel ID and download the full-resolution channel profile picture (logo) and banner art. Free, instant, no signup.',
     category: 'utilities',
@@ -1231,15 +1231,15 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     priority: 'P1',
     featured: false,
     iconName: 'Image',
-    primaryKeyword: 'youtube channel banner download',
+    primaryKeyword: 'youtube profile picture downloader',
     secondaryKeywords: [
       'download youtube channel logo',
-      'youtube profile picture downloader',
+      'youtube channel banner download',
       'youtube banner download hd',
       'save youtube channel art',
       'youtube channel icon download',
     ],
-    metaTitle: 'YouTube Channel Logo & Banner Downloader — Download Channel Art Free',
+    metaTitle: 'YouTube Profile Picture & Logo Downloader (HD)',
     metaDescription:
       'Download any YouTube channel profile picture (logo) and banner image in full resolution. Paste a channel URL or @handle for instant free download.',
     howItWorks: [
@@ -1309,9 +1309,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube video details extractor',
       'youtube public video data',
     ],
-    metaTitle: 'YouTube Video Data Viewer — View All Public Video Metadata Free',
+    metaTitle: 'YouTube Data Viewer — Video Metadata',
     metaDescription:
-      'Instantly view all public metadata for any YouTube video: views, likes, comments, duration, publish date, video ID, channel ID, tags, and description. Free, no login.',
+      'View all public metadata for any YouTube video — stats, tags, IDs, description — plus engagement rate, and export it as JSON or CSV.',
     howItWorks: [
       {
         step: 1,
@@ -1386,9 +1386,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'live view count youtube video',
       'youtube views tracker',
     ],
-    metaTitle: 'YouTube Live View Count — Real-Time View Counter Free',
+    metaTitle: 'YouTube Live View Count — Real-Time',
     metaDescription:
-      'Track any YouTube video\'s live view count in real time. Auto-refreshes every 10–60 seconds. See live views, likes, and comments with delta tracking. Free, no login.',
+      'Track any YouTube video\'s view count live with auto-refresh, a session trend line, views-per-minute and CSV export. Free, no login.',
     howItWorks: [
       {
         step: 1,
@@ -1461,9 +1461,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube trending videos right now',
       'youtube trending by country',
     ],
-    metaTitle: 'YouTube Trending Videos Today — See What\'s Trending Now',
+    metaTitle: 'YouTube Trending Videos Today by Country',
     metaDescription:
-      'See the top 20 trending YouTube videos right now. Filter by country (US, UK, India, Canada) and category (Music, Gaming, Sports, News). Updated every 30 minutes.',
+      'See today’s trending YouTube videos by country and category, straight from YouTube’s most-popular chart. Free, no login.',
     howItWorks: [
       {
         step: 1,
@@ -1536,7 +1536,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'how long to get 4000 watch hours',
       'youtube monetization watch hours tracker',
     ],
-    metaTitle: 'YouTube Watch Time Calculator — 4,000 Hours YPP Tracker Free',
+    metaTitle: 'YouTube Watch Time Calculator (4,000 Hours)',
     metaDescription:
       'Calculate how many days until you hit 4,000 YouTube watch hours for monetization. Enter your current hours and daily growth to see your exact timeline.',
     howItWorks: [
@@ -1611,7 +1611,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'how many likes youtube video',
       'like counter youtube',
     ],
-    metaTitle: 'YouTube Like Counter — Check Live Like Count on Any Video Free',
+    metaTitle: 'YouTube Like Counter — Live Like Count',
     metaDescription:
       'Check the live like count on any YouTube video instantly. See total likes, views, and like-to-view ratio. Free, no signup, uses official YouTube Data API.',
     howItWorks: [
@@ -1685,7 +1685,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'youtube dislike count',
       'return youtube dislike',
     ],
-    metaTitle: 'YouTube Dislike Checker — See Like-to-Dislike Ratio Free',
+    metaTitle: 'YouTube Dislike Checker & Like Ratio',
     metaDescription:
       'Check estimated dislike counts and like-to-dislike ratio on any YouTube video. Uses Return YouTube Dislike community data. Free, no signup.',
     howItWorks: [
@@ -1759,7 +1759,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'superchat live income',
       'how much do youtubers make from superchats',
     ],
-    metaTitle: 'YouTube Live Stream Earnings Calculator — Super Chat Income Free',
+    metaTitle: 'YouTube Live Stream Earnings Calculator',
     metaDescription:
       'Calculate how much you can earn from YouTube live streams via Super Chats, Super Stickers, and memberships. Free calculator, no signup.',
     howItWorks: [
@@ -1813,6 +1813,367 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     relatedToolSlugs: ['earnings-calculator', 'rpm-calculator', 'monetization-checker'],
     updatedAt: '2026-10-13',
+  },
+  {
+    "slug": "tag-generator",
+    "name": "YouTube Tag Generator",
+    "shortTitle": "Tag Generator",
+    "headline": "Generate YouTube Tags From Real Search Suggestions",
+    "description": "Turn one topic into a ranked list of YouTube tags taken from real YouTube search autocomplete for your country. Pick the tags that match your video, watch the 500-character budget meter, and copy them in one click.",
+    "category": "seo",
+    "badge": "New",
+    "priority": "P0",
+    "featured": true,
+    "iconName": "Tags",
+    "primaryKeyword": "youtube tag generator",
+    "secondaryKeywords": [
+      "tag generator",
+      "tags generator for youtube",
+      "youtube keyword generator",
+      "youtube tags generator free",
+      "seo tags generator"
+    ],
+    "metaTitle": "YouTube Tag Generator — Tags From Real Searches",
+    "metaDescription": "Free YouTube tag generator that uses real YouTube search suggestions. Pick relevant tags, stay under the 500-character limit, and copy them in one click.",
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Enter Your Topic",
+        "description": "Type the main subject of your video, e.g. \"home workout for beginners\", and choose the country your viewers search from."
+      },
+      {
+        "step": 2,
+        "title": "Review Ranked Ideas",
+        "description": "Suggestions are ranked by how often and how high they appear across several YouTube autocomplete lookups; the strongest are pre-selected."
+      },
+      {
+        "step": 3,
+        "title": "Copy Within the Limit",
+        "description": "Toggle tags on or off while the meter tracks YouTube’s 500-character tag limit, then copy the comma-separated list into YouTube Studio."
+      }
+    ],
+    "features": [
+      "Suggestions from live YouTube search autocomplete, not a static word list",
+      "Country selector for region-specific search phrasing",
+      "Ranking by frequency across multiple query variations",
+      "Live 500-character budget meter that counts spaces the way YouTube does",
+      "One-click copy in the comma format YouTube Studio expects"
+    ],
+    "limitations": [
+      "Autocomplete shows what people type, not exact search volume.",
+      "Tags are a minor ranking signal; titles, thumbnails and watch time matter more.",
+      "Suggestions can include brand names — only use tags that truthfully describe your video."
+    ],
+    "faqs": [
+      {
+        "question": "Do YouTube tags still matter in 2026?",
+        "answer": "YouTube says tags play a minimal role in discovery and mainly help with commonly misspelled words or alternate phrasings. Use a handful of accurate tags, but spend most of your effort on the title, thumbnail and first lines of the description."
+      },
+      {
+        "question": "How many tags should I add?",
+        "answer": "Quality beats quantity. Five to fifteen accurate tags are plenty. YouTube allows up to 500 characters in total; tags with spaces count two extra characters because YouTube wraps them in quotes."
+      },
+      {
+        "question": "Where do these tag ideas come from?",
+        "answer": "From YouTube’s public search autocomplete — the phrases that appear as viewers type in the YouTube search box — collected for your topic plus variations like “how to”, “best” and “for”."
+      },
+      {
+        "question": "Is this different from the Tag Extractor?",
+        "answer": "Yes. The Tag Extractor shows the tags an existing video already uses. The Tag Generator suggests new tags for your own upload based on what people search."
+      }
+    ],
+    "relatedToolSlugs": [
+      "tag-extractor",
+      "hashtag-generator",
+      "seo-score-checker",
+      "description-generator"
+    ],
+    "updatedAt": "2026-10-14"
+  },
+  {
+    "slug": "description-generator",
+    "name": "YouTube Description Generator",
+    "shortTitle": "Description Generator",
+    "headline": "Build a Complete YouTube Description From Proven Templates",
+    "description": "Create a well-structured YouTube description in under a minute. Choose a template for tutorials, reviews, vlogs, Shorts or podcasts, add your keyword, chapters, links and hashtags, and see exactly what appears before “…more” with live checks for YouTube’s rules.",
+    "category": "seo",
+    "badge": "New",
+    "priority": "P1",
+    "featured": true,
+    "iconName": "FileText",
+    "primaryKeyword": "youtube description generator",
+    "secondaryKeywords": [
+      "youtube description template",
+      "description generator",
+      "youtube video description",
+      "youtube description example",
+      "description for youtube"
+    ],
+    "metaTitle": "YouTube Description Generator & Templates (Free)",
+    "metaDescription": "Write a YouTube description fast with templates for tutorials, reviews, vlogs, Shorts and podcasts. Adds chapters, links and hashtags with live rule checks.",
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Pick a Template",
+        "description": "Choose the format that matches your video — tutorial, review, vlog, Shorts or podcast."
+      },
+      {
+        "step": 2,
+        "title": "Fill in the Details",
+        "description": "Add your title, main keyword, chapters, links and up to five hashtags. The preview updates as you type."
+      },
+      {
+        "step": 3,
+        "title": "Check and Copy",
+        "description": "Confirm the keyword sits above the fold, chapters start at 0:00 and you are under 5,000 characters, then copy it into YouTube Studio."
+      }
+    ],
+    "features": [
+      "Five format-specific templates with different hooks and structure",
+      "Highlighted “above the fold” preview of the first ~157 characters",
+      "Automatic chapter, link, call-to-action and disclosure sections",
+      "Live checks for 0:00 chapters, hashtag count, < > characters and the 5,000-character limit",
+      "Runs entirely in your browser — nothing is uploaded"
+    ],
+    "limitations": [
+      "Templates are starting points — edit the wording so it sounds like you.",
+      "The fold position varies slightly by device and language."
+    ],
+    "faqs": [
+      {
+        "question": "How long should a YouTube description be?",
+        "answer": "There is no ideal length, but the first one or two sentences matter most because they show in search results and before “…more”. Most well-optimized descriptions are 150–400 words with chapters and links. The hard limit is 5,000 characters."
+      },
+      {
+        "question": "Should I put keywords in my description?",
+        "answer": "Yes, naturally. Mention your main keyword in the first sentence and use related phrases where they fit. Repeating keywords unnaturally can be treated as spam."
+      },
+      {
+        "question": "Why do my chapters not show?",
+        "answer": "YouTube chapters need a first timestamp of 0:00, at least three timestamps in ascending order, and each chapter at least 10 seconds long. Use the Timestamp Validator to check your list."
+      },
+      {
+        "question": "Do I need an affiliate disclosure?",
+        "answer": "If you earn from links in the description, many countries’ advertising rules require a clear disclosure. Tick the disclosure option to add a plain-language line."
+      }
+    ],
+    "relatedToolSlugs": [
+      "timestamp-validator",
+      "hashtag-generator",
+      "title-description-analyzer",
+      "tag-generator"
+    ],
+    "updatedAt": "2026-10-14"
+  },
+  {
+    "slug": "subscribe-link-generator",
+    "name": "YouTube Subscribe Link Generator",
+    "shortTitle": "Subscribe Link Generator",
+    "headline": "Create a Link That Opens Your Channel With the Subscribe Prompt",
+    "description": "Generate a YouTube subscribe link that opens your channel with the “Subscribe” confirmation already showing. Get the permanent channel-ID version, a readable @handle version, an HTML button for your website and a printable QR code.",
+    "category": "utilities",
+    "badge": "New",
+    "priority": "P1",
+    "featured": false,
+    "iconName": "Link2",
+    "primaryKeyword": "youtube subscribe link generator",
+    "secondaryKeywords": [
+      "subscribe link generator",
+      "youtube subscribe link",
+      "sub_confirmation link",
+      "youtube subscribe button link",
+      "youtube subscribe qr code"
+    ],
+    "metaTitle": "YouTube Subscribe Link Generator + QR Code",
+    "metaDescription": "Create a YouTube subscribe link that opens the Subscribe confirmation pop-up. Get the channel ID and @handle versions, an HTML button and a QR code.",
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Enter Your Channel",
+        "description": "Paste your channel URL, @handle or UC channel ID."
+      },
+      {
+        "step": 2,
+        "title": "Get Your Links",
+        "description": "We resolve the official channel ID and build ?sub_confirmation=1 links for both the ID and the handle."
+      },
+      {
+        "step": 3,
+        "title": "Share Anywhere",
+        "description": "Copy the link or HTML button, or save the QR code for flyers, merch and end slides."
+      }
+    ],
+    "features": [
+      "Permanent channel-ID link that survives handle changes",
+      "Readable @handle link for bios and captions",
+      "Copy-ready HTML subscribe button",
+      "QR code for print and video end screens",
+      "Test button to preview the confirmation prompt"
+    ],
+    "limitations": [
+      "The prompt only appears for viewers who are signed in and not already subscribed.",
+      "The QR image is created by the free api.qrserver.com service."
+    ],
+    "faqs": [
+      {
+        "question": "What does ?sub_confirmation=1 do?",
+        "answer": "Adding ?sub_confirmation=1 to your channel URL makes YouTube open a “Subscribe to this channel?” confirmation dialog, removing one step for viewers who click it."
+      },
+      {
+        "question": "Which link should I use — channel ID or handle?",
+        "answer": "The channel-ID link never changes, so use it anywhere you cannot easily edit later (printed QR codes, old blog posts). The @handle link is easier to read in bios and captions."
+      },
+      {
+        "question": "Does a subscribe link break YouTube rules?",
+        "answer": "No. It only shows a confirmation that viewers can accept or cancel. Do not offer rewards for subscribing or use sub-for-sub schemes; those break YouTube’s fake engagement policy."
+      }
+    ],
+    "relatedToolSlugs": [
+      "channel-id-finder",
+      "logo-banner-downloader",
+      "channel-name-generator"
+    ],
+    "updatedAt": "2026-10-14"
+  },
+  {
+    "slug": "category-checker",
+    "name": "YouTube Category Checker",
+    "shortTitle": "Category Checker",
+    "headline": "See Which Category Any YouTube Video Uses",
+    "description": "Find the official YouTube category of any public video or Short, see the category ID and language, and compare it with a competitor’s upload. Spot videos left on the default “People & Blogs” category and learn which category fits better.",
+    "category": "seo",
+    "badge": "New",
+    "priority": "P1",
+    "featured": false,
+    "iconName": "FolderSearch",
+    "primaryKeyword": "youtube category checker",
+    "secondaryKeywords": [
+      "youtube video category checker",
+      "check youtube category",
+      "youtube category id",
+      "youtube channel category checker",
+      "video category finder"
+    ],
+    "metaTitle": "YouTube Category Checker — Find Any Video’s Category",
+    "metaDescription": "Check the category of any YouTube video or Short. See the category ID and language, compare with a competitor and fix default People & Blogs categories.",
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Paste a Video URL",
+        "description": "Enter any public YouTube video or Shorts link."
+      },
+      {
+        "step": 2,
+        "title": "Optionally Add a Competitor",
+        "description": "Paste a second video to compare categories side by side."
+      },
+      {
+        "step": 3,
+        "title": "Review and Adjust",
+        "description": "See the category name, ID and guidance, then change your own category in YouTube Studio if needed."
+      }
+    ],
+    "features": [
+      "Official category from the YouTube Data API",
+      "Category ID and default language",
+      "Side-by-side comparison with a second video",
+      "Warning for videos left on the default People & Blogs",
+      "Plain-English guidance for every category"
+    ],
+    "limitations": [
+      "YouTube does not publish a single “channel category”; channels are judged by their videos.",
+      "Category is a light signal; it will not rescue a video with a weak title or thumbnail."
+    ],
+    "faqs": [
+      {
+        "question": "Does the YouTube category affect ranking?",
+        "answer": "Category is a minor signal that helps YouTube understand context — for example, Gaming uploads can show a game card and Music uploads can surface in YouTube Music. Choose the most accurate category, but focus on title, thumbnail and retention."
+      },
+      {
+        "question": "How do I change my video category?",
+        "answer": "In YouTube Studio, open Content, select the video, click Show more under Details and pick a new Category. You can also set a default in Settings → Upload defaults."
+      },
+      {
+        "question": "What is category 22?",
+        "answer": "Category ID 22 is People & Blogs, YouTube’s default. Many creators never change it, even when Education, Howto & Style or Science & Technology describes their video better."
+      }
+    ],
+    "relatedToolSlugs": [
+      "video-data-viewer",
+      "tag-extractor",
+      "seo-score-checker"
+    ],
+    "updatedAt": "2026-10-14"
+  },
+  {
+    "slug": "channel-name-generator",
+    "name": "YouTube Channel Name Generator",
+    "shortTitle": "Channel Name Generator",
+    "headline": "Brainstorm Channel Names and Check the @Handle",
+    "description": "Generate YouTube channel name ideas from your niche keywords in brandable, personal, descriptive or playful styles. Each idea comes with a ready-made @handle and a one-click link to see whether that handle is already taken on YouTube.",
+    "category": "utilities",
+    "badge": "New",
+    "priority": "P2",
+    "featured": false,
+    "iconName": "Sparkles",
+    "primaryKeyword": "youtube channel name generator",
+    "secondaryKeywords": [
+      "youtube name generator",
+      "channel name ideas",
+      "youtube name checker",
+      "youtube handle generator",
+      "youtube channel name ideas"
+    ],
+    "metaTitle": "YouTube Channel Name Generator + Handle Check",
+    "metaDescription": "Get YouTube channel name ideas from your niche in four styles, with a matching @handle for each and a quick link to check if the handle is taken.",
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Describe Your Channel",
+        "description": "Enter one to four keywords, plus your first name if you want a personal brand."
+      },
+      {
+        "step": 2,
+        "title": "Choose a Style",
+        "description": "Pick brandable, personal, descriptive (SEO) or playful and generate ideas."
+      },
+      {
+        "step": 3,
+        "title": "Check the Handle",
+        "description": "Copy a favourite or open its @handle on YouTube to see if it is free, then confirm in YouTube Studio."
+      }
+    ],
+    "features": [
+      "Four naming styles for different channel goals",
+      "Combines your keywords with your name for personal brands",
+      "Automatic @handle suggestion within YouTube’s 30-character rule",
+      "One-click link to check if a handle is taken",
+      "Shuffle for fresh combinations — runs in your browser"
+    ],
+    "limitations": [
+      "Handle availability is only confirmed in YouTube Studio.",
+      "Check trademarks before committing to a name for a business channel."
+    ],
+    "faqs": [
+      {
+        "question": "What makes a good YouTube channel name?",
+        "answer": "Short, easy to spell and say, and connected to what viewers get from your videos. Avoid numbers and underscores that people forget, and make sure the matching @handle is available."
+      },
+      {
+        "question": "Can I change my channel name later?",
+        "answer": "Yes. You can change your channel name and handle in YouTube Studio → Customization → Basic info, within YouTube’s limits on how often you can change them."
+      },
+      {
+        "question": "Should my channel name include keywords?",
+        "answer": "A descriptive name such as “Budget Meals Academy” tells new viewers what to expect and can help in search, but a brandable name is easier to grow beyond one topic. Pick based on your long-term plans."
+      }
+    ],
+    "relatedToolSlugs": [
+      "subscribe-link-generator",
+      "channel-id-finder",
+      "logo-banner-downloader"
+    ],
+    "updatedAt": "2026-10-14"
   },
 ];
 

@@ -62,7 +62,9 @@ export function buildRootMetadata(): Metadata {
 export function formatToolMetaTitle(tool: ToolDefinition): string {
   const brand = SITE_CONFIG.name;
   const base = tool.metaTitle.replace(new RegExp(`\\s*\\|\\s*${brand}\\s*$`, 'i'), '').trim();
-  return `${base} | ${brand}`;
+  // Keep SERP titles within ~65 characters: drop the brand suffix when the keyword title is long.
+  const branded = `${base} | ${brand}`;
+  return branded.length <= 65 ? branded : base;
 }
 
 export function constructToolMetadata(tool: ToolDefinition): Metadata {

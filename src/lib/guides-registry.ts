@@ -95,7 +95,6 @@ export const GUIDE_HUBS: GuideHub[] = [
     toolSlugs: ['monetization-checker', 'earnings-calculator', 'rpm-calculator'],
     blogSlugs: [
       'youtube-partner-program-requirements-2026',
-      'how-to-check-if-youtube-channel-is-monetized',
       'youtube-monetization-checker-inferred-vs-official',
       'why-youtube-shows-ads-on-non-monetized-channels',
       'youtube-shorts-monetization-requirements-2026',
@@ -218,6 +217,9 @@ export const GUIDE_HUBS: GuideHub[] = [
       },
     ],
     toolSlugs: [
+      'tag-generator',
+      'description-generator',
+      'category-checker',
       'seo-score-checker',
       'tag-extractor',
       'title-description-analyzer',

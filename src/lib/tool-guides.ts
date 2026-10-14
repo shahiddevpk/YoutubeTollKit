@@ -651,6 +651,244 @@ const GUIDES: Record<string, ToolGuide> = {
       DEFAULT_TRUST,
     ],
   },
+  'thumbnail-downloader': {
+    sections: [
+      {
+        heading: "Which thumbnail sizes YouTube stores",
+        paragraphs: ["Every public video has up to five thumbnail files on YouTube’s image servers: maxresdefault (1280×720), sddefault (640×480), hqdefault (480×360), mqdefault (320×180) and default (120×90). The 1280×720 version only exists when the creator uploaded a custom HD thumbnail or the video itself is HD; older or low-resolution uploads fall back to 480×360.", "The downloader checks each size and only offers the ones that actually exist, so you do not save a grey placeholder by mistake. Shorts use the same file names, which is why a Shorts URL works too."],
+      },
+      {
+        heading: "Good reasons to download a thumbnail",
+        paragraphs: ["Creators use saved thumbnails to build swipe files of high-CTR designs in their niche, to run A/B mock-ups next to their own drafts in the Thumbnail Preview tool, or to recover their own artwork when the original design file is lost.", "Journalists and educators often need a still image to reference a video in an article or slide deck. In those cases, credit the channel and link to the video."],
+      },
+      {
+        heading: "Copyright and fair use",
+        paragraphs: ["A thumbnail is the creator’s artwork and is protected by copyright like any other image. Downloading for personal reference or commentary is usually fine; re-uploading someone else’s thumbnail as your own, or using it in ads or merchandise, is not.", "If you want to reuse a thumbnail commercially, ask the channel for permission through the business email on its About tab."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'logo-banner-downloader': {
+    sections: [
+      {
+        heading: "Profile picture versus banner",
+        paragraphs: ["YouTube serves a channel’s profile picture (logo) as a square image that the API can return at up to 800×800 pixels, and the banner as a wide image based on the 2560×1440 upload template. This tool fetches both from the official YouTube Data API so you always get the version YouTube currently displays.", "If you only need a creator’s profile picture — for example to add to a collaboration slide or a press kit — use the logo download; the banner section is there for design research."],
+      },
+      {
+        heading: "Using the downloaded images responsibly",
+        paragraphs: ["Profile pictures and banners usually contain logos, faces and trademarks. Saving them for reference, mood boards or to recover your own lost artwork is reasonable. Using another channel’s logo to imply endorsement, or on merchandise, needs the owner’s permission.", "Brands preparing sponsorship decks should credit the creator and keep the images inside the private proposal."],
+      },
+      {
+        heading: "Designing your own channel art",
+        paragraphs: ["Upload banners at 2560×1440 and keep text and faces inside the central 1546×423 “safe area” that shows on every device. Profile pictures should be at least 98×98, but uploading 800×800 keeps them crisp on TVs.", "Compare your design with successful channels in your niche by downloading their banners and viewing them side by side at mobile size."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'video-data-viewer': {
+    sections: [
+      {
+        heading: "What metadata YouTube makes public",
+        paragraphs: ["Every public video exposes a set of fields through the YouTube Data API: title, description, tags, category, publish date, duration, view, like and comment counts, channel ID and thumbnail URLs. Viewers see only part of this in the normal YouTube interface — tags, the category ID and exact counts are hidden.", "The Data Viewer shows all of it in one place, adds derived numbers like average views per day and engagement rate, and lets you export the result as JSON or CSV."],
+      },
+      {
+        heading: "How researchers and creators use it",
+        paragraphs: ["Creators compare their own uploads with top-ranking competitors to see differences in title length, description structure and tag usage. Analysts export several videos to a spreadsheet to track performance over time.", "Because the export uses the same field names as the YouTube API, developers can also use it to check what their own integrations will receive."],
+      },
+      {
+        heading: "Reading the derived metrics",
+        paragraphs: ["Average views per day divides total views by the video’s age, so it favours recent uploads and hides spikes. Engagement rate adds likes and comments and divides by views; 2–6% is common for long-form videos, while Shorts and fan-heavy channels can be higher.", "Treat these numbers as comparisons between similar videos, not as absolute grades."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'live-view-count': {
+    sections: [
+      {
+        heading: "How live view counting works",
+        paragraphs: ["YouTube updates public view counts in batches after filtering out spam and repeated views, so the number moves in steps rather than every second. This tool asks the YouTube Data API for the current public count on a schedule you choose and shows how much it changed between refreshes.", "During premieres and viral spikes, a 30–60 second interval is the most useful; for older videos, two minutes is plenty."],
+      },
+      {
+        heading: "Session trend and CSV export",
+        paragraphs: ["Each refresh is stored in your browser so you can see a small trend line and an estimated views-per-minute rate for the current session. Export the history as a CSV to document a launch, a sponsor deliverable or a premiere milestone.", "Nothing is stored on our servers; closing the tab clears the history."],
+      },
+      {
+        heading: "Why the count sometimes pauses",
+        paragraphs: ["Auto-refresh pauses when the tab is in the background to save your daily lookups and YouTube’s API quota. It resumes when you return. YouTube may also freeze public counts briefly while it verifies traffic — this is normal and not a problem with the video."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'youtube-trending': {
+    sections: [
+      {
+        heading: "What “trending” means on YouTube",
+        paragraphs: ["The list comes from YouTube’s “most popular” chart for each country and category, which YouTube builds from view velocity, recency and other signals. It is not the same as your personal home feed, which is personalized.", "Switching country shows how differently audiences behave — a useful check before planning content for a new market."],
+      },
+      {
+        heading: "Using trending data for content ideas",
+        paragraphs: ["Look for repeated formats rather than copying single videos: recurring title structures, thumbnail styles or topics that appear across several channels in your category usually signal demand.", "Combine trending research with the Tag Generator to see how viewers phrase the same topic in search."],
+      },
+      {
+        heading: "Limitations",
+        paragraphs: ["YouTube does not publish trending lists for every category in every country, so some combinations return few videos. Music and gaming often dominate the overall chart, so filter by category to find opportunities in your niche."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'watch-time-calculator': {
+    sections: [
+      {
+        heading: "The two YouTube Partner Program paths",
+        paragraphs: ["To unlock ads revenue, a long-form channel needs 1,000 subscribers plus 4,000 public watch hours in the last 365 days. A Shorts-focused channel can instead qualify with 1,000 subscribers and 10 million valid public Shorts views in 90 days. Lower fan-funding tiers start at 500 subscribers.", "The calculator focuses on the watch-hours path and projects when you will reach 4,000 hours at your current daily pace."],
+      },
+      {
+        heading: "Why the projection uses a rolling year",
+        paragraphs: ["Watch hours older than 365 days drop out of the total, so a channel can lose eligibility progress if it stops uploading. The projection assumes your daily average stays steady; seasonal niches should re-run it every month.", "Only public, non-Shorts watch time counts. Hours from unlisted, private or deleted videos and from Shorts do not."],
+      },
+      {
+        heading: "Practical ways to speed up watch time",
+        paragraphs: ["Longer videos with strong retention, playlists that autoplay into the next video, and live streams (which count once archived publicly) are the fastest legitimate ways to build hours. Buying watch time breaks YouTube’s fake engagement policy and can get a channel terminated."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'like-counter': {
+    sections: [
+      {
+        heading: "What the like-to-view ratio tells you",
+        paragraphs: ["Likes divided by views is a quick measure of how strongly viewers responded. Across many niches, 2–5% is typical for long-form videos; tutorials and music often run higher, while viral videos reaching casual audiences run lower.", "Use the ratio to compare similar videos — for example your last five uploads, or your video against a competitor’s video on the same topic."],
+      },
+      {
+        heading: "Comparing two videos side by side",
+        paragraphs: ["The comparison table shows likes, views, like-to-view ratio, likes per day since publishing and comments per 1,000 views for both videos. Likes per day adjusts for age, so a new video can be compared fairly with an older one.", "Large gaps usually point to differences in hook, audience fit or call-to-action rather than luck."],
+      },
+      {
+        heading: "When likes show as zero",
+        paragraphs: ["Creators can hide like counts in YouTube Studio. In that case the API returns 0 even though the video has likes. The tool shows what YouTube makes public and cannot reveal hidden counts."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'dislike-checker': {
+    sections: [
+      {
+        heading: "Why dislikes are estimated",
+        paragraphs: ["YouTube removed public dislike counts in November 2021 and the official API no longer returns them. The numbers here come from the Return YouTube Dislike project, which combines archived data from before the change with votes from users of its browser extension and extrapolates to the whole audience.", "The sentiment panel shows how many extension votes the estimate is based on, so you can judge how reliable it is."],
+      },
+      {
+        heading: "Reading the sentiment label",
+        paragraphs: ["Under 3% dislikes is very positive, 3–10% is mostly positive, 10–25% is mixed and above that is divisive. Controversial topics, clickbait titles and misleading thumbnails tend to raise the dislike share.", "Dislikes per 1,000 views is useful for comparing videos with very different view counts."],
+      },
+      {
+        heading: "Do dislikes hurt a video?",
+        paragraphs: ["YouTube has said dislikes are one of many satisfaction signals and do not on their own push a video down. Watch time, survey responses and “Not interested” clicks matter more. Use the estimate as feedback on audience fit, not as a ranking score."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'live-stream-calculator': {
+    sections: [
+      {
+        heading: "Where live stream income comes from",
+        paragraphs: ["Live streams can earn from ads (pre-roll and mid-roll on eligible streams), Super Chat and Super Stickers, channel memberships and sometimes brand integrations. YouTube keeps 30% of Super Chat, Super Stickers and membership revenue; the calculator applies that split automatically.", "Inputs are your typical concurrent viewers, stream length and the share of viewers who send Super Chats, so you can model realistic and best-case scenarios."],
+      },
+      {
+        heading: "Why concurrent viewers matter most",
+        paragraphs: ["Ad revenue scales with total watch time, while Super Chat scales with how engaged the chat is. A small but loyal audience often out-earns a larger passive one, which is why the calculator separates the engagement rate from viewer count.", "Track your real numbers in YouTube Studio → Analytics → Revenue after each stream and adjust the inputs."],
+      },
+      {
+        heading: "Eligibility reminders",
+        paragraphs: ["Super Chat requires YouTube Partner Program membership, being over 18 and living in a supported country. Mid-roll ads on streams need the channel to be monetized and the stream long enough. Estimates are for planning only."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'tag-generator': {
+    sections: [
+      {
+        heading: "Why autocomplete is a good tag source",
+        paragraphs: ["YouTube’s search suggestions reflect what real viewers type. When the same phrase appears across several variations of your topic — “how to…”, “best…”, “… for beginners” — it is a strong sign people search for it. The generator runs those variations, counts how often each phrase appears and how high, and ranks the results.", "Choosing a region changes the suggestions, which matters for topics where spelling or product names differ by country."],
+      },
+      {
+        heading: "Picking the right tags",
+        paragraphs: ["Start with your exact main keyword, add two to four close variations and one or two broader topic tags. Remove anything that does not describe your video; misleading tags can count as spam under YouTube’s metadata policy.", "Your title and description carry much more weight than tags. Put the strongest phrase from this list into your title and first sentence too."],
+      },
+      {
+        heading: "The 500-character limit",
+        paragraphs: ["YouTube allows 500 characters of tags in total. Multi-word tags count two extra characters because YouTube stores them in quotes, and the commas between tags count too. The meter follows the same rules, so a list that fits here will be accepted in YouTube Studio."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'description-generator': {
+    sections: [
+      {
+        heading: "What a strong description does",
+        paragraphs: ["The first one or two lines appear in search results and above the “…more” cut-off, so they need to say clearly what the viewer will get and include your main keyword naturally. The rest of the description helps viewers navigate (chapters), act (links, subscribe) and helps YouTube understand context.", "Each template uses a different opening: tutorials promise an outcome, reviews pose the buying question, vlogs set the scene, and podcasts introduce the guest or theme."],
+      },
+      {
+        heading: "Structure that works for most videos",
+        paragraphs: ["A reliable order is: hook sentence with the keyword, a short summary, chapters starting at 0:00, links mentioned in the video, a call-to-action, any required disclosure, then three to five hashtags. The first three hashtags appear above the video title.", "Keep the description under 5,000 characters and avoid angle brackets, which YouTube rejects."],
+      },
+      {
+        heading: "Shorts descriptions",
+        paragraphs: ["For Shorts, the title and the first line of the description do most of the work. The Shorts template keeps it to a single line with an optional hashtag, because chapters and long link lists are not shown in the Shorts player."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'subscribe-link-generator': {
+    sections: [
+      {
+        heading: "How the subscribe confirmation works",
+        paragraphs: ["Adding ?sub_confirmation=1 to a YouTube channel URL tells YouTube to open a subscribe confirmation dialog as soon as the page loads. Signed-in viewers who are not yet subscribed see the prompt; everyone else simply lands on the channel.", "This removes a step for viewers coming from your website, newsletter, social bios or printed materials."],
+      },
+      {
+        heading: "Where to use your link",
+        paragraphs: ["Put the @handle version in social bios and video descriptions where readability matters. Use the channel-ID version on printed QR codes, business cards and anywhere you cannot update later, because the channel ID never changes even if you rename the channel or handle.", "The HTML button can be pasted into most website builders and email signatures."],
+      },
+      {
+        heading: "Staying within YouTube’s rules",
+        paragraphs: ["Asking viewers to subscribe is fine. Offering rewards for subscribing, sub-for-sub exchanges or paid subscriber services break YouTube’s fake engagement policy and can remove subscribers or the channel."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'category-checker': {
+    sections: [
+      {
+        heading: "What video categories are for",
+        paragraphs: ["Every YouTube upload is assigned one of about fifteen categories, such as Education, Gaming or Howto & Style. The category helps YouTube with context: Gaming uploads can display a game card, Music uploads can appear in YouTube Music, and News & Politics uploads receive extra authoritative-source treatment.", "Viewers never see the category on the watch page, so many creators leave the default without noticing."],
+      },
+      {
+        heading: "The People & Blogs default",
+        paragraphs: ["New channels default to category 22, People & Blogs. If your videos are tutorials, reviews or lessons, a more specific category describes them better. Set a default in YouTube Studio → Settings → Upload defaults so you do not have to change it on every upload."],
+      },
+      {
+        heading: "Comparing with competitors",
+        paragraphs: ["Checking the category of top-ranking videos in your niche shows how established creators classify similar content. If most of them use a category different from yours, test switching on a few videos and watch whether impressions from browse and suggested change."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
+  'channel-name-generator': {
+    sections: [
+      {
+        heading: "Four naming styles",
+        paragraphs: ["Brandable names are short and invented-sounding, which makes them easy to trademark and flexible if your topic changes. Personal names build around you and suit vloggers and experts. Descriptive names spell out the topic and help new viewers understand the channel instantly. Playful names suit entertainment, kids and gaming channels.", "Generate in two or three styles before choosing — the best name is often a tweak of an idea you did not expect."],
+      },
+      {
+        heading: "Matching @handle",
+        paragraphs: ["Every channel has a unique @handle of 3–30 characters. The generator converts each idea into a valid handle by removing spaces and symbols. Opening youtube.com/@handle shows whether a channel already uses it; YouTube Studio confirms availability when you try to claim it.", "If your preferred handle is taken, add a short descriptive word (for example “tv”, “hq” or your city) rather than random numbers."],
+      },
+      {
+        heading: "Final checks before you commit",
+        paragraphs: ["Say the name out loud, search it on YouTube and Google to avoid confusion with an existing creator or brand, and check that matching social usernames are free. For business channels, run a quick trademark search in your country."],
+      },
+      DEFAULT_TRUST,
+    ],
+  },
 };
 
 export function getToolGuide(slug: string): ToolGuide | null {

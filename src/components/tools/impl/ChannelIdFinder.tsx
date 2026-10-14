@@ -88,7 +88,7 @@ export function ChannelIdFinder() {
         </label>
         <div className={toolFormRowClass}>
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#909090] dark:text-[#717171]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#606060] dark:text-[#a0a0a0]" />
             <input
               type="text"
               value={input}
@@ -106,7 +106,7 @@ export function ChannelIdFinder() {
 
         {/* 1-Click Quick Preset Chips */}
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-[#909090] dark:text-[#717171]">Quick test:</span>
+          <span className="text-xs text-[#606060] dark:text-[#a0a0a0]">Quick test:</span>
           {PRESET_CHANNELS.map((preset) => (
             <button
               key={preset.handle}
@@ -166,7 +166,7 @@ export function ChannelIdFinder() {
                 </>
               ) : (
                 <>
-                  <Copy className="h-3.5 w-3.5 text-[#909090]" />
+                  <Copy className="h-3.5 w-3.5 text-[#606060]" />
                   <span>Copy ID</span>
                 </>
               )}
@@ -195,7 +195,7 @@ export function ChannelIdFinder() {
                 </>
               ) : (
                 <>
-                  <Copy className="h-3.5 w-3.5 text-[#909090]" />
+                  <Copy className="h-3.5 w-3.5 text-[#606060]" />
                   <span>Copy RSS</span>
                 </>
               )}

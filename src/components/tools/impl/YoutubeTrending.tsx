@@ -206,7 +206,7 @@ export function YoutubeTrending() {
               className="flex items-start gap-3 p-3 hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] transition-colors group"
             >
               {/* Rank */}
-              <span className="text-xs font-black text-[#909090] dark:text-[#717171] w-5 shrink-0 pt-1 text-right tabular-nums">
+              <span className="text-xs font-black text-[#606060] dark:text-[#a0a0a0] w-5 shrink-0 pt-1 text-right tabular-nums">
                 {index + 1}
               </span>
 
@@ -245,19 +245,19 @@ export function YoutubeTrending() {
                       {formatCompact(video.likeCount)}
                     </span>
                   )}
-                  <span className="text-[11px] text-[#909090] dark:text-[#717171]">
+                  <span className="text-[11px] text-[#606060] dark:text-[#a0a0a0]">
                     {formatRelativeDate(video.publishedAt)}
                   </span>
                 </div>
               </div>
 
-              <ExternalLink className="h-3.5 w-3.5 text-[#909090] dark:text-[#717171] shrink-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
+              <ExternalLink className="h-3.5 w-3.5 text-[#606060] dark:text-[#a0a0a0] shrink-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
             </a>
           ))}
         </div>
       )}
 
-      <p className="text-xs text-[#909090] dark:text-[#717171]">
+      <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
         Data sourced from YouTube Data API v3 · Updated every 30 minutes · Trending is determined by YouTube&apos;s algorithm
       </p>
     </div>

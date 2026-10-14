@@ -119,7 +119,7 @@ export function LogoBannerDownloader() {
         </label>
         <div className={toolFormRowClass}>
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#909090] dark:text-[#717171]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#606060] dark:text-[#a0a0a0]" />
             <input
               type="text"
               value={url}
@@ -136,7 +136,7 @@ export function LogoBannerDownloader() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-[#909090] dark:text-[#717171]">Quick test:</span>
+          <span className="text-xs text-[#606060] dark:text-[#a0a0a0]">Quick test:</span>
           {PRESET_CHANNELS.map((preset) => (
             <button
               key={preset.label}
@@ -171,7 +171,7 @@ export function LogoBannerDownloader() {
               />
             )}
             <div className="min-w-0">
-              <h4 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] truncate">{data.title}</h4>
+              <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] truncate">{data.title}</h3>
               {data.handle && (
                 <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-0.5">{data.handle}</p>
               )}
@@ -212,7 +212,7 @@ export function LogoBannerDownloader() {
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-[#909090] dark:text-[#717171]">No logo available for this channel.</p>
+              <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">No logo available for this channel.</p>
             )}
           </div>
 
@@ -253,7 +253,7 @@ export function LogoBannerDownloader() {
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-[#909090] dark:text-[#717171]">
+              <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
                 This channel has not set a banner image, or the banner is not publicly accessible.
               </p>
             )}

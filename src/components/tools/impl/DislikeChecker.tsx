@@ -20,6 +20,8 @@ interface RydData {
   likes: number;
   rating: number;
   viewCount: number;
+  rawLikes?: number;
+  rawDislikes?: number;
 }
 
 function extractVideoId(input: string): string | null {
@@ -99,7 +101,7 @@ export function DislikeChecker() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleCheck()}
-          className="flex-1 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#909090] focus:border-[#ff0000] focus:outline-none"
+          className="flex-1 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-4 py-3 text-sm text-[#0f0f0f] dark:text-[#f1f1f1] placeholder:text-[#606060] focus:border-[#ff0000] focus:outline-none"
         />
         <ToolPrimaryButton type="button" loading={loading} loadingLabel="Checking…" onClick={handleCheck}>
           <ThumbsDown className="h-4 w-4" aria-hidden />
@@ -152,7 +154,7 @@ export function DislikeChecker() {
                 <p className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2 group-hover:text-[#ff0000] transition-colors">
                   {stats.title}
                 </p>
-                <ExternalLink className="h-3.5 w-3.5 text-[#909090] shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ExternalLink className="h-3.5 w-3.5 text-[#606060] shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-0.5">{stats.channelTitle}</p>
             </div>
@@ -165,7 +167,7 @@ export function DislikeChecker() {
               <p className="text-lg font-black text-[#0f0f0f] dark:text-[#f1f1f1]">
                 {formatCompact(likes)}
               </p>
-              <p className="text-xs text-[#909090] dark:text-[#717171]">Likes</p>
+              <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Likes</p>
             </div>
 
             <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 text-center space-y-1">
@@ -173,14 +175,14 @@ export function DislikeChecker() {
               <p className="text-lg font-black text-[#0f0f0f] dark:text-[#f1f1f1]">
                 {ryd ? formatCompact(dislikes) : 'N/A'}
               </p>
-              <p className="text-xs text-[#909090] dark:text-[#717171]">
+              <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
                 {ryd ? 'Est. Dislikes' : 'Dislikes'}
               </p>
             </div>
 
             <div className="col-span-2 sm:col-span-1 rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 text-center space-y-1">
               <p className="text-2xl font-black text-emerald-500">{likePct.toFixed(1)}%</p>
-              <p className="text-xs text-[#909090] dark:text-[#717171]">Like Rate</p>
+              <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">Like Rate</p>
             </div>
           </div>
 
@@ -209,7 +211,28 @@ export function DislikeChecker() {
         </div>
       )}
 
-      <p className="text-xs text-[#909090] dark:text-[#717171]">
+      {ryd && stats && total > 0 && (
+        <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 space-y-2 text-sm">
+          <p className="font-semibold text-[#0f0f0f] dark:text-[#f1f1f1]">
+            Audience sentiment:{' '}
+            <span className={dislikePct < 3 ? 'text-emerald-600 dark:text-emerald-400' : dislikePct < 10 ? 'text-amber-600 dark:text-amber-400' : 'text-rose-600 dark:text-rose-400'}>
+              {dislikePct < 3 ? 'Very positive' : dislikePct < 10 ? 'Mostly positive' : dislikePct < 25 ? 'Mixed' : 'Divisive'}
+            </span>
+          </p>
+          <ul className="text-xs text-[#606060] dark:text-[#aaaaaa] space-y-1 list-disc list-inside">
+            <li>About {stats.viewCount > 0 ? ((dislikes / stats.viewCount) * 1000).toFixed(2) : '0'} estimated dislikes per 1,000 views.</li>
+            {typeof ryd.rawDislikes === 'number' && typeof ryd.rawLikes === 'number' && (
+              <li>
+                Estimate is extrapolated from {(ryd.rawLikes + ryd.rawDislikes).toLocaleString()} votes cast by Return YouTube Dislike extension users
+                {ryd.rawLikes + ryd.rawDislikes < 1000 ? ' — a small sample, so treat the number as rough.' : ' — a reasonable sample size.'}
+              </li>
+            )}
+            <li>Dislike counts have been hidden by YouTube since November 2021; no tool can show the exact official number.</li>
+          </ul>
+        </div>
+      )}
+
+      <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
         Like counts: official YouTube Data API v3 · Dislike estimates: Return YouTube Dislike (community-sourced approximations)
       </p>
     </div>

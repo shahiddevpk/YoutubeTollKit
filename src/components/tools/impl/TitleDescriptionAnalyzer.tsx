@@ -66,14 +66,14 @@ export function TitleDescriptionAnalyzer() {
 
         {/* Live Snippet Preview */}
         <div className="rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-[#f9f9f9] dark:bg-[#121212] p-5 space-y-4 shadow-sm">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] flex items-center gap-1.5">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#606060] dark:text-[#aaaaaa] flex items-center gap-1.5">
             <Eye className="h-4 w-4 text-[#ff0000]" />
             Search & Feed Snippet Preview
-          </h4>
+          </h3>
 
           {/* Desktop Search Card Preview */}
           <div className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-4 space-y-2 shadow-sm">
-            <span className="text-[10px] uppercase font-bold text-[#909090] dark:text-[#717171]">
+            <span className="text-[10px] uppercase font-bold text-[#606060] dark:text-[#a0a0a0]">
               Desktop YouTube Search
             </span>
             <h5 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] line-clamp-2">

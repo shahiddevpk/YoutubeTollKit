@@ -17,7 +17,7 @@ export async function generateMetadata({ searchParams }: ToolsPageProps): Promis
 
   return {
     title: {
-      absolute: `Free YouTube Creator Tools Directory (${TOOLS_REGISTRY.length} Tools) | YouTubeFreeToolkit`,
+      absolute: 'All YouTube Tools by Category | YouTubeFreeToolkit',
     },
     description: `Browse ${TOOLS_REGISTRY.length} policy-safe YouTube creator tools — monetization indicators, metadata, and research. No downloaders. Public tools need no login.`,
     alternates: {
@@ -25,7 +25,7 @@ export async function generateMetadata({ searchParams }: ToolsPageProps): Promis
     },
     robots: filtered ? noindexFollowRobots() : defaultRobots(),
     openGraph: {
-      title: 'Free YouTube Creator Tools Directory | YouTubeFreeToolkit',
+      title: 'All YouTube Tools by Category | YouTubeFreeToolkit',
       description:
         'Explore free YouTube monetization, SEO, and creator utilities. Public checks need no login; channel owners can optionally verify YPP access with YouTube Analytics.',
       url: `${SITE_CONFIG.url}/tools`,
@@ -72,11 +72,39 @@ export default function ToolsIndexPage() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8">
-        <Suspense fallback={<p className="text-sm text-[#606060] dark:text-[#aaaaaa]">Loading tools…</p>}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8">
+        {/* Server-rendered, crawlable directory shown until the interactive explorer (search + filters) hydrates */}
+        <Suspense
+          fallback={
+            <div className="space-y-10">
+              {CATEGORIES.map((cat) => {
+                const tools = TOOLS_REGISTRY.filter((t) => t.category === cat.id);
+                if (!tools.length) return null;
+                return (
+                  <section key={cat.id} aria-labelledby={`cat-${cat.id}`}>
+                    <h2 id={`cat-${cat.id}`} className="text-xl font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">
+                      <Link href={`/tools/category/${cat.id}`} className="hover:text-[#ff0000]">{cat.name}</Link>
+                    </h2>
+                    <p className="mt-1 text-sm text-[#606060] dark:text-[#aaaaaa]">{cat.description}</p>
+                    <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                      {tools.map((t) => (
+                        <li key={t.slug} className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] p-4">
+                          <Link href={`/tools/${t.slug}`} className="font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] hover:text-[#ff0000]">
+                            {t.name}
+                          </Link>
+                          <p className="mt-1 text-xs text-[#606060] dark:text-[#aaaaaa] line-clamp-3">{t.metaDescription}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                );
+              })}
+            </div>
+          }
+        >
           <ToolsExplorerClient initialTools={TOOLS_REGISTRY} categories={CATEGORIES} />
         </Suspense>
-      </main>
+      </div>
     </div>
   );
 }

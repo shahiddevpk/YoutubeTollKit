@@ -86,7 +86,7 @@ export function TagExtractor() {
         </label>
         <div className={toolFormRowClass}>
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#909090] dark:text-[#717171]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#606060] dark:text-[#a0a0a0]" />
             <input
               type="text"
               value={url}
@@ -104,7 +104,7 @@ export function TagExtractor() {
 
         {/* Preset Video Chips */}
         <div className="flex flex-wrap items-center gap-2 pt-1">
-          <span className="text-xs text-[#909090] dark:text-[#717171]">Quick test:</span>
+          <span className="text-xs text-[#606060] dark:text-[#a0a0a0]">Quick test:</span>
           {PRESET_VIDEOS.map((preset) => (
             <button
               key={preset.label}
@@ -139,7 +139,7 @@ export function TagExtractor() {
                 />
               )}
               <div className="min-w-0">
-                <h4 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] truncate">{videoTitle}</h4>
+                <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] truncate">{videoTitle}</h3>
                 <p className="text-xs text-[#606060] dark:text-[#aaaaaa] mt-0.5">
                   Character count: <strong className="text-emerald-600 dark:text-emerald-400 font-mono">{totalCharacters}</strong> / 500 max
                 </p>
@@ -171,12 +171,12 @@ export function TagExtractor() {
                 className="group flex items-center gap-1.5 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] px-3.5 py-1.5 text-xs text-[#0f0f0f] dark:text-[#f1f1f1] hover:border-[#ff0000] hover:bg-[#f2f2f2] dark:hover:bg-[#272727] transition-all cursor-pointer shadow-sm"
                 title="Click to copy single tag"
               >
-                <Hash className="h-3 w-3 text-[#909090] group-hover:text-[#ff0000]" />
+                <Hash className="h-3 w-3 text-[#606060] group-hover:text-[#ff0000]" />
                 <span>{tag}</span>
                 {copiedTag === tag ? (
                   <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400 ml-1" />
                 ) : (
-                  <Copy className="h-3 w-3 text-[#909090] opacity-0 group-hover:opacity-100 ml-1 transition-opacity" />
+                  <Copy className="h-3 w-3 text-[#606060] opacity-0 group-hover:opacity-100 ml-1 transition-opacity" />
                 )}
               </button>
             ))}

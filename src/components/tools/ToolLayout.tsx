@@ -10,6 +10,8 @@ import {
 } from '@/lib/seo';
 import { getToolGuide } from '@/lib/tool-guides';
 import { ProseBlock } from '@/components/content/ProseBlock';
+import { BLOG_POSTS } from '@/lib/blog-registry';
+import { GUIDE_HUBS } from '@/lib/guides-registry';
 
 interface ToolLayoutProps {
   tool: ToolDefinition;
@@ -31,6 +33,16 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
     .map((slug) => getToolBySlug(slug))
     .filter((t): t is ToolDefinition => Boolean(t))
     .slice(0, 4);
+
+  const guideHub =
+    GUIDE_HUBS.find((g) => g.toolSlugs.includes(tool.slug)) ??
+    GUIDE_HUBS.find((g) => g.slug === (tool.category === 'monetization' ? 'youtube-monetization' : tool.category === 'seo' ? 'youtube-seo' : 'youtube-troubleshooting'));
+  const relatedPosts = [
+    ...(tool.relatedBlogSlugs ?? []).map((slug) => BLOG_POSTS.find((p) => p.slug === slug)),
+    ...BLOG_POSTS.filter((p) => p.toolCta.slug === tool.slug),
+  ]
+    .filter((p, i, arr): p is (typeof BLOG_POSTS)[number] => Boolean(p) && arr.findIndex((x) => x?.slug === p?.slug) === i)
+    .slice(0, 3);
 
   return (
     <article className="min-h-screen text-[#0f0f0f] dark:text-[#f1f1f1] pb-16 transition-colors">
@@ -56,7 +68,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
       />
 
       {/* Header section with proper alignment */}
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-8 pb-6">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-2">
         <nav className="text-xs text-[#606060] dark:text-[#aaaaaa] mb-4" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">Home</Link>
           <span className="mx-1.5">/</span>
@@ -71,17 +83,11 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
         {tool.headline !== tool.name && (
           <p className="mt-2 text-sm sm:text-base text-[#606060] dark:text-[#aaaaaa]">{tool.headline}</p>
         )}
-        <p className="mt-3 text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-3xl">{tool.description}</p>
-        <p className="mt-3 text-xs text-[#909090] dark:text-[#717171]">
-          Last updated {tool.updatedAt}.{' '}
-          <Link href="/compliance" className="text-[#ff0000] dark:text-red-400 hover:underline">
-            Policy & limitations
-          </Link>
-        </p>
       </div>
 
       {/* Primary Tool interactive surface */}
-      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6" aria-labelledby="tool-heading">
+        <h2 id="tool-heading" className="sr-only">{tool.shortTitle}</h2>
         <div className="elevated-card rounded-2xl p-5 sm:p-7">
           {children}
         </div>
@@ -104,6 +110,19 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
 
       {/* Content & Education */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10 text-sm">
+        <section aria-labelledby="about-tool-heading">
+          <h2 id="about-tool-heading" className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-2">
+            About the {tool.shortTitle}
+          </h2>
+          <p className="text-[#606060] dark:text-[#aaaaaa] leading-relaxed max-w-3xl">{tool.description}</p>
+          <p className="mt-2 text-xs text-[#606060] dark:text-[#a0a0a0]">
+            Last updated {tool.updatedAt}.{' '}
+            <Link href="/compliance" className="text-[#ff0000] dark:text-red-400 hover:underline">
+              Policy & limitations
+            </Link>
+          </p>
+        </section>
+
         <section aria-labelledby="how-to-heading">
           <h2 id="how-to-heading" className="text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-3">
             How to Use the {tool.shortTitle}
@@ -159,7 +178,7 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
                 >
                   <summary className="cursor-pointer font-semibold text-[#0f0f0f] dark:text-[#f1f1f1] group-hover:text-[#ff0000] dark:group-hover:text-red-400 list-none flex items-center justify-between">
                     <span>{faq.question}</span>
-                    <span className="text-[#909090] dark:text-[#717171] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
+                    <span className="text-[#606060] dark:text-[#a0a0a0] group-open:rotate-180 transition-transform text-xs ml-2">▼</span>
                   </summary>
                   <p className="mt-2.5 text-xs sm:text-sm text-[#606060] dark:text-[#aaaaaa] leading-relaxed border-t border-[#e5e5e5] dark:border-[#272727] pt-2.5">
                     {faq.answer}
@@ -189,6 +208,27 @@ export function ToolLayout({ tool, children }: ToolLayoutProps) {
                 </li>
               ))}
             </ul>
+            {(guideHub || relatedPosts.length > 0) && (
+              <div className="mt-6">
+                <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1] mb-2">Learn more</h3>
+                <ul className="space-y-1.5">
+                  {guideHub && (
+                    <li>
+                      <Link href={`/guides/${guideHub.slug}`} className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">
+                        {guideHub.title}
+                      </Link>
+                    </li>
+                  )}
+                  {relatedPosts.map((post) => (
+                    <li key={post.slug}>
+                      <Link href={`/blog/${post.slug}`} className="text-[#ff0000] dark:text-red-400 hover:underline font-medium">
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <p className="mt-4">
               <Link href="/tools" className="text-sm font-medium text-[#0f0f0f] dark:text-[#f1f1f1] hover:text-[#ff0000] dark:hover:text-red-400 transition-colors">
                 ← Browse all creator tools

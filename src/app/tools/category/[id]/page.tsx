@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: { absolute: 'Category Not Found | YouTubeFreeToolkit' } };
   }
 
-  const title = `Free ${category.name} Tools for YouTube Creators`;
-  const description = `${category.description} Browse ${getToolsByCategory(category.id).length} free utilities on YouTubeFreeToolkit.`;
+  const title = `${category.name} Tools for YouTube Creators`;
+  const description = `${getToolsByCategory(category.id).length} free ${category.name.toLowerCase()} tools for YouTube creators. ${category.description}`.slice(0, 158).replace(/\s+\S*$/, '') + '…';
   const canonicalUrl = `${SITE_CONFIG.url}/tools/category/${category.id}`;
   const ogImage = `${SITE_CONFIG.url}/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(category.description.slice(0, 120))}`;
 
   return {
-    title: { absolute: `${title} | YouTubeFreeToolkit` },
+    title: { absolute: `${title}`.length + 21 <= 65 ? `${title} | YouTubeFreeToolkit` : title },
     description,
     keywords: [category.name.toLowerCase(), `free ${category.name.toLowerCase()} tools`, 'youtube creator tools'],
     robots: category.id === 'analytics' ? { index: false, follow: true } : undefined,

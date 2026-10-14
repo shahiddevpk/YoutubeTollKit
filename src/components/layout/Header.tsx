@@ -98,7 +98,7 @@ export function Header() {
               className="flex items-center gap-2 rounded-full border border-[#e5e5e5] dark:border-[#272727] bg-[#f2f2f2] dark:bg-[#1f1f1f] px-3.5 py-1.5 text-xs sm:text-sm text-[#606060] dark:text-[#aaaaaa] hover:border-[#cccccc] dark:hover:border-[#383838] hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1] transition-colors cursor-pointer"
               aria-label="Search tools"
             >
-              <Search className="h-3.5 w-3.5 text-[#909090] dark:text-[#717171]" />
+              <Search className="h-3.5 w-3.5 text-[#606060] dark:text-[#a0a0a0]" />
               <span className="hidden sm:inline">Search tools...</span>
               <kbd className="hidden sm:inline-block rounded-full bg-white dark:bg-[#272727] border border-[#e5e5e5] dark:border-[#383838] px-1.5 py-0.2 text-[10px] font-mono text-[#606060] dark:text-[#aaaaaa]">
                 /

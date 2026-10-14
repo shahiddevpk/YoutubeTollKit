@@ -5,7 +5,7 @@ const ALLOWED_QUALITIES = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault
 type Quality = (typeof ALLOWED_QUALITIES)[number];
 
 export async function GET(req: NextRequest) {
-  const rateLimit = checkRateLimit(req);
+  const rateLimit = await checkRateLimit(req, { bucket: 'proxy', limit: 1000 });
   if (!rateLimit.allowed) return createRateLimitResponse(rateLimit);
 
   const { searchParams } = new URL(req.url);

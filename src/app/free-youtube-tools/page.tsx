@@ -7,9 +7,9 @@ import { defaultRobots } from '@/lib/seo-site-config';
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: `Free YouTube Tools — ${TOOLS_REGISTRY.length}+ Free Creator Utilities (No Login Required)`,
+  title: { absolute: `Free YouTube Tools — ${TOOLS_REGISTRY.length} Tools, No Login | YouTubeFreeToolkit` },
   description:
-    `${TOOLS_REGISTRY.length} free YouTube tools for monetization checking, SEO, channel research, analytics, and video metadata. No account required. Policy-safe — no video or audio downloads.`,
+    `${TOOLS_REGISTRY.length} free YouTube tools for monetization checks, tags, descriptions, channel research and analytics. No account needed, no downloaders.`,
   alternates: {
     canonical: `${SITE_CONFIG.url}/free-youtube-tools`,
   },
@@ -122,7 +122,7 @@ export default function FreeYouTubeToolsPage() {
         <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <nav aria-label="Breadcrumb" className="mb-4 text-xs text-[#909090] dark:text-[#717171]">
+              <nav aria-label="Breadcrumb" className="mb-4 text-xs text-[#606060] dark:text-[#a0a0a0]">
                 <Link href="/" className="hover:text-[#ff0000] transition-colors">Home</Link>
                 <span className="mx-1.5">/</span>
                 <span className="text-[#0f0f0f] dark:text-[#f1f1f1]">Free YouTube Tools</span>
@@ -165,7 +165,7 @@ export default function FreeYouTubeToolsPage() {
         </div>
 
         {/* Tools by category */}
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10 space-y-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10 space-y-14">
           {categorisedTools.map(({ category, tools }) => (
             <section key={category.id} id={category.id}>
               <div className="mb-5">
@@ -206,7 +206,7 @@ export default function FreeYouTubeToolsPage() {
               </div>
             </section>
           ))}
-        </main>
+        </div>
 
         {/* FAQ section */}
         <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-16">

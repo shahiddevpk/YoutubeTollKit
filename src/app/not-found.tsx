@@ -77,7 +77,7 @@ export default async function NotFound() {
           </ul>
         </section>
 
-        <p className="text-xs text-[#909090] dark:text-[#717171]">
+        <p className="text-xs text-[#606060] dark:text-[#a0a0a0]">
           Wrong URL on our site?{' '}
           <Link href="/contact" className="underline hover:text-[#0f0f0f] dark:hover:text-[#f1f1f1]">Contact us</Link> so we can add a redirect.
         </p>
