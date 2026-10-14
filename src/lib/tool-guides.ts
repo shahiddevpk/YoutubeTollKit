@@ -682,6 +682,14 @@ const GUIDES: Record<string, ToolGuide> = {
         heading: "Designing your own channel art",
         paragraphs: ["Upload banners at 2560×1440 and keep text and faces inside the central 1546×423 “safe area” that shows on every device. Profile pictures should be at least 98×98, but uploading 800×800 keeps them crisp on TVs.", "Compare your design with successful channels in your niche by downloading their banners and viewing them side by side at mobile size."],
       },
+      {
+        heading: "Sizes YouTube uses for channel art",
+        paragraphs: ["YouTube recommends uploading a square profile picture of at least 800 × 800 pixels; it is displayed as a circle as small as 98 × 98 pixels, so simple shapes and bold contrast work best. Banners should be at least 2048 × 1152 pixels and under 6 MB, with text and logos kept inside the central 1235 × 338 pixel safe area that is visible on every device.", "The downloader fetches the largest version YouTube serves, which is useful for checking how another channel handles the safe area or for recovering your own art when the original file is lost."],
+      },
+      {
+        heading: "Practical, permission-friendly uses",
+        paragraphs: ["Common uses include preparing a media kit or sponsorship deck with a partner’s approval, adding a collaborator’s avatar to a joint thumbnail they have agreed to, archiving your own channel art, and studying design trends in your niche before commissioning new artwork."],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -767,6 +775,14 @@ const GUIDES: Record<string, ToolGuide> = {
         heading: "When likes show as zero",
         paragraphs: ["Creators can hide like counts in YouTube Studio. In that case the API returns 0 even though the video has likes. The tool shows what YouTube makes public and cannot reveal hidden counts."],
       },
+      {
+        heading: "What a good like ratio looks like",
+        paragraphs: ["The like-to-view ratio varies widely by format and niche. Many public videos land somewhere between 1% and 5%, with tutorials, music and loyal community channels often higher, and viral videos that reach a broad, casual audience often lower.", "Use the ratio to compare videos on the same channel or in the same niche rather than against a universal target. A falling ratio across recent uploads can be an early sign that titles and thumbnails are promising something the videos do not deliver."],
+      },
+      {
+        heading: "Where the numbers come from",
+        paragraphs: ["Like and view counts come from the official YouTube Data API, the same public figures shown on the watch page. YouTube can take a short while to update public counters, and our server may cache a result for under a minute to protect the shared API quota, so very fresh videos can lag slightly behind the watch page.", "Only the channel owner can see likes over time, dislikes and engagement by traffic source; those are in YouTube Studio → Analytics → Engagement."],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -783,6 +799,14 @@ const GUIDES: Record<string, ToolGuide> = {
       {
         heading: "Do dislikes hurt a video?",
         paragraphs: ["YouTube has said dislikes are one of many satisfaction signals and do not on their own push a video down. Watch time, survey responses and “Not interested” clicks matter more. Use the estimate as feedback on audience fit, not as a ranking score."],
+      },
+      {
+        heading: "How the estimate is calculated",
+        paragraphs: ["The Return YouTube Dislike project archived public dislike counts before YouTube hid them in late 2021. For newer activity it extrapolates from the votes of people who use its browser extension, scaled to the video’s total views and likes.", "Accuracy therefore depends on how many extension users watched the video. We show the raw vote sample next to the estimate: a few dozen votes means a rough guess, while thousands of votes give a much more stable figure."],
+      },
+      {
+        heading: "How creators can see their real dislikes",
+        paragraphs: ["Dislikes were hidden from the public, not removed. If you own the video, open YouTube Studio, select the video, go to Analytics → Engagement and look for “Likes (vs. dislikes)”, or add the Dislikes metric in Advanced mode. That is the only exact source; third-party estimates should never replace it."],
       },
       DEFAULT_TRUST,
     ],
@@ -852,6 +876,14 @@ const GUIDES: Record<string, ToolGuide> = {
         heading: "Staying within YouTube’s rules",
         paragraphs: ["Asking viewers to subscribe is fine. Offering rewards for subscribing, sub-for-sub exchanges or paid subscriber services break YouTube’s fake engagement policy and can remove subscribers or the channel."],
       },
+      {
+        heading: "Create and test your link in three steps",
+        paragraphs: ["Paste your channel URL, @handle or channel ID and press Create Link. The tool resolves the channel through the YouTube Data API, so both the handle link and the permanent channel-ID link point to the right channel even if you typed a video URL.", "Open the link in a private browser window while signed in to a different Google account to see exactly what a new viewer sees. If the subscribe dialog does not appear, check that you are not already subscribed with that account; YouTube hides the prompt for existing subscribers."],
+      },
+      {
+        heading: "Measuring whether the link works",
+        paragraphs: ["YouTube Studio shows where subscribers come from: open Analytics, switch to Advanced mode and choose the Subscription source report. Subscribers from your link usually appear under the channel page or external sources.", "For click counts, send the link through a shortener or a redirect on your own website that records visits. Compare clicks with new subscribers over a few weeks to see which placement — bio, newsletter, QR code or end screen — converts best."],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -869,6 +901,14 @@ const GUIDES: Record<string, ToolGuide> = {
         heading: "Comparing with competitors",
         paragraphs: ["Checking the category of top-ranking videos in your niche shows how established creators classify similar content. If most of them use a category different from yours, test switching on a few videos and watch whether impressions from browse and suggested change."],
       },
+      {
+        heading: "All YouTube video categories and their IDs",
+        paragraphs: ["The YouTube Data API uses numeric IDs for categories. The ones available when uploading are: 1 Film & Animation, 2 Autos & Vehicles, 10 Music, 15 Pets & Animals, 17 Sports, 19 Travel & Events, 20 Gaming, 22 People & Blogs, 23 Comedy, 24 Entertainment, 25 News & Politics, 26 Howto & Style, 27 Education, 28 Science & Technology and 29 Nonprofits & Activism.", "The checker shows both the name and the ID, which is useful if you work with the API, spreadsheets or bulk-editing tools that only store the number."],
+      },
+      {
+        heading: "Choosing between similar categories",
+        paragraphs: ["Education suits structured lessons and explainers, while Howto & Style fits practical tutorials, beauty, DIY and cooking. Science & Technology is the natural home for gadget reviews and software walkthroughs. Comedy is for content whose main purpose is to make people laugh; broader shows, reactions and challenges usually belong in Entertainment.", "Pick the category that best describes the video itself, not the one you think is most popular. A small, accurate signal is worth more than a misleading one, and you can change it at any time without affecting existing views."],
+      },
       DEFAULT_TRUST,
     ],
   },
@@ -885,6 +925,14 @@ const GUIDES: Record<string, ToolGuide> = {
       {
         heading: "Final checks before you commit",
         paragraphs: ["Say the name out loud, search it on YouTube and Google to avoid confusion with an existing creator or brand, and check that matching social usernames are free. For business channels, run a quick trademark search in your country."],
+      },
+      {
+        heading: "What makes a channel name work",
+        paragraphs: ["A good name is easy to say, spell and remember after hearing it once. Keep it short enough to read in full under a thumbnail on a phone, avoid numbers and symbols that people will mistype, and make sure it still fits if your content grows beyond its first topic.", "Including a topic word (for example “Cooking”, “Tech” or “Fitness”) helps new viewers understand the channel at a glance, but it is not required for search. YouTube ranks videos on their titles, descriptions and viewer response, not on keywords in the channel name."],
+      },
+      {
+        heading: "Changing your name or handle later",
+        paragraphs: ["You can change your channel name and your handle in YouTube Studio → Customization → Basic info. Each can be changed twice within a 14-day period. Old handle links stop working once someone else claims the handle, so update your links and printed materials after a change.", "Verified channels lose their verification badge when they change the channel name and need to apply again, so settle on a name before you grow large if verification matters to you."],
       },
       DEFAULT_TRUST,
     ],

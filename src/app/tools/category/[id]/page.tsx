@@ -12,7 +12,9 @@ import {
 import { ToolCard } from '@/components/tools/ToolCard';
 import type { ToolCategory } from '@/types/tools';
 import { CATEGORY_GUIDES } from '@/lib/category-guides';
-import { generateBreadcrumbSchema } from '@/lib/seo';
+import { generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo';
+import { CATEGORY_CONTENT } from '@/lib/category-content';
+import { getToolBySlug } from '@/lib/tools-registry';
 export const revalidate = 3600;
 
 interface PageProps {
@@ -73,6 +75,8 @@ export default async function CategoryHubPage({ params }: PageProps) {
 
   const tools = getToolsByCategory(category.id);
   const guide = CATEGORY_GUIDES[category.id];
+  const content = CATEGORY_CONTENT[category.id];
+  const faqSchema = content ? generateFAQSchema(content.faqs) : null;
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
@@ -103,6 +107,12 @@ export default async function CategoryHubPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <section className="border-b border-[#e5e5e5] dark:border-[#272727] py-10 sm:py-12">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <nav className="text-xs text-[#606060] dark:text-[#aaaaaa] mb-4" aria-label="Breadcrumb">
@@ -119,6 +129,9 @@ export default async function CategoryHubPage({ params }: PageProps) {
           <p className="mt-2 text-base text-[#606060] dark:text-[#aaaaaa] max-w-3xl">
             {guide ? guide.intro : category.description}
           </p>
+          {content && (
+            <p className="mt-3 text-sm text-[#606060] dark:text-[#aaaaaa] max-w-3xl leading-relaxed">{content.lead}</p>
+          )}
         </div>
       </section>
 
@@ -137,8 +150,10 @@ export default async function CategoryHubPage({ params }: PageProps) {
           ))}
         </div>
 
+        {content && <CategoryDetails content={content} categoryName={category.name} />}
+
         {/* Category Guide & Selection Advice */}
-        {guide && guide.paragraphs.length > 0 && (
+        {!content && guide && guide.paragraphs.length > 0 && (
           <div className="mt-12 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 sm:p-8 shadow-sm space-y-4">
             <h2 className="text-base font-bold text-[#0f0f0f] dark:text-[#f1f1f1] border-b border-[#e5e5e5] dark:border-[#272727] pb-3">
               How to Use & Choose Tools in {category.name}
@@ -168,5 +183,114 @@ export default async function CategoryHubPage({ params }: PageProps) {
         </div>
       </section>
     </div>
+  );
+}
+
+const card = 'mt-10 rounded-2xl border border-[#e5e5e5] dark:border-[#272727] bg-white dark:bg-[#181818] p-6 sm:p-8 shadow-sm';
+const h2c = 'text-lg font-bold text-[#0f0f0f] dark:text-[#f1f1f1]';
+const pc = 'text-sm text-[#3f3f3f] dark:text-[#cccccc] leading-relaxed';
+
+function toolName(slug: string) {
+  const t = getToolBySlug(slug);
+  return t ? (t.shortTitle || t.name) : slug;
+}
+
+function CategoryDetails({
+  content,
+  categoryName,
+}: {
+  content: NonNullable<(typeof CATEGORY_CONTENT)[keyof typeof CATEGORY_CONTENT]>;
+  categoryName: string;
+}) {
+  return (
+    <>
+      {content.sections.map((section) => (
+        <section key={section.heading} className={card}>
+          <h2 className={h2c}>{section.heading}</h2>
+          <div className="mt-3 space-y-3">
+            {section.paragraphs.map((p, i) => (
+              <p key={i} className={pc}>{p}</p>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <section className={card}>
+        <h2 className={h2c}>Compare the {categoryName.toLowerCase()} tools</h2>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full min-w-[560px] text-left text-sm">
+            <thead>
+              <tr className="border-b border-[#e5e5e5] dark:border-[#272727] text-[#0f0f0f] dark:text-[#f1f1f1]">
+                <th scope="col" className="py-2 pr-4 font-semibold">Tool</th>
+                <th scope="col" className="py-2 pr-4 font-semibold">Best for</th>
+                <th scope="col" className="py-2 pr-4 font-semibold">You enter</th>
+                <th scope="col" className="py-2 font-semibold">You get</th>
+              </tr>
+            </thead>
+            <tbody className="text-[#3f3f3f] dark:text-[#cccccc]">
+              {content.comparison.map((row) => (
+                <tr key={row.slug} className="border-b border-[#f2f2f2] dark:border-[#272727] align-top">
+                  <td className="py-2.5 pr-4 font-semibold">
+                    <Link href={`/tools/${row.slug}`} className="text-[#cc0000] dark:text-red-400 hover:underline">
+                      {toolName(row.slug)}
+                    </Link>
+                  </td>
+                  <td className="py-2.5 pr-4">{row.bestFor}</td>
+                  <td className="py-2.5 pr-4">{row.input}</td>
+                  <td className="py-2.5">{row.output}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className={card}>
+        <h2 className={h2c}>Common use cases</h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {content.useCases.map((u) => (
+            <div key={u.title} className="rounded-xl border border-[#e5e5e5] dark:border-[#272727] p-4">
+              <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{u.title}</h3>
+              <p className={`mt-1.5 ${pc}`}>{u.text}</p>
+              <p className="mt-2 text-xs">
+                {u.slugs.map((slug, i) => (
+                  <React.Fragment key={slug}>
+                    {i > 0 && ' · '}
+                    <Link href={`/tools/${slug}`} className="font-semibold text-[#cc0000] dark:text-red-400 hover:underline">
+                      {toolName(slug)}
+                    </Link>
+                  </React.Fragment>
+                ))}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className={card}>
+        <h2 className={h2c}>Frequently asked questions</h2>
+        <div className="mt-4 divide-y divide-[#e5e5e5] dark:divide-[#272727]">
+          {content.faqs.map((f) => (
+            <div key={f.question} className="py-4 first:pt-0 last:pb-0">
+              <h3 className="text-sm font-bold text-[#0f0f0f] dark:text-[#f1f1f1]">{f.question}</h3>
+              <p className={`mt-1.5 ${pc}`}>{f.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className={card}>
+        <h2 className={h2c}>Keep learning</h2>
+        <ul className="mt-3 space-y-2">
+          {content.related.map((r) => (
+            <li key={r.href}>
+              <Link href={r.href} className="text-sm font-semibold text-[#cc0000] dark:text-red-400 hover:underline">
+                {r.label} →
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }
