@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+
+export const runtime = 'edge';
 import { checkRateLimit, createRateLimitResponse } from '@/lib/rate-limit';
 
 const ALLOWED_HOSTS = [

@@ -25,7 +25,7 @@ export function getCachedResponse(key: string): NextResponse | null {
   });
 }
 
-export async function storeCachedResponse(key: string, res: NextResponse, ttlMs = 45_000): Promise<NextResponse> {
+export async function storeCachedResponse(key: string, res: NextResponse, ttlMs = 300_000): Promise<NextResponse> {
   if (res.status === 200) {
     try {
       const body = await res.clone().json();

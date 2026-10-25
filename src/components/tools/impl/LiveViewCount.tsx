@@ -13,9 +13,9 @@ const PRESET_VIDEOS = [
 ];
 
 const REFRESH_INTERVALS = [
-  { label: '30s', value: 30 },
   { label: '60s', value: 60 },
   { label: '2 min', value: 120 },
+  { label: '5 min', value: 300 },
 ];
 
 interface VideoStats {
@@ -46,7 +46,7 @@ export function LiveViewCount() {
   const [prevViews, setPrevViews] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [autoRefresh, setAutoRefresh] = useState(false);
-  const [intervalSeconds, setIntervalSeconds] = useState(60);
+  const [intervalSeconds, setIntervalSeconds] = useState(60);  // minimum 60s to keep Vercel Fluid CPU within free tier
   const [countdown, setCountdown] = useState(0);
   const [refreshCount, setRefreshCount] = useState(0);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
