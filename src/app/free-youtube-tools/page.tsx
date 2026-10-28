@@ -4,7 +4,6 @@ import { Metadata } from 'next';
 import { TOOLS_REGISTRY, CATEGORIES, SITE_CONFIG } from '@/lib/tools-registry';
 import { defaultRobots } from '@/lib/seo-site-config';
 
-export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: { absolute: `Free YouTube Tools — ${TOOLS_REGISTRY.length} Tools, No Login | YouTubeFreeToolkit` },

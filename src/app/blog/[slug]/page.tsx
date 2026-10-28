@@ -18,11 +18,12 @@ import {
 } from 'lucide-react';
 import { toolPrimaryButtonClass } from '@/lib/tool-ui';
 import { cn } from '@/lib/utils';
-export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const slugs = getAllBlogSlugs();

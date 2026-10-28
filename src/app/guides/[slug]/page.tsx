@@ -8,11 +8,12 @@ import { generateBreadcrumbSchema } from '@/lib/seo';
 import { defaultRobots } from '@/lib/seo-site-config';
 import { ProseBlock } from '@/components/content/ProseBlock';
 
-export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getAllGuideSlugs().map((slug) => ({ slug }));

@@ -1,6 +1,7 @@
 /**
  * Rank Math “Redirections” equivalent — edit this map when URLs change.
- * Keys must be lowercase paths without trailing slash (middleware normalizes).
+ * Keys must be lowercase paths without trailing slash. Applied as CDN-level
+ * redirects in next.config.ts (no function invocation per request).
  */
 
 export type RedirectRule = {
@@ -31,9 +32,3 @@ export const REDIRECT_RULES: Record<string, RedirectRule> = {
   '/rss': { destination: '/blog' },
   '/comments/feed': { destination: '/blog' },
 };
-
-export function resolveRedirect(pathname: string): RedirectRule | null {
-  const path = pathname.replace(/\/+$/, '') || '/';
-  const key = path.toLowerCase();
-  return REDIRECT_RULES[key] ?? null;
-}

@@ -6,7 +6,6 @@ import { BLOG_POSTS } from '@/lib/blog-registry';
 import { ToolCard } from '@/components/tools/ToolCard';
 import { MonetizationChecker } from '@/components/tools/impl/MonetizationChecker';
 
-export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {

@@ -5,7 +5,6 @@ import { SITE_CONFIG } from '@/lib/tools-registry';
 import { defaultRobots } from '@/lib/seo-site-config';
 import { generateFAQSchema } from '@/lib/seo';
 
-export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'YouTube Creator Guide Hubs',

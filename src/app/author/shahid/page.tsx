@@ -15,7 +15,6 @@ import {
   Mail,
 } from 'lucide-react';
 
-export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {

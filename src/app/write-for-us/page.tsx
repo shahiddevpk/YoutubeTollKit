@@ -4,7 +4,6 @@ import { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { defaultRobots } from '@/lib/seo-site-config';
 
-export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: 'Write for Us — Guest Post Guidelines',

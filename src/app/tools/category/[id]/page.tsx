@@ -15,11 +15,12 @@ import { CATEGORY_GUIDES } from '@/lib/category-guides';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo';
 import { CATEGORY_CONTENT } from '@/lib/category-content';
 import { getToolBySlug } from '@/lib/tools-registry';
-export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getAllCategoryIds().map((id) => ({ id }));

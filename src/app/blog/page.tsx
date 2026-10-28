@@ -3,18 +3,10 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { BLOG_POSTS } from '@/lib/blog-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';
-import { noindexFollowRobots, defaultRobots, hasNoindexSearchParams } from '@/lib/seo-site-config';
+import { defaultRobots } from '@/lib/seo-site-config';
 
-export const revalidate = 3600;
-
-type BlogPageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
-
-export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
-  const params = await searchParams;
-  const filtered = hasNoindexSearchParams(params);
-
+// Fully static: filtered query URLs get noindex via X-Robots-Tag in next.config.ts.
+export function generateMetadata(): Metadata {
   return {
     title: 'YouTube Creator Guides & SEO Blog',
     description:
@@ -22,7 +14,7 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
     alternates: {
       canonical: `${SITE_CONFIG.url}/blog`,
     },
-    robots: filtered ? noindexFollowRobots() : defaultRobots(),
+    robots: defaultRobots(),
     openGraph: {
       title: 'YouTube Creator Guides & SEO Blog',
       description:

@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import { headers } from 'next/headers';
 import { TOOLS_REGISTRY, SITE_CONFIG } from '@/lib/tools-registry';
-import { logNotFoundRequest } from '@/lib/not-found-monitor';
 import { noindexFollowRobots } from '@/lib/seo-site-config';
 import type { Metadata } from 'next';
 
@@ -11,11 +9,9 @@ export const metadata: Metadata = {
   robots: noindexFollowRobots(),
 };
 
-export default async function NotFound() {
-  const headerList = await headers();
-  const path = headerList.get('x-request-path') ?? 'unknown';
-  logNotFoundRequest(path, headerList.get('referer'));
-
+// Static on purpose: reading headers() here made every route render per request.
+// 404 paths are visible in Vercel request logs instead.
+export default function NotFound() {
   const popular = TOOLS_REGISTRY.filter((t) => t.featured).slice(0, 5);
 
   return (

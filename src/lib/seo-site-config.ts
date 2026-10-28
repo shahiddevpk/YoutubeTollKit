@@ -20,7 +20,7 @@
  * | WebSite SearchAction        | Omitted (sitelinks search box retired)   |
  * | attachment noindex          | N/A (no WP media attachments)            |
  * | author archives noindex     | We index `/author/shahid` (E-E-A-T hub)  |
- * | redirections              | `src/lib/redirects.ts` + `middleware.ts` |
+ * | redirections              | `src/lib/redirects.ts` → `next.config.ts` |
  * | 404 monitor               | `not-found.tsx` + `not-found-monitor.ts` |
  * | pillar content hubs       | `/guides/*` in `guides-registry.ts`      |
  */

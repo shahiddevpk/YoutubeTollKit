@@ -2,19 +2,11 @@ import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { TOOLS_REGISTRY, CATEGORIES, SITE_CONFIG } from '@/lib/tools-registry';
-import { hasNoindexSearchParams, noindexFollowRobots, defaultRobots } from '@/lib/seo-site-config';
+import { defaultRobots } from '@/lib/seo-site-config';
 import { ToolsExplorerClient } from './ToolsExplorerClient';
 
-export const revalidate = 3600;
-
-type ToolsPageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
-
-export async function generateMetadata({ searchParams }: ToolsPageProps): Promise<Metadata> {
-  const params = await searchParams;
-  const filtered = hasNoindexSearchParams(params);
-
+// Fully static: ?q= filter URLs get noindex via X-Robots-Tag in next.config.ts.
+export function generateMetadata(): Metadata {
   return {
     title: {
       absolute: 'All YouTube Tools by Category | YouTubeFreeToolkit',
@@ -23,7 +15,7 @@ export async function generateMetadata({ searchParams }: ToolsPageProps): Promis
     alternates: {
       canonical: `${SITE_CONFIG.url}/tools`,
     },
-    robots: filtered ? noindexFollowRobots() : defaultRobots(),
+    robots: defaultRobots(),
     openGraph: {
       title: 'All YouTube Tools by Category | YouTubeFreeToolkit',
       description:

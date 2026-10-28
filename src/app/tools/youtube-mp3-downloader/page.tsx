@@ -5,7 +5,6 @@ import { SITE_CONFIG } from '@/lib/tools-registry';
 import { noindexFollowRobots } from '@/lib/seo-site-config';
 import { DownloadOptionsGuide } from '@/components/tools/DownloadOptionsGuide';
 
-export const revalidate = 86400;
 
 const PATH = '/tools/youtube-mp3-downloader';
 
