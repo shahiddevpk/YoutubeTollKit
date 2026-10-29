@@ -1,21 +1,23 @@
 import { toast } from '@/components/ui/Toast';
 
-export async function fetchYouTubeChannel(q: string) {
-  return fetch('/api/youtube/channel', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ q: q.trim() }),
-    credentials: 'same-origin',
-  });
+interface LookupOptions {
+  /** Auto-refreshing counters: CDN caches for 60s instead of 1h. */
+  live?: boolean;
 }
 
-export async function fetchYouTubeVideo(q: string) {
-  return fetch('/api/youtube/video', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ q: q.trim() }),
-    credentials: 'same-origin',
-  });
+/** GET (not POST) so Vercel's CDN can cache identical lookups without invoking the function. */
+function lookupUrl(path: string, q: string, { live }: LookupOptions) {
+  const params = new URLSearchParams({ q: q.trim() });
+  if (live) params.set('live', '1');
+  return `${path}?${params.toString()}`;
+}
+
+export async function fetchYouTubeChannel(q: string, options: LookupOptions = {}) {
+  return fetch(lookupUrl('/api/youtube/channel', q, options), { credentials: 'same-origin' });
+}
+
+export async function fetchYouTubeVideo(q: string, options: LookupOptions = {}) {
+  return fetch(lookupUrl('/api/youtube/video', q, options), { credentials: 'same-origin' });
 }
 
 export interface ApiParsedResult<T> {
