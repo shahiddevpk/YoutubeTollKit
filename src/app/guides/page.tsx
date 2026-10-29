@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/link';
 import type { Metadata } from 'next';
 import { GUIDE_HUBS } from '@/lib/guides-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';

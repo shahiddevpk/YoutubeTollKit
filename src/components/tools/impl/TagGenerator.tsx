@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { Tags, Copy, Check } from 'lucide-react';
 import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';
 import { toolFormRowClass, toolInputClass, toolSecondaryButtonClass } from '@/lib/tool-ui';

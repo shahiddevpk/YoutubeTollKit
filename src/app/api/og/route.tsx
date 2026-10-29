@@ -119,6 +119,10 @@ export async function GET(req: NextRequest) {
       {
         width: 1200,
         height: 630,
+        // Output depends only on the URL, so let the CDN keep it instead of re-rendering per fetch.
+        headers: {
+          'Cache-Control': 'public, max-age=86400, s-maxage=31536000, stale-while-revalidate=31536000',
+        },
       }
     );
   } catch (e: unknown) {

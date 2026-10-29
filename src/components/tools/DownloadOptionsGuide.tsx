@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/link';
 
 type Mode = 'video' | 'audio';
 type Situation = 'own' | 'premium' | 'licensed' | 'other';

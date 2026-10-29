@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { ToolDefinition } from '@/types/tools';
 import { SITE_CONFIG, getToolBySlug } from '@/lib/tools-registry';
 import {

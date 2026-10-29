@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { formatCurrency, formatNumber } from '@/lib/utils';
 import { computeSignalConfidence, buildPublicMonetizationReport } from '@/lib/monetization-public-report';
 import { ToolEstimateNotice } from '@/components/ui/ToolEstimateNotice';

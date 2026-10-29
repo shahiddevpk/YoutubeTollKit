@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { Metadata } from 'next';
 import { SITE_CONFIG, TOOLS_REGISTRY } from '@/lib/tools-registry';
 import { generateBreadcrumbSchema } from '@/lib/seo';

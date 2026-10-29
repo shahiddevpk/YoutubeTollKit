@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/link';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { TOOLS_REGISTRY, CATEGORIES, getFeaturedTools, SITE_CONFIG } from '@/lib/tools-registry';

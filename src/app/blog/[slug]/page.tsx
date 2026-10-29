@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog-registry';
 import { SITE_CONFIG } from '@/lib/tools-registry';
 import { generateBreadcrumbSchema } from '@/lib/seo';

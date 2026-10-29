@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/link';
 import { TOOLS_REGISTRY, SITE_CONFIG } from '@/lib/tools-registry';
 import { noindexFollowRobots } from '@/lib/seo-site-config';
 import type { Metadata } from 'next';

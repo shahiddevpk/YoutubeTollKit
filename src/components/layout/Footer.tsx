@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { TOOLS_REGISTRY, SITE_CONFIG } from '@/lib/tools-registry';
 import { ShieldCheck, Sparkles } from 'lucide-react';
 

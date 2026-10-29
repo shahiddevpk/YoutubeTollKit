@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { NAV_TOOLS, TOTAL_TOOLS_COUNT } from '@/lib/nav-tools';
 import { Search, Sparkles, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';

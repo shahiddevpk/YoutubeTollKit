@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { FolderSearch, AlertCircle } from 'lucide-react';
 import { fetchYouTubeVideo, parseApiJson } from '@/lib/api-client';
 import { ToolPrimaryButton } from '@/components/ui/ToolPrimaryButton';

@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import Link from 'next/link';
+import Link from '@/components/link';
 import { Metadata } from 'next';
 import { TOOLS_REGISTRY, CATEGORIES, SITE_CONFIG } from '@/lib/tools-registry';
 import { defaultRobots } from '@/lib/seo-site-config';
